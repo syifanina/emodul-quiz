@@ -1,704 +1,243 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Read and Match Quiz</title>
-<style>
-  @import url('https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800&display=swap');
-
-  * { margin: 0; padding: 0; box-sizing: border-box; }
-
-  body {
-    background: #e8e8e8;
-    font-family: 'Verdana', Geneva, sans-serif;
-    display: flex;
-    justify-content: center;
-    padding: 30px 20px;
-    min-height: 100vh;
-  }
-
-  .page {
-    background: #ffffff;
-    width: 21cm;
-    min-height: 29.7cm;
-    padding: 2cm 2.5cm;
-    box-shadow: 0 4px 20px rgba(0,0,0,0.15);
-  }
-
-  .title {
-    text-align: center;
-    font-size: 18pt;
-    font-weight: bold;
-    margin-bottom: 10px;
-    letter-spacing: 1px;
-  }
-
-  .instruction-en {
-    text-align: center;
-    font-size: 11pt;
-    margin-bottom: 4px;
-  }
-
-  .instruction-id {
-    text-align: center;
-    font-size: 11pt;
-    color: #cc0000;
-    font-weight: bold;
-    text-decoration: underline;
-    margin-bottom: 24px;
-  }
-
-  /* ── EXAMPLE ROW ── */
-  .example-block {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    margin-bottom: 32px;
-    padding: 10px 0;
-    position: relative;
-  }
-
-  .example-img-wrap {
-    width: 120px;
-    height: 130px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-  }
-
-  .example-img-wrap img,
-  .item-img-wrap img {
-    width: 100%;
-    height: 100%;
-    object-fit: contain;
-  }
-
-  /* SVG placeholder figures */
-  .figure-placeholder {
-    width: 100px;
-    height: 120px;
-  }
-
-  .arrow-area {
-    flex: 1;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    position: relative;
-  }
-
-  .arrow-line {
-    width: 80%;
-    height: 2px;
-    background: #000;
-    position: relative;
-  }
-
-  .arrow-line::after {
-    content: '';
-    position: absolute;
-    right: -1px;
-    top: 50%;
-    transform: translateY(-50%);
-    border-left: 10px solid #000;
-    border-top: 6px solid transparent;
-    border-bottom: 6px solid transparent;
-  }
-
-  .example-label {
-    font-size: 10pt;
-    font-style: italic;
-    text-align: right;
-    margin-right: 8px;
-  }
-
-  .options-list {
-    min-width: 200px;
-    text-align: left;
-  }
-
-  .options-list p {
-    font-size: 11pt;
-    line-height: 1.9;
-  }
-
-  .options-list .answered {
-    position: relative;
-  }
-
-  .options-list .arrow-indicator {
-    position: absolute;
-    left: -70px;
-    top: 50%;
-    transform: translateY(-50%);
-    width: 60px;
-    height: 2px;
-    background: #000;
-  }
-
-  .options-list .arrow-indicator::before {
-    content: '';
-    position: absolute;
-    left: -1px;
-    top: 50%;
-    transform: translateY(-50%);
-    border-right: 10px solid #000;
-    border-top: 6px solid transparent;
-    border-bottom: 6px solid transparent;
-  }
-
-  /* ── QUIZ ITEMS ── */
-  .quiz-row {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    margin-bottom: 28px;
-    min-height: 120px;
-  }
-
-  .item-number {
-    font-size: 13pt;
-    font-weight: bold;
-    width: 28px;
-    flex-shrink: 0;
-    align-self: flex-start;
-    padding-top: 40px;
-  }
-
-  .item-img-wrap {
-    width: 115px;
-    height: 115px;
-    border: 1.5px solid #ccc;
-    border-radius: 6px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    background: #fafafa;
-    overflow: hidden;
-    flex-shrink: 0;
-  }
-
-  .line-area {
-    flex: 1;
-    height: 2px;
-    background: #ccc;
-    margin: 0 10px;
-    border: none;
-    border-top: 1.5px dashed #aaa;
-    position: relative;
-  }
-
-  /* drop zone */
-  .drop-zone {
-    flex: 1;
-    margin: 0 12px;
-    height: 2px;
-    border-top: 2px dashed #aaa;
-    position: relative;
-    cursor: default;
-  }
-
-  .drop-zone.over {
-    border-color: #2196F3;
-  }
-
-  .drawn-line {
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    height: 2px;
-    background: #000;
-    display: none;
-  }
-
-  .drawn-line.active { display: block; }
-
-  .option-text {
-    min-width: 200px;
-    font-size: 11pt;
-    line-height: 1.85;
-    text-align: left;
-  }
-
-  /* ── SVG FIGURES (inline, simple cartoon-like) ── */
-  svg.figure { display: block; }
-
-  /* ── INTERACTIVE MATCHING ── */
-  .match-container {
-    display: flex;
-    align-items: stretch;
-    justify-content: space-between;
-    gap: 0;
-    width: 100%;
-  }
-
-  .left-col {
-    display: flex;
-    flex-direction: column;
-    gap: 28px;
-    width: 150px;
-    flex-shrink: 0;
-  }
-
-  .right-col {
-    display: flex;
-    flex-direction: column;
-    justify-content: space-around;
-    width: 200px;
-    flex-shrink: 0;
-  }
-
-  .left-item {
-    display: flex;
-    align-items: center;
-    gap: 8px;
-    position: relative;
-    height: 115px;
-  }
-
-  .right-item {
-    display: flex;
-    align-items: center;
-    font-size: 11pt;
-    line-height: 1.4;
-    height: 60px;
-    position: relative;
-  }
-
-  .connector-area {
-    flex: 1;
-    position: relative;
-  }
-
-  svg#lines-svg {
-    position: absolute;
-    top: 0; left: 0;
-    width: 100%; height: 100%;
-    pointer-events: none;
-    overflow: visible;
-  }
-
-  /* dot connectors */
-  .dot {
-    width: 14px; height: 14px;
-    border-radius: 50%;
-    background: #555;
-    border: 2px solid #333;
-    cursor: pointer;
-    flex-shrink: 0;
-    transition: background 0.2s, transform 0.15s;
-    position: relative;
-    z-index: 10;
-  }
-
-  .dot:hover { background: #1976D2; transform: scale(1.3); }
-  .dot.selected { background: #1976D2; transform: scale(1.3); }
-  .dot.connected { background: #2e7d32; }
-
-  .left-dot { margin-left: 6px; }
-  .right-dot { margin-right: 6px; }
-
-  /* reset btn */
-  .reset-btn {
-    display: block;
-    margin: 20px auto 0;
-    padding: 8px 24px;
-    background: #f44336;
-    color: #fff;
-    border: none;
-    border-radius: 20px;
-    font-size: 10pt;
-    cursor: pointer;
-    font-family: Verdana, sans-serif;
-    font-weight: bold;
-    letter-spacing: 0.5px;
-    transition: background 0.2s;
-  }
-  .reset-btn:hover { background: #c62828; }
-
-  .check-btn {
-    display: block;
-    margin: 10px auto 0;
-    padding: 8px 24px;
-    background: #388e3c;
-    color: #fff;
-    border: none;
-    border-radius: 20px;
-    font-size: 10pt;
-    cursor: pointer;
-    font-family: Verdana, sans-serif;
-    font-weight: bold;
-    letter-spacing: 0.5px;
-    transition: background 0.2s;
-  }
-  .check-btn:hover { background: #1b5e20; }
-
-  .result-msg {
-    text-align: center;
-    font-size: 12pt;
-    font-weight: bold;
-    margin-top: 14px;
-    min-height: 22px;
-    color: #1a237e;
-  }
-
-  @media print {
-    body { background: white; padding: 0; }
-    .page { box-shadow: none; }
-    .reset-btn, .check-btn { display: none; }
-  }
-</style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Read and Match Quiz</title>
+  <link rel="stylesheet" href="style.css">
 </head>
+
 <body>
-<div class="page">
+  <div class="page">
 
-  <div class="title">READ AND MATCH</div>
-  <div class="instruction-en">Draw a line to match the pictures with the correct actions!</div>
-  <div class="instruction-en">Look at the example!</div>
-  <div class="instruction-id">Buatlah garis untuk menghubungkan gambar dengan aksi yang<br>tepat. Perhatikan contoh!</div>
-
-  <!-- EXAMPLE -->
-  <div style="display:flex; align-items:center; justify-content:space-between; margin-bottom:30px; padding:0 10px;">
-    <!-- Image box example (saluting boy) -->
-    <div style="width:115px; height:115px; border:1.5px solid #ccc; border-radius:6px; display:flex; align-items:center; justify-content:center; background:#fafafa; flex-shrink:0;">
-      <svg width="80" height="105" viewBox="0 0 80 105" fill="none" xmlns="http://www.w3.org/2000/svg">
-        <!-- head -->
-        <circle cx="40" cy="14" r="13" fill="#f5c9a0" stroke="#333" stroke-width="1.2"/>
-        <!-- hair -->
-        <path d="M27 12 Q30 2 40 3 Q50 2 53 12" fill="#4a2d0a" stroke="#4a2d0a" stroke-width="1"/>
-        <!-- body -->
-        <rect x="24" y="27" width="32" height="38" rx="5" fill="#d32f2f"/>
-        <!-- shorts -->
-        <rect x="24" y="60" width="14" height="22" rx="3" fill="#5d4037"/>
-        <rect x="38" y="60" width="14" height="22" rx="3" fill="#5d4037"/>
-        <!-- shoes -->
-        <ellipse cx="31" cy="84" rx="9" ry="5" fill="#222"/>
-        <ellipse cx="49" cy="84" rx="9" ry="5" fill="#222"/>
-        <!-- left arm saluting -->
-        <path d="M24 32 Q10 24 14 16" stroke="#f5c9a0" stroke-width="7" stroke-linecap="round" fill="none"/>
-        <!-- right arm down -->
-        <path d="M56 32 Q70 46 65 58" stroke="#f5c9a0" stroke-width="7" stroke-linecap="round" fill="none"/>
-        <!-- eye left -->
-        <circle cx="35" cy="14" r="2" fill="#333"/>
-        <!-- eye right -->
-        <circle cx="45" cy="14" r="2" fill="#333"/>
-        <!-- smile -->
-        <path d="M36 20 Q40 24 44 20" stroke="#333" stroke-width="1.2" fill="none" stroke-linecap="round"/>
-      </svg>
+    <div class="title">READ AND MATCH</div>
+    <div class="instruction-en">Draw a line to match the pictures with the correct actions!</div>
+    <div class="instruction-en">Look at the example!</div>
+    <div class="instruction-id">Buatlah garis untuk menghubungkan gambar dengan aksi yang<br>tepat. Perhatikan contoh!
     </div>
 
-    <!-- Arrow + example label -->
-    <div style="flex:1; display:flex; flex-direction:column; align-items:center; justify-content:center; position:relative;">
-      <div style="font-size:10pt; font-style:italic; margin-bottom:6px; align-self:flex-start; padding-left:10px;">Example:</div>
-      <div style="width:85%; height:2px; background:#000; position:relative; margin: 0 auto;">
-        <div style="position:absolute; left:-1px; top:50%; transform:translateY(-50%); border-right:10px solid #000; border-top:6px solid transparent; border-bottom:6px solid transparent;"></div>
-        <div style="position:absolute; right:-1px; top:50%; transform:translateY(-50%); border-left:10px solid #000; border-top:6px solid transparent; border-bottom:6px solid transparent;"></div>
-      </div>
-    </div>
-
-    <!-- Options B is answered -->
-    <div style="min-width:200px; font-size:11pt; line-height:1.9; text-align:left; flex-shrink:0;">
-      <div>A.&nbsp; Bend your knees</div>
-      <div style="position:relative; font-weight:bold;">
-        B.&nbsp; Touch your head
-        <div style="position:absolute; left:-55px; top:50%; transform:translateY(-50%); width:48px; height:2px; background:#000;">
-          <div style="position:absolute; left:0; top:50%; transform:translateY(-50%); border-right:8px solid #000; border-top:5px solid transparent; border-bottom:5px solid transparent;"></div>
-        </div>
-      </div>
-      <div>C.&nbsp; Open your mouth</div>
-    </div>
-  </div>
-
-  <!-- INTERACTIVE MATCHING SECTION -->
-  <div style="position:relative; width:100%;" id="quiz-area">
-
-    <!-- LEFT COLUMN: numbered items with images -->
-    <div style="display:flex; align-items:flex-start; justify-content:space-between; width:100%;">
-
-      <!-- Numbers + Images -->
-      <div style="display:flex; flex-direction:column; gap:28px; width:160px; flex-shrink:0;">
-        <!-- Item 1: punching/flexing boy -->
-        <div style="display:flex; align-items:center; gap:8px; height:120px;" id="left-1">
-          <span style="font-size:13pt; font-weight:bold; width:22px;">1.</span>
-          <div style="width:108px; height:108px; border:1.5px solid #ccc; border-radius:6px; display:flex; align-items:center; justify-content:center; background:#fafafa; overflow:hidden;">
-            <svg width="80" height="100" viewBox="0 0 80 105" fill="none">
-              <circle cx="40" cy="13" r="12" fill="#f5c9a0" stroke="#333" stroke-width="1.2"/>
-              <path d="M28 11 Q31 2 40 3 Q49 2 52 11" fill="#333" stroke="#333" stroke-width="1"/>
-              <rect x="24" y="25" width="32" height="36" rx="5" fill="#d32f2f"/>
-              <rect x="24" y="57" width="13" height="23" rx="3" fill="#5d4037"/>
-              <rect x="37" y="57" width="13" height="23" rx="3" fill="#5d4037"/>
-              <ellipse cx="30" cy="83" rx="9" ry="4.5" fill="#222"/>
-              <ellipse cx="48" cy="83" rx="9" ry="4.5" fill="#222"/>
-              <!-- right arm punching up -->
-              <path d="M56 30 Q72 18 68 8" stroke="#f5c9a0" stroke-width="7" stroke-linecap="round" fill="none"/>
-              <!-- fist -->
-              <rect x="60" y="2" width="12" height="10" rx="3" fill="#f5c9a0" stroke="#c9956e" stroke-width="1"/>
-              <!-- left arm down -->
-              <path d="M24 30 Q10 44 15 56" stroke="#f5c9a0" stroke-width="7" stroke-linecap="round" fill="none"/>
-              <circle cx="35" cy="13" r="2" fill="#333"/>
-              <circle cx="45" cy="13" r="2" fill="#333"/>
-              <path d="M37 19 Q40 22 43 19" stroke="#333" stroke-width="1.2" fill="none" stroke-linecap="round"/>
-            </svg>
-          </div>
-          <div class="dot left-dot" data-side="left" data-id="1" id="ldot-1"></div>
-        </div>
-
-        <!-- Item 2: girl kneeling/sitting -->
-        <div style="display:flex; align-items:center; gap:8px; height:120px;" id="left-2">
-          <span style="font-size:13pt; font-weight:bold; width:22px;">2.</span>
-          <div style="width:108px; height:108px; border:1.5px solid #ccc; border-radius:6px; display:flex; align-items:center; justify-content:center; background:#fafafa; overflow:hidden;">
-            <svg width="80" height="100" viewBox="0 0 80 105" fill="none">
-              <circle cx="40" cy="13" r="12" fill="#f5c9a0" stroke="#333" stroke-width="1.2"/>
-              <!-- hair long -->
-              <path d="M28 10 Q28 28 30 36 Q35 5 40 4 Q45 5 50 36 Q52 28 52 10" fill="#4a2d0a"/>
-              <!-- body -->
-              <rect x="26" y="25" width="28" height="30" rx="5" fill="#e57373"/>
-              <!-- skirt/legs bent (kneeling) -->
-              <path d="M26 55 Q20 70 18 80 Q22 82 26 75 Q30 68 34 62 Z" fill="#f48fb1"/>
-              <path d="M54 55 Q60 70 62 80 Q58 82 54 75 Q50 68 46 62 Z" fill="#f48fb1"/>
-              <!-- arms: left down touching ground -->
-              <path d="M26 32 Q12 48 10 65" stroke="#f5c9a0" stroke-width="7" stroke-linecap="round" fill="none"/>
-              <!-- right arm bent -->
-              <path d="M54 32 Q68 38 65 50" stroke="#f5c9a0" stroke-width="7" stroke-linecap="round" fill="none"/>
-              <circle cx="35" cy="13" r="2" fill="#333"/>
-              <circle cx="45" cy="13" r="2" fill="#333"/>
-              <path d="M37 19 Q40 22 43 19" stroke="#333" stroke-width="1.2" fill="none" stroke-linecap="round"/>
-            </svg>
-          </div>
-          <div class="dot left-dot" data-side="left" data-id="2" id="ldot-2"></div>
-        </div>
-
-        <!-- Item 3: girl touching face/eyebrow -->
-        <div style="display:flex; align-items:center; gap:8px; height:120px;" id="left-3">
-          <span style="font-size:13pt; font-weight:bold; width:22px;">3.</span>
-          <div style="width:108px; height:108px; border:1.5px solid #ccc; border-radius:6px; display:flex; align-items:center; justify-content:center; background:#fafafa; overflow:hidden;">
-            <svg width="80" height="100" viewBox="0 0 80 105" fill="none">
-              <circle cx="40" cy="14" r="12" fill="#f5c9a0" stroke="#333" stroke-width="1.2"/>
-              <path d="M28 12 Q28 30 30 38 Q35 6 40 5 Q45 6 50 38 Q52 30 52 12" fill="#4a2d0a"/>
-              <rect x="26" y="26" width="28" height="34" rx="5" fill="#e57373"/>
-              <rect x="26" y="56" width="12" height="24" rx="3" fill="#4a2d0a"/>
-              <rect x="40" y="56" width="12" height="24" rx="3" fill="#4a2d0a"/>
-              <ellipse cx="32" cy="82" rx="8" ry="4" fill="#222"/>
-              <ellipse cx="48" cy="82" rx="8" ry="4" fill="#222"/>
-              <!-- right arm raised to face -->
-              <path d="M54 32 Q64 20 58 14" stroke="#f5c9a0" stroke-width="7" stroke-linecap="round" fill="none"/>
-              <!-- left arm down -->
-              <path d="M26 32 Q14 46 16 56" stroke="#f5c9a0" stroke-width="7" stroke-linecap="round" fill="none"/>
-              <circle cx="35" cy="14" r="2" fill="#333"/>
-              <circle cx="45" cy="14" r="2" fill="#333"/>
-              <path d="M37 20 Q40 23 43 20" stroke="#333" stroke-width="1.2" fill="none" stroke-linecap="round"/>
-            </svg>
-          </div>
-          <div class="dot left-dot" data-side="left" data-id="3" id="ldot-3"></div>
-        </div>
-
-        <!-- Item 4: fist/hand raised -->
-        <div style="display:flex; align-items:center; gap:8px; height:120px;" id="left-4">
-          <span style="font-size:13pt; font-weight:bold; width:22px;">4.</span>
-          <div style="width:108px; height:108px; border:1.5px solid #ccc; border-radius:6px; display:flex; align-items:center; justify-content:center; background:#fafafa; overflow:hidden;">
-            <svg width="70" height="90" viewBox="0 0 70 90" fill="none">
-              <!-- forearm -->
-              <rect x="24" y="52" width="22" height="30" rx="6" fill="#f5c9a0" stroke="#c9956e" stroke-width="1"/>
-              <!-- fist body -->
-              <rect x="16" y="24" width="38" height="32" rx="8" fill="#f5c9a0" stroke="#c9956e" stroke-width="1.2"/>
-              <!-- fingers curled top -->
-              <rect x="16" y="18" width="8" height="14" rx="4" fill="#f5c9a0" stroke="#c9956e" stroke-width="1"/>
-              <rect x="26" y="14" width="8" height="16" rx="4" fill="#f5c9a0" stroke="#c9956e" stroke-width="1"/>
-              <rect x="36" y="15" width="8" height="15" rx="4" fill="#f5c9a0" stroke="#c9956e" stroke-width="1"/>
-              <rect x="46" y="18" width="8" height="14" rx="4" fill="#f5c9a0" stroke="#c9956e" stroke-width="1"/>
-              <!-- thumb -->
-              <path d="M16 40 Q6 36 8 28 Q10 20 18 26" fill="#f5c9a0" stroke="#c9956e" stroke-width="1"/>
-              <!-- knuckle lines -->
-              <line x1="22" y1="28" x2="22" y2="32" stroke="#c9956e" stroke-width="1"/>
-              <line x1="30" y1="26" x2="30" y2="30" stroke="#c9956e" stroke-width="1"/>
-              <line x1="40" y1="26" x2="40" y2="30" stroke="#c9956e" stroke-width="1"/>
-              <line x1="50" y1="28" x2="50" y2="32" stroke="#c9956e" stroke-width="1"/>
-            </svg>
-          </div>
-          <div class="dot left-dot" data-side="left" data-id="4" id="ldot-4"></div>
-        </div>
-      </div>
-
-      <!-- SVG canvas for drawn lines -->
-      <div id="connector-area" style="flex:1; position:relative; align-self:stretch; min-height:520px;">
-        <svg id="lines-svg" style="position:absolute;top:0;left:0;width:100%;height:100%;pointer-events:none;overflow:visible;">
-          <defs>
-            <marker id="arrowhead" markerWidth="8" markerHeight="6" refX="8" refY="3" orient="auto">
-              <polygon points="0 0, 8 3, 0 6" fill="#1a237e"/>
-            </marker>
-          </defs>
+    <!-- EXAMPLE -->
+    <div style="display:flex; align-items:center; justify-content:space-between; margin-bottom:30px; padding:0 10px;">
+      <!-- Image box example (saluting boy) -->
+      <div
+        style="width:115px; height:115px; border:1.5px solid #ccc; border-radius:6px; display:flex; align-items:center; justify-content:center; background:#fafafa; flex-shrink:0;">
+        <svg width="80" height="105" viewBox="0 0 80 105" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <!-- head -->
+          <circle cx="40" cy="14" r="13" fill="#f5c9a0" stroke="#333" stroke-width="1.2" />
+          <!-- hair -->
+          <path d="M27 12 Q30 2 40 3 Q50 2 53 12" fill="#4a2d0a" stroke="#4a2d0a" stroke-width="1" />
+          <!-- body -->
+          <rect x="24" y="27" width="32" height="38" rx="5" fill="#d32f2f" />
+          <!-- shorts -->
+          <rect x="24" y="60" width="14" height="22" rx="3" fill="#5d4037" />
+          <rect x="38" y="60" width="14" height="22" rx="3" fill="#5d4037" />
+          <!-- shoes -->
+          <ellipse cx="31" cy="84" rx="9" ry="5" fill="#222" />
+          <ellipse cx="49" cy="84" rx="9" ry="5" fill="#222" />
+          <!-- left arm saluting -->
+          <path d="M24 32 Q10 24 14 16" stroke="#f5c9a0" stroke-width="7" stroke-linecap="round" fill="none" />
+          <!-- right arm down -->
+          <path d="M56 32 Q70 46 65 58" stroke="#f5c9a0" stroke-width="7" stroke-linecap="round" fill="none" />
+          <!-- eye left -->
+          <circle cx="35" cy="14" r="2" fill="#333" />
+          <!-- eye right -->
+          <circle cx="45" cy="14" r="2" fill="#333" />
+          <!-- smile -->
+          <path d="M36 20 Q40 24 44 20" stroke="#333" stroke-width="1.2" fill="none" stroke-linecap="round" />
         </svg>
       </div>
 
-      <!-- RIGHT COLUMN: options -->
-      <div style="display:flex; flex-direction:column; justify-content:space-around; width:210px; flex-shrink:0; height:520px;">
-        <div style="display:flex; align-items:center; gap:6px;" id="right-A">
-          <div class="dot right-dot" data-side="right" data-id="A" id="rdot-A"></div>
-          <span style="font-size:11pt; line-height:1.4;"><b>A.</b>&nbsp; Bend your fingers</span>
-        </div>
-        <div style="display:flex; align-items:center; gap:6px;" id="right-B">
-          <div class="dot right-dot" data-side="right" data-id="B" id="rdot-B"></div>
-          <span style="font-size:11pt; line-height:1.4;"><b>B.</b>&nbsp; Lift your<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; eyebrows up</span>
-        </div>
-        <div style="display:flex; align-items:center; gap:6px;" id="right-C">
-          <div class="dot right-dot" data-side="right" data-id="C" id="rdot-C"></div>
-          <span style="font-size:11pt; line-height:1.4;"><b>C.</b>&nbsp; Trim your nails</span>
-        </div>
-        <div style="display:flex; align-items:center; gap:6px;" id="right-D">
-          <div class="dot right-dot" data-side="right" data-id="D" id="rdot-D"></div>
-          <span style="font-size:11pt; line-height:1.4;"><b>D.</b>&nbsp; Storm your feet</span>
+      <!-- Arrow + example label -->
+      <div
+        style="flex:1; display:flex; flex-direction:column; align-items:center; justify-content:center; position:relative;">
+        <div style="font-size:10pt; font-style:italic; margin-bottom:6px; align-self:flex-start; padding-left:10px;">
+          Example:</div>
+        <div style="width:85%; height:2px; background:#000; position:relative; margin: 0 auto;">
+          <div
+            style="position:absolute; left:-1px; top:50%; transform:translateY(-50%); border-right:10px solid #000; border-top:6px solid transparent; border-bottom:6px solid transparent;">
+          </div>
+          <div
+            style="position:absolute; right:-1px; top:50%; transform:translateY(-50%); border-left:10px solid #000; border-top:6px solid transparent; border-bottom:6px solid transparent;">
+          </div>
         </div>
       </div>
 
-    </div><!-- end flex row -->
+      <!-- Options B is answered -->
+      <div style="min-width:200px; font-size:11pt; line-height:1.9; text-align:left; flex-shrink:0;">
+        <div>A.&nbsp; Bend your knees</div>
+        <div style="position:relative; font-weight:bold;">
+          B.&nbsp; Touch your head
+          <div
+            style="position:absolute; left:-55px; top:50%; transform:translateY(-50%); width:48px; height:2px; background:#000;">
+            <div
+              style="position:absolute; left:0; top:50%; transform:translateY(-50%); border-right:8px solid #000; border-top:5px solid transparent; border-bottom:5px solid transparent;">
+            </div>
+          </div>
+        </div>
+        <div>C.&nbsp; Open your mouth</div>
+      </div>
+    </div>
 
-    <button class="reset-btn" onclick="resetLines()">Reset Lines</button>
-    <button class="check-btn" onclick="checkAnswers()">Check Answers</button>
-    <div class="result-msg" id="result-msg"></div>
+    <!-- INTERACTIVE MATCHING SECTION -->
+    <div style="position:relative; width:100%;" id="quiz-area">
 
-  </div><!-- end quiz-area -->
+      <!-- LEFT COLUMN: numbered items with images -->
+      <div id="quiz-frame-row" style="display:flex; align-items:flex-start; justify-content:space-between; width:100%;">
 
-</div><!-- end page -->
+        <!-- Numbers + Images -->
+        <div id="left-column" style="display:flex; flex-direction:column; gap:28px; width:160px; flex-shrink:0;">
+          <!-- Item 1: punching/flexing boy -->
+          <div style="display:flex; align-items:center; gap:8px; height:120px;" id="left-1">
+            <span style="font-size:13pt; font-weight:bold; width:22px;">1.</span>
+            <div
+              style="width:108px; height:108px; border:1.5px solid #ccc; border-radius:6px; display:flex; align-items:center; justify-content:center; background:#fafafa; overflow:hidden;">
+              <svg width="80" height="100" viewBox="0 0 80 105" fill="none">
+                <circle cx="40" cy="13" r="12" fill="#f5c9a0" stroke="#333" stroke-width="1.2" />
+                <path d="M28 11 Q31 2 40 3 Q49 2 52 11" fill="#333" stroke="#333" stroke-width="1" />
+                <rect x="24" y="25" width="32" height="36" rx="5" fill="#d32f2f" />
+                <rect x="24" y="57" width="13" height="23" rx="3" fill="#5d4037" />
+                <rect x="37" y="57" width="13" height="23" rx="3" fill="#5d4037" />
+                <ellipse cx="30" cy="83" rx="9" ry="4.5" fill="#222" />
+                <ellipse cx="48" cy="83" rx="9" ry="4.5" fill="#222" />
+                <!-- right arm punching up -->
+                <path d="M56 30 Q72 18 68 8" stroke="#f5c9a0" stroke-width="7" stroke-linecap="round" fill="none" />
+                <!-- fist -->
+                <rect x="60" y="2" width="12" height="10" rx="3" fill="#f5c9a0" stroke="#c9956e" stroke-width="1" />
+                <!-- left arm down -->
+                <path d="M24 30 Q10 44 15 56" stroke="#f5c9a0" stroke-width="7" stroke-linecap="round" fill="none" />
+                <circle cx="35" cy="13" r="2" fill="#333" />
+                <circle cx="45" cy="13" r="2" fill="#333" />
+                <path d="M37 19 Q40 22 43 19" stroke="#333" stroke-width="1.2" fill="none" stroke-linecap="round" />
+              </svg>
+            </div>
+            <div class="dot left-dot" data-side="left" data-id="1" id="ldot-1"></div>
+          </div>
 
-<script>
-  // ── Answer key: left item → correct right option
-  const ANSWER_KEY = { '1': 'D', '2': 'C', '3': 'B', '4': 'A' };
+          <!-- Item 2: girl kneeling/sitting -->
+          <div style="display:flex; align-items:center; gap:8px; height:120px;" id="left-2">
+            <span style="font-size:13pt; font-weight:bold; width:22px;">2.</span>
+            <div
+              style="width:108px; height:108px; border:1.5px solid #ccc; border-radius:6px; display:flex; align-items:center; justify-content:center; background:#fafafa; overflow:hidden;">
+              <svg width="80" height="100" viewBox="0 0 80 105" fill="none">
+                <circle cx="40" cy="13" r="12" fill="#f5c9a0" stroke="#333" stroke-width="1.2" />
+                <!-- hair long -->
+                <path d="M28 10 Q28 28 30 36 Q35 5 40 4 Q45 5 50 36 Q52 28 52 10" fill="#4a2d0a" />
+                <!-- body -->
+                <rect x="26" y="25" width="28" height="30" rx="5" fill="#e57373" />
+                <!-- skirt/legs bent (kneeling) -->
+                <path d="M26 55 Q20 70 18 80 Q22 82 26 75 Q30 68 34 62 Z" fill="#f48fb1" />
+                <path d="M54 55 Q60 70 62 80 Q58 82 54 75 Q50 68 46 62 Z" fill="#f48fb1" />
+                <!-- arms: left down touching ground -->
+                <path d="M26 32 Q12 48 10 65" stroke="#f5c9a0" stroke-width="7" stroke-linecap="round" fill="none" />
+                <!-- right arm bent -->
+                <path d="M54 32 Q68 38 65 50" stroke="#f5c9a0" stroke-width="7" stroke-linecap="round" fill="none" />
+                <circle cx="35" cy="13" r="2" fill="#333" />
+                <circle cx="45" cy="13" r="2" fill="#333" />
+                <path d="M37 19 Q40 22 43 19" stroke="#333" stroke-width="1.2" fill="none" stroke-linecap="round" />
+              </svg>
+            </div>
+            <div class="dot left-dot" data-side="left" data-id="2" id="ldot-2"></div>
+          </div>
 
-  let selectedLeft = null;
-  let connections = {}; // leftId -> rightId
-  const svg = document.getElementById('lines-svg');
+          <!-- Item 3: girl touching face/eyebrow -->
+          <div style="display:flex; align-items:center; gap:8px; height:120px;" id="left-3">
+            <span style="font-size:13pt; font-weight:bold; width:22px;">3.</span>
+            <div
+              style="width:108px; height:108px; border:1.5px solid #ccc; border-radius:6px; display:flex; align-items:center; justify-content:center; background:#fafafa; overflow:hidden;">
+              <svg width="80" height="100" viewBox="0 0 80 105" fill="none">
+                <circle cx="40" cy="14" r="12" fill="#f5c9a0" stroke="#333" stroke-width="1.2" />
+                <path d="M28 12 Q28 30 30 38 Q35 6 40 5 Q45 6 50 38 Q52 30 52 12" fill="#4a2d0a" />
+                <rect x="26" y="26" width="28" height="34" rx="5" fill="#e57373" />
+                <rect x="26" y="56" width="12" height="24" rx="3" fill="#4a2d0a" />
+                <rect x="40" y="56" width="12" height="24" rx="3" fill="#4a2d0a" />
+                <ellipse cx="32" cy="82" rx="8" ry="4" fill="#222" />
+                <ellipse cx="48" cy="82" rx="8" ry="4" fill="#222" />
+                <!-- right arm raised to face -->
+                <path d="M54 32 Q64 20 58 14" stroke="#f5c9a0" stroke-width="7" stroke-linecap="round" fill="none" />
+                <!-- left arm down -->
+                <path d="M26 32 Q14 46 16 56" stroke="#f5c9a0" stroke-width="7" stroke-linecap="round" fill="none" />
+                <circle cx="35" cy="14" r="2" fill="#333" />
+                <circle cx="45" cy="14" r="2" fill="#333" />
+                <path d="M37 20 Q40 23 43 20" stroke="#333" stroke-width="1.2" fill="none" stroke-linecap="round" />
+              </svg>
+            </div>
+            <div class="dot left-dot" data-side="left" data-id="3" id="ldot-3"></div>
+          </div>
 
-  function getDotCenter(dotEl) {
-    const svgRect = document.getElementById('connector-area').getBoundingClientRect();
-    const dotRect = dotEl.getBoundingClientRect();
-    return {
-      x: dotRect.left + dotRect.width / 2 - svgRect.left,
-      y: dotRect.top + dotRect.height / 2 - svgRect.top
-    };
-  }
+          <!-- Item 4: fist/hand raised -->
+          <div style="display:flex; align-items:center; gap:8px; height:120px;" id="left-4">
+            <span style="font-size:13pt; font-weight:bold; width:22px;">4.</span>
+            <div
+              style="width:108px; height:108px; border:1.5px solid #ccc; border-radius:6px; display:flex; align-items:center; justify-content:center; background:#fafafa; overflow:hidden;">
+              <svg width="70" height="90" viewBox="0 0 70 90" fill="none">
+                <!-- forearm -->
+                <rect x="24" y="52" width="22" height="30" rx="6" fill="#f5c9a0" stroke="#c9956e" stroke-width="1" />
+                <!-- fist body -->
+                <rect x="16" y="24" width="38" height="32" rx="8" fill="#f5c9a0" stroke="#c9956e" stroke-width="1.2" />
+                <!-- fingers curled top -->
+                <rect x="16" y="18" width="8" height="14" rx="4" fill="#f5c9a0" stroke="#c9956e" stroke-width="1" />
+                <rect x="26" y="14" width="8" height="16" rx="4" fill="#f5c9a0" stroke="#c9956e" stroke-width="1" />
+                <rect x="36" y="15" width="8" height="15" rx="4" fill="#f5c9a0" stroke="#c9956e" stroke-width="1" />
+                <rect x="46" y="18" width="8" height="14" rx="4" fill="#f5c9a0" stroke="#c9956e" stroke-width="1" />
+                <!-- thumb -->
+                <path d="M16 40 Q6 36 8 28 Q10 20 18 26" fill="#f5c9a0" stroke="#c9956e" stroke-width="1" />
+                <!-- knuckle lines -->
+                <line x1="22" y1="28" x2="22" y2="32" stroke="#c9956e" stroke-width="1" />
+                <line x1="30" y1="26" x2="30" y2="30" stroke="#c9956e" stroke-width="1" />
+                <line x1="40" y1="26" x2="40" y2="30" stroke="#c9956e" stroke-width="1" />
+                <line x1="50" y1="28" x2="50" y2="32" stroke="#c9956e" stroke-width="1" />
+              </svg>
+            </div>
+            <div class="dot left-dot" data-side="left" data-id="4" id="ldot-4"></div>
+          </div>
+        </div>
 
-  function drawLine(leftId, rightId) {
-    const ldot = document.getElementById('ldot-' + leftId);
-    const rdot = document.getElementById('rdot-' + rightId);
-    if (!ldot || !rdot) return;
+        <!-- SVG canvas for drawn lines -->
+        <div id="connector-area" style="flex:1; position:relative; align-self:stretch; min-height:520px;">
+          <svg id="lines-svg"
+            style="position:absolute;top:0;left:0;width:100%;height:100%;pointer-events:none;overflow:visible;">
+            <defs>
+              <marker id="arrowhead" markerWidth="8" markerHeight="6" refX="8" refY="3" orient="auto">
+                <polygon points="0 0, 8 3, 0 6" fill="#1a237e" />
+              </marker>
+            </defs>
+          </svg>
+        </div>
 
-    const from = getDotCenter(ldot);
-    const to = getDotCenter(rdot);
+        <!-- RIGHT COLUMN: options -->
+        <div id="right-column"
+          style="display:flex; flex-direction:column; justify-content:space-around; width:210px; flex-shrink:0; height:520px;">
+          <div style="display:flex; align-items:center; gap:6px;" id="right-A">
+            <div class="dot right-dot" data-side="right" data-id="A" id="rdot-A"></div>
+            <span style="font-size:11pt; line-height:1.4;"><b>A.</b>&nbsp; Bend your fingers</span>
+          </div>
+          <div style="display:flex; align-items:center; gap:6px;" id="right-B">
+            <div class="dot right-dot" data-side="right" data-id="B" id="rdot-B"></div>
+            <span style="font-size:11pt; line-height:1.4;"><b>B.</b>&nbsp; Lift your<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+              eyebrows up</span>
+          </div>
+          <div style="display:flex; align-items:center; gap:6px;" id="right-C">
+            <div class="dot right-dot" data-side="right" data-id="C" id="rdot-C"></div>
+            <span style="font-size:11pt; line-height:1.4;"><b>C.</b>&nbsp; Trim your nails</span>
+          </div>
+          <div style="display:flex; align-items:center; gap:6px;" id="right-D">
+            <div class="dot right-dot" data-side="right" data-id="D" id="rdot-D"></div>
+            <span style="font-size:11pt; line-height:1.4;"><b>D.</b>&nbsp; Storm your feet</span>
+          </div>
+        </div>
 
-    const line = document.createElementNS('http://www.w3.org/2000/svg', 'line');
-    line.setAttribute('x1', from.x);
-    line.setAttribute('y1', from.y);
-    line.setAttribute('x2', to.x);
-    line.setAttribute('y2', to.y);
-    line.setAttribute('stroke', '#1a237e');
-    line.setAttribute('stroke-width', '2');
-    line.setAttribute('marker-end', 'url(#arrowhead)');
-    line.setAttribute('id', 'line-' + leftId);
-    svg.appendChild(line);
+      </div><!-- end flex row -->
 
-    ldot.classList.add('connected');
-    rdot.classList.add('connected');
-  }
+      <button class="reset-btn" onclick="resetLines()">Reset Lines</button>
+      <button class="check-btn" onclick="checkAnswers()">Check Answers</button>
+      <div class="result-msg" id="result-msg"></div>
 
-  function removeExistingConnection(leftId) {
-    const existing = document.getElementById('line-' + leftId);
-    if (existing) existing.remove();
+    </div><!-- end quiz-area -->
 
-    const prevRight = connections[leftId];
-    if (prevRight) {
-      // only remove connected class if no other left connects to this right
-      const stillUsed = Object.entries(connections).some(([l, r]) => l !== leftId && r === prevRight);
-      if (!stillUsed) {
-        const rdot = document.getElementById('rdot-' + prevRight);
-        if (rdot) rdot.classList.remove('connected');
-      }
-    }
+  </div><!-- end page -->
 
-    const ldot = document.getElementById('ldot-' + leftId);
-    if (ldot) ldot.classList.remove('connected', 'selected');
-
-    delete connections[leftId];
-  }
-
-  document.querySelectorAll('.dot').forEach(dot => {
-    dot.addEventListener('click', function() {
-      const side = this.dataset.side;
-      const id = this.dataset.id;
-
-      if (side === 'left') {
-        if (selectedLeft === id) {
-          // deselect
-          this.classList.remove('selected');
-          selectedLeft = null;
-        } else {
-          // deselect previous
-          if (selectedLeft) {
-            const prev = document.getElementById('ldot-' + selectedLeft);
-            if (prev) prev.classList.remove('selected');
-          }
-          selectedLeft = id;
-          this.classList.add('selected');
-          document.getElementById('result-msg').textContent = '';
-        }
-      } else {
-        // right side clicked
-        if (selectedLeft !== null) {
-          removeExistingConnection(selectedLeft);
-          connections[selectedLeft] = id;
-          drawLine(selectedLeft, id);
-
-          const ldot = document.getElementById('ldot-' + selectedLeft);
-          if (ldot) { ldot.classList.remove('selected'); ldot.classList.add('connected'); }
-
-          selectedLeft = null;
-          document.getElementById('result-msg').textContent = '';
-        }
-      }
-    });
-  });
-
-  function resetLines() {
-    // remove all lines
-    Object.keys(connections).forEach(leftId => {
-      const line = document.getElementById('line-' + leftId);
-      if (line) line.remove();
-    });
-    connections = {};
-    selectedLeft = null;
-    document.querySelectorAll('.dot').forEach(d => d.classList.remove('selected', 'connected'));
-    document.getElementById('result-msg').textContent = '';
-  }
-
-  function checkAnswers() {
-    let correct = 0;
-    const total = 4;
-    const lines = svg.querySelectorAll('line');
-
-    // reset all line colors first
-    lines.forEach(l => {
-      const leftId = l.id.replace('line-', '');
-      const rightId = connections[leftId];
-      if (ANSWER_KEY[leftId] === rightId) {
-        l.setAttribute('stroke', '#2e7d32');
-        correct++;
-      } else {
-        l.setAttribute('stroke', '#c62828');
-      }
-    });
-
-    if (Object.keys(connections).length < total) {
-      document.getElementById('result-msg').textContent = `Please match all ${total} items first!`;
-      document.getElementById('result-msg').style.color = '#e65100';
-    } else if (correct === total) {
-      document.getElementById('result-msg').textContent = `🎉 Perfect! All ${total} answers are correct!`;
-      document.getElementById('result-msg').style.color = '#1b5e20';
-    } else {
-      document.getElementById('result-msg').textContent = `${correct} out of ${total} correct. Red lines = wrong. Try again!`;
-      document.getElementById('result-msg').style.color = '#b71c1c';
-    }
-  }
-</script>
+  <script src="script.js"></script>
 </body>
+
 </html>
