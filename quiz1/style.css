@@ -1,0 +1,492 @@
+@import url('https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background: #e8e8e8;
+    font-family: 'Verdana', Geneva, sans-serif;
+    display: flex;
+    justify-content: center;
+    padding: 30px 20px;
+    min-height: 100vh;
+}
+
+.page {
+    background: #ffffff;
+    width: 21cm;
+    max-width: 100%;
+    min-height: 29.7cm;
+    padding: 2cm 2.5cm;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
+}
+
+.title {
+    text-align: center;
+    font-size: 18pt;
+    font-weight: bold;
+    margin-bottom: 10px;
+    letter-spacing: 1px;
+}
+
+.instruction-en {
+    text-align: center;
+    font-size: 11pt;
+    margin-bottom: 4px;
+}
+
+.instruction-id {
+    text-align: center;
+    font-size: 11pt;
+    color: #cc0000;
+    font-weight: bold;
+    text-decoration: underline;
+    margin-bottom: 24px;
+}
+
+/* ── EXAMPLE ROW ── */
+.example-block {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 32px;
+    padding: 10px 0;
+    position: relative;
+}
+
+.example-img-wrap {
+    width: 120px;
+    height: 130px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.example-img-wrap img,
+.item-img-wrap img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+}
+
+/* SVG placeholder figures */
+.figure-placeholder {
+    width: 100px;
+    height: 120px;
+}
+
+.arrow-area {
+    flex: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+}
+
+.arrow-line {
+    width: 80%;
+    height: 2px;
+    background: #000;
+    position: relative;
+}
+
+.arrow-line::after {
+    content: '';
+    position: absolute;
+    right: -1px;
+    top: 50%;
+    transform: translateY(-50%);
+    border-left: 10px solid #000;
+    border-top: 6px solid transparent;
+    border-bottom: 6px solid transparent;
+}
+
+.example-label {
+    font-size: 10pt;
+    font-style: italic;
+    text-align: right;
+    margin-right: 8px;
+}
+
+.options-list {
+    min-width: 200px;
+    text-align: left;
+}
+
+.options-list p {
+    font-size: 11pt;
+    line-height: 1.9;
+}
+
+.options-list .answered {
+    position: relative;
+}
+
+.options-list .arrow-indicator {
+    position: absolute;
+    left: -70px;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 60px;
+    height: 2px;
+    background: #000;
+}
+
+.options-list .arrow-indicator::before {
+    content: '';
+    position: absolute;
+    left: -1px;
+    top: 50%;
+    transform: translateY(-50%);
+    border-right: 10px solid #000;
+    border-top: 6px solid transparent;
+    border-bottom: 6px solid transparent;
+}
+
+/* ── QUIZ ITEMS ── */
+.quiz-row {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 28px;
+    min-height: 120px;
+}
+
+.item-number {
+    font-size: 13pt;
+    font-weight: bold;
+    width: 28px;
+    flex-shrink: 0;
+    align-self: flex-start;
+    padding-top: 40px;
+}
+
+.item-img-wrap {
+    width: 115px;
+    height: 115px;
+    border: 1.5px solid #ccc;
+    border-radius: 6px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: #fafafa;
+    overflow: hidden;
+    flex-shrink: 0;
+}
+
+.line-area {
+    flex: 1;
+    height: 2px;
+    background: #ccc;
+    margin: 0 10px;
+    border: none;
+    border-top: 1.5px dashed #aaa;
+    position: relative;
+}
+
+/* drop zone */
+.drop-zone {
+    flex: 1;
+    margin: 0 12px;
+    height: 2px;
+    border-top: 2px dashed #aaa;
+    position: relative;
+    cursor: default;
+}
+
+.drop-zone.over {
+    border-color: #2196F3;
+}
+
+.drawn-line {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 2px;
+    background: #000;
+    display: none;
+}
+
+.drawn-line.active {
+    display: block;
+}
+
+.option-text {
+    min-width: 200px;
+    font-size: 11pt;
+    line-height: 1.85;
+    text-align: left;
+}
+
+/* ── SVG FIGURES (inline, simple cartoon-like) ── */
+svg.figure {
+    display: block;
+}
+
+/* ── INTERACTIVE MATCHING ── */
+.match-container {
+    display: flex;
+    align-items: stretch;
+    justify-content: space-between;
+    gap: 0;
+    width: 100%;
+}
+
+.left-col {
+    display: flex;
+    flex-direction: column;
+    gap: 28px;
+    width: 150px;
+    flex-shrink: 0;
+}
+
+.right-col {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    width: 200px;
+    flex-shrink: 0;
+}
+
+.left-item {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    position: relative;
+    height: 115px;
+}
+
+.right-item {
+    display: flex;
+    align-items: center;
+    font-size: 11pt;
+    line-height: 1.4;
+    height: 60px;
+    position: relative;
+}
+
+.connector-area {
+    flex: 1;
+    position: relative;
+}
+
+svg#lines-svg {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    overflow: visible;
+}
+
+/* dot connectors */
+.dot {
+    width: 14px;
+    height: 14px;
+    border-radius: 50%;
+    background: #555;
+    border: 2px solid #333;
+    cursor: pointer;
+    flex-shrink: 0;
+    transition: background 0.2s, transform 0.15s;
+    position: relative;
+    z-index: 10;
+}
+
+.dot:hover {
+    background: #1976D2;
+    transform: scale(1.3);
+}
+
+.dot.selected {
+    background: #1976D2;
+    transform: scale(1.3);
+}
+
+.dot.connected {
+    background: #2e7d32;
+}
+
+.left-dot {
+    margin-left: 6px;
+}
+
+.right-dot {
+    margin-right: 6px;
+}
+
+/* reset btn */
+.reset-btn {
+    display: block;
+    margin: 20px auto 0;
+    padding: 8px 24px;
+    background: #f44336;
+    color: #fff;
+    border: none;
+    border-radius: 20px;
+    font-size: 10pt;
+    cursor: pointer;
+    font-family: Verdana, sans-serif;
+    font-weight: bold;
+    letter-spacing: 0.5px;
+    transition: background 0.2s;
+}
+
+.reset-btn:hover {
+    background: #c62828;
+}
+
+.check-btn {
+    display: block;
+    margin: 10px auto 0;
+    padding: 8px 24px;
+    background: #388e3c;
+    color: #fff;
+    border: none;
+    border-radius: 20px;
+    font-size: 10pt;
+    cursor: pointer;
+    font-family: Verdana, sans-serif;
+    font-weight: bold;
+    letter-spacing: 0.5px;
+    transition: background 0.2s;
+}
+
+.check-btn:hover {
+    background: #1b5e20;
+}
+
+.result-msg {
+    text-align: center;
+    font-size: 12pt;
+    font-weight: bold;
+    margin-top: 14px;
+    min-height: 22px;
+    color: #1a237e;
+}
+
+/* ---------- RESPONSIVE (mobile first adjustment) ---------- */
+@media (max-width: 1024px) {
+    .page {
+        width: 100%;
+        min-height: auto;
+        padding: 24px 18px;
+    }
+}
+
+@media (max-width: 768px) {
+    body {
+        padding: 12px 8px;
+    }
+
+    .page {
+        padding: 16px 12px;
+    }
+
+    .title {
+        font-size: 16pt;
+    }
+
+    .instruction-en,
+    .instruction-id {
+        font-size: 10pt;
+    }
+
+    #quiz-frame-row {
+        gap: 8px !important;
+    }
+
+    #left-column {
+        width: 132px !important;
+        gap: 16px !important;
+    }
+
+    #left-column>div {
+        height: 96px !important;
+    }
+
+    #left-column>div>span {
+        width: 18px !important;
+        font-size: 11pt !important;
+    }
+
+    #left-column>div>div {
+        width: 82px !important;
+        height: 82px !important;
+    }
+
+    #left-column svg {
+        width: 62px !important;
+        height: 80px !important;
+    }
+
+    #connector-area {
+        min-height: 420px !important;
+    }
+
+    #right-column {
+        width: 146px !important;
+        height: 420px !important;
+    }
+
+    #right-column>div span {
+        font-size: 9.8pt !important;
+        line-height: 1.25 !important;
+    }
+
+    .dot {
+        width: 12px;
+        height: 12px;
+    }
+
+    .reset-btn,
+    .check-btn {
+        width: 100%;
+        max-width: 220px;
+    }
+}
+
+@media (max-width: 430px) {
+    #left-column {
+        width: 116px !important;
+    }
+
+    #left-column>div>div {
+        width: 72px !important;
+        height: 72px !important;
+    }
+
+    #left-column svg {
+        width: 56px !important;
+        height: 72px !important;
+    }
+
+    #right-column {
+        width: 128px !important;
+    }
+
+    #right-column>div span {
+        font-size: 9.2pt !important;
+    }
+}
+
+@media print {
+    body {
+        background: white;
+        padding: 0;
+    }
+
+    .page {
+        box-shadow: none;
+    }
+
+    .reset-btn,
+    .check-btn {
+        display: none;
+    }
+}
