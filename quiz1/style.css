@@ -6,6 +6,13 @@
     box-sizing: border-box;
 }
 
+html,
+body {
+    width: 100%;
+    max-width: 100%;
+    overflow-x: hidden;
+}
+
 body {
     background: #e8e8e8;
     font-family: 'Verdana', Geneva, sans-serif;
@@ -381,11 +388,14 @@ svg#lines-svg {
 
 @media (max-width: 768px) {
     body {
-        padding: 12px 8px;
+        padding: 8px 4px;
     }
 
     .page {
-        padding: 16px 12px;
+        width: 100%;
+        min-height: auto;
+        padding: 12px 8px;
+        margin: 0 auto;
     }
 
     .title {
@@ -398,6 +408,8 @@ svg#lines-svg {
     }
 
     #quiz-frame-row {
+        width: 100%;
+        min-width: 0;
         gap: 8px !important;
     }
 
@@ -426,6 +438,7 @@ svg#lines-svg {
     }
 
     #connector-area {
+        min-width: 30px;
         min-height: 420px !important;
     }
 
@@ -452,6 +465,16 @@ svg#lines-svg {
 }
 
 @media (max-width: 430px) {
+    #example-row {
+        padding: 0 4px !important;
+    }
+
+    #example-options {
+        min-width: 140px !important;
+        font-size: 9.2pt !important;
+        line-height: 1.5 !important;
+    }
+
     #left-column {
         width: 116px !important;
     }
@@ -472,6 +495,68 @@ svg#lines-svg {
 
     #right-column>div span {
         font-size: 9.2pt !important;
+    }
+
+    #connector-area {
+        min-width: 22px !important;
+    }
+
+    .instruction-id br {
+        display: none;
+    }
+}
+
+@media (max-width: 360px) {
+    body {
+        padding: 4px 2px;
+    }
+
+    .page {
+        padding: 10px 6px;
+    }
+
+    #example-options {
+        min-width: 122px !important;
+        font-size: 8.6pt !important;
+    }
+
+    #left-column {
+        width: 106px !important;
+        gap: 12px !important;
+    }
+
+    #left-column>div {
+        height: 84px !important;
+    }
+
+    #left-column>div>div {
+        width: 64px !important;
+        height: 64px !important;
+    }
+
+    #left-column svg {
+        width: 48px !important;
+        height: 62px !important;
+    }
+
+    #right-column {
+        width: 116px !important;
+        height: 360px !important;
+    }
+
+    #right-column>div span {
+        font-size: 8.5pt !important;
+        line-height: 1.15 !important;
+    }
+
+    #connector-area {
+        min-height: 360px !important;
+        min-width: 16px !important;
+    }
+
+    .dot {
+        width: 10px;
+        height: 10px;
     }
 }
 
