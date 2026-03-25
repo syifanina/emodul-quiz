@@ -153,8 +153,22 @@ function redrawLinesOnResize() {
     });
 }
 
-window.addEventListener('resize', () => {
+function handleResponsiveRedraw() {
     if (Object.keys(connections).length > 0) {
         redrawLinesOnResize();
     }
-});
+}
+
+window.addEventListener('resize', handleResponsiveRedraw);
+window.addEventListener('orientationchange', handleResponsiveRedraw);
+window.addEventListener('load', handleResponsiveRedraw);
+
+if (window.visualViewport) {
+    window.visualViewport.addEventListener('resize', handleResponsiveRedraw);
+}
+
+const connectorArea = document.getElementById('connector-area');
+if (connectorArea && 'ResizeObserver' in window) {
+    const resizeObserver = new ResizeObserver(handleResponsiveRedraw);
+    resizeObserver.observe(connectorArea);
+}
