@@ -1,22 +1,45 @@
 // ─────────────────────────────────────────────
-//  QUIZ 4 — Drag-and-Drop Fill-in-the-Blank
-//  "Let's Do Gymnastic"
+//  QUIZ 4 — Drag-and-Drop (Mouse + Touch)
+//  Touch scroll fix: listeners registered with
+//  { passive: false } so preventDefault() works.
 // ─────────────────────────────────────────────
 
 // ── STATE ──
 let draggedWordId    = null;
 let draggedWordText  = null;
-let draggedWordColor = null;   // ← chip background colour
+let draggedWordColor = null;
 
-// dropZoneMap: { dropZoneId → { wordId, color } }
-const dropZoneMap = {};
+const dropZoneMap = {}; // { dropZoneId → { wordId, color } }
 
 // ── TOUCH STATE ──
 let touchGhost          = null;
 let touchDragWordId     = null;
 let touchDragWordText   = null;
-let touchDragWordColor  = null;   // ← chip colour for touch
-let touchSourceDropZone = null;
+let touchDragWordColor  = null;
+let touchSourceDropZone = null;  // zone id if dragging FROM a filled zone
+let isDragging          = false; // true while a touch-drag is active
+
+
+// ─────────────────────────────────────────────
+//  BOOTSTRAP — register all listeners after DOM ready
+// ─────────────────────────────────────────────
+
+document.addEventListener('DOMContentLoaded', function () {
+
+    // -- Word chips: touchstart with { passive: false } --
+    document.querySelectorAll('.word-chip:not(.chip-disabled)').forEach(function (chip) {
+        chip.addEventListener('touchstart', onChipTouchStart, { passive: false });
+    });
+
+    // -- Filled drop zones: touchstart (registered dynamically in placeWordInZone) --
+
+    // -- Document-level: touchmove blocks scroll only while drag active --
+    document.addEventListener('touchmove', onDocumentTouchMove, { passive: false });
+
+    // -- Document-level: touchend to finalize drop --
+    document.addEventListener('touchend', onDocumentTouchEnd, { passive: false });
+
+});
 
 
 // ─────────────────────────────────────────────
@@ -25,16 +48,14 @@ let touchSourceDropZone = null;
 
 function dragStart(event) {
     const el = event.currentTarget;
-
     draggedWordId    = el.id;
-    draggedWordText  = el.textContent.replace(/\s+/g, ' ').trim();
+    draggedWordText  = el.textContent.trim();
     draggedWordColor = el.dataset.color || '#c8c8c8';
-
     el.classList.add('dragging');
 
-    event.dataTransfer.setData('text/plain',  draggedWordText);
-    event.dataTransfer.setData('wordId',      draggedWordId);
-    event.dataTransfer.setData('wordColor',   draggedWordColor);
+    event.dataTransfer.setData('text/plain', draggedWordText);
+    event.dataTransfer.setData('wordId',     draggedWordId);
+    event.dataTransfer.setData('wordColor',  draggedWordColor);
     event.dataTransfer.effectAllowed = 'move';
 }
 
@@ -44,26 +65,18 @@ function allowDrop(event) {
     event.dataTransfer.dropEffect = 'move';
 }
 
-document.addEventListener('dragleave', function (event) {
-    if (event.target.classList && event.target.classList.contains('drop-zone')) {
-        event.target.classList.remove('drag-over');
-    }
-});
-
 function dropWord(event) {
     event.preventDefault();
-    const zone = event.currentTarget;
+    const zone      = event.currentTarget;
     zone.classList.remove('drag-over');
 
     const wordText  = event.dataTransfer.getData('text/plain');
     const wordId    = event.dataTransfer.getData('wordId');
     const wordColor = event.dataTransfer.getData('wordColor') || '#c8c8c8';
-
     if (!wordText) return;
 
     returnWordFromZone(zone.id);
     returnWordFromZoneByWordId(wordId);
-
     placeWordInZone(zone, wordText, wordId, wordColor);
     markChipUsed(wordId, true);
 
@@ -71,19 +84,16 @@ function dropWord(event) {
         const chip = document.getElementById(draggedWordId);
         if (chip) chip.classList.remove('dragging');
     }
-    draggedWordId    = null;
-    draggedWordText  = null;
-    draggedWordColor = null;
-
+    draggedWordId = draggedWordText = draggedWordColor = null;
     clearFeedback();
 }
 
-/** Allow dragging a word back out of a filled zone */
+/** Drag out of a filled zone back to somewhere else */
 function dragFromZone(event) {
-    const zone     = event.currentTarget;
-    const span     = zone.querySelector('.dropped-word');
-    const wordText = span ? span.textContent.replace(/\s+/g, ' ').trim() : '';
-    const wordId   = zone.dataset.wordId  || '';
+    const zone      = event.currentTarget;
+    const span      = zone.querySelector('.dropped-word');
+    const wordText  = span ? span.textContent.trim() : '';
+    const wordId    = zone.dataset.wordId   || '';
     const wordColor = zone.dataset.wordColor || '#c8c8c8';
 
     draggedWordId    = wordId;
@@ -91,8 +101,8 @@ function dragFromZone(event) {
     draggedWordColor = wordColor;
 
     event.dataTransfer.setData('text/plain', wordText);
-    event.dataTransfer.setData('wordId',    wordId);
-    event.dataTransfer.setData('wordColor', wordColor);
+    event.dataTransfer.setData('wordId',     wordId);
+    event.dataTransfer.setData('wordColor',  wordColor);
     event.dataTransfer.effectAllowed = 'move';
 
     clearDropZone(zone);
@@ -100,128 +110,151 @@ function dragFromZone(event) {
     clearFeedback();
 }
 
-document.addEventListener('dragend', function (event) {
-    if (event.target.classList && event.target.classList.contains('word-chip')) {
-        event.target.classList.remove('dragging');
-    }
+document.addEventListener('dragleave', function (e) {
+    if (e.target.classList && e.target.classList.contains('drop-zone'))
+        e.target.classList.remove('drag-over');
+});
+
+document.addEventListener('dragend', function (e) {
+    if (e.target.classList && e.target.classList.contains('word-chip'))
+        e.target.classList.remove('dragging');
     document.querySelectorAll('.drop-zone').forEach(z => z.classList.remove('drag-over'));
-    draggedWordId    = null;
-    draggedWordText  = null;
-    draggedWordColor = null;
+    draggedWordId = draggedWordText = draggedWordColor = null;
 });
 
 
 // ─────────────────────────────────────────────
-//  TOUCH DRAG EVENTS
+//  TOUCH EVENTS  (passive: false — must be
+//  registered via addEventListener, not inline)
 // ─────────────────────────────────────────────
 
-function touchStart(event) {
+function onChipTouchStart(event) {
     const el = event.currentTarget;
+    if (el.classList.contains('used') || el.classList.contains('chip-disabled')) return;
 
-    if (el.classList.contains('word-chip') && !el.classList.contains('used')) {
-        touchDragWordId     = el.id;
-        touchDragWordText   = el.textContent.replace(/\s+/g, ' ').trim();
-        touchDragWordColor  = el.dataset.color || '#c8c8c8';
-        touchSourceDropZone = null;
-        el.classList.add('dragging');
-    } else if (el.classList.contains('drop-zone') && el.classList.contains('filled')) {
-        const span          = el.querySelector('.dropped-word');
-        touchDragWordText   = span ? span.textContent.replace(/\s+/g, ' ').trim() : '';
-        touchDragWordId     = el.dataset.wordId   || '';
-        touchDragWordColor  = el.dataset.wordColor || '#c8c8c8';
-        touchSourceDropZone = el.id;
-    } else {
-        return;
-    }
+    touchDragWordId     = el.id;
+    touchDragWordText   = el.textContent.trim();
+    touchDragWordColor  = el.dataset.color || '#c8c8c8';
+    touchSourceDropZone = null;
+    isDragging          = true;
 
+    el.classList.add('dragging');
     createTouchGhost(touchDragWordText, touchDragWordColor);
     moveTouchGhost(event.touches[0]);
+
+    // Prevent page scroll while drag starts
     event.preventDefault();
 }
 
-function touchMove(event) {
-    if (!touchDragWordText) return;
-    moveTouchGhost(event.touches[0]);
-    event.preventDefault();
+function onFilledZoneTouchStart(event) {
+    const zone = event.currentTarget;
+    if (!zone.classList.contains('filled')) return;
 
+    const span          = zone.querySelector('.dropped-word');
+    touchDragWordText   = span ? span.textContent.trim() : '';
+    touchDragWordId     = zone.dataset.wordId   || '';
+    touchDragWordColor  = zone.dataset.wordColor || '#c8c8c8';
+    touchSourceDropZone = zone.id;
+    isDragging          = true;
+
+    createTouchGhost(touchDragWordText, touchDragWordColor);
+    moveTouchGhost(event.touches[0]);
+
+    event.preventDefault();
+}
+
+function onDocumentTouchMove(event) {
+    if (!isDragging) return;   // allow normal page scroll when not dragging
+    event.preventDefault();    // block scroll during drag
+
+    moveTouchGhost(event.touches[0]);
+
+    // Highlight target zone under finger
     document.querySelectorAll('.drop-zone').forEach(z => z.classList.remove('drag-over'));
     const zoneUnder = getDropZoneUnderTouch(event.touches[0]);
     if (zoneUnder) zoneUnder.classList.add('drag-over');
 }
 
-function touchEnd(event) {
-    if (!touchDragWordText) return;
-    removeTouchGhost();
+function onDocumentTouchEnd(event) {
+    if (!isDragging) return;
+
     document.querySelectorAll('.drop-zone').forEach(z => z.classList.remove('drag-over'));
+    removeTouchGhost();
 
     const touch     = event.changedTouches[0];
     const zoneUnder = getDropZoneUnderTouch(touch);
 
     if (zoneUnder) {
+        // Something was already in the target — return it first
         returnWordFromZone(zoneUnder.id);
+
         if (touchSourceDropZone) {
+            // Dragged from a filled zone → clear source zone
             clearDropZone(document.getElementById(touchSourceDropZone));
         } else {
+            // Dragged from word bank → mark chip used
             markChipUsed(touchDragWordId, true);
         }
+
         placeWordInZone(zoneUnder, touchDragWordText, touchDragWordId, touchDragWordColor);
+
     } else {
+        // Dropped on nothing → return word to bank
         if (touchSourceDropZone) {
-            const srcZone = document.getElementById(touchSourceDropZone);
-            if (srcZone) clearDropZone(srcZone);
-            markChipUsed(touchDragWordId, false);
+            clearDropZone(document.getElementById(touchSourceDropZone));
         }
-        if (touchDragWordId) {
-            const chip = document.getElementById(touchDragWordId);
-            if (chip) chip.classList.remove('dragging');
-        }
+        markChipUsed(touchDragWordId, false);
     }
 
+    // Clean up chip dragging style
     if (touchDragWordId) {
         const chip = document.getElementById(touchDragWordId);
         if (chip) chip.classList.remove('dragging');
     }
 
-    touchDragWordId     = null;
-    touchDragWordText   = null;
-    touchDragWordColor  = null;
+    touchDragWordId = touchDragWordText = touchDragWordColor = null;
     touchSourceDropZone = null;
+    isDragging = false;
     clearFeedback();
 }
 
+
+// ─────────────────────────────────────────────
+//  GHOST ELEMENT
+// ─────────────────────────────────────────────
+
 function createTouchGhost(text, color) {
-    removeTouchGhost();
-    touchGhost = document.getElementById('touch-ghost');
-    if (!touchGhost) {
-        touchGhost = document.createElement('div');
-        touchGhost.id = 'touch-ghost';
-        document.body.appendChild(touchGhost);
+    let ghost = document.getElementById('touch-ghost');
+    if (!ghost) {
+        ghost = document.createElement('div');
+        ghost.id = 'touch-ghost';
+        document.body.appendChild(ghost);
     }
-    touchGhost.textContent = text;
-    touchGhost.style.background = color || '#fff9c4';
-    touchGhost.style.display    = 'block';
+    ghost.textContent    = text;
+    ghost.style.background = color || '#fff9c4';
+    ghost.style.display  = 'block';
+    touchGhost = ghost;
 }
 
 function moveTouchGhost(touch) {
     if (!touchGhost) return;
-    touchGhost.style.left = (touch.clientX - 40) + 'px';
-    touchGhost.style.top  = (touch.clientY - 22) + 'px';
+    touchGhost.style.left = (touch.clientX - 60) + 'px';
+    touchGhost.style.top  = (touch.clientY - 24) + 'px';
 }
 
 function removeTouchGhost() {
     const g = document.getElementById('touch-ghost');
     if (g) g.style.display = 'none';
+    touchGhost = null;
 }
 
 function getDropZoneUnderTouch(touch) {
     for (const zone of document.querySelectorAll('.drop-zone')) {
-        const rect = zone.getBoundingClientRect();
-        if (
-            touch.clientX >= rect.left &&
-            touch.clientX <= rect.right &&
-            touch.clientY >= rect.top  &&
-            touch.clientY <= rect.bottom
-        ) return zone;
+        const r = zone.getBoundingClientRect();
+        if (touch.clientX >= r.left && touch.clientX <= r.right &&
+            touch.clientY >= r.top  && touch.clientY <= r.bottom) {
+            return zone;
+        }
     }
     return null;
 }
@@ -231,18 +264,13 @@ function getDropZoneUnderTouch(touch) {
 //  ZONE HELPERS
 // ─────────────────────────────────────────────
 
-/**
- * Place a word in a drop zone and colour it like its chip.
- */
 function placeWordInZone(zone, wordText, wordId, wordColor) {
     zone.classList.add('filled');
     zone.classList.remove('correct', 'incorrect', 'drag-over');
     zone.dataset.wordId    = wordId;
     zone.dataset.wordColor = wordColor;
-
-    // Apply chip colour as background
     zone.style.background  = wordColor || '#c8c8c8';
-    zone.style.borderColor = '';       // let CSS handle the border
+    zone.style.borderColor = '';
 
     zone.innerHTML = '';
     const span = document.createElement('span');
@@ -250,9 +278,13 @@ function placeWordInZone(zone, wordText, wordId, wordColor) {
     span.textContent = wordText;
     zone.appendChild(span);
 
-    // Allow dragging back out
+    // Mouse: allow dragging back out
     zone.setAttribute('draggable', 'true');
     zone.setAttribute('ondragstart', 'dragFromZone(event)');
+
+    // Touch: allow dragging back out
+    zone.removeEventListener('touchstart', onFilledZoneTouchStart);
+    zone.addEventListener('touchstart', onFilledZoneTouchStart, { passive: false });
 
     dropZoneMap[zone.id] = { wordId, wordColor };
 }
@@ -281,9 +313,10 @@ function clearDropZone(zone) {
     zone.classList.remove('filled', 'correct', 'incorrect', 'drag-over');
     zone.removeAttribute('draggable');
     zone.removeAttribute('ondragstart');
+    zone.removeEventListener('touchstart', onFilledZoneTouchStart);
     delete zone.dataset.wordId;
     delete zone.dataset.wordColor;
-    zone.style.background  = '';   // reset inline colour
+    zone.style.background  = '';
     zone.style.borderColor = '';
     zone.innerHTML         = '';
     if (dropZoneMap[zone.id]) delete dropZoneMap[zone.id];
@@ -294,12 +327,12 @@ function markChipUsed(wordId, used) {
     const chip = document.getElementById(wordId);
     if (!chip) return;
     if (used) chip.classList.add('used');
-    else chip.classList.remove('used', 'dragging');
+    else      chip.classList.remove('used', 'dragging');
 }
 
 
 // ─────────────────────────────────────────────
-//  CHECK ANSWERS
+//  CHECK & RESET
 // ─────────────────────────────────────────────
 
 function checkAnswers() {
@@ -311,17 +344,18 @@ function checkAnswers() {
         if (!zone.classList.contains('filled')) return;
         const expected = (zone.dataset.answer || '').toLowerCase().trim();
         const placed   = zone.querySelector('.dropped-word')
-            ? zone.querySelector('.dropped-word').textContent.replace(/\s+/g, ' ').toLowerCase().trim()
+            ? zone.querySelector('.dropped-word').textContent.toLowerCase().trim()
             : '';
+
         if (placed === expected) {
             zone.classList.add('correct');
             zone.classList.remove('incorrect');
-            zone.style.background = '#c8e6c9';   // green tint for correct
+            zone.style.background = '#c8e6c9';
             correct++;
         } else {
             zone.classList.add('incorrect');
             zone.classList.remove('correct');
-            zone.style.background = '#ffcdd2';   // red tint for incorrect
+            zone.style.background = '#ffcdd2';
         }
     });
 
@@ -340,17 +374,10 @@ function checkAnswers() {
     }
 }
 
-
-// ─────────────────────────────────────────────
-//  RESET
-// ─────────────────────────────────────────────
-
 function resetQuiz() {
     document.querySelectorAll('.drop-zone[data-answer]').forEach(clearDropZone);
-    for (const key in dropZoneMap) delete dropZoneMap[key];
-    document.querySelectorAll('.word-chip').forEach(chip => {
-        chip.classList.remove('used', 'dragging');
-    });
+    for (const k in dropZoneMap) delete dropZoneMap[k];
+    document.querySelectorAll('.word-chip').forEach(c => c.classList.remove('used', 'dragging'));
     clearFeedback();
 }
 
@@ -359,7 +386,6 @@ function clearFeedback() {
     if (msg) msg.textContent = '';
     document.querySelectorAll('.drop-zone').forEach(z => {
         z.classList.remove('correct', 'incorrect');
-        // Restore chip colour if filled
         if (z.classList.contains('filled') && z.dataset.wordColor) {
             z.style.background = z.dataset.wordColor;
         }
