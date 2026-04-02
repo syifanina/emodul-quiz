@@ -1,0 +1,264 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Let's Do Gymnastic – Quiz</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+  <div class="page">
+
+    <!-- Page title -->
+    <div class="quiz-page-title">Let's start the gym</div>
+
+    <!-- EXAMPLE -->
+    <div class="quiz-row example-row">
+      <div class="sentence-area">
+        <span class="sentence-text">
+          First, <span class="example-label-tag">Example</span>
+          <span class="example-answer-box">touch your head</span>.
+        </span>
+      </div>
+      <div class="img-side right-img">
+        <div class="img-placeholder" id="img-ex">
+          <!-- Replace with: <img src="your-gif.gif" alt="Example"> -->
+          <span class="img-badge badge-example">EXAMPLE</span>
+          <span class="img-hint">GIF here</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Q1 — image LEFT -->
+    <div class="quiz-row">
+      <div class="img-side left-img">
+        <div class="img-placeholder" id="img-1">
+          <!-- Replace with: <img src="gif-1.gif" alt="Q1"> -->
+          <span class="img-badge">1</span>
+          <span class="img-hint">GIF here</span>
+        </div>
+      </div>
+      <div class="sentence-area">
+        <span class="sentence-text">
+          Then (1)
+          <span class="drop-zone" data-answer="stretch your arms" id="drop-1"
+            ondragover="allowDrop(event)" ondrop="dropWord(event)"
+            ontouchstart="touchStart(event)" ontouchmove="touchMove(event)" ontouchend="touchEnd(event)"></span>
+          to the left four times and to the right four times.
+        </span>
+      </div>
+    </div>
+
+    <!-- Q2 — image RIGHT -->
+    <div class="quiz-row">
+      <div class="sentence-area">
+        <span class="sentence-text">
+          (2)
+          <span class="drop-zone" data-answer="clap your hands" id="drop-2"
+            ondragover="allowDrop(event)" ondrop="dropWord(event)"
+            ontouchstart="touchStart(event)" ontouchmove="touchMove(event)" ontouchend="touchEnd(event)"></span>
+          four times.
+        </span>
+      </div>
+      <div class="img-side right-img">
+        <div class="img-placeholder" id="img-2">
+          <!-- Replace with: <img src="gif-2.gif" alt="Q2"> -->
+          <span class="img-badge">2</span>
+          <span class="img-hint">GIF here</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Q3 — image LEFT -->
+    <div class="quiz-row">
+      <div class="img-side left-img">
+        <div class="img-placeholder" id="img-3">
+          <!-- Replace with: <img src="gif-3.gif" alt="Q3"> -->
+          <span class="img-badge">3</span>
+          <span class="img-hint">GIF here</span>
+        </div>
+      </div>
+      <div class="sentence-area">
+        <span class="sentence-text">
+          Now, (3)
+          <span class="drop-zone" data-answer="stomp your feet" id="drop-3"
+            ondragover="allowDrop(event)" ondrop="dropWord(event)"
+            ontouchstart="touchStart(event)" ontouchmove="touchMove(event)" ontouchend="touchEnd(event)"></span>
+          on the floor like a drum four times.
+        </span>
+      </div>
+    </div>
+
+    <!-- Q4 — image RIGHT -->
+    <div class="quiz-row">
+      <div class="sentence-area">
+        <span class="sentence-text">
+          (4)
+          <span class="drop-zone" data-answer="bend your knees" id="drop-4"
+            ondragover="allowDrop(event)" ondrop="dropWord(event)"
+            ontouchstart="touchStart(event)" ontouchmove="touchMove(event)" ontouchend="touchEnd(event)"></span>
+          and jump high four times!
+        </span>
+      </div>
+      <div class="img-side right-img">
+        <div class="img-placeholder" id="img-4">
+          <!-- Replace with: <img src="gif-4.gif" alt="Q4"> -->
+          <span class="img-badge">4</span>
+          <span class="img-hint">GIF here</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Q5 — image LEFT -->
+    <div class="quiz-row">
+      <div class="img-side left-img">
+        <div class="img-placeholder" id="img-5">
+          <!-- Replace with: <img src="gif-5.gif" alt="Q5"> -->
+          <span class="img-badge">5</span>
+          <span class="img-hint">GIF here</span>
+        </div>
+      </div>
+      <div class="sentence-area">
+        <span class="sentence-text">
+          Now (5)
+          <span class="drop-zone" data-answer="wave your hand" id="drop-5"
+            ondragover="allowDrop(event)" ondrop="dropWord(event)"
+            ontouchstart="touchStart(event)" ontouchmove="touchMove(event)" ontouchend="touchEnd(event)"></span>
+          in the air.
+        </span>
+      </div>
+    </div>
+
+    <!-- Q6 — image RIGHT -->
+    <div class="quiz-row">
+      <div class="sentence-area">
+        <span class="sentence-text">
+          Finally, sit down and (6)
+          <span class="drop-zone" data-answer="cross your legs" id="drop-6"
+            ondragover="allowDrop(event)" ondrop="dropWord(event)"
+            ontouchstart="touchStart(event)" ontouchmove="touchMove(event)" ontouchend="touchEnd(event)"></span>
+        </span>
+      </div>
+      <div class="img-side right-img">
+        <div class="img-placeholder" id="img-6">
+          <!-- Replace with: <img src="gif-6.gif" alt="Q6"> -->
+          <span class="img-badge">6</span>
+          <span class="img-hint">GIF here</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Q7 — image LEFT -->
+    <div class="quiz-row">
+      <div class="img-side left-img">
+        <div class="img-placeholder" id="img-7">
+          <!-- Replace with: <img src="gif-7.gif" alt="Q7"> -->
+          <span class="img-badge">7</span>
+          <span class="img-hint">GIF here</span>
+        </div>
+      </div>
+      <div class="sentence-area">
+        <span class="sentence-text">
+          (7)
+          <span class="drop-zone" data-answer="close your eyes" id="drop-7"
+            ondragover="allowDrop(event)" ondrop="dropWord(event)"
+            ontouchstart="touchStart(event)" ontouchmove="touchMove(event)" ontouchend="touchEnd(event)"></span>
+          and take a deep breath.
+        </span>
+      </div>
+    </div>
+
+    <!-- Q8 — image RIGHT -->
+    <div class="quiz-row">
+      <div class="sentence-area">
+        <span class="sentence-text">
+          <span class="good-job">Good job everyone!</span><br>
+          (8)
+          <span class="drop-zone drop-zone-wide" data-answer="clap your hands" id="drop-8"
+            ondragover="allowDrop(event)" ondrop="dropWord(event)"
+            ontouchstart="touchStart(event)" ontouchmove="touchMove(event)" ontouchend="touchEnd(event)"></span>
+        </span>
+      </div>
+      <div class="img-side right-img">
+        <div class="img-placeholder" id="img-8">
+          <!-- Replace with: <img src="gif-8.gif" alt="Q8"> -->
+          <span class="img-badge">8</span>
+          <span class="img-hint">GIF here</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Info box -->
+    <div class="info-area">
+      <div class="sparkle">✦ &nbsp; ✦</div>
+      <div class="info-box">
+        Doing gymnastic every week keeps your body healthy! 👍
+      </div>
+      <div class="dots-row">
+        <span class="dot-dec"></span>
+        <span class="dot-dec"></span>
+        <span class="dot-dec"></span>
+        <span class="dot-dec"></span>
+      </div>
+    </div>
+
+    <!-- WORD BANK -->
+    <div class="wordbank-section">
+      <div class="wordbank-label">WORD BANK</div>
+      <div class="wordbank" id="word-bank">
+        <!-- Touch your head = example, disabled (no drag) -->
+        <span class="word-chip chip-1 chip-disabled" id="word-1" draggable="false" data-color="#ffef92">Touch your head</span>
+
+        <span class="word-chip chip-2" id="word-2" draggable="true" data-color="#93eeff"
+          ondragstart="dragStart(event)"
+          ontouchstart="touchStart(event)" ontouchmove="touchMove(event)" ontouchend="touchEnd(event)">Stretch your arms</span>
+
+        <span class="word-chip chip-3" id="word-3" draggable="true" data-color="#dcd1ff"
+          ondragstart="dragStart(event)"
+          ontouchstart="touchStart(event)" ontouchmove="touchMove(event)" ontouchend="touchEnd(event)">Bend your knees</span>
+
+        <span class="word-chip chip-4" id="word-4" draggable="true" data-color="#ffb9d6"
+          ondragstart="dragStart(event)"
+          ontouchstart="touchStart(event)" ontouchmove="touchMove(event)" ontouchend="touchEnd(event)">Wave your hand</span>
+
+        <span class="word-chip chip-5" id="word-5" draggable="true" data-color="#b2ffe1"
+          ondragstart="dragStart(event)"
+          ontouchstart="touchStart(event)" ontouchmove="touchMove(event)" ontouchend="touchEnd(event)">Cross your legs</span>
+
+        <span class="word-chip chip-6" id="word-6" draggable="true" data-color="#ffc58f"
+          ondragstart="dragStart(event)"
+          ontouchstart="touchStart(event)" ontouchmove="touchMove(event)" ontouchend="touchEnd(event)">Stomp your feet</span>
+
+        <span class="word-chip chip-7" id="word-7" draggable="true" data-color="#ccdfff"
+          ondragstart="dragStart(event)"
+          ontouchstart="touchStart(event)" ontouchmove="touchMove(event)" ontouchend="touchEnd(event)">Clap your hands</span>
+
+        <span class="word-chip chip-8" id="word-8" draggable="true" data-color="#fcbaba"
+          ondragstart="dragStart(event)"
+          ontouchstart="touchStart(event)" ontouchmove="touchMove(event)" ontouchend="touchEnd(event)">Clap your hands</span>
+
+        <span class="word-chip chip-9" id="word-9" draggable="true" data-color="#bdfcba"
+          ondragstart="dragStart(event)"
+          ontouchstart="touchStart(event)" ontouchmove="touchMove(event)" ontouchend="touchEnd(event)">Close your eyes</span>
+      </div>
+    </div>
+
+    <!-- Buttons & Result -->
+    <div class="btn-row">
+      <button class="reset-btn" id="btn-reset" onclick="resetQuiz()">Reset</button>
+      <button class="check-btn" id="btn-check" onclick="checkAnswers()">Check Answers</button>
+    </div>
+    <div class="result-msg" id="result-msg"></div>
+
+  </div><!-- end page -->
+
+  <div id="touch-ghost"></div>
+  <script src="script.js"></script>
+</body>
+
+</html>
