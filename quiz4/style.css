@@ -338,6 +338,7 @@ body {
     box-shadow: 0 1px 4px rgba(0,0,0,0.09);
     min-height: 44px;
     border: none;
+    touch-action: none; /* prevent browser from hijacking touch — JS handles it */
 }
 
 .word-chip:hover {
