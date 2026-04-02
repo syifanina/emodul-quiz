@@ -1,0 +1,491 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html, body {
+    width: 100%;
+    max-width: 100%;
+    overflow-x: hidden;
+}
+
+body {
+    background: #e8e8e8;
+    font-family: 'Inter', sans-serif;
+    font-size: 12px;
+    display: flex;
+    justify-content: center;
+    padding: 30px 20px;
+    min-height: 100vh;
+}
+
+/* ── A4 PAGE ── */
+.page {
+    background: #ffffff;
+    width: 21cm;
+    max-width: 100%;
+    min-height: 29.7cm;
+    padding: 2cm 2.5cm;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.15);
+    font-family: 'Inter', sans-serif;
+    font-size: 12px;
+    display: flex;
+    flex-direction: column;
+}
+
+/* ── PAGE TITLE ── */
+.quiz-page-title {
+    font-size: 13px;
+    font-weight: 800;
+    text-align: center;
+    margin-bottom: 16px;
+    font-family: 'Inter', sans-serif;
+    letter-spacing: 0.3px;
+}
+
+/* ══════════════════════════════════════
+   QUIZ ROWS
+   ══════════════════════════════════════ */
+
+.quiz-row {
+    display: flex;
+    flex-direction: row;
+    align-items: center;       /* vertically centre image & text */
+    gap: 12px;
+    margin-bottom: 12px;
+    width: 100%;
+    min-height: 96px;
+}
+
+.example-row {
+    margin-bottom: 14px;
+}
+
+/* column order helpers */
+.left-img   { order: 0; }
+.sentence-area { order: 1; flex: 1; }
+.right-img  { order: 2; }
+
+/* ── IMAGE PLACEHOLDER ── */
+.img-side {
+    flex-shrink: 0;
+    width: 100px;
+}
+
+.img-placeholder {
+    width: 100px;
+    height: 90px;
+    border: 2px solid #aaa;
+    border-radius: 6px;
+    background: #f5f5f5;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    overflow: hidden;
+    flex-shrink: 0;
+}
+
+/* img tag inside placeholder */
+.img-placeholder img {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+}
+
+/* number / EXAMPLE badge on image */
+.img-badge {
+    position: absolute;
+    top: 4px;
+    left: 4px;
+    background: #111;
+    color: #fff;
+    font-size: 10px;
+    font-weight: 700;
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 2;
+    font-family: 'Inter', sans-serif;
+}
+
+.badge-example {
+    width: auto;
+    padding: 2px 6px;
+    border-radius: 4px;
+    background: #e53935;
+    font-size: 9px;
+    letter-spacing: 0.5px;
+}
+
+.img-hint {
+    font-size: 9px;
+    color: #bbb;
+    font-family: 'Inter', sans-serif;
+    margin-top: 22px;
+    pointer-events: none;
+    user-select: none;
+}
+
+/* ── SENTENCE TEXT ── */
+.sentence-area {
+    display: flex;
+    align-items: center;
+}
+
+.sentence-text {
+    font-size: 12px;
+    font-family: 'Inter', sans-serif;
+    line-height: 2.2;
+    display: inline;
+}
+
+/* ── EXAMPLE ELEMENTS ── */
+.example-label-tag {
+    font-size: 11px;
+    font-weight: 700;
+    color: #333;
+    font-family: 'Inter', sans-serif;
+}
+
+.example-answer-box {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 2px 10px;
+    background: #fff176;
+    border: 1.5px solid #f9a825;
+    border-radius: 4px;
+    font-size: 12px;
+    font-weight: 700;
+    font-family: 'Inter', sans-serif;
+    color: #333;
+    vertical-align: middle;
+}
+
+/* ── DROP ZONES (grey boxes) ── */
+.drop-zone {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-width: 110px;
+    height: 24px;
+    background: #c8c8c8;
+    border-radius: 3px;
+    border: 1.5px solid #aaa;
+    cursor: pointer;
+    vertical-align: middle;
+    position: relative;
+    transition: background 0.2s, border-color 0.2s;
+    font-size: 12px;
+    font-family: 'Inter', sans-serif;
+    font-weight: 600;
+    color: #333;
+    padding: 0 8px;
+    white-space: nowrap;
+}
+
+.drop-zone-wide { min-width: 160px; }
+
+.drop-zone.drag-over {
+    background: #bbdefb;
+    border-color: #1976d2;
+}
+
+.drop-zone.filled {
+    /* background applied via inline style from JS (matches chip color) */
+    border-color: #888;
+    color: #333;
+}
+
+.drop-zone.correct {
+    background: #c8e6c9;
+    border-color: #2e7d32;
+    color: #1b5e20;
+}
+
+.drop-zone.incorrect {
+    background: #ffcdd2;
+    border-color: #c62828;
+    color: #b71c1c;
+}
+
+.drop-zone .dropped-word {
+    font-size: 12px;
+    font-weight: 600;
+    pointer-events: none;
+    user-select: none;
+    white-space: nowrap;
+}
+
+/* ── GOOD JOB TEXT ── */
+.good-job {
+    font-size: 12px;
+    font-weight: 700;
+    color: #e53935;
+    font-style: italic;
+    font-family: 'Inter', sans-serif;
+    display: block;
+    margin-bottom: 4px;
+}
+
+/* ══════════════════════════════════════
+   INFO BOX
+   ══════════════════════════════════════ */
+.info-area {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 6px;
+    margin: 14px 0;
+}
+
+.sparkle {
+    font-size: 16px;
+    color: #bdbdbd;
+    letter-spacing: 6px;
+}
+
+.info-box {
+    background: #80deea;
+    border-radius: 12px;
+    padding: 10px 28px;
+    font-size: 12px;
+    font-weight: 600;
+    font-family: 'Inter', sans-serif;
+    color: #006064;
+    text-align: center;
+    line-height: 1.7;
+    width: 100%;
+    max-width: 360px;
+    box-shadow: 0 2px 8px rgba(0,150,180,0.15);
+}
+
+.dots-row {
+    display: flex;
+    gap: 5px;
+}
+
+.dot-dec {
+    width: 7px;
+    height: 7px;
+    border-radius: 50%;
+    background: #333;
+    display: inline-block;
+}
+
+/* ══════════════════════════════════════
+   WORD BANK
+   ══════════════════════════════════════ */
+.wordbank-section {
+    margin-top: auto;   /* push to bottom of page */
+    padding-top: 10px;
+}
+
+.wordbank-label {
+    font-size: 13px;
+    font-weight: 800;
+    text-align: center;
+    padding: 7px 0;
+    background: #7b1010;
+    color: #ffef00;
+    border-radius: 24px;
+    width: 100%;
+    display: block;
+    margin-bottom: 12px;
+    letter-spacing: 2px;
+    font-family: 'Inter', sans-serif;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.15);
+}
+
+.wordbank {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 12px;
+    padding: 16px 14px;
+    border: 2.5px solid #c0392b;
+    border-radius: 16px;
+    background: #fff;
+    width: 100%;
+}
+
+/* ── Word Chips ── */
+.word-chip {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 10px 14px;
+    border-radius: 12px;
+    font-size: 13px;
+    font-family: 'Inter', sans-serif;
+    font-weight: 700;
+    color: #222;
+    cursor: grab;
+    user-select: none;
+    text-align: center;
+    line-height: 1.3;
+    white-space: nowrap;
+    transition: transform 0.15s, box-shadow 0.15s, opacity 0.2s;
+    box-shadow: 0 1px 4px rgba(0,0,0,0.09);
+    min-height: 44px;
+    border: none;
+}
+
+.word-chip:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 10px rgba(0,0,0,0.14);
+}
+
+.word-chip:active   { cursor: grabbing; transform: scale(1.04); }
+.word-chip.dragging { opacity: 0.3; cursor: grabbing; }
+.word-chip.used     { opacity: 0.22; cursor: not-allowed; pointer-events: none; }
+
+/* Touch your head = disabled (example) */
+.chip-disabled {
+    background: #c8c8c8 !important;
+    color: #777 !important;
+    cursor: not-allowed !important;
+    pointer-events: none;
+    opacity: 0.75;
+    box-shadow: none;
+}
+
+/* 9 exact colours per spec */
+.chip-1 { background: #ffef92; }   /* Touch your head   – yellow       */
+.chip-2 { background: #93eeff; }   /* Stretch your arms – cyan         */
+.chip-3 { background: #dcd1ff; }   /* Bend your knees   – lavender     */
+.chip-4 { background: #ffb9d6; }   /* Wave your hand    – pink         */
+.chip-5 { background: #b2ffe1; }   /* Cross your legs   – mint         */
+.chip-6 { background: #ffc58f; }   /* Stomp your feet   – peach-orange */
+.chip-7 { background: #ccdfff; }   /* Clap your hands   – light-blue   */
+.chip-8 { background: #fcbaba; }   /* Clap your hands   – salmon       */
+.chip-9 { background: #bdfcba; }   /* Close your eyes   – light-green  */
+
+/* ── BUTTONS ── */
+.btn-row {
+    display: flex;
+    justify-content: center;
+    gap: 12px;
+    margin-top: 16px;
+}
+
+.reset-btn {
+    padding: 8px 24px;
+    background: #f44336;
+    color: #fff;
+    border: none;
+    border-radius: 20px;
+    font-size: 12px;
+    cursor: pointer;
+    font-family: 'Inter', sans-serif;
+    font-weight: 700;
+    letter-spacing: 0.5px;
+    transition: background 0.2s;
+}
+
+.reset-btn:hover { background: #c62828; }
+
+.check-btn {
+    padding: 8px 24px;
+    background: #388e3c;
+    color: #fff;
+    border: none;
+    border-radius: 20px;
+    font-size: 12px;
+    cursor: pointer;
+    font-family: 'Inter', sans-serif;
+    font-weight: 700;
+    letter-spacing: 0.5px;
+    transition: background 0.2s;
+}
+
+.check-btn:hover { background: #1b5e20; }
+
+.result-msg {
+    text-align: center;
+    font-size: 12px;
+    font-weight: 700;
+    margin-top: 10px;
+    min-height: 20px;
+    color: #1a237e;
+    font-family: 'Inter', sans-serif;
+}
+
+/* ── TOUCH GHOST ── */
+#touch-ghost {
+    position: fixed;
+    pointer-events: none;
+    z-index: 9999;
+    font-size: 12px;
+    font-family: 'Inter', sans-serif;
+    font-weight: 600;
+    background: #fff9c4;
+    border: 1.5px solid #f9a825;
+    color: #333;
+    border-radius: 10px;
+    padding: 6px 14px;
+    box-shadow: 0 4px 14px rgba(0,0,0,0.2);
+    opacity: 0.9;
+    display: none;
+    white-space: nowrap;
+}
+
+/* ══════════════════════════════════════
+   RESPONSIVE
+   ══════════════════════════════════════ */
+@media (max-width: 1024px) {
+    .page {
+        width: 100%;
+        min-height: auto;
+        padding: 24px 18px;
+    }
+}
+
+@media (max-width: 768px) {
+    body { padding: 10px 6px; }
+
+    .page {
+        width: 100%;
+        min-height: auto;
+        padding: 14px 10px;
+    }
+
+    .quiz-row { gap: 8px; min-height: 76px; }
+
+    .img-side  { width: 82px; }
+    .img-placeholder { width: 82px; height: 74px; }
+
+    .wordbank  { grid-template-columns: repeat(3, 1fr); gap: 6px; }
+
+    .drop-zone { min-width: 90px; }
+    .drop-zone-wide { min-width: 130px; }
+}
+
+@media (max-width: 480px) {
+    body { padding: 6px 4px; }
+
+    .page { padding: 10px 8px; }
+
+    .wordbank { grid-template-columns: repeat(2, 1fr); }
+
+    .img-side  { width: 70px; }
+    .img-placeholder { width: 70px; height: 64px; }
+
+    .drop-zone { min-width: 80px; }
+}
+
+@media print {
+    body { background: white; padding: 0; }
+    .page { box-shadow: none; }
+    .reset-btn, .check-btn { display: none; }
+    #touch-ghost { display: none !important; }
+}
