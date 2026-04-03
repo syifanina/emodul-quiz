@@ -330,6 +330,12 @@ body {
     width: 100%;
 }
 
+.wordbank.top-wordbank .word-chip:last-child:nth-child(odd) {
+    grid-column: 1 / -1;
+    justify-self: center;
+    width: calc(50% - 6px);
+}
+
 /* ── Word Chips ── */
 .word-chip {
     display: flex;
@@ -546,6 +552,17 @@ body {
         gap: 6px;
     }
 
+    .wordbank.top-wordbank .word-chip:last-child:nth-child(odd) {
+        width: calc(50% - 3px);
+    }
+
+    .word-chip {
+        padding: 8px 6px;
+        font-size: 11.5px;
+        white-space: normal;
+        min-height: 40px;
+    }
+
     .drop-zone {
         min-width: 90px;
     }
@@ -566,6 +583,13 @@ body {
 
     .wordbank {
         grid-template-columns: repeat(2, 1fr);
+        padding: 12px 10px;
+    }
+
+    .word-chip {
+        padding: 6px 4px;
+        font-size: 10.5px;
+        min-height: 38px;
     }
 
     .img-side {
