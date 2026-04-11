@@ -1,306 +1,97 @@
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap');
+// ── Answer Key: input id → correct answer (uppercase) ──
+const ANSWER_KEY = {
+    '1': 'ELBOW',
+    '2': 'MOUTH',
+    '3': 'WAIST',
+    '4': 'SHOULDER',
+    '5': 'KNEE',
+    '6': 'TEETH',
+    '7': 'NOSE',
+    '8': 'HAIR',
+    '9': 'NAIL',
+    '10': 'EYEBROW'
+};
 
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-}
+const TOTAL = Object.keys(ANSWER_KEY).length;
 
-html,
-body {
-    width: 100%;
-    max-width: 100%;
-    overflow: hidden;
-    /* Mematikan scrollbar ganda saat di-embed di Genially */
-}
+// ── Live-check on input: show placeholder feedback as user types ──
+document.querySelectorAll('.answer-input').forEach(input => {
+    input.addEventListener('input', function () {
+        // Remove previous correct/wrong state while typing
+        this.classList.remove('correct', 'wrong');
+        const id = this.id.replace('input-', '');
+        const fb = document.getElementById('fb-' + id);
+        if (fb) fb.textContent = '';
+        document.getElementById('result-msg').textContent = '';
+    });
 
-body {
-    background: transparent;
-    font-family: 'Inter', sans-serif;
-    display: flex;
-    justify-content: center;
-    padding: 20px;
-    min-height: 100vh;
-}
+    // Allow submitting with Enter key
+    input.addEventListener('keydown', function (e) {
+        if (e.key === 'Enter') {
+            checkAnswers();
+        }
+    });
+});
 
-/* ── PAGE LAYOUT (NEW DESIGN - POTRAIT 273px) ── */
-.page {
-    background: transparent;
-    width: 100%;
-    max-width: 273px;
-    /* Sesuai request sebelumnya: lebar maksimal 273 */
-    min-height: auto;
-    /* Panjangnya menyesuaikan isi content */
-    padding: 10px;
-    margin: 0 auto;
-    display: flex;
-    flex-direction: column;
-    gap: 30px;
-}
+// ── Check all answers ──
+function checkAnswers() {
+    let correct = 0;
+    let filled = 0;
 
-/* ── ROWS (SIDE-BY-SIDE DALAM 273px) ── */
-.example-row,
-.quiz-row {
-    display: flex;
-    flex-direction: row;
-    /* Dikembalikan agar sejajar (kiri-kanan) */
-    align-items: center;
-    justify-content: space-between;
-    gap: 10px;
-    margin-bottom: 12px;
-    width: 100%;
-}
+    for (let id = 1; id <= TOTAL; id++) {
+        const input = document.getElementById('input-' + id);
+        const fb = document.getElementById('fb-' + id);
+        if (!input) continue;
 
-.example-row {
-    margin-bottom: 24px;
-    /* Pemisah contoh dari ujian asli */
-}
+        const userAnswer = input.value.trim().toUpperCase();
 
-/* ── LEFT SIDE (IMAGE CARD) ── */
-.img-card {
-    position: relative;
-    flex-shrink: 0;
-}
+        if (userAnswer === '') {
+            input.classList.remove('correct', 'wrong');
+            if (fb) fb.textContent = '';
+            continue;
+        }
 
-/* PITA MERAH (BADGE) */
-.number-badge {
-    position: absolute;
-    top: 8px;
-    left: -6px;
-    /* Keluar sedikit dari kotak */
-    background: #e53935;
-    color: white;
-    font-weight: 800;
-    padding: 4px 8px;
-    font-size: 14px;
-    border-radius: 4px 4px 4px 0;
-    z-index: 5;
-    box-shadow: 2px 2px 3px rgba(0, 0, 0, 0.2);
-}
+        filled++;
 
-.number-badge::after {
-    /* Efek lipatan pita 3D di sudut bawah kiri */
-    content: "";
-    position: absolute;
-    bottom: -6px;
-    left: 0;
-    border-top: 6px solid #b71c1c;
-    border-left: 6px solid transparent;
-}
+        if (userAnswer === ANSWER_KEY[id]) {
+            correct++;
+            input.classList.remove('wrong');
+            input.classList.add('correct');
+            if (fb) fb.textContent = '✓';
+            if (fb) fb.style.color = '#2e7d32';
+        } else {
+            input.classList.remove('correct');
+            input.classList.add('wrong');
+            if (fb) fb.textContent = '✗';
+            if (fb) fb.style.color = '#c62828';
+        }
+    }
 
-.example-badge {
-    font-size: 11px;
-    /* teks huruf mungkin butuh font agak kecil */
-}
+    const resultMsg = document.getElementById('result-msg');
 
-/* BINGKAI GAMBAR KOTAK SUDUT BUNDAR */
-.img-box {
-    width: 100px;
-    /* Diminiaturisasi agar muat bersebelahan */
-    height: 100px;
-    border: 1px solid #111;
-    border-radius: 12px;
-    /* Lengkungan persis seperti screenshot */
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    background: #fff;
-    overflow: hidden;
-}
-
-.img-placeholder {
-    width: 90%;
-    height: 90%;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    background: transparent;
-}
-
-.img-placeholder img {
-    width: 100%;
-    height: 100%;
-    object-fit: contain;
-}
-
-/* ── RIGHT SIDE (ANSWER AREA) ── */
-.answer-area {
-    flex: 1;
-    position: relative;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    gap: 10px;
-    padding-top: 10px;
-}
-
-.jumble-word {
-    font-size: 12px;
-    /* Disamakan 12px */
-    font-weight: 800;
-    font-family: 'Inter', sans-serif;
-    letter-spacing: 1px;
-    white-space: nowrap;
-    /* Paksa 1 baris */
-    color: #000;
-    text-align: center;
-    margin-bottom: 2px;
-}
-
-/* KOTAK INPUT (KREM & PUTUS-PUTUS) */
-.input-container {
-    position: relative;
-    width: 100%;
-    max-width: 135px;
-    /* Sesuaikan dgn lebar area jawaban yg tersisa */
-}
-
-.input-inner {
-    background: #fff9e6;
-    /* Krem lembut */
-    border: 1px solid #111;
-    /* Garis luar tipis */
-    border-radius: 50px;
-    /* Bentuk pil penuh */
-    padding: 8px 6px;
-    position: relative;
-    width: 100%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    box-shadow: 0 4px 0px rgba(0, 0, 0, 0.1);
-}
-
-/* GARIS PUTUS MERAH DI DALAM PIL */
-.input-inner::before {
-    content: "";
-    position: absolute;
-    top: 2px;
-    left: 2px;
-    right: 2px;
-    bottom: 2px;
-    border: 1px dashed #e53935;
-    border-radius: 50px;
-    pointer-events: none;
-    /* Biar tetap bisa klik input */
-}
-
-/* TEKS CONTOH (Khusus Example) */
-.example-text {
-    font-size: 12px;
-    font-weight: bold;
-    color: #111;
-    padding: 0px;
-    z-index: 2;
-}
-
-/* INPUT KETIKAN ASLI */
-.answer-input {
-    width: 100%;
-    border: none;
-    outline: none;
-    font-size: 12px;
-    font-family: 'Inter', sans-serif;
-    font-weight: bold;
-    background: transparent;
-    color: #111;
-    text-transform: uppercase;
-    text-align: center;
-    /* Di tengah */
-    z-index: 2;
-    /* Biar di atas garis dashed */
-}
-
-.answer-input::placeholder {
-    font-size: 10px;
-    font-weight: normal;
-    color: #999;
-    text-transform: none;
-}
-
-.answer-input.correct {
-    color: #2e7d32;
-}
-
-.answer-input.wrong {
-    color: #c62828;
-}
-
-/* IKON PENSIL MELAYANG */
-.pencil-icon {
-    position: absolute;
-    top: -15px;
-    /* Menempel di atas garis list */
-    right: -8px;
-    width: 32px;
-    /* Ukuran mini agar tak menutupi inputan */
-    z-index: 10;
-    pointer-events: none;
-    filter: drop-shadow(1px 1px 2px rgba(0, 0, 0, 0.2));
-}
-
-/* IKON CEKLIS/SILANG */
-.feedback-icon {
-    position: absolute;
-    right: -35px;
-    top: 50%;
-    transform: translateY(-50%);
-    font-size: 24px;
-    z-index: 10;
-}
-
-@media (max-width: 550px) {
-    .feedback-icon {
-        right: 15px;
+    if (filled < TOTAL) {
+        resultMsg.textContent = `Please fill in all ${TOTAL} answers first!`;
+        resultMsg.style.color = '#e65100';
+    } else if (correct === TOTAL) {
+        resultMsg.textContent = `🎉 Perfect! All ${TOTAL} answers are correct!`;
+        resultMsg.style.color = '#1b5e20';
+    } else {
+        resultMsg.textContent = `${correct} out of ${TOTAL} correct. Red = wrong. Try again!`;
+        resultMsg.style.color = '#b71c1c';
     }
 }
 
-/* ── BUTTONS ── */
-.btn-row {
-    display: flex;
-    gap: 12px;
-    justify-content: center;
-    margin-top: 20px;
-    margin-bottom: 30px;
-}
-
-.reset-btn,
-.check-btn {
-    padding: 10px 24px;
-    border: none;
-    border-radius: 20px;
-    font-size: 14px;
-    cursor: pointer;
-    font-family: 'Inter', sans-serif;
-    font-weight: bold;
-    letter-spacing: 0.5px;
-    transition: background 0.2s;
-    color: #fff;
-}
-
-.reset-btn {
-    background: #f44336;
-}
-
-.reset-btn:hover {
-    background: #c62828;
-}
-
-.check-btn {
-    background: #388e3c;
-}
-
-.check-btn:hover {
-    background: #1b5e20;
-}
-
-.result-msg {
-    text-align: center;
-    font-size: 18px;
-    font-weight: bold;
-    margin-top: -10px;
-    min-height: 24px;
-    color: #1a237e;
+// ── Reset all answers ──
+function resetAnswers() {
+    for (let id = 1; id <= TOTAL; id++) {
+        const input = document.getElementById('input-' + id);
+        const fb = document.getElementById('fb-' + id);
+        if (input) {
+            input.value = '';
+            input.classList.remove('correct', 'wrong');
+        }
+        if (fb) fb.textContent = '';
+    }
+    const resultMsg = document.getElementById('result-msg');
+    resultMsg.textContent = '';
 }
