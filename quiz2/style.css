@@ -144,7 +144,7 @@ body {
 #quiz-container {
     display: flex;
     flex-direction: column;
-    gap: 12px;
+    gap: 4px; /* Default awalnya 12px, dikecilkan agar lebih rapat */
 }
 
 .quiz-row {
