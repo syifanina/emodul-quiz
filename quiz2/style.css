@@ -11,7 +11,8 @@ body {
     width: 100%;
     max-width: 100%;
     overflow-x: hidden;
-    /* Jangan matikan vertikal, bisa memotong area klik Genially */
+    margin: 0;
+    padding: 0;
 }
 
 body {
@@ -19,8 +20,12 @@ body {
     font-family: 'Inter', sans-serif;
     display: flex;
     justify-content: center;
-    padding: 20px;
-    min-height: 100vh;
+}
+
+/* Mematikan UI Scrollbar khusus (scroll ganda) tapi fungsi scroll tetap nyala */
+::-webkit-scrollbar {
+    width: 0px;
+    background: transparent;
 }
 
 /* ── PAGE LAYOUT (NEW DESIGN - POTRAIT 273px) ── */
