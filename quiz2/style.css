@@ -6,8 +6,7 @@
     box-sizing: border-box;
 }
 
-html,
-body {
+html, body {
     width: 100%;
     max-width: 100%;
     overflow-x: hidden;
@@ -19,33 +18,35 @@ body {
     font-size: 12px;
     display: flex;
     justify-content: center;
-    padding: 30px 20px;
+    padding: 0;
     min-height: 100vh;
 }
 
-/* ── PAGE (same as quiz1) ── */
+/* ── PAGE LAYOUT (PORTRAIT/BUKU DIGITAL) ── */
 .page {
     background: transparent;
-    width: 21cm;
-    max-width: 100%;
-    min-height: 29.7cm;
-    padding: 2cm 2.5cm;
-    box-shadow: none;
+    width: 100%;
+    max-width: 273px; /* Maksimal lebar seperti request */
+    min-height: auto; /* Memanjang sesuai isi vertikal */
+    padding: 15px 12px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
 }
 
 /* ── TITLE & INSTRUCTIONS ── */
 .title {
     text-align: center;
-    font-size: 12px;
+    font-size: 18px;
     font-weight: bold;
-    margin-bottom: 10px;
-    letter-spacing: 1px;
+    margin-bottom: 8px;
+    letter-spacing: 0.5px;
 }
 
 .instruction-en {
     text-align: center;
     font-size: 12px;
-    margin-bottom: 4px;
+    margin-bottom: 2px;
 }
 
 .instruction-id {
@@ -54,29 +55,32 @@ body {
     color: #cc0000;
     font-weight: bold;
     text-decoration: underline;
-    margin-bottom: 28px;
-    line-height: 1.6;
+    margin-bottom: 20px;
+    line-height: 1.4;
 }
 
 /* ── EXAMPLE ROW ── */
 .example-row {
     display: flex;
-    align-items: flex-start;
-    justify-content: flex-start;
-    gap: 60px;
-    margin-bottom: 28px;
-    padding: 0 10px;
+    flex-direction: column; /* Ditumpuk atas-bawah */
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 24px;
+    padding-bottom: 16px;
+    border-bottom: 2px dashed #ccc;
+    width: 100%;
 }
 
 .example-left {
-    flex-shrink: 0;
+    display: flex;
+    justify-content: center;
 }
 
 .example-right {
     display: flex;
     flex-direction: column;
-    align-items: flex-start;
-    gap: 6px;
+    align-items: center;
+    gap: 4px;
 }
 
 .example-label-tag {
@@ -84,57 +88,59 @@ body {
     font-style: italic;
     font-weight: bold;
     text-decoration: underline;
-    margin-bottom: 2px;
 }
 
 .answer-display.underlined {
-    font-size: 12px;
+    font-size: 16px;
     font-weight: bold;
     text-decoration: underline;
-    letter-spacing: 1px;
+    letter-spacing: 1.5px;
 }
 
 /* ── IMAGE BOX ── */
 .img-box {
-    width: 130px;
-    height: 130px;
-    border: 2.5px solid #111;
+    width: 90px;
+    height: 90px;
+    border: 2px solid #111;
     display: flex;
     align-items: center;
     justify-content: center;
     background: #fafafa;
     overflow: hidden;
-    flex-shrink: 0;
-    object-fit: contain;
+    border-radius: 6px;
 }
 
 .img-box.example-img {
-    width: 130px;
-    height: 130px;
+    width: 90px;
+    height: 90px;
 }
 
-/* Image placeholder — visible empty box for user to add their own image */
-.img-placeholder img {
+.img-placeholder {
     width: 100%;
     height: 100%;
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    background: #f5f5f5;
-
-    gap: 6px;
+    background: transparent;
+    gap: 4px;
     cursor: default;
     user-select: none;
 }
 
+.img-placeholder img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+}
+
 .placeholder-icon {
-    font-size: 22px;
+    font-size: 20px;
     opacity: 0.45;
 }
 
 .placeholder-text {
-    font-size: 12px;
+    font-size: 10px;
     color: #aaa;
     font-family: 'Inter', sans-serif;
     letter-spacing: 0.5px;
@@ -144,69 +150,78 @@ body {
 #quiz-container {
     display: flex;
     flex-direction: column;
-    gap: 4px; /* Default awalnya 12px, dikecilkan agar lebih rapat */
+    gap: 20px;
 }
 
 .quiz-row {
     display: flex;
+    flex-direction: column; /* Ditumpuk atas-bawah */
     align-items: center;
-    gap: 30px;
+    gap: 8px;
+    width: 100%;
+    height: fit-content;
+    padding-bottom: 20px;
+    border-bottom: 1px dashed #ddd; /* Pemisah antar soal biar jelas */
 }
 
+/* Hilangkan garis di soal terakhir */
+.quiz-row:last-child {
+    border-bottom: none;
+}
+
+/* Angka nomor di pojok kiri atas */
 .item-number {
-    font-size: 12px;
+    font-size: 15px;
     font-weight: bold;
-    width: 40px;
-    flex-shrink: 0;
-    align-self: flex-start;
-    padding-top: 50px;
+    width: 100%;
+    text-align: left;
+    margin-bottom: 4px;
 }
 
 /* ── ANSWER AREA ── */
 .answer-area {
-    flex: 1;
+    width: 100%;
     display: flex;
     flex-direction: column;
-    align-items: flex-start;
-    gap: 8px;
-    padding-left: 30px;
+    align-items: center; /* Teks dan input di tengah */
+    gap: 6px;
 }
 
-/* Jumbled word shown in bold */
 .jumble-word {
-    font-size: 12px;
+    font-size: 16px;
     font-weight: bold;
     font-family: 'Inter', sans-serif;
     letter-spacing: 2px;
     color: #111;
 }
 
-/* Input + underline wrapper */
 .input-line-wrap {
     position: relative;
-    width: 200px;
+    width: 90%;
+    max-width: 180px;
 }
 
 .answer-input {
     width: 100%;
     border: none;
-    border-bottom: 2.5px solid #111;
+    border-bottom: 2px solid #111;
     outline: none;
-    font-size: 12px;
+    font-size: 14px;
     font-family: 'Inter', sans-serif;
     font-weight: bold;
-    letter-spacing: 2px;
+    letter-spacing: 1px;
     background: transparent;
     padding: 2px 4px 4px;
     color: #111;
     text-transform: uppercase;
     transition: border-color 0.2s;
+    text-align: center; /* Teks ketikan di tengah */
 }
 
 .answer-input::placeholder {
     font-size: 12px;
     font-weight: normal;
-    letter-spacing: 0.5px;
+    letter-spacing: 0px;
     color: #bbb;
     text-transform: none;
 }
@@ -229,10 +244,9 @@ body {
     height: 0;
 }
 
-/* Feedback icon next to input */
 .feedback-icon {
-    font-size: 12px;
-    min-height: 30px;
+    font-size: 16px;
+    min-height: 24px;
     margin-top: 2px;
 }
 
@@ -241,13 +255,12 @@ body {
     display: flex;
     gap: 12px;
     justify-content: center;
-    margin-top: 28px;
+    margin-top: 10px;
+    margin-bottom: 30px;
 }
 
-.reset-btn {
-    padding: 10px 28px;
-    background: #f44336;
-    color: #fff;
+.reset-btn, .check-btn {
+    padding: 8px 18px;
     border: none;
     border-radius: 20px;
     font-size: 12px;
@@ -256,174 +269,27 @@ body {
     font-weight: bold;
     letter-spacing: 0.5px;
     transition: background 0.2s;
-}
-
-.reset-btn:hover {
-    background: #c62828;
-}
-
-.check-btn {
-    padding: 10px 28px;
-    background: #388e3c;
     color: #fff;
-    border: none;
-    border-radius: 20px;
-    font-size: 12px;
-    cursor: pointer;
-    font-family: 'Inter', sans-serif;
-    font-weight: bold;
-    letter-spacing: 0.5px;
-    transition: background 0.2s;
 }
 
-.check-btn:hover {
-    background: #1b5e20;
-}
+.reset-btn { background: #f44336; }
+.reset-btn:hover { background: #c62828; }
+
+.check-btn { background: #388e3c; }
+.check-btn:hover { background: #1b5e20; }
 
 .result-msg {
     text-align: center;
-    font-size: 12px;
+    font-size: 14px;
     font-weight: bold;
-    margin-top: 14px;
-    min-height: 30px;
+    margin-top: -10px;
+    min-height: 24px;
     color: #1a237e;
 }
 
-/* ── RESPONSIVE ── */
-@media (max-width: 1024px) {
-    .page {
-        width: 100%;
-        min-height: auto;
-        padding: 24px 18px;
-    }
-}
-
-@media (max-width: 768px) {
-    body {
-        padding: 8px 4px;
-    }
-
-    .page {
-        width: 100%;
-        min-height: auto;
-        padding: 12px 8px;
-        margin: 0 auto;
-    }
-
-    .title {
-        font-size: 16pt;
-    }
-
-    .instruction-en,
-    .instruction-id {
-        font-size: 10pt;
-    }
-
-    .example-row {
-        gap: 24px;
-        padding: 0 4px;
-    }
-
-    .img-box,
-    .img-box.example-img {
-        width: 100px;
-        height: 100px;
-    }
-
-    .quiz-row {
-        gap: 14px;
-    }
-
-    .item-number {
-        padding-top: 38px;
-        width: 22px;
-        font-size: 11pt;
-    }
-
-    .answer-area {
-        padding-left: 10px;
-    }
-
-    .jumble-word {
-        font-size: 12pt;
-        letter-spacing: 1px;
-    }
-
-    .input-line-wrap {
-        width: 160px;
-    }
-
-    .answer-input {
-        font-size: 11pt;
-    }
-}
-
-@media (max-width: 430px) {
-
-    .img-box,
-    .img-box.example-img {
-        width: 82px;
-        height: 82px;
-    }
-
-    .jumble-word {
-        font-size: 11pt;
-    }
-
-    .input-line-wrap {
-        width: 130px;
-    }
-
-    .answer-input {
-        font-size: 10pt;
-    }
-
-    .item-number {
-        padding-top: 30px;
-    }
-}
-
-@media (max-width: 360px) {
-    body {
-        padding: 4px 2px;
-    }
-
-    .page {
-        padding: 10px 6px;
-    }
-
-    .img-box,
-    .img-box.example-img {
-        width: 72px;
-        height: 72px;
-    }
-
-    .quiz-row {
-        gap: 8px;
-    }
-
-    .input-line-wrap {
-        width: 110px;
-    }
-}
-
 @media print {
-    body {
-        background: white;
-        padding: 0;
-    }
-
-    .page {
-        box-shadow: none;
-    }
-
-    .reset-btn,
-    .check-btn,
-    .answer-input::placeholder {
-        display: none;
-    }
-
-    .img-placeholder {
-        border-style: solid;
-    }
+    body { background: white; padding: 0; }
+    .page { box-shadow: none; border: none; max-width: 100%; }
+    .reset-btn, .check-btn, .answer-input::placeholder { display: none; }
+    .img-box { border-style: solid; border-width: 1px;}
 }
