@@ -1,0 +1,245 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Look and Write Quiz</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+  <div class="page">
+    <!-- EXAMPLE -->
+    <div class="example-row">
+      <div class="example-left">
+        <!-- Ear image placeholder -->
+        <div class="img-box example-img">
+          <div class="img-placeholder">
+            <img src="assets/ear.png" alt="ear">
+          </div>
+        </div>
+      </div>
+      <div class="example-right">
+        <div class="example-label-tag">Example:</div>
+        <div class="jumble-word">ARE</div>
+        <div class="answer-display underlined">EAR</div>
+      </div>
+    </div>
+
+    <!-- QUIZ ITEMS -->
+    <div id="quiz-container">
+
+      <!-- Item 1 -->
+      <div class="quiz-row" id="row-1">
+        <div class="item-number">1.</div>
+        <div class="img-box">
+          <div class="img-placeholder">
+            <img src="assets/elbow.png" alt="elbow">
+          </div>
+        </div>
+        <div class="answer-area">
+          <div class="jumble-word">BLEWO</div>
+          <div class="input-line-wrap">
+            <input type="text" class="answer-input" id="input-1" data-answer="ELBOW" placeholder="Type your answer..."
+              autocomplete="off" autocorrect="off" spellcheck="false">
+            <div class="underline-bar"></div>
+          </div>
+          <div class="feedback-icon" id="fb-1"></div>
+        </div>
+      </div>
+
+      <!-- Item 2 -->
+      <div class="quiz-row" id="row-2">
+        <div class="item-number">2.</div>
+        <div class="img-box">
+          <div class="img-placeholder">
+            <span class="placeholder-icon">🖼️</span>
+            <span class="placeholder-text">Image</span>
+          </div>
+        </div>
+        <div class="answer-area">
+          <div class="jumble-word">UHMOT</div>
+          <div class="input-line-wrap">
+            <input type="text" class="answer-input" id="input-2" data-answer="MOUTH" placeholder="Type your answer..."
+              autocomplete="off" autocorrect="off" spellcheck="false">
+            <div class="underline-bar"></div>
+          </div>
+          <div class="feedback-icon" id="fb-2"></div>
+        </div>
+      </div>
+
+      <!-- Item 3 -->
+      <div class="quiz-row" id="row-3">
+        <div class="item-number">3.</div>
+        <div class="img-box">
+          <div class="img-placeholder">
+            <span class="placeholder-icon">🖼️</span>
+            <span class="placeholder-text">Image</span>
+          </div>
+        </div>
+        <div class="answer-area">
+          <div class="jumble-word">ISTWA</div>
+          <div class="input-line-wrap">
+            <input type="text" class="answer-input" id="input-3" data-answer="WAIST" placeholder="Type your answer..."
+              autocomplete="off" autocorrect="off" spellcheck="false">
+            <div class="underline-bar"></div>
+          </div>
+          <div class="feedback-icon" id="fb-3"></div>
+        </div>
+      </div>
+
+      <!-- Item 4 -->
+      <div class="quiz-row" id="row-4">
+        <div class="item-number">4.</div>
+        <div class="img-box">
+          <div class="img-placeholder">
+            <span class="placeholder-icon">🖼️</span>
+            <span class="placeholder-text">Image</span>
+          </div>
+        </div>
+        <div class="answer-area">
+          <div class="jumble-word">RHEOUSLD</div>
+          <div class="input-line-wrap">
+            <input type="text" class="answer-input" id="input-4" data-answer="SHOULDER"
+              placeholder="Type your answer..." autocomplete="off" autocorrect="off" spellcheck="false">
+            <div class="underline-bar"></div>
+          </div>
+          <div class="feedback-icon" id="fb-4"></div>
+        </div>
+      </div>
+
+      <!-- Item 5 -->
+      <div class="quiz-row" id="row-5">
+        <div class="item-number">5.</div>
+        <div class="img-box">
+          <div class="img-placeholder">
+            <span class="placeholder-icon">🖼️</span>
+            <span class="placeholder-text">Image</span>
+          </div>
+        </div>
+        <div class="answer-area">
+          <div class="jumble-word">ENKE</div>
+          <div class="input-line-wrap">
+            <input type="text" class="answer-input" id="input-5" data-answer="KNEE" placeholder="Type your answer..."
+              autocomplete="off" autocorrect="off" spellcheck="false">
+            <div class="underline-bar"></div>
+          </div>
+          <div class="feedback-icon" id="fb-5"></div>
+        </div>
+      </div>
+
+      <!-- Item 6 -->
+      <div class="quiz-row" id="row-6">
+        <div class="item-number">6.</div>
+        <div class="img-box">
+          <div class="img-placeholder">
+            <span class="placeholder-icon">🖼️</span>
+            <span class="placeholder-text">Image</span>
+          </div>
+        </div>
+        <div class="answer-area">
+          <div class="jumble-word">HEETH</div>
+          <div class="input-line-wrap">
+            <input type="text" class="answer-input" id="input-6" data-answer="TEETH" placeholder="Type your answer..."
+              autocomplete="off" autocorrect="off" spellcheck="false">
+            <div class="underline-bar"></div>
+          </div>
+          <div class="feedback-icon" id="fb-6"></div>
+        </div>
+      </div>
+
+      <!-- Item 7 -->
+      <div class="quiz-row" id="row-7">
+        <div class="item-number">7.</div>
+        <div class="img-box">
+          <div class="img-placeholder">
+            <span class="placeholder-icon">🖼️</span>
+            <span class="placeholder-text">Image</span>
+          </div>
+        </div>
+        <div class="answer-area">
+          <div class="jumble-word">EONS</div>
+          <div class="input-line-wrap">
+            <input type="text" class="answer-input" id="input-7" data-answer="NOSE" placeholder="Type your answer..."
+              autocomplete="off" autocorrect="off" spellcheck="false">
+            <div class="underline-bar"></div>
+          </div>
+          <div class="feedback-icon" id="fb-7"></div>
+        </div>
+      </div>
+
+      <!-- Item 8 -->
+      <div class="quiz-row" id="row-8">
+        <div class="item-number">8.</div>
+        <div class="img-box">
+          <div class="img-placeholder">
+            <span class="placeholder-icon">🖼️</span>
+            <span class="placeholder-text">Image</span>
+          </div>
+        </div>
+        <div class="answer-area">
+          <div class="jumble-word">IRAH</div>
+          <div class="input-line-wrap">
+            <input type="text" class="answer-input" id="input-8" data-answer="HAIR" placeholder="Type your answer..."
+              autocomplete="off" autocorrect="off" spellcheck="false">
+            <div class="underline-bar"></div>
+          </div>
+          <div class="feedback-icon" id="fb-8"></div>
+        </div>
+      </div>
+
+      <!-- Item 9 -->
+      <div class="quiz-row" id="row-9">
+        <div class="item-number">9.</div>
+        <div class="img-box">
+          <div class="img-placeholder">
+            <span class="placeholder-icon">🖼️</span>
+            <span class="placeholder-text">Image</span>
+          </div>
+        </div>
+        <div class="answer-area">
+          <div class="jumble-word">ILAN</div>
+          <div class="input-line-wrap">
+            <input type="text" class="answer-input" id="input-9" data-answer="NAIL" placeholder="Type your answer..."
+              autocomplete="off" autocorrect="off" spellcheck="false">
+            <div class="underline-bar"></div>
+          </div>
+          <div class="feedback-icon" id="fb-9"></div>
+        </div>
+      </div>
+
+      <!-- Item 10 -->
+      <div class="quiz-row" id="row-10">
+        <div class="item-number">10.</div>
+        <div class="img-box">
+          <div class="img-placeholder">
+            <span class="placeholder-icon">🖼️</span>
+            <span class="placeholder-text">Image</span>
+          </div>
+        </div>
+        <div class="answer-area">
+          <div class="jumble-word">BEYOWER</div>
+          <div class="input-line-wrap">
+            <input type="text" class="answer-input" id="input-10" data-answer="EYEBROW"
+              placeholder="Type your answer..." autocomplete="off" autocorrect="off" spellcheck="false">
+            <div class="underline-bar"></div>
+          </div>
+          <div class="feedback-icon" id="fb-10"></div>
+        </div>
+      </div>
+
+    </div><!-- end quiz-container -->
+
+    <div class="btn-row">
+      <button class="reset-btn" onclick="resetAnswers()">Reset</button>
+      <button class="check-btn" onclick="checkAnswers()">Check Answers</button>
+    </div>
+    <div class="result-msg" id="result-msg"></div>
+
+  </div><!-- end page -->
+
+  <script src="script.js"></script>
+</body>
+
+</html>
