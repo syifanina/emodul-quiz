@@ -1,0 +1,153 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&family=Quicksand:wght@300..700&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html,
+body {
+    width: 100%;
+    max-width: 100%;
+    overflow-x: hidden;
+    background: #e8e8e8;
+}
+
+body {
+    font-family: 'Quicksand', 'Inter', sans-serif;
+    font-size: 14px;
+    display: flex;
+    justify-content: center;
+    min-height: 100vh;
+}
+
+/* ── MOBILE-STYLE CONTAINER (Max-Width: 360px) ── */
+.page {
+    background: #ffffff;
+    width: 100%;
+    max-width: 360px; /* Fixed web size as requested */
+    min-height: 100vh;
+    padding: 24px 16px;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+/* ── TITLE ── */
+.title {
+    font-size: 18px;
+    font-weight: 700;
+    text-align: center;
+    margin-bottom: 20px;
+    color: #000;
+}
+
+/* ── IMAGE CONTAINER ── */
+.image-container {
+    position: relative;
+    width: 100%;
+    margin-bottom: 24px;
+    border-radius: 12px;
+    overflow: hidden;
+}
+
+.image-container img {
+    width: 100%;
+    display: block;
+    object-fit: cover;
+    border-radius: 12px;
+}
+
+/* ── SOUND BUTTON ── */
+.sound-btn {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    background: #ff0000;
+    color: white;
+    border: 2px solid #fff;
+    width: 36px;
+    height: 36px;
+    border-radius: 8px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: transform 0.2s, background 0.2s;
+    z-index: 10;
+}
+
+.sound-btn:hover {
+    transform: scale(1.1);
+}
+
+.sound-btn svg {
+    width: 20px;
+    height: 20px;
+    fill: currentColor;
+}
+
+/* ── PHRASE TABLE ── */
+.phrase-table {
+    width: 100%;
+    border-collapse: separate;
+    border-spacing: 0 8px;
+    margin: 0 auto;
+}
+
+.phrase-table td {
+    width: 100%;
+    vertical-align: middle;
+}
+
+.phrase {
+    font-size: 14px;
+    font-weight: 650;
+    padding: 12px 14px;
+    border-radius: 8px;
+    border: none;
+    transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    text-align: center;
+    color: #333;
+    cursor: pointer;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+}
+
+/* Base Pastel Colors */
+tr:nth-child(6n+1) .phrase { background: #fff5f8; }
+tr:nth-child(6n+2) .phrase { background: #f0f9ff; }
+tr:nth-child(6n+3) .phrase { background: #f0fff4; }
+tr:nth-child(6n+4) .phrase { background: #f5f3ff; }
+tr:nth-child(6n+5) .phrase { background: #fffaf5; }
+tr:nth-child(6n+6) .phrase { background: #f7fee7; }
+
+.phrase:hover {
+    background: #ffffff !important;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+}
+
+/* ── FUN HIGHLIGHT STATE (Warna-Warni) ── */
+.phrase.active {
+    color: #000 !important;
+    font-weight: 700;
+    transform: scale(1.04);
+    z-index: 5;
+}
+
+/* Cycle through 6 fun highlight colors */
+tr:nth-child(6n+1) .phrase.active { background: #ffb9d6 !important; box-shadow: 0 4px 12px rgba(255, 185, 214, 0.5); }
+tr:nth-child(6n+2) .phrase.active { background: #93eeff !important; box-shadow: 0 4px 12px rgba(147, 238, 255, 0.5); }
+tr:nth-child(6n+3) .phrase.active { background: #b2ffe1 !important; box-shadow: 0 4px 12px rgba(178, 255, 225, 0.5); }
+tr:nth-child(6n+4) .phrase.active { background: #dcd1ff !important; box-shadow: 0 4px 12px rgba(220, 209, 255, 0.5); }
+tr:nth-child(6n+5) .phrase.active { background: #ffc58f !important; box-shadow: 0 4px 12px rgba(255, 197, 143, 0.5); }
+tr:nth-child(6n+6) .phrase.active { background: #bdfcba !important; box-shadow: 0 4px 12px rgba(189, 252, 186, 0.5); }
+
+/* Responsive adjustments */
+@media (max-width: 360px) {
+    .page {
+        box-shadow: none;
+    }
+}
