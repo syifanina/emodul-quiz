@@ -1,0 +1,161 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&family=Quicksand:wght@300..700&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html,
+body {
+    width: 100%;
+    max-width: 100%;
+    overflow-x: hidden;
+}
+
+body {
+    background: #e8e8e8;
+    font-family: 'Quicksand', 'Inter', sans-serif;
+    font-size: 14px;
+    display: flex;
+    justify-content: center;
+    padding: 30px 20px;
+    min-height: 100vh;
+}
+
+/* ── A4 PAGE ── */
+.page {
+    background: #ffffff;
+    width: 21cm;
+    max-width: 100%;
+    min-height: 29.7cm;
+    padding: 2cm 2.5cm;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+/* ── TITLE ── */
+.title {
+    font-size: 18px;
+    font-weight: 700;
+    text-align: center;
+    margin-bottom: 24px;
+    color: #000;
+}
+
+/* ── IMAGE CONTAINER ── */
+.image-container {
+    position: relative;
+    width: 100%;
+    max-width: 600px;
+    margin-bottom: 30px;
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+.image-container img {
+    width: 100%;
+    display: block;
+    object-fit: cover;
+    border: 4px dashed #0ea5e9;
+    border-radius: 15px;
+    padding: 5px;
+    background: #f0f9ff;
+}
+
+/* ── SOUND BUTTON ── */
+.sound-btn {
+    position: absolute;
+    top: 15px;
+    right: 15px;
+    background: #ff0000;
+    color: white;
+    border: 2px solid #fff;
+    width: 40px;
+    height: 40px;
+    border-radius: 8px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: transform 0.2s, background 0.2s;
+    z-index: 10;
+}
+
+.sound-btn:hover {
+    transform: scale(1.1);
+    background: #d40000;
+}
+
+.sound-btn svg {
+    width: 24px;
+    height: 24px;
+    fill: currentColor;
+}
+
+/* ── PHRASE TABLE ── */
+.phrase-table {
+    width: 100%;
+    max-width: 450px;
+    border-collapse: separate;
+    border-spacing: 0 10px;
+    margin: 10px auto;
+}
+
+.phrase-table td {
+    width: 100%;
+    vertical-align: middle;
+}
+
+.phrase {
+    font-size: 14px;
+    font-weight: 650; /* Custom Semi-bold */
+    padding: 10px 16px;
+    border-radius: 12px;
+    background: #f8f9fa;
+    border: 2px solid #e0e0e0;
+    transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    text-align: center;
+    color: #333;
+    cursor: pointer;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+}
+
+.phrase:hover {
+    background: #ffffff;
+    border-color: #ff0000;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+}
+
+/* ── FUN HIGHLIGHT STATE (Warna-Warni) ── */
+.phrase.active {
+    color: #000 !important;
+    font-weight: 700; /* Bold */
+    transform: scale(1.06);
+    z-index: 5;
+}
+
+/* Cycle through 6 fun highlight colors */
+tr:nth-child(6n+1) .phrase.active { background: #ffb9d6 !important; border-color: #ff85b3 !important; box-shadow: 0 6px 0 #ff5e99, 0 10px 20px rgba(255, 185, 214, 0.4); }
+tr:nth-child(6n+2) .phrase.active { background: #93eeff !important; border-color: #5bdfff !important; box-shadow: 0 6px 0 #00c9f5, 0 10px 20px rgba(147, 238, 255, 0.4); }
+tr:nth-child(6n+3) .phrase.active { background: #b2ffe1 !important; border-color: #70ffc5 !important; box-shadow: 0 6px 0 #00e68e, 0 10px 20px rgba(178, 255, 225, 0.4); }
+tr:nth-child(6n+4) .phrase.active { background: #dcd1ff !important; border-color: #b3a1ff !important; box-shadow: 0 6px 0 #8c70ff, 0 10px 20px rgba(220, 209, 255, 0.4); }
+tr:nth-child(6n+5) .phrase.active { background: #ffc58f !important; border-color: #ffa14d !important; box-shadow: 0 6px 0 #ff8000, 0 10px 20px rgba(255, 197, 143, 0.4); }
+tr:nth-child(6n+6) .phrase.active { background: #bdfcba !important; border-color: #85f97e !important; box-shadow: 0 6px 0 #46e63a, 0 10px 20px rgba(189, 252, 186, 0.4); }
+
+/* ── RESPONSIVE ── */
+@media (max-width: 768px) {
+    .page {
+        padding: 1.5cm 1cm;
+        width: 100%;
+    }
+    
+    .phrase {
+        font-size: 13px;
+        padding: 8px 12px;
+    }
+}
