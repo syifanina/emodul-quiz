@@ -10,12 +10,13 @@ html,
 body {
     width: 100%;
     max-width: 100%;
-    overflow-x: hidden;
+    overflow: hidden; /* Matikan scroll manual pengguna */
     background: transparent;
     scroll-behavior: smooth;
     /* Sembunyikan scrollbar agar tidak double scroll di Genially */
     -ms-overflow-style: none;  /* IE and Edge */
     scrollbar-width: none;  /* Firefox */
+    touch-action: pan-x; /* Hanya izinkan geser kiri-kanan, kunci atas-bawah */
 }
 
 body::-webkit-scrollbar {
