@@ -12,16 +12,16 @@ body {
     background-color: transparent;
     display: flex;
     justify-content: center;
-    align-items: center;
-    height: 100vh;
-    overflow: hidden;
-    overscroll-behavior: none; /* Prevent bounce effect */
+    align-items: flex-start;
+    min-height: 100vh;
+    margin: 0;
+    overflow: hidden; /* We keep this to allow our inner scroll to work */
 }
 
 .page {
     width: 100%;
     max-width: 360px;
-    height: 100vh;
+    height: 100vh; /* Stay within iframe height */
     background-color: transparent;
     margin: 0 auto;
     display: flex;
@@ -84,7 +84,8 @@ body {
     padding: 15px;
     -webkit-overflow-scrolling: touch;
     scrollbar-width: none;
-    overscroll-behavior-y: contain; /* Lock inner scroll bounce */
+    /* Allow swipes to pass through to parent if possible */
+    touch-action: pan-y; 
 }
 
 .scroll-content::-webkit-scrollbar {
