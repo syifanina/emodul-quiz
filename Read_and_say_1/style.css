@@ -13,6 +13,13 @@ body {
     overflow-x: hidden;
     background: transparent;
     scroll-behavior: smooth;
+    /* Sembunyikan scrollbar agar tidak double scroll di Genially */
+    -ms-overflow-style: none;  /* IE and Edge */
+    scrollbar-width: none;  /* Firefox */
+}
+
+body::-webkit-scrollbar {
+    display: none; /* Chrome, Safari, Opera */
 }
 
 body {
