@@ -1,0 +1,879 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&family=Outfit:wght@400;500;600;700;800&family=Quicksand:wght@300..700&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html,
+body {
+    width: 100%;
+    max-width: 100%;
+    overflow: hidden; /* Matikan scroll manual pengguna di root */
+    background: transparent;
+    scroll-behavior: smooth;
+    -ms-overflow-style: none;  /* IE and Edge */
+    scrollbar-width: none;  /* Firefox */
+    touch-action: pan-y; /* Izinkan scroll vertikal */
+}
+
+body::-webkit-scrollbar {
+    display: none; /* Chrome, Safari, Opera */
+}
+
+body {
+    font-family: 'Outfit', 'Quicksand', sans-serif;
+    font-size: 14px;
+    display: flex;
+    justify-content: center;
+    min-height: 100vh;
+}
+
+/* ── MOBILE-STYLE CONTAINER (Max-Width: 360px) ── */
+.page {
+    background: transparent;
+    width: 100%;
+    max-width: 360px;
+    height: 100vh; /* Kunci tinggi sesuai layar/iframe */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    position: relative;
+    overflow: hidden;
+}
+
+/* ── MODULE HEADER (Sticky) ── */
+.module-header {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 16px 16px 10px 16px;
+    background: #fff; /* Pastikan background solid agar konten di bawahnya tidak terlihat saat scroll */
+    z-index: 100;
+    flex-shrink: 0;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.02);
+}
+
+.title-badge {
+    width: 90%;
+    max-width: 280px;
+    height: auto;
+    margin-bottom: 8px;
+}
+
+.instructions {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+}
+
+.instructions .en {
+    font-size: 14px;
+    font-weight: 600;
+    color: #1e293b;
+    margin-bottom: 4px;
+    line-height: 1.3;
+}
+
+.instructions .separator {
+    width: 100%;
+    border-top: 1.5px dotted #93c5fd;
+    margin: 6px 0;
+}
+
+.instructions .id {
+    font-size: 14px;
+    font-weight: 400;
+    color: #475569;
+    line-height: 1.3;
+}
+
+/* ── SCROLLABLE CONTENT ── */
+.scroll-content {
+    width: 100%;
+    flex-grow: 1;
+    overflow-y: auto;
+    padding: 0 12px 20px 12px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: none; /* Firefox */
+}
+
+.scroll-content::-webkit-scrollbar {
+    display: none; /* Chrome, Safari */
+}
+
+/* ── MODULE TITLE ── */
+.module-title {
+    font-size: 15px;
+    font-weight: 700;
+    text-align: center;
+    margin: 8px 0 10px 0;
+    color: #1e293b;
+    width: 100%;
+}
+
+/* ── STUDENT INFO CARD ── */
+.student-info-card {
+    width: 100%;
+    margin-bottom: 20px;
+    background: #ffffff;
+    border-radius: 20px;
+    border: 3px solid #bfdbfe; /* Light blue border */
+    padding: 16px;
+    box-shadow: 0 4px 15px rgba(147, 197, 253, 0.15);
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    position: relative;
+    /* Removed overflow: hidden to prevent clipping */
+}
+
+.info-row {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 12px;
+    width: 100%;
+}
+
+.icon-container {
+    flex-shrink: 0;
+    position: relative;
+}
+
+.icon-circle {
+    width: 38px;
+    height: 38px;
+    background: linear-gradient(135deg, #1e3a8a 0%, #1e40af 100%); /* Dark blue glossy */
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 4px 8px rgba(30, 58, 138, 0.3), inset 0 2px 4px rgba(255, 255, 255, 0.3);
+    border: 2px solid #ffffff;
+}
+
+.input-wrapper {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+}
+
+.student-label {
+    font-family: 'Outfit', sans-serif;
+    margin-bottom: 2px;
+}
+
+.student-label .en-label {
+    font-size: 14px;
+    font-weight: 600;
+    color: #0f172a;
+}
+
+.student-label .id-label {
+    font-size: 13px;
+    font-weight: 500;
+    color: #64748b;
+    margin-left: 2px;
+}
+
+.student-input {
+    width: 100%;
+    background: #f8fafc;
+    border: 2px solid #bfdbfe;
+    border-radius: 10px;
+    padding: 8px 12px;
+    font-family: 'Outfit', sans-serif;
+    font-size: 14px;
+    font-weight: 500;
+    color: #0f172a;
+    outline: none;
+    transition: all 0.2s;
+    border-left: 4px solid #facc15; /* Yellow accent line */
+}
+
+.student-input::placeholder {
+    color: #94a3b8;
+    font-weight: 400;
+}
+
+.student-input:focus {
+    border-color: #3b82f6;
+    background: #ffffff;
+    box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.1);
+}
+
+/* ── SCORING INFO CARD ── */
+.scoring-info-card {
+    width: 100%;
+    margin-bottom: 20px;
+    background: #fffbeb; /* Light yellow background */
+    border: 2px dashed #fcd34d; /* Yellow dashed border */
+    border-radius: 16px;
+    padding: 12px 16px;
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+    gap: 12px;
+}
+
+.scoring-icon {
+    font-size: 24px;
+    line-height: 1;
+    margin-top: 2px;
+}
+
+.scoring-text {
+    flex: 1;
+    font-family: 'Outfit', sans-serif;
+    color: #1e293b;
+}
+
+.scoring-title {
+    font-size: 14px;
+    margin-bottom: 4px;
+}
+
+.scoring-list {
+    margin: 0 0 6px 20px;
+    padding: 0;
+    font-size: 13px;
+    line-height: 1.4;
+    color: #475569;
+}
+
+.scoring-list li {
+    margin-bottom: 4px;
+}
+
+.scoring-list .point-badge {
+    color: #dc2626;
+    font-weight: 600;
+    display: inline-block;
+    margin-top: 4px;
+    background: #fef2f2;
+    padding: 2px 6px;
+    border-radius: 4px;
+}
+
+.scoring-total {
+    font-size: 13px;
+    color: #dc2626; /* Red */
+    background: #fef2f2;
+    padding: 4px 8px;
+    border-radius: 6px;
+    display: inline-block;
+    border: 1px solid #fecaca;
+    font-weight: 600;
+}
+
+.scoring-info-card .en-text {
+    font-weight: 600;
+    color: #0f172a;
+}
+
+.scoring-info-card .id-text {
+    font-weight: 500;
+    color: #64748b;
+    font-size: 0.9em;
+}
+
+/* ── QUESTION CARD ── */
+.question-card {
+    width: 100%;
+    margin-bottom: 12px;
+    background: #ffffff;
+    border-radius: 24px;
+    border: 3px solid #cbd5e1;
+    padding: 12px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.02);
+    transition: border-color 0.3s ease, box-shadow 0.3s ease;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 12px;
+    position: relative;
+}
+
+.question-card.example-card {
+    background: #f8fafc;
+    border-style: dashed;
+    border-color: #94a3b8;
+}
+
+/* ── CARTOON STAR NUMBER BADGE ── */
+.q-star-badge {
+    position: absolute;
+    top: 4px;
+    left: 4px;
+    width: 34px;
+    height: 34px;
+    z-index: 20;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.star-img {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    filter: drop-shadow(0 2px 3px rgba(0, 0, 0, 0.12));
+}
+
+.star-number {
+    position: relative;
+    font-family: 'Outfit', sans-serif;
+    font-weight: 800;
+    font-size: 12px;
+    color: #451a03; /* Matching Dark Brown Text */
+    margin-top: -1px; /* Centered vertically on the yellow face */
+    margin-left: -2px; /* Shifted left to compensate for right shadow */
+    text-shadow: 0 1px 0px rgba(255, 255, 255, 0.4);
+}
+
+.star-ex {
+    font-size: 9px;
+}
+
+/* ── GIF CONTAINER (SOFT BLUE CORNER BORDER) ── */
+.question-gif-container {
+    width: 105px;
+    height: 105px;
+    flex-shrink: 0;
+    border-radius: 18px;
+    overflow: hidden;
+    border: 4px solid #dbeafe; /* Soft blue border matching mockup */
+    background: #ffffff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+}
+
+.question-gif {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+/* ── DETAILS (FORCED EQUAL HEIGHT TO GIF) ── */
+.question-details {
+    flex-grow: 1;
+    min-height: 105px; /* Cocokkan minimal dengan tinggi GIF */
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    min-width: 0;
+}
+
+/* ── OPTIONS CONTAINER ── */
+.options-container {
+    display: flex;
+    flex-direction: column;
+    gap: 4px; /* Didekatkan sedikit sesuai permintaan */
+    width: 100%;
+}
+
+.option-item {
+    display: flex;
+    align-items: center;
+    padding: 2px 8px; /* Dipertipis atas dan bawahnya */
+    background: #ffffff;
+    border: 1.5px solid #e2e8f0; /* Soft light border */
+    border-radius: 10px;
+    cursor: pointer;
+    transition: all 0.15s cubic-bezier(0.4, 0, 0.2, 1);
+    position: relative;
+    user-select: none;
+    min-height: 24px; /* Dikecilkan agar lebih tipis */
+}
+
+.option-item:not(.disabled):hover {
+    border-color: #cbd5e1;
+    background: #f8fafc;
+}
+
+.option-item.selected {
+    border-color: #4f46e5;
+    background-color: #f5f3ff;
+}
+
+.option-letter {
+    width: 18px;
+    height: 18px;
+    border-radius: 50%;
+    background: #f8fafc;
+    border: 1.5px solid #cbd5e1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: 'Outfit', sans-serif;
+    font-size: 14px;
+    font-weight: 700;
+    color: #475569;
+    margin-right: 6px;
+    flex-shrink: 0;
+    position: relative;
+    transition: all 0.2s ease;
+}
+
+.option-text {
+    font-family: 'Outfit', sans-serif;
+    font-weight: 600; /* Bold font weight matching mockup */
+    color: #1e293b; /* Dark charcoal text */
+    font-size: 13px; /* Sedikit dikecilkan agar muat */
+    line-height: 1.1;
+    word-break: break-word; /* Biarkan teks turun ke bawah jika kepanjangan */
+}
+
+/* ── THE CROSS (X) OVERLAY ── */
+.option-item.selected .option-letter::before,
+.option-item.selected .option-letter::after,
+.option-item.crossed-example .option-letter::before,
+.option-item.crossed-example .option-letter::after {
+    content: '';
+    position: absolute;
+    width: 2px;
+    height: 100%;
+    background-color: #1e293b; /* Dark pencil cross */
+    border-radius: 1px;
+    top: 0;
+    left: calc(50% - 1px);
+    z-index: 10;
+    transition: background-color 0.2s ease;
+}
+
+.option-item.selected .option-letter::before,
+.option-item.crossed-example .option-letter::before {
+    transform: rotate(45deg);
+}
+
+.option-item.selected .option-letter::after,
+.option-item.crossed-example .option-letter::after {
+    transform: rotate(-45deg);
+}
+
+/* Disabled styling */
+.option-item.disabled {
+    cursor: not-allowed;
+    pointer-events: none;
+}
+
+/* ── CORRECT / INCORRECT VISUAL FEEDBACK ── */
+/* 1. Selected and Correct */
+.option-item.selected.correct {
+    border-color: #10b981 !important;
+    background-color: #ecfdf5 !important;
+}
+
+.option-item.selected.correct .option-letter {
+    background-color: #10b981 !important;
+    border-color: #10b981 !important;
+    color: #ffffff !important;
+}
+
+.option-item.selected.correct .option-letter::before,
+.option-item.selected.correct .option-letter::after {
+    background-color: #ffffff !important; /* White cross on green */
+}
+
+/* 2. Selected and Incorrect */
+.option-item.selected.incorrect {
+    border-color: #ef4444 !important;
+    background-color: #fef2f2 !important;
+}
+
+.option-item.selected.incorrect .option-letter {
+    background-color: #ef4444 !important;
+    border-color: #ef4444 !important;
+    color: #ffffff !important;
+}
+
+.option-item.selected.incorrect .option-letter::before,
+.option-item.selected.incorrect .option-letter::after {
+    background-color: #ffffff !important; /* White cross on red */
+}
+
+/* 3. Correct option but not selected by user */
+.option-item.correct:not(.selected) {
+    border-color: #10b981 !important;
+    background-color: #ecfdf5 !important;
+}
+
+.option-item.correct:not(.selected) .option-letter {
+    background-color: #10b981 !important;
+    border-color: #10b981 !important;
+    color: #ffffff !important;
+}
+
+.option-item.correct:not(.selected) .option-letter::before,
+.option-item.correct:not(.selected) .option-letter::after {
+    display: none; /* Do not show cross if the user did not select it */
+}
+
+/* ── ACTION BUTTONS ── */
+.quiz-actions {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    margin-top: 5px;
+}
+
+.reset-btn,
+.check-btn {
+    background: transparent;
+    border: none;
+    padding: 0;
+    cursor: pointer;
+    transition: transform 0.2s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    outline: none;
+}
+
+.reset-btn img,
+.check-btn img {
+    height: 44px; /* Sedikit dikecilkan agar pas di lebar 360px */
+    width: auto;
+    max-width: 100%;
+    display: block;
+}
+
+.reset-btn:hover:not(:disabled),
+.check-btn:hover:not(:disabled) {
+    transform: scale(1.08);
+}
+
+.reset-btn:active:not(:disabled),
+.check-btn:active:not(:disabled) {
+    transform: scale(0.95);
+}
+
+.check-btn:disabled {
+    filter: grayscale(100%);
+    opacity: 0.6;
+    cursor: not-allowed;
+    transform: none;
+}
+
+/* ── RESULT BOX ── */
+.result-msg {
+    width: 100%;
+    text-align: center;
+    padding: 10px;
+    margin-top: 12px;
+    border-radius: 10px;
+    font-family: 'Outfit', sans-serif;
+    font-weight: 700;
+    font-size: 14px;
+    animation: bounceIn 0.5s ease-out;
+}
+
+.result-msg.correct {
+    background-color: #ecfdf5;
+    color: #065f46;
+    border: 1.5px solid #059669;
+}
+
+.result-msg.incorrect {
+    background-color: #fef2f2;
+    color: #991b1b;
+    border: 1.5px solid #dc2626;
+}
+
+@keyframes bounceIn {
+    0% {
+        transform: scale(0.9);
+        opacity: 0;
+    }
+    50% {
+        transform: scale(1.05);
+    }
+    100% {
+        transform: scale(1);
+        opacity: 1;
+    }
+}
+
+/* ── SCORE BOX ── */
+.score-box {
+    width: 100%;
+    border-radius: 16px;
+    padding: 20px;
+    margin-top: 20px;
+    margin-bottom: 15px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    animation: bounceIn 0.6s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+.score-red {
+    background: linear-gradient(135deg, #ef4444 0%, #b91c1c 100%);
+    border: 3px solid #f87171;
+    box-shadow: 0 8px 15px rgba(239, 68, 68, 0.2);
+}
+
+.score-yellow {
+    background: linear-gradient(135deg, #f59e0b 0%, #d97706 100%);
+    border: 3px solid #fbbf24;
+    box-shadow: 0 8px 15px rgba(245, 158, 11, 0.2);
+}
+
+.score-light-green {
+    background: linear-gradient(135deg, #84cc16 0%, #4d7c0f 100%);
+    border: 3px solid #a3e635;
+    box-shadow: 0 8px 15px rgba(132, 204, 22, 0.2);
+}
+
+.score-blue {
+    background: linear-gradient(135deg, #3b82f6 0%, #1d4ed8 100%);
+    border: 3px solid #60a5fa;
+    box-shadow: 0 8px 15px rgba(59, 130, 246, 0.2);
+}
+
+.score-label {
+    font-family: 'Outfit', sans-serif;
+    font-weight: 800;
+    font-size: 16px;
+    color: #fff;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    margin-bottom: 4px;
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+.score-value {
+    font-family: 'Outfit', sans-serif;
+    font-weight: 800;
+    font-size: 48px;
+    color: #fff;
+    line-height: 1;
+    text-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+}
+
+/* Responsive adjustments */
+@media (max-width: 360px) {
+    .page {
+        box-shadow: none;
+    }
+}
+
+/* ── SECTION II : LOOK AND WRITE STYLE ── */
+.section-title {
+    width: 100%;
+    text-align: center;
+    margin: 32px 0 20px 0;
+    padding-top: 24px;
+    border-top: 3px dashed #cbd5e1;
+}
+
+.section-title .en {
+    font-size: 14px;
+    font-weight: 700;
+    color: #1e293b;
+    margin-bottom: 4px;
+}
+
+.section-title .separator {
+    width: 100%;
+    border-top: 1.5px dotted #93c5fd;
+    margin: 6px 0;
+}
+
+.section-title .id {
+    font-size: 14px;
+    font-weight: 500;
+    color: #475569;
+}
+
+.sec2-row {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    gap: 15px;
+    margin-bottom: 24px;
+    width: 100%;
+}
+
+/* ── LEFT SIDE (IMAGE CARD) ── */
+.sec2-img-card {
+    position: relative;
+    flex-shrink: 0;
+}
+
+/* PITA MERAH (BADGE) */
+.sec2-number-badge {
+    position: absolute;
+    top: 8px;
+    left: -6px;
+    background: #e53935;
+    color: white;
+    font-weight: 800;
+    padding: 4px 8px;
+    font-size: 14px;
+    border-radius: 4px 4px 4px 0;
+    z-index: 5;
+}
+
+.sec2-number-badge::after {
+    content: "";
+    position: absolute;
+    bottom: -6px;
+    left: 0;
+    border-top: 6px solid #b71c1c;
+    border-left: 6px solid transparent;
+}
+
+.sec2-example-badge {
+    font-size: 11px;
+}
+
+/* BINGKAI GAMBAR KOTAK SUDUT BUNDAR */
+.sec2-img-box {
+    width: 110px;
+    height: 110px;
+    border: 3px solid #cbd5e1;
+    border-radius: 16px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: #ffffff;
+    overflow: hidden;
+}
+
+.sec2-img-placeholder {
+    width: 90%;
+    height: 90%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.sec2-img-placeholder img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 8px;
+}
+
+/* ── RIGHT SIDE (ANSWER AREA) ── */
+.sec2-answer-area {
+    flex: 1;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: center;
+    gap: 10px;
+    padding-right: 28px; /* Reserve space for the feedback icon */
+}
+
+/* KOTAK INPUT */
+.sec2-input-container {
+    position: relative;
+    width: 100%;
+}
+
+.sec2-input-inner {
+    background: #fff9e6;
+    border: 2px solid #cbd5e1;
+    border-radius: 50px;
+    padding: 8px 10px;
+    position: relative;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.sec2-input-inner::before {
+    content: "";
+    position: absolute;
+    top: 2px;
+    left: 2px;
+    right: 2px;
+    bottom: 2px;
+    border: 1.5px dashed #e53935;
+    border-radius: 50px;
+    pointer-events: none;
+}
+
+.sec2-example-text {
+    font-size: 14px;
+    font-weight: bold;
+    color: #111;
+    z-index: 2;
+    text-align: center;
+}
+
+.sec2-answer-input {
+    width: 100%;
+    border: none;
+    outline: none;
+    font-size: 14px;
+    font-family: 'Outfit', sans-serif;
+    font-weight: bold;
+    background: transparent;
+    color: #111;
+    text-align: center;
+    z-index: 2;
+}
+
+.sec2-answer-input::placeholder {
+    font-size: 11px;
+    font-weight: normal;
+    color: #999;
+    text-transform: none;
+}
+
+.sec2-answer-input.correct {
+    color: #2e7d32;
+}
+
+.sec2-answer-input.wrong {
+    color: #c62828;
+}
+
+/* IKON CEKLIS/SILANG & JAWABAN BENAR */
+.sec2-feedback-icon {
+    position: absolute;
+    right: 0;
+    top: 50%;
+    transform: translateY(-50%);
+    font-size: 18px;
+    z-index: 10;
+    pointer-events: none;
+    font-family: 'Outfit', sans-serif;
+}
+
+.sec2-correct-hint {
+    position: absolute;
+    top: 100%;
+    left: 50%;
+    transform: translateX(-50%);
+    font-size: 14px;
+    font-weight: 800;
+    color: #2e7d32; /* Green */
+    margin-top: 4px;
+    white-space: nowrap;
+    display: none; /* Hidden by default */
+    z-index: 5;
+    text-transform: uppercase;
+}
