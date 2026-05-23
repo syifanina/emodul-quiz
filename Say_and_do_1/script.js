@@ -124,9 +124,9 @@ document.addEventListener('DOMContentLoaded', () => {
         card.gifDone = false;
         stopAtTime = time.end || null;
 
-        // Mulai GIF (tambahkan timestamp untuk memastikan reload animasi)
+        // Mulai GIF (tanpa timestamp agar bisa di-cache oleh browser)
         const gifSrc = gifLinks[actionName];
-        img.src = `${gifSrc}?t=${new Date().getTime()}`;
+        img.src = gifSrc;
 
         // Mulai Audio
         if (time.customAudio) {
