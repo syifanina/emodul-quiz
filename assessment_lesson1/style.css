@@ -364,6 +364,8 @@ body {
     align-items: center;
     justify-content: center;
     position: relative;
+    transform: translateZ(0); /* Hardware acceleration for GIF clipping */
+    will-change: transform;
 }
 
 .question-gif {
@@ -760,6 +762,8 @@ body {
     justify-content: center;
     background: #ffffff;
     overflow: hidden;
+    transform: translateZ(0); /* Hardware acceleration for GIF clipping */
+    will-change: transform;
 }
 
 .sec2-img-placeholder {
