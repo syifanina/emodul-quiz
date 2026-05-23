@@ -83,10 +83,6 @@ body {
 .scroll-content {
     flex-grow: 1;
     overflow-y: auto;
-    overflow-x: hidden;
-    -webkit-overflow-scrolling: touch;
-    overscroll-behavior-y: contain;
-    transform: translateZ(0);
     padding: 15px;
     -webkit-overflow-scrolling: touch;
     scrollbar-width: none;
