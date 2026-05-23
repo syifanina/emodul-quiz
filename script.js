@@ -1,0 +1,515 @@
+// ─────────────────────────────────────────────
+//  DRAG AND DROP — Logic (Mouse + Touch)
+//  Standardized to match Look_and_write_1 sequence
+// ─────────────────────────────────────────────
+
+// ── STATE ──
+let draggedWordId = null;
+let draggedWordText = null;
+let draggedWordColor = null;
+
+const dropZoneMap = {}; // { dropZoneId → { wordId, color } }
+
+// ── TOUCH STATE ──
+let touchGhost = null;
+let touchDragWordId = null;
+let touchDragWordText = null;
+let touchDragWordColor = null;
+let touchSourceDropZone = null;
+let isDragging = false;
+
+// ── CLICK-TO-SELECT STATE ──
+let selectedChipData = null; // { id, text, color }
+
+const TOTAL_QUESTIONS = 8;
+
+// ─────────────────────────────────────────────
+//  BOOTSTRAP
+// ─────────────────────────────────────────────
+
+document.addEventListener('DOMContentLoaded', function () {
+    // -- Word chips: listeners --
+    document.querySelectorAll('.word-chip:not(.chip-disabled)').forEach(function (chip) {
+        chip.addEventListener('touchstart', onChipTouchStart, { passive: false });
+        chip.addEventListener('click', onChipClick);
+    });
+
+    // -- Drop zones: click listener --
+    document.querySelectorAll('.drop-zone').forEach(function (zone) {
+        zone.addEventListener('click', onZoneClick);
+    });
+
+    // -- Document-level: touchmove blocks scroll only while drag active --
+    document.addEventListener('touchmove', onDocumentTouchMove, { passive: false });
+
+    // -- Document-level: touchend to finalize drop --
+    document.addEventListener('touchend', onDocumentTouchEnd, { passive: false });
+
+    updateSubmitButtonState();
+});
+
+// ── Sound Helpers ──
+function playClickSound() {
+    const snd = document.getElementById('click-audio');
+    if (snd) { snd.currentTime = 0; snd.play().catch(e => {}); }
+}
+
+function playCorrectSound() {
+    const snd = document.getElementById('correct-audio');
+    if (snd) { snd.currentTime = 0; snd.play().catch(e => {}); }
+}
+
+function playWrongSound() {
+    const snd = document.getElementById('wrong-audio');
+    if (snd) { snd.currentTime = 0; snd.play().catch(e => {}); }
+}
+
+// ── Button State ──
+function updateSubmitButtonState() {
+    const zones = document.querySelectorAll('.drop-zone[data-answer]');
+    const allFilled = Array.from(zones).every(z => z.classList.contains('filled'));
+    const submitBtn = document.querySelector('.check-btn');
+    
+    if (submitBtn) {
+        if (allFilled) {
+            submitBtn.style.opacity = '1';
+            submitBtn.style.pointerEvents = 'auto';
+            submitBtn.style.cursor = 'pointer';
+        } else {
+            submitBtn.style.opacity = '0.5';
+            submitBtn.style.pointerEvents = 'none';
+            submitBtn.style.cursor = 'not-allowed';
+        }
+    }
+}
+
+// ─────────────────────────────────────────────
+//  MOUSE DRAG EVENTS
+// ─────────────────────────────────────────────
+
+function dragStart(event) {
+    playClickSound();
+    const el = event.currentTarget;
+    draggedWordId = el.id;
+    draggedWordText = el.textContent.trim();
+    draggedWordColor = el.dataset.color || '#f1f5f9';
+    el.classList.add('dragging');
+
+    event.dataTransfer.setData('text/plain', draggedWordText);
+    event.dataTransfer.setData('wordId', draggedWordId);
+    event.dataTransfer.setData('wordColor', draggedWordColor);
+    event.dataTransfer.effectAllowed = 'move';
+}
+
+function allowDrop(event) {
+    event.preventDefault();
+    event.currentTarget.classList.add('drag-over');
+    event.dataTransfer.dropEffect = 'move';
+}
+
+function dropWord(event) {
+    event.preventDefault();
+    const zone = event.currentTarget;
+    zone.classList.remove('drag-over');
+
+    const wordText = event.dataTransfer.getData('text/plain');
+    const wordId = event.dataTransfer.getData('wordId');
+    const wordColor = event.dataTransfer.getData('wordColor') || '#f1f5f9';
+    if (!wordText) return;
+
+    returnWordFromZone(zone.id);
+    returnWordFromZoneByWordId(wordId);
+    placeWordInZone(zone, wordText, wordId, wordColor);
+    markChipUsed(wordId, true);
+
+    if (draggedWordId) {
+        const chip = document.getElementById(draggedWordId);
+        if (chip) chip.classList.remove('dragging');
+    }
+    draggedWordId = draggedWordText = draggedWordColor = null;
+    clearFeedback();
+    updateSubmitButtonState();
+}
+
+/** Drag out of a filled zone back to somewhere else */
+function dragFromZone(event) {
+    const zone = event.currentTarget;
+    const span = zone.querySelector('.dropped-word');
+    const wordText = span ? span.textContent.trim() : '';
+    const wordId = zone.dataset.wordId || '';
+    const wordColor = zone.dataset.wordColor || '#f1f5f9';
+
+    draggedWordId = wordId;
+    draggedWordText = wordText;
+    draggedWordColor = wordColor;
+
+    event.dataTransfer.setData('text/plain', wordText);
+    event.dataTransfer.setData('wordId', wordId);
+    event.dataTransfer.setData('wordColor', wordColor);
+    event.dataTransfer.effectAllowed = 'move';
+
+    clearDropZone(zone);
+    markChipUsed(wordId, false);
+    clearFeedback();
+    updateSubmitButtonState();
+}
+
+document.addEventListener('dragleave', function (e) {
+    if (e.target.classList && e.target.classList.contains('drop-zone'))
+        e.target.classList.remove('drag-over');
+});
+
+document.addEventListener('dragend', function (e) {
+    if (e.target.classList && e.target.classList.contains('word-chip'))
+        e.target.classList.remove('dragging');
+    document.querySelectorAll('.drop-zone').forEach(z => z.classList.remove('drag-over'));
+    draggedWordId = draggedWordText = draggedWordColor = null;
+});
+
+
+// ─────────────────────────────────────────────
+//  TOUCH EVENTS
+// ─────────────────────────────────────────────
+
+function onChipTouchStart(event) {
+    const el = event.currentTarget;
+    if (el.classList.contains('used') || el.classList.contains('chip-disabled')) return;
+
+    playClickSound();
+    touchDragWordId = el.id;
+    touchDragWordText = el.textContent.trim();
+    touchDragWordColor = el.dataset.color || '#f1f5f9';
+    touchSourceDropZone = null;
+    isDragging = true;
+
+    el.classList.add('dragging');
+    createTouchGhost(touchDragWordText, touchDragWordColor);
+    moveTouchGhost(event.touches[0]);
+
+    event.preventDefault();
+}
+
+function onFilledZoneTouchStart(event) {
+    const zone = event.currentTarget;
+    if (!zone.classList.contains('filled')) return;
+
+    playClickSound();
+    const span = zone.querySelector('.dropped-word');
+    touchDragWordText = span ? span.textContent.trim() : '';
+    touchDragWordId = zone.dataset.wordId || '';
+    touchDragWordColor = zone.dataset.wordColor || '#f1f5f9';
+    touchSourceDropZone = zone.id;
+    isDragging = true;
+
+    createTouchGhost(touchDragWordText, touchDragWordColor);
+    moveTouchGhost(event.touches[0]);
+
+    event.preventDefault();
+}
+
+function onDocumentTouchMove(event) {
+    if (!isDragging) return;
+    event.preventDefault();
+
+    moveTouchGhost(event.touches[0]);
+
+    document.querySelectorAll('.drop-zone').forEach(z => z.classList.remove('drag-over'));
+    const zoneUnder = getDropZoneUnderTouch(event.touches[0]);
+    if (zoneUnder) zoneUnder.classList.add('drag-over');
+}
+
+function onDocumentTouchEnd(event) {
+    if (!isDragging) return;
+
+    document.querySelectorAll('.drop-zone').forEach(z => z.classList.remove('drag-over'));
+    removeTouchGhost();
+
+    const touch = event.changedTouches[0];
+    const zoneUnder = getDropZoneUnderTouch(touch);
+
+    if (zoneUnder) {
+        returnWordFromZone(zoneUnder.id);
+        if (touchSourceDropZone) {
+            clearDropZone(document.getElementById(touchSourceDropZone));
+        } else {
+            markChipUsed(touchDragWordId, true);
+        }
+        placeWordInZone(zoneUnder, touchDragWordText, touchDragWordId, touchDragWordColor);
+    } else {
+        if (touchSourceDropZone) {
+            clearDropZone(document.getElementById(touchSourceDropZone));
+        }
+        markChipUsed(touchDragWordId, false);
+    }
+
+    if (touchDragWordId) {
+        const chip = document.getElementById(touchDragWordId);
+        if (chip) chip.classList.remove('dragging');
+    }
+
+    touchDragWordId = touchDragWordText = touchDragWordColor = null;
+    touchSourceDropZone = null;
+    isDragging = false;
+    clearFeedback();
+    updateSubmitButtonState();
+}
+
+// ─────────────────────────────────────────────
+//  GHOST ELEMENT
+// ─────────────────────────────────────────────
+
+function createTouchGhost(text, color) {
+    let ghost = document.getElementById('touch-ghost');
+    if (!ghost) {
+        ghost = document.createElement('div');
+        ghost.id = 'touch-ghost';
+        document.body.appendChild(ghost);
+    }
+    ghost.textContent = text;
+    ghost.style.background = color || '#fff';
+    ghost.style.display = 'block';
+    touchGhost = ghost;
+}
+
+function moveTouchGhost(touch) {
+    if (!touchGhost) return;
+    touchGhost.style.left = (touch.clientX - 60) + 'px';
+    touchGhost.style.top = (touch.clientY - 24) + 'px';
+}
+
+function removeTouchGhost() {
+    const g = document.getElementById('touch-ghost');
+    if (g) g.style.display = 'none';
+    touchGhost = null;
+}
+
+function getDropZoneUnderTouch(touch) {
+    for (const zone of document.querySelectorAll('.drop-zone')) {
+        const r = zone.getBoundingClientRect();
+        if (touch.clientX >= r.left && touch.clientX <= r.right &&
+            touch.clientY >= r.top && touch.clientY <= r.bottom) {
+            return zone;
+        }
+    }
+    return null;
+}
+
+// ─────────────────────────────────────────────
+//  ZONE HELPERS
+// ─────────────────────────────────────────────
+
+function placeWordInZone(zone, wordText, wordId, wordColor) {
+    zone.classList.add('filled');
+    zone.classList.remove('correct', 'incorrect', 'drag-over');
+    zone.dataset.wordId = wordId;
+    zone.dataset.wordColor = wordColor;
+    zone.style.background = wordColor || '#f1f5f9';
+
+    zone.innerHTML = '';
+    const span = document.createElement('span');
+    span.className = 'dropped-word';
+    span.textContent = wordText;
+    zone.appendChild(span);
+
+    zone.setAttribute('draggable', 'true');
+    zone.setAttribute('ondragstart', 'dragFromZone(event)');
+
+    zone.removeEventListener('touchstart', onFilledZoneTouchStart);
+    zone.addEventListener('touchstart', onFilledZoneTouchStart, { passive: false });
+
+    dropZoneMap[zone.id] = { wordId, wordColor };
+}
+
+function returnWordFromZone(zoneId) {
+    const entry = dropZoneMap[zoneId];
+    if (!entry) return;
+    const zone = document.getElementById(zoneId);
+    if (zone) clearDropZone(zone);
+    markChipUsed(entry.wordId, false);
+    delete dropZoneMap[zoneId];
+}
+
+function returnWordFromZoneByWordId(wordId) {
+    for (const [zoneId, entry] of Object.entries(dropZoneMap)) {
+        if (entry.wordId === wordId) {
+            const zone = document.getElementById(zoneId);
+            if (zone) clearDropZone(zone);
+            delete dropZoneMap[zoneId];
+            break;
+        }
+    }
+}
+
+function clearDropZone(zone) {
+    zone.classList.remove('filled', 'correct', 'incorrect', 'drag-over');
+    zone.removeAttribute('draggable');
+    zone.removeAttribute('ondragstart');
+    zone.removeEventListener('touchstart', onFilledZoneTouchStart);
+    delete zone.dataset.wordId;
+    delete zone.dataset.wordColor;
+    zone.style.background = '';
+    zone.innerHTML = '';
+    if (dropZoneMap[zone.id]) delete dropZoneMap[zone.id];
+}
+
+function markChipUsed(wordId, used) {
+    if (!wordId) return;
+    const chip = document.getElementById(wordId);
+    if (!chip) return;
+    if (used) chip.classList.add('used');
+    else chip.classList.remove('used', 'dragging');
+}
+
+
+// ─────────────────────────────────────────────
+//  CHECK & RESET (Look_and_write_1 Style)
+// ─────────────────────────────────────────────
+
+async function checkAnswers() {
+    playClickSound();
+    deselectAllChips();
+    const submitBtn = document.querySelector('.check-btn');
+    const resetBtn = document.querySelector('.reset-btn');
+    const resultMsg = document.getElementById('result-msg');
+    
+    // Lock buttons
+    if (submitBtn) {
+        submitBtn.style.opacity = '0.5';
+        submitBtn.style.pointerEvents = 'none';
+    }
+    if (resetBtn) {
+        resetBtn.style.opacity = '0.5';
+        resetBtn.style.pointerEvents = 'none';
+    }
+
+    resultMsg.textContent = "Checking your answers...";
+    resultMsg.style.color = '#475569';
+
+    let correctCount = 0;
+
+    for (let i = 1; i <= TOTAL_QUESTIONS; i++) {
+        const zone = document.getElementById('drop-' + i);
+        if (!zone) continue;
+
+        // Auto scroll to current row
+        const row = zone.closest('.quiz-row');
+        if (row) {
+            row.scrollIntoView({ behavior: 'smooth', block: 'center' });
+        }
+        
+        await new Promise(resolve => setTimeout(resolve, 800));
+
+        const expected = (zone.dataset.answer || '').toLowerCase().trim();
+        const placed = zone.querySelector('.dropped-word')
+            ? zone.querySelector('.dropped-word').textContent.toLowerCase().trim()
+            : '';
+
+        if (placed === expected) {
+            correctCount++;
+            zone.classList.add('correct');
+            zone.classList.remove('incorrect');
+            playCorrectSound();
+        } else {
+            zone.classList.add('incorrect');
+            zone.classList.remove('correct');
+            playWrongSound();
+        }
+
+        await new Promise(resolve => setTimeout(resolve, 600));
+    }
+
+    // Unlock buttons
+    if (submitBtn) {
+        submitBtn.style.opacity = '1';
+        submitBtn.style.pointerEvents = 'auto';
+    }
+    if (resetBtn) {
+        resetBtn.style.opacity = '1';
+        resetBtn.style.pointerEvents = 'auto';
+    }
+
+    if (correctCount === TOTAL_QUESTIONS) {
+        resultMsg.textContent = `🎉 Perfect! All ${TOTAL_QUESTIONS} answers are correct!`;
+        resultMsg.style.color = '#166534';
+    } else {
+        resultMsg.textContent = `You got ${correctCount} out of ${TOTAL_QUESTIONS} correct. Try again!`;
+        resultMsg.style.color = '#991b1b';
+    }
+    resultMsg.scrollIntoView({ behavior: 'smooth', block: 'center' });
+}
+
+function resetQuiz() {
+    playClickSound();
+    document.querySelectorAll('.drop-zone[data-answer]').forEach(clearDropZone);
+    for (const k in dropZoneMap) delete dropZoneMap[k];
+    document.querySelectorAll('.word-chip').forEach(c => c.classList.remove('used', 'dragging'));
+    deselectAllChips();
+    clearFeedback();
+    updateSubmitButtonState();
+}
+
+function clearFeedback() {
+    const msg = document.getElementById('result-msg');
+    if (msg) msg.textContent = '';
+    document.querySelectorAll('.drop-zone').forEach(z => {
+        z.classList.remove('correct', 'incorrect');
+        if (z.classList.contains('filled') && z.dataset.wordColor) {
+            z.style.background = z.dataset.wordColor;
+        }
+    });
+}
+
+// ─────────────────────────────────────────────
+//  CLICK-TO-SELECT LOGIC
+// ─────────────────────────────────────────────
+
+function onChipClick(event) {
+    const el = event.currentTarget;
+    if (el.classList.contains('used') || el.classList.contains('chip-disabled')) return;
+
+    playClickSound();
+
+    // If clicking the already selected chip → deselect it
+    if (selectedChipData && selectedChipData.id === el.id) {
+        deselectAllChips();
+        return;
+    }
+
+    // New selection
+    deselectAllChips();
+    el.classList.add('selected');
+    selectedChipData = {
+        id: el.id,
+        text: el.textContent.trim(),
+        color: el.dataset.color || '#f1f5f9'
+    };
+}
+
+function onZoneClick(event) {
+    const zone = event.currentTarget;
+
+    // 1. If a chip is selected → place it here
+    if (selectedChipData) {
+        playClickSound();
+        returnWordFromZone(zone.id);
+        placeWordInZone(zone, selectedChipData.text, selectedChipData.id, selectedChipData.color);
+        markChipUsed(selectedChipData.id, true);
+        deselectAllChips();
+        clearFeedback();
+        updateSubmitButtonState();
+        return;
+    }
+
+    // 2. If NO chip is selected but zone is filled → return word to bank
+    if (zone.classList.contains('filled')) {
+        playClickSound();
+        returnWordFromZone(zone.id);
+        clearFeedback();
+        updateSubmitButtonState();
+    }
+}
+
+function deselectAllChips() {
+    document.querySelectorAll('.word-chip').forEach(c => c.classList.remove('selected'));
+    selectedChipData = null;
+}
