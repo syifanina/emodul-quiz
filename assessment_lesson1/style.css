@@ -97,6 +97,10 @@ body {
     width: 100%;
     flex-grow: 1;
     overflow-y: auto;
+    overflow-x: hidden;
+    -webkit-overflow-scrolling: touch;
+    overscroll-behavior-y: contain;
+    transform: translateZ(0);
     padding: 0 12px 20px 12px;
     display: flex;
     flex-direction: column;
@@ -360,8 +364,6 @@ body {
     align-items: center;
     justify-content: center;
     position: relative;
-    transform: translateZ(0); /* Hardware acceleration for GIF clipping */
-    will-change: transform;
 }
 
 .question-gif {
@@ -758,8 +760,6 @@ body {
     justify-content: center;
     background: #ffffff;
     overflow: hidden;
-    transform: translateZ(0); /* Hardware acceleration for GIF clipping */
-    will-change: transform;
 }
 
 .sec2-img-placeholder {
