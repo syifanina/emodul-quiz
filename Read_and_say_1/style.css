@@ -94,12 +94,8 @@ body {
 /* ── SCROLLABLE CONTENT ── */
 .scroll-content {
     width: 100%;
-    flex-grow: 1;
+    flex-grow: 1;   
     overflow-y: auto;
-    overflow-x: hidden;
-    -webkit-overflow-scrolling: touch;
-    overscroll-behavior-y: contain;
-    transform: translateZ(0);
     padding: 0 16px 24px 16px;
     display: flex;
     flex-direction: column;
