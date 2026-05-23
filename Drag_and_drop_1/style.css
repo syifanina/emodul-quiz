@@ -1,583 +1,515 @@
-@import url('https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700&family=Quicksand:wght@300..700&display=swap');
+// ─────────────────────────────────────────────
+//  DRAG AND DROP — Logic (Mouse + Touch)
+//  Standardized to match Look_and_write_1 sequence
+// ─────────────────────────────────────────────
 
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
+// ── STATE ──
+let draggedWordId = null;
+let draggedWordText = null;
+let draggedWordColor = null;
+
+const dropZoneMap = {}; // { dropZoneId → { wordId, color } }
+
+// ── TOUCH STATE ──
+let touchGhost = null;
+let touchDragWordId = null;
+let touchDragWordText = null;
+let touchDragWordColor = null;
+let touchSourceDropZone = null;
+let isDragging = false;
+
+// ── CLICK-TO-SELECT STATE ──
+let selectedChipData = null; // { id, text, color }
+
+const TOTAL_QUESTIONS = 8;
+
+// ─────────────────────────────────────────────
+//  BOOTSTRAP
+// ─────────────────────────────────────────────
+
+document.addEventListener('DOMContentLoaded', function () {
+    // -- Word chips: listeners --
+    document.querySelectorAll('.word-chip:not(.chip-disabled)').forEach(function (chip) {
+        chip.addEventListener('touchstart', onChipTouchStart, { passive: false });
+        chip.addEventListener('click', onChipClick);
+    });
+
+    // -- Drop zones: click listener --
+    document.querySelectorAll('.drop-zone').forEach(function (zone) {
+        zone.addEventListener('click', onZoneClick);
+    });
+
+    // -- Document-level: touchmove blocks scroll only while drag active --
+    document.addEventListener('touchmove', onDocumentTouchMove, { passive: false });
+
+    // -- Document-level: touchend to finalize drop --
+    document.addEventListener('touchend', onDocumentTouchEnd, { passive: false });
+
+    updateSubmitButtonState();
+});
+
+// ── Sound Helpers ──
+function playClickSound() {
+    const snd = document.getElementById('click-audio');
+    if (snd) { snd.currentTime = 0; snd.play().catch(e => {}); }
 }
 
-html,
-body {
-    width: 100%;
-    max-width: 100%;
-    overflow: hidden; /* Matikan scroll manual pengguna */
-    background: transparent;
-    scroll-behavior: smooth;
-    -ms-overflow-style: none;  /* IE and Edge */
-    scrollbar-width: none;  /* Firefox */
-    touch-action: pan-y; /* Izinkan scroll vertikal */
+function playCorrectSound() {
+    const snd = document.getElementById('correct-audio');
+    if (snd) { snd.currentTime = 0; snd.play().catch(e => {}); }
 }
 
-body::-webkit-scrollbar {
-    display: none; /* Chrome, Safari, Opera */
+function playWrongSound() {
+    const snd = document.getElementById('wrong-audio');
+    if (snd) { snd.currentTime = 0; snd.play().catch(e => {}); }
 }
 
-body {
-    font-family: 'Outfit', 'Quicksand', sans-serif;
-    font-size: 14px;
-    display: flex;
-    justify-content: center;
-    min-height: 100vh;
-}
-
-/* ── MOBILE-STYLE CONTAINER (Max-Width: 360px) ── */
-.page {
-    background: transparent;
-    width: 100%;
-    max-width: 360px;
-    height: 100vh; /* Kunci tinggi sesuai layar/iframe */
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    position: relative;
-    overflow: hidden;
-}
-
-/* ── MODULE HEADER (Sticky) ── */
-.module-header {
-    width: 100%;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    padding: 24px 16px 10px 16px;
-    background: #fff; /* Pastikan background solid */
-    z-index: 100;
-    flex-shrink: 0;
-}
-
-.title-badge {
-    width: 90%;
-    max-width: 280px;
-    height: auto;
-    margin-bottom: 8px;
-}
-
-.instructions {
-    width: 100%;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    text-align: center;
-}
-
-.instructions .en {
-    font-size: 14px;
-    font-weight: 600;
-    color: #1e293b;
-    margin-bottom: 4px;
-}
-
-.instructions .separator {
-    width: 100%;
-    border-top: 2px dotted #93c5fd;
-    margin: 8px 0;
-}
-
-.instructions .id {
-    font-size: 14px;
-    font-weight: 400;
-    color: #475569;
-}
-
-/* ── SCROLLABLE CONTENT ── */
-.scroll-content {
-    width: 100%;
-    flex-grow: 1;
-    overflow-y: auto;
-    padding: 20px 16px 24px 16px;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    -webkit-overflow-scrolling: touch;
-    scrollbar-width: none; /* Firefox */
-}
-
-.scroll-content::-webkit-scrollbar {
-    display: none; /* Chrome, Safari */
-}
-
-/* ── INTRO SECTION (Following Read_and_say_1) ── */
-.intro-section {
-    width: 100%;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    margin-bottom: 24px;
-}
-
-.intro-title {
-    font-size: 18px;
-    font-weight: 700;
-    text-align: center;
-    margin-bottom: 5px;
-    color: #1e293b;
-    width: 100%;
-}
-
-.intro-image-container {
-    width: 100%;
-    margin: 5px 0 16px 0;
-    border-radius: 20px;
-    overflow: hidden;
-    border: 5px solid #cbd5e1;
-    background: transparent;
-    transform: translateZ(0); /* Hardware acceleration for GIF */
-    will-change: transform;
-}
-
-.intro-gif {
-    width: 100%;
-    display: block;
-    object-fit: cover;
-}
-
-.intro-text-block {
-    width: 100%;
-    text-align: center;
-    display: flex;
-    flex-direction: column;
-    gap: 4px;
-}
-
-.intro-text-block p {
-    font-size: 14px;
-    font-weight: 500;
-    color: #334155;
-    line-height: 1.5;
-}
-
-/* ══════════════════════════════════════
-   QUIZ ROWS
-   ══════════════════════════════════════ */
-
-.quiz-row {
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    gap: 12px;
-    margin-bottom: 15px;
-    width: 100%;
-    min-height: 80px;
-}
-
-.example-row {
-    margin-bottom: 20px;
-}
-
-/* column order helpers */
-.left-img {
-    order: 0;
-}
-
-.sentence-area {
-    order: 1;
-    flex: 1;
-}
-
-.right-img {
-    order: 2;
-}
-
-/* ── IMAGE PLACEHOLDER ── */
-.img-side {
-    flex-shrink: 0;
-    width: 90px;
-}
-
-.img-placeholder {
-    width: 90px;
-    height: 90px;
-    border: 1px solid #111;
-    border-radius: 12px;
-    background: #fff;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    position: relative;
-    overflow: hidden;
-    flex-shrink: 0;
-    transform: translateZ(0); /* Hardware acceleration for GIF clipping */
-    will-change: transform;
-}
-
-/* img tag inside placeholder */
-.img-placeholder img {
-    position: absolute;
-    inset: 0;
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-}
-
-/* number / EXAMPLE badge on image */
-.img-badge {
-    position: absolute;
-    top: 8px;
-    left: -4px;
-    background: #e53935;
-    color: white;
-    font-weight: 800;
-    padding: 4px 8px;
-    font-size: 12px;
-    border-radius: 4px 4px 4px 0;
-    z-index: 5;
-    font-family: 'Outfit', sans-serif;
-}
-
-.img-badge::after {
-    content: "";
-    position: absolute;
-    bottom: -6px;
-    left: 0;
-    border-top: 6px solid #b71c1c;
-    border-left: 6px solid transparent;
-}
-
-.badge-example {
-    font-size: 10px;
-    padding: 4px 6px;
-}
-
-.badge-example-top {
-    background: #e53935;
-    color: white;
-    font-weight: 800;
-    padding: 3px 10px;
-    font-size: 11px;
-    border-radius: 12px;
-    font-family: 'Outfit', sans-serif;
-    text-align: center;
-}
-
-.img-hint {
-    font-size: 9px;
-    color: #cbd5e1;
-    font-family: 'Outfit', sans-serif;
-    margin-top: 22px;
-    pointer-events: none;
-    user-select: none;
-}
-
-/* ── SENTENCE TEXT ── */
-.sentence-area {
-    display: flex;
-    align-items: center;
-}
-
-.sentence-text {
-    font-size: 13px;
-    font-family: 'Outfit', sans-serif;
-    line-height: 1.6;
-    display: inline;
-    color: #1e293b;
-}
-
-/* ── EXAMPLE ELEMENTS ── */
-.example-label-tag {
-    font-size: 11px;
-    font-weight: 700;
-    color: #ef4444;
-}
-
-.example-answer-box {
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    padding: 2px 8px;
-    background: #fef9c3;
-    border: 1px solid #facc15;
-    border-radius: 6px;
-    font-size: 13px;
-    font-weight: 700;
-    color: #854d0e;
-    vertical-align: middle;
-}
-
-/* ── DROP ZONES ── */
-.drop-zone {
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    min-width: 100px;
-    height: 28px;
-    background: #f1f5f9;
-    border-radius: 50px;
-    border: 1px dashed #93c5fd;
-    cursor: pointer;
-    vertical-align: middle;
-    position: relative;
-    transition: all 0.2s;
-    font-size: 12px;
-    font-family: 'Outfit', sans-serif;
-    font-weight: 600;
-    color: #334155;
-    padding: 0 10px;
-    white-space: nowrap;
-    margin: 2px 0;
-}
-
-.drop-zone-wide {
-    min-width: 140px;
-}
-
-.drop-zone.drag-over {
-    background: #dbeafe;
-    border-color: #3b82f6;
-    transform: scale(1.05);
-}
-
-.drop-zone.filled {
-    border-style: solid;
-    border-color: #111;
-    color: #111;
-}
-
-.drop-zone.correct {
-    background: #dcfce7 !important;
-    border-color: #22c55e !important;
-    color: #166534 !important;
-}
-
-.drop-zone.incorrect {
-    background: #fee2e2 !important;
-    border-color: #ef4444 !important;
-    color: #991b1b !important;
-}
-
-.drop-zone .dropped-word {
-    font-size: 12px;
-    font-weight: 700;
-    pointer-events: none;
-    user-select: none;
-}
-
-/* ── GOOD JOB TEXT ── */
-.good-job {
-    font-size: 13px;
-    font-weight: 700;
-    color: #ef4444;
-    font-style: italic;
-    display: block;
-    margin-bottom: 2px;
-}
-
-/* ══════════════════════════════════════
-   INFO BOX
-   ══════════════════════════════════════ */
-.info-area {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 8px;
-    margin: 20px 0;
-}
-
-.info-box {
-    background: url('https://lh3.googleusercontent.com/d/1j3geTllKM2hpE_oqdsyQab96N5lut9Mt') no-repeat center;
-    background-size: contain;
-    padding: 10px 30px 22px 30px; /* Reduced top, increased bottom to push text UP */
-    font-size: 13px;
-    font-weight: 700;
-    color: #d81b60; /* Pink font color */
-    text-align: center;
-    line-height: 1.4;
-    width: 100%;
-    max-width: 340px;
-    border: none;
-    min-height: 100px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-}
-
-/* ══════════════════════════════════════
-   WORD BANK
-   ══════════════════════════════════════ */
-.wordbank-section {
-    margin: 16px 0 20px 0;
-    width: 100%;
-}
-
-.wordbank-label {
-    font-size: 14px;
-    font-weight: 800;
-    text-align: center;
-    padding: 8px 0;
-    background: #7b1010;
-    color: #ffef00;
-    border-radius: 50px;
-    width: 100%;
-    display: block;
-    margin-bottom: 12px;
-    letter-spacing: 1px;
-}
-
-.wordbank {
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    gap: 6px;
-    padding: 8px;
-    border: 2px solid #c0392b;
-    border-radius: 10px;
-    background: #fff;
-    width: 100%;
-}
-
-/* ── Word Chips ── */
-.word-chip {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    padding: 4px 6px;
-    border-radius: 6px;
-    font-size: 11px;
-    font-weight: 700;
-    color: #1e293b;
-    cursor: grab;
-    user-select: none;
-    text-align: center;
-    line-height: 1.1;
-    transition: all 0.2s;
-    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05);
-    min-height: 28px;
-    border: 1px solid rgba(0,0,0,0.1);
-    touch-action: none;
-}
-
-.word-chip:hover {
-    transform: translateY(-2px);
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-}
-
-.word-chip:active {
-    cursor: grabbing;
-    transform: scale(0.98);
-}
-
-.word-chip.dragging {
-    opacity: 0.4;
-    transform: scale(0.9);
-}
-
-.word-chip.selected {
-    outline: 2px solid #ef4444;
-    outline-offset: 2px;
-    box-shadow: 0 0 12px rgba(239, 68, 68, 0.4);
-    transform: scale(1.05);
-}
-
-.word-chip.used {
-    opacity: 0.3;
-    cursor: not-allowed;
-    pointer-events: none;
-    background: #f1f5f9 !important;
-    border-color: #e2e8f0;
-}
-
-.chip-disabled {
-    background: #f1f5f9 !important;
-    color: #94a3b8 !important;
-    cursor: not-allowed !important;
-    pointer-events: none;
-    box-shadow: none;
-}
-
-/* 9 Colors */
-.chip-1 { background: #ffef92; }
-.chip-2 { background: #93eeff; }
-.chip-3 { background: #dcd1ff; }
-.chip-4 { background: #ffb9d6; }
-.chip-5 { background: #b2ffe1; }
-.chip-6 { background: #ffc58f; }
-.chip-7 { background: #ccdfff; }
-.chip-8 { background: #fcbaba; }
-.chip-9 { background: #bdfcba; }
-
-/* ── BUTTONS ── */
-.btn-row {
-    display: flex;
-    gap: 12px;
-    justify-content: center;
-    align-items: center;
-    margin-top: 20px;
-    margin-bottom: 20px;
-    width: 100%;
-}
-
-.reset-btn,
-.check-btn {
-    background: transparent;
-    border: none;
-    padding: 0;
-    cursor: pointer;
-    transition: transform 0.2s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    outline: none;
-}
-
-.reset-btn img,
-.check-btn img {
-    height: 44px;
-    width: auto;
-    max-width: 100%;
-    display: block;
-}
-
-.reset-btn:hover,
-.check-btn:hover {
-    transform: scale(1.08);
-}
-
-.reset-btn:active,
-.check-btn:active {
-    transform: scale(0.95);
-}
-
-.result-msg {
-    text-align: center;
-    font-size: 14px;
-    font-weight: 700;
-    margin-top: -10px;
-    min-height: 24px;
-    color: #1e293b;
-    width: 100%;
-    padding: 0 16px;
-    margin-bottom: 30px;
-}
-
-/* ── TOUCH GHOST ── */
-#touch-ghost {
-    position: fixed;
-    pointer-events: none;
-    z-index: 9999;
-    font-size: 12px;
-    font-weight: 700;
-    background: #fff;
-    border: 2px solid #111;
-    color: #111;
-    border-radius: 12px;
-    padding: 8px 16px;
-    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.2);
-    opacity: 0.95;
-    display: none;
-    white-space: nowrap;
-}
-
-@media (max-width: 360px) {
-    .page {
-        box-shadow: none;
+// ── Button State ──
+function updateSubmitButtonState() {
+    const zones = document.querySelectorAll('.drop-zone[data-answer]');
+    const allFilled = Array.from(zones).every(z => z.classList.contains('filled'));
+    const submitBtn = document.querySelector('.check-btn');
+    
+    if (submitBtn) {
+        if (allFilled) {
+            submitBtn.style.opacity = '1';
+            submitBtn.style.pointerEvents = 'auto';
+            submitBtn.style.cursor = 'pointer';
+        } else {
+            submitBtn.style.opacity = '0.5';
+            submitBtn.style.pointerEvents = 'none';
+            submitBtn.style.cursor = 'not-allowed';
+        }
     }
+}
+
+// ─────────────────────────────────────────────
+//  MOUSE DRAG EVENTS
+// ─────────────────────────────────────────────
+
+function dragStart(event) {
+    playClickSound();
+    const el = event.currentTarget;
+    draggedWordId = el.id;
+    draggedWordText = el.textContent.trim();
+    draggedWordColor = el.dataset.color || '#f1f5f9';
+    el.classList.add('dragging');
+
+    event.dataTransfer.setData('text/plain', draggedWordText);
+    event.dataTransfer.setData('wordId', draggedWordId);
+    event.dataTransfer.setData('wordColor', draggedWordColor);
+    event.dataTransfer.effectAllowed = 'move';
+}
+
+function allowDrop(event) {
+    event.preventDefault();
+    event.currentTarget.classList.add('drag-over');
+    event.dataTransfer.dropEffect = 'move';
+}
+
+function dropWord(event) {
+    event.preventDefault();
+    const zone = event.currentTarget;
+    zone.classList.remove('drag-over');
+
+    const wordText = event.dataTransfer.getData('text/plain');
+    const wordId = event.dataTransfer.getData('wordId');
+    const wordColor = event.dataTransfer.getData('wordColor') || '#f1f5f9';
+    if (!wordText) return;
+
+    returnWordFromZone(zone.id);
+    returnWordFromZoneByWordId(wordId);
+    placeWordInZone(zone, wordText, wordId, wordColor);
+    markChipUsed(wordId, true);
+
+    if (draggedWordId) {
+        const chip = document.getElementById(draggedWordId);
+        if (chip) chip.classList.remove('dragging');
+    }
+    draggedWordId = draggedWordText = draggedWordColor = null;
+    clearFeedback();
+    updateSubmitButtonState();
+}
+
+/** Drag out of a filled zone back to somewhere else */
+function dragFromZone(event) {
+    const zone = event.currentTarget;
+    const span = zone.querySelector('.dropped-word');
+    const wordText = span ? span.textContent.trim() : '';
+    const wordId = zone.dataset.wordId || '';
+    const wordColor = zone.dataset.wordColor || '#f1f5f9';
+
+    draggedWordId = wordId;
+    draggedWordText = wordText;
+    draggedWordColor = wordColor;
+
+    event.dataTransfer.setData('text/plain', wordText);
+    event.dataTransfer.setData('wordId', wordId);
+    event.dataTransfer.setData('wordColor', wordColor);
+    event.dataTransfer.effectAllowed = 'move';
+
+    clearDropZone(zone);
+    markChipUsed(wordId, false);
+    clearFeedback();
+    updateSubmitButtonState();
+}
+
+document.addEventListener('dragleave', function (e) {
+    if (e.target.classList && e.target.classList.contains('drop-zone'))
+        e.target.classList.remove('drag-over');
+});
+
+document.addEventListener('dragend', function (e) {
+    if (e.target.classList && e.target.classList.contains('word-chip'))
+        e.target.classList.remove('dragging');
+    document.querySelectorAll('.drop-zone').forEach(z => z.classList.remove('drag-over'));
+    draggedWordId = draggedWordText = draggedWordColor = null;
+});
+
+
+// ─────────────────────────────────────────────
+//  TOUCH EVENTS
+// ─────────────────────────────────────────────
+
+function onChipTouchStart(event) {
+    const el = event.currentTarget;
+    if (el.classList.contains('used') || el.classList.contains('chip-disabled')) return;
+
+    playClickSound();
+    touchDragWordId = el.id;
+    touchDragWordText = el.textContent.trim();
+    touchDragWordColor = el.dataset.color || '#f1f5f9';
+    touchSourceDropZone = null;
+    isDragging = true;
+
+    el.classList.add('dragging');
+    createTouchGhost(touchDragWordText, touchDragWordColor);
+    moveTouchGhost(event.touches[0]);
+
+    event.preventDefault();
+}
+
+function onFilledZoneTouchStart(event) {
+    const zone = event.currentTarget;
+    if (!zone.classList.contains('filled')) return;
+
+    playClickSound();
+    const span = zone.querySelector('.dropped-word');
+    touchDragWordText = span ? span.textContent.trim() : '';
+    touchDragWordId = zone.dataset.wordId || '';
+    touchDragWordColor = zone.dataset.wordColor || '#f1f5f9';
+    touchSourceDropZone = zone.id;
+    isDragging = true;
+
+    createTouchGhost(touchDragWordText, touchDragWordColor);
+    moveTouchGhost(event.touches[0]);
+
+    event.preventDefault();
+}
+
+function onDocumentTouchMove(event) {
+    if (!isDragging) return;
+    event.preventDefault();
+
+    moveTouchGhost(event.touches[0]);
+
+    document.querySelectorAll('.drop-zone').forEach(z => z.classList.remove('drag-over'));
+    const zoneUnder = getDropZoneUnderTouch(event.touches[0]);
+    if (zoneUnder) zoneUnder.classList.add('drag-over');
+}
+
+function onDocumentTouchEnd(event) {
+    if (!isDragging) return;
+
+    document.querySelectorAll('.drop-zone').forEach(z => z.classList.remove('drag-over'));
+    removeTouchGhost();
+
+    const touch = event.changedTouches[0];
+    const zoneUnder = getDropZoneUnderTouch(touch);
+
+    if (zoneUnder) {
+        returnWordFromZone(zoneUnder.id);
+        if (touchSourceDropZone) {
+            clearDropZone(document.getElementById(touchSourceDropZone));
+        } else {
+            markChipUsed(touchDragWordId, true);
+        }
+        placeWordInZone(zoneUnder, touchDragWordText, touchDragWordId, touchDragWordColor);
+    } else {
+        if (touchSourceDropZone) {
+            clearDropZone(document.getElementById(touchSourceDropZone));
+        }
+        markChipUsed(touchDragWordId, false);
+    }
+
+    if (touchDragWordId) {
+        const chip = document.getElementById(touchDragWordId);
+        if (chip) chip.classList.remove('dragging');
+    }
+
+    touchDragWordId = touchDragWordText = touchDragWordColor = null;
+    touchSourceDropZone = null;
+    isDragging = false;
+    clearFeedback();
+    updateSubmitButtonState();
+}
+
+// ─────────────────────────────────────────────
+//  GHOST ELEMENT
+// ─────────────────────────────────────────────
+
+function createTouchGhost(text, color) {
+    let ghost = document.getElementById('touch-ghost');
+    if (!ghost) {
+        ghost = document.createElement('div');
+        ghost.id = 'touch-ghost';
+        document.body.appendChild(ghost);
+    }
+    ghost.textContent = text;
+    ghost.style.background = color || '#fff';
+    ghost.style.display = 'block';
+    touchGhost = ghost;
+}
+
+function moveTouchGhost(touch) {
+    if (!touchGhost) return;
+    touchGhost.style.left = (touch.clientX - 60) + 'px';
+    touchGhost.style.top = (touch.clientY - 24) + 'px';
+}
+
+function removeTouchGhost() {
+    const g = document.getElementById('touch-ghost');
+    if (g) g.style.display = 'none';
+    touchGhost = null;
+}
+
+function getDropZoneUnderTouch(touch) {
+    for (const zone of document.querySelectorAll('.drop-zone')) {
+        const r = zone.getBoundingClientRect();
+        if (touch.clientX >= r.left && touch.clientX <= r.right &&
+            touch.clientY >= r.top && touch.clientY <= r.bottom) {
+            return zone;
+        }
+    }
+    return null;
+}
+
+// ─────────────────────────────────────────────
+//  ZONE HELPERS
+// ─────────────────────────────────────────────
+
+function placeWordInZone(zone, wordText, wordId, wordColor) {
+    zone.classList.add('filled');
+    zone.classList.remove('correct', 'incorrect', 'drag-over');
+    zone.dataset.wordId = wordId;
+    zone.dataset.wordColor = wordColor;
+    zone.style.background = wordColor || '#f1f5f9';
+
+    zone.innerHTML = '';
+    const span = document.createElement('span');
+    span.className = 'dropped-word';
+    span.textContent = wordText;
+    zone.appendChild(span);
+
+    zone.setAttribute('draggable', 'true');
+    zone.setAttribute('ondragstart', 'dragFromZone(event)');
+
+    zone.removeEventListener('touchstart', onFilledZoneTouchStart);
+    zone.addEventListener('touchstart', onFilledZoneTouchStart, { passive: false });
+
+    dropZoneMap[zone.id] = { wordId, wordColor };
+}
+
+function returnWordFromZone(zoneId) {
+    const entry = dropZoneMap[zoneId];
+    if (!entry) return;
+    const zone = document.getElementById(zoneId);
+    if (zone) clearDropZone(zone);
+    markChipUsed(entry.wordId, false);
+    delete dropZoneMap[zoneId];
+}
+
+function returnWordFromZoneByWordId(wordId) {
+    for (const [zoneId, entry] of Object.entries(dropZoneMap)) {
+        if (entry.wordId === wordId) {
+            const zone = document.getElementById(zoneId);
+            if (zone) clearDropZone(zone);
+            delete dropZoneMap[zoneId];
+            break;
+        }
+    }
+}
+
+function clearDropZone(zone) {
+    zone.classList.remove('filled', 'correct', 'incorrect', 'drag-over');
+    zone.removeAttribute('draggable');
+    zone.removeAttribute('ondragstart');
+    zone.removeEventListener('touchstart', onFilledZoneTouchStart);
+    delete zone.dataset.wordId;
+    delete zone.dataset.wordColor;
+    zone.style.background = '';
+    zone.innerHTML = '';
+    if (dropZoneMap[zone.id]) delete dropZoneMap[zone.id];
+}
+
+function markChipUsed(wordId, used) {
+    if (!wordId) return;
+    const chip = document.getElementById(wordId);
+    if (!chip) return;
+    if (used) chip.classList.add('used');
+    else chip.classList.remove('used', 'dragging');
+}
+
+
+// ─────────────────────────────────────────────
+//  CHECK & RESET (Look_and_write_1 Style)
+// ─────────────────────────────────────────────
+
+async function checkAnswers() {
+    playClickSound();
+    deselectAllChips();
+    const submitBtn = document.querySelector('.check-btn');
+    const resetBtn = document.querySelector('.reset-btn');
+    const resultMsg = document.getElementById('result-msg');
+    
+    // Lock buttons
+    if (submitBtn) {
+        submitBtn.style.opacity = '0.5';
+        submitBtn.style.pointerEvents = 'none';
+    }
+    if (resetBtn) {
+        resetBtn.style.opacity = '0.5';
+        resetBtn.style.pointerEvents = 'none';
+    }
+
+    resultMsg.textContent = "Checking your answers...";
+    resultMsg.style.color = '#475569';
+
+    let correctCount = 0;
+
+    for (let i = 1; i <= TOTAL_QUESTIONS; i++) {
+        const zone = document.getElementById('drop-' + i);
+        if (!zone) continue;
+
+        // Auto scroll to current row
+        const row = zone.closest('.quiz-row');
+        if (row) {
+            row.scrollIntoView({ behavior: 'smooth', block: 'center' });
+        }
+        
+        await new Promise(resolve => setTimeout(resolve, 800));
+
+        const expected = (zone.dataset.answer || '').toLowerCase().trim();
+        const placed = zone.querySelector('.dropped-word')
+            ? zone.querySelector('.dropped-word').textContent.toLowerCase().trim()
+            : '';
+
+        if (placed === expected) {
+            correctCount++;
+            zone.classList.add('correct');
+            zone.classList.remove('incorrect');
+            playCorrectSound();
+        } else {
+            zone.classList.add('incorrect');
+            zone.classList.remove('correct');
+            playWrongSound();
+        }
+
+        await new Promise(resolve => setTimeout(resolve, 600));
+    }
+
+    // Unlock buttons
+    if (submitBtn) {
+        submitBtn.style.opacity = '1';
+        submitBtn.style.pointerEvents = 'auto';
+    }
+    if (resetBtn) {
+        resetBtn.style.opacity = '1';
+        resetBtn.style.pointerEvents = 'auto';
+    }
+
+    if (correctCount === TOTAL_QUESTIONS) {
+        resultMsg.textContent = `🎉 Perfect! All ${TOTAL_QUESTIONS} answers are correct!`;
+        resultMsg.style.color = '#166534';
+    } else {
+        resultMsg.textContent = `You got ${correctCount} out of ${TOTAL_QUESTIONS} correct. Try again!`;
+        resultMsg.style.color = '#991b1b';
+    }
+    resultMsg.scrollIntoView({ behavior: 'smooth', block: 'center' });
+}
+
+function resetQuiz() {
+    playClickSound();
+    document.querySelectorAll('.drop-zone[data-answer]').forEach(clearDropZone);
+    for (const k in dropZoneMap) delete dropZoneMap[k];
+    document.querySelectorAll('.word-chip').forEach(c => c.classList.remove('used', 'dragging'));
+    deselectAllChips();
+    clearFeedback();
+    updateSubmitButtonState();
+}
+
+function clearFeedback() {
+    const msg = document.getElementById('result-msg');
+    if (msg) msg.textContent = '';
+    document.querySelectorAll('.drop-zone').forEach(z => {
+        z.classList.remove('correct', 'incorrect');
+        if (z.classList.contains('filled') && z.dataset.wordColor) {
+            z.style.background = z.dataset.wordColor;
+        }
+    });
+}
+
+// ─────────────────────────────────────────────
+//  CLICK-TO-SELECT LOGIC
+// ─────────────────────────────────────────────
+
+function onChipClick(event) {
+    const el = event.currentTarget;
+    if (el.classList.contains('used') || el.classList.contains('chip-disabled')) return;
+
+    playClickSound();
+
+    // If clicking the already selected chip → deselect it
+    if (selectedChipData && selectedChipData.id === el.id) {
+        deselectAllChips();
+        return;
+    }
+
+    // New selection
+    deselectAllChips();
+    el.classList.add('selected');
+    selectedChipData = {
+        id: el.id,
+        text: el.textContent.trim(),
+        color: el.dataset.color || '#f1f5f9'
+    };
+}
+
+function onZoneClick(event) {
+    const zone = event.currentTarget;
+
+    // 1. If a chip is selected → place it here
+    if (selectedChipData) {
+        playClickSound();
+        returnWordFromZone(zone.id);
+        placeWordInZone(zone, selectedChipData.text, selectedChipData.id, selectedChipData.color);
+        markChipUsed(selectedChipData.id, true);
+        deselectAllChips();
+        clearFeedback();
+        updateSubmitButtonState();
+        return;
+    }
+
+    // 2. If NO chip is selected but zone is filled → return word to bank
+    if (zone.classList.contains('filled')) {
+        playClickSound();
+        returnWordFromZone(zone.id);
+        clearFeedback();
+        updateSubmitButtonState();
+    }
+}
+
+function deselectAllChips() {
+    document.querySelectorAll('.word-chip').forEach(c => c.classList.remove('selected'));
+    selectedChipData = null;
 }
