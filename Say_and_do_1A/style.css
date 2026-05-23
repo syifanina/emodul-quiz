@@ -20,17 +20,22 @@ html,
 body {
     width: 100%;
     max-width: 100%;
-    overflow: hidden; /* Matikan scroll manual pengguna */
+    overflow: hidden;
+    /* Matikan scroll manual pengguna */
     background: transparent;
     scroll-behavior: smooth;
     /* Sembunyikan scrollbar agar tidak double scroll di Genially */
-    -ms-overflow-style: none;  /* IE and Edge */
-    scrollbar-width: none;  /* Firefox */
-    touch-action: pan-y; /* Izinkan scroll vertikal */
+    -ms-overflow-style: none;
+    /* IE and Edge */
+    scrollbar-width: none;
+    /* Firefox */
+    touch-action: pan-y;
+    /* Izinkan scroll vertikal */
 }
 
 body::-webkit-scrollbar {
-    display: none; /* Chrome, Safari, Opera */
+    display: none;
+    /* Chrome, Safari, Opera */
 }
 
 /* ── CUTE BACKGROUND DECORATIONS ── */
@@ -69,7 +74,8 @@ body {
     background: transparent;
     width: 100%;
     max-width: 360px;
-    height: 100vh; /* Kunci tinggi sesuai layar/iframe */
+    height: 100vh;
+    /* Kunci tinggi sesuai layar/iframe */
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -84,7 +90,8 @@ body {
     flex-direction: column;
     align-items: center;
     padding: 24px 16px 10px 16px;
-    background: #fff; /* Pastikan background solid agar konten di bawahnya tidak terlihat saat scroll */
+    background: #fff;
+    /* Pastikan background solid agar konten di bawahnya tidak terlihat saat scroll */
     z-index: 100;
     flex-shrink: 0;
 }
@@ -137,11 +144,13 @@ body {
     flex-direction: column;
     align-items: center;
     -webkit-overflow-scrolling: touch;
-    scrollbar-width: none; /* Firefox */
+    scrollbar-width: none;
+    /* Firefox */
 }
 
 .scroll-content::-webkit-scrollbar {
-    display: none; /* Chrome, Safari */
+    display: none;
+    /* Chrome, Safari */
 }
 
 .grid-container {
