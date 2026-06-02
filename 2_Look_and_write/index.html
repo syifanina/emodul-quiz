@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Drag and Drop Quiz</title>
+    <link rel="stylesheet" href="style.css?v=1.1">
+</head>
+
+<body>
+    <div class="page">
+        <header class="module-header">
+            <!-- PNG Judul -->
+            <img src="https://lh3.googleusercontent.com/d/1HTJpA4ubVTm8IxnfAisqzw8UKj-W4R5x" alt="Look and Write" class="title-badge">
+
+            <div class="instructions">
+                <p class="en">Look at the picture and complete the story! Look at the example!</p>
+                <div class="separator"></div>
+                <p class="id">Perhatikan gambar dan lengkapi cerita! Perhatikan contoh!</p>
+            </div>
+        </header>
+
+        <!-- Scrollable Content -->
+        <div class="scroll-content">
+
+            <!-- INTRO SECTION -->
+            <div class="intro-section">
+                <div class="intro-text-block" style="margin-top: 10px; margin-bottom: 20px;">
+                    <p>Hi! I'm Manda. Let me tell you my hobby and my friends' hobbies.</p>
+                </div>
+            </div>
+
+            <!-- EXAMPLE -->
+            <div class="quiz-row example-row">
+                <div class="sentence-area">
+                    <span class="sentence-text">
+                        Toni loves to (Example)
+                        <span class="example-answer-box">cook meals</span>.<br>His hobby is cooking.
+                    </span>
+                </div>
+                <div class="img-side right-img" style="display: flex; flex-direction: column; align-items: center; gap: 6px;">
+                    <span class="badge-example-top">EXAMPLE</span>
+                    <div class="img-placeholder" id="img-ex">
+                        <img src="https://lh3.googleusercontent.com/d/1KKg-uN4RM2Fyq0YWKXty7XziZvyLuuoe" alt="Cooking">
+                    </div>
+                </div>
+            </div>
+
+            <div id="quiz-container">
+                <!-- Q1 -->
+                <div class="quiz-row" id="row-1">
+                    <div class="img-side left-img">
+                        <div class="img-placeholder" id="img-1">
+                            <span class="img-badge">1</span>
+                            <img src="https://lh3.googleusercontent.com/d/1VzqfmamLe9E9Rq2ijVZIPpTQdX6Q61iL" alt="Question 1">
+                        </div>
+                    </div>
+                    <div class="sentence-area">
+                        <span class="sentence-text">
+                            Rahmah loves to (1)
+                            <input type="text" class="input-zone" data-answer="read a book" id="input-1" placeholder="...">.<br>Her hobby is reading.
+                        </span>
+                    </div>
+                </div>
+
+                <!-- Q2 -->
+                <div class="quiz-row" id="row-2">
+                    <div class="sentence-area">
+                        <span class="sentence-text">
+                            Arif likes to (2)
+                            <input type="text" class="input-zone" data-answer="fly a kite" id="input-2" placeholder="...">.<br>His hobby is playing kite.
+                        </span>
+                    </div>
+                    <div class="img-side right-img">
+                        <div class="img-placeholder" id="img-2">
+                            <span class="img-badge">2</span>
+                            <img src="https://lh3.googleusercontent.com/d/10yFnhKpSD2bXY4S8T6HI7vkhP72g1vA3" alt="Question 2">
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Q3 -->
+                <div class="quiz-row" id="row-3">
+                    <div class="img-side left-img">
+                        <div class="img-placeholder" id="img-3">
+                            <span class="img-badge">3</span>
+                            <img src="https://lh3.googleusercontent.com/d/1azLtSNwcCsomln0Ton1f8DmLuarg0XWT" alt="Question 3">
+                        </div>
+                    </div>
+                    <div class="sentence-area">
+                        <span class="sentence-text">
+                            Desti likes to (3)
+                            <input type="text" class="input-zone" data-answer="play guitar" id="input-3" placeholder="...">.<br>Her hobby is playing guitar.
+                        </span>
+                    </div>
+                </div>
+
+                <!-- Q4 -->
+                <div class="quiz-row" id="row-4">
+                    <div class="sentence-area">
+                        <span class="sentence-text">
+                            Randu prefers to (4)
+                            <input type="text" class="input-zone" data-answer="play football" id="input-4" placeholder="...">
+                            than badminton.<br>His hobby is playing football.
+                        </span>
+                    </div>
+                    <div class="img-side right-img">
+                        <div class="img-placeholder" id="img-4">
+                            <span class="img-badge">4</span>
+                            <img src="https://lh3.googleusercontent.com/d/1shNIHwdti7_-ErrsyaF3CpAWXNvtnYtY" alt="Question 4">
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Q5 -->
+                <div class="quiz-row" id="row-5">
+                    <div class="img-side left-img">
+                        <div class="img-placeholder" id="img-5">
+                            <span class="img-badge">5</span>
+                            <img src="https://lh3.googleusercontent.com/d/1rHaE0lsyxSvSquQ8MCmOmzY-ZgOxnlRR" alt="Question 5">
+                        </div>
+                    </div>
+                    <div class="sentence-area">
+                        <span class="sentence-text">
+                            Mahmud loves to (5)
+                            <input type="text" class="input-zone" data-answer="do vlogging" id="input-5" placeholder="...">.<br>His hobby is doing vlogging.
+                        </span>
+                    </div>
+                </div>
+
+                <!-- Q6 -->
+                <div class="quiz-row" id="row-6">
+                    <div class="sentence-area">
+                        <span class="sentence-text">
+                            Amir loves to (6)
+                            <input type="text" class="input-zone" data-answer="keep pets" id="input-6" placeholder="...">.<br>His hobby is keeping pets.
+                        </span>
+                    </div>
+                    <div class="img-side right-img">
+                        <div class="img-placeholder" id="img-6">
+                            <span class="img-badge">6</span>
+                            <img src="https://lh3.googleusercontent.com/d/1Xraz5Lq2hOk0p6qccdFrelgtQMqYCcE3" alt="Question 6">
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Q7 -->
+                <div class="quiz-row" id="row-7">
+                    <div class="img-side left-img">
+                        <div class="img-placeholder" id="img-7">
+                            <span class="img-badge">7</span>
+                            <img src="https://lh3.googleusercontent.com/d/10MiY-q-nGppzbLa5HG0fORWQHq1qz_jF" alt="Question 7">
+                        </div>
+                    </div>
+                    <div class="sentence-area">
+                        <span class="sentence-text">
+                            Kiky loves to (7)
+                            <input type="text" class="input-zone" data-answer="ride a bike" id="input-7" placeholder="...">
+                            in the park.<br>Her hobby is cycling.
+                        </span>
+                    </div>
+                </div>
+
+                <!-- Q8 -->
+                <div class="quiz-row" id="row-8">
+                    <div class="sentence-area">
+                        <span class="sentence-text">
+                            Mahali likes to (8)
+                            <input type="text" class="input-zone" data-answer="dance to the music" id="input-8" placeholder="...">.<br>Her hobby is dancing.
+                        </span>
+                    </div>
+                    <div class="img-side right-img">
+                        <div class="img-placeholder" id="img-8">
+                            <span class="img-badge">8</span>
+                            <img src="https://lh3.googleusercontent.com/d/1cgaDD4zO0L2-z-Jyp1CIHB12qUHPIZo6" alt="Question 8">
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Q9 -->
+                <div class="quiz-row" id="row-9">
+                    <div class="img-side left-img">
+                        <div class="img-placeholder" id="img-9">
+                            <span class="img-badge">9</span>
+                            <img src="https://lh3.googleusercontent.com/d/1jp_d8VJyc3Gy2omOcLEcPdroJ6ivr1tZ" alt="Question 9">
+                        </div>
+                    </div>
+                    <div class="sentence-area">
+                        <span class="sentence-text">
+                            Tama loves to (9)
+                            <input type="text" class="input-zone" data-answer="draw a picture" id="input-9" placeholder="...">.<br>His hobby is drawing.
+                        </span>
+                    </div>
+                </div>
+
+                <!-- Q10 -->
+                <div class="quiz-row" id="row-10">
+                    <div class="sentence-area">
+                        <span class="sentence-text">
+                            And I love to (10)
+                            <input type="text" class="input-zone" data-answer="sing a song" id="input-10" placeholder="...">.<br>My hobby is singing.
+                        </span>
+                    </div>
+                    <div class="img-side right-img">
+                        <div class="img-placeholder" id="img-10">
+                            <span class="img-badge">10</span>
+                            <img src="https://lh3.googleusercontent.com/d/1Ltd9mPymaOjRHwl_y1TiNz-Mf_ZMowtA" alt="Question 10">
+                        </div>
+                    </div>
+                </div>
+            </div><!-- end quiz-container -->
+
+
+
+            <div class="btn-row">
+                <button class="reset-btn" onclick="resetQuiz()">
+                    <img src="https://lh3.googleusercontent.com/d/1fAmVV8TLq2mjlGmNpAAPe99HaG0M_V7R" alt="Reset">
+                </button>
+                <button class="check-btn" onclick="checkAnswers()">
+                    <img src="https://lh3.googleusercontent.com/d/1Z_q3WYuNnBo20_9mbhnN5MoC1-7pDhOp" alt="Check Answer">
+                </button>
+            </div>
+            <div class="result-msg" id="result-msg"></div>
+
+        </div><!-- end scroll-content -->
+
+        <audio id="correct-audio" src="assets/correct_sound.MP3" preload="auto"></audio>
+        <audio id="wrong-audio" src="assets/incorrect_sound.MP3" preload="auto"></audio>
+        <audio id="click-audio" src="assets/click.MP3" preload="auto"></audio>
+    </div><!-- end page -->
+
+    <div id="touch-ghost"></div>
+    <script src="script.js?v=1.1"></script>
+</body>
+
+</html>
