@@ -1,0 +1,682 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Formative Assessment Lesson 1</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <div class="page">
+        <!-- Sticky Header with Instructions -->
+        <header class="module-header">
+            <!-- PNG Judul -->
+            <img src="https://lh3.googleusercontent.com/d/1iDigsHaAyjTDX5WoWP9SKOw8F0I_Q8qQ"
+                alt="Formative Assessment Lesson 1" class="title-badge">
+
+            <div class="instructions">
+                <p class="en">Look at the pictures and cross (X) A, B, C or D for the correct actions! Look to the
+                    example!</p>
+                <div class="separator"></div>
+                <p class="id">Perhatikan gambar dan beri tanda silang (X) A, B, C atau D pada aksi yang benar.
+                    Perhatikan contoh berikut!</p>
+            </div>
+        </header>
+
+        <!-- Scrollable Content Area -->
+        <div class="scroll-content" id="quiz-container">
+
+            <!-- STUDENT INFO -->
+            <div class="student-info-card">
+
+                <!-- Person Input Row -->
+                <div class="info-row">
+                    <div class="icon-container">
+                        <div class="icon-circle">
+                            <svg viewBox="0 0 24 24" fill="white" width="24" height="24">
+                                <path
+                                    d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z" />
+                            </svg>
+                        </div>
+                    </div>
+                    <div class="input-wrapper">
+                        <label for="student-name" class="student-label">
+                            <span class="en-label">Name</span>
+                            <span class="id-label">/ Nama Siswa</span>
+                        </label>
+                        <input type="text" id="student-name" class="student-input" placeholder="Type your name here..."
+                            autocomplete="off">
+                    </div>
+                </div>
+
+                <!-- School Input Row -->
+                <div class="info-row">
+                    <div class="icon-container">
+                        <div class="icon-circle">
+                            <svg viewBox="0 0 24 24" fill="white" width="24" height="24">
+                                <path
+                                    d="M4 10v7h3v-7H4zm6 0v7h3v-7h-3zM2 22h19v-3H2v3zm14-12v7h3v-7h-3zm-8.5-9L2 6v2h19V6l-9.5-5z" />
+                            </svg>
+                        </div>
+                    </div>
+                    <div class="input-wrapper">
+                        <label for="school-name" class="student-label">
+                            <span class="en-label">School Name</span>
+                            <span class="id-label">/ Nama Sekolah</span>
+                        </label>
+                        <input type="text" id="school-name" class="student-input"
+                            placeholder="Type your school name here..." autocomplete="off">
+                    </div>
+                </div>
+            </div>
+
+            <!-- SCORING INFO -->
+            <div class="scoring-info-card">
+                <div class="scoring-icon">💡</div>
+                <div class="scoring-text">
+                    <div class="scoring-title">
+                        <span class="en-text">Scoring System</span>
+                        <span class="id-text">/ Sistem Penilaian:</span>
+                    </div>
+                    <ul class="scoring-list">
+                        <li>
+                            <span class="en-text">Correct Multiple Choice</span>
+                            <span class="id-text">/ Benar PG:</span><br>
+                            <b class="point-badge">+2 points</b>
+                        </li>
+                        <li>
+                            <span class="en-text">Correct Short Answer</span>
+                            <span class="id-text">/ Benar Isian:</span><br>
+                            <b class="point-badge">+4 points</b>
+                        </li>
+                    </ul>
+                    <div class="scoring-total">
+                        <span class="en-text">Final Score</span>
+                        <span class="id-text">/ Nilai Akhir</span>
+                        = Total Points &times; 2.5
+                    </div>
+                </div>
+            </div>
+
+            <!-- EXAMPLE CARD (Read-Only) -->
+            <div class="question-card example-card">
+                <!-- Star badge for Example -->
+                <div class="q-star-badge">
+                    <img src="https://lh3.googleusercontent.com/d/1tlr-_CyMZShNnbtIol1OyFw8NhS_4MP1" alt="Star badge"
+                        class="star-img">
+                    <span class="star-number star-ex">Ex</span>
+                </div>
+
+                <div class="question-gif-container">
+                    <img src="https://lh3.googleusercontent.com/d/1oARXQooVy6RPE4fL3ZP00cHdads2si7Y" alt="Example"
+                        class="question-gif">
+                </div>
+
+                <div class="question-details">
+                    <div class="options-container">
+                        <div class="option-item disabled" data-opt="a">
+                            <span class="option-letter">a</span>
+                            <span class="option-text">Ride a bike</span>
+                        </div>
+                        <div class="option-item disabled crossed-example" data-opt="b">
+                            <span class="option-letter">b</span>
+                            <span class="option-text">Sing a song</span>
+                        </div>
+                        <div class="option-item disabled" data-opt="c">
+                            <span class="option-letter">c</span>
+                            <span class="option-text">Draw a picture</span>
+                        </div>
+                        <div class="option-item disabled" data-opt="d">
+                            <span class="option-letter">d</span>
+                            <span class="option-text">Read a book</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- QUESTION 1 -->
+            <div class="question-card" data-q="1" data-correct="d">
+                <!-- Star badge for Q1 -->
+                <div class="q-star-badge">
+                    <img src="https://lh3.googleusercontent.com/d/1tlr-_CyMZShNnbtIol1OyFw8NhS_4MP1" alt="Star badge"
+                        class="star-img">
+                    <span class="star-number">1</span>
+                </div>
+
+                <div class="question-gif-container">
+                    <img src="https://lh3.googleusercontent.com/d/1mnNeXCPKwjnjiYhuiiHp0kt2ICTVTVUX" alt="Question 1"
+                        class="question-gif">
+                </div>
+
+                <div class="question-details">
+                    <div class="options-container">
+                        <div class="option-item" data-opt="a">
+                            <span class="option-letter">a</span>
+                            <span class="option-text">Read a book</span>
+                        </div>
+                        <div class="option-item" data-opt="b">
+                            <span class="option-letter">b</span>
+                            <span class="option-text">Play the guitar</span>
+                        </div>
+                        <div class="option-item" data-opt="c">
+                            <span class="option-letter">c</span>
+                            <span class="option-text">Ride a bike</span>
+                        </div>
+                        <div class="option-item" data-opt="d">
+                            <span class="option-letter">d</span>
+                            <span class="option-text">Fly a kite</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- QUESTION 2 -->
+            <div class="question-card" data-q="2" data-correct="b">
+                <!-- Star badge for Q2 -->
+                <div class="q-star-badge">
+                    <img src="https://lh3.googleusercontent.com/d/1tlr-_CyMZShNnbtIol1OyFw8NhS_4MP1" alt="Star badge"
+                        class="star-img">
+                    <span class="star-number">2</span>
+                </div>
+
+                <div class="question-gif-container">
+                    <img src="https://lh3.googleusercontent.com/d/1oN92rWM0eSZEfRBrVFFu1g1OiUYetiVm" alt="Question 2"
+                        class="question-gif">
+                </div>
+
+                <div class="question-details">
+                    <div class="options-container">
+                        <div class="option-item" data-opt="a">
+                            <span class="option-letter">a</span>
+                            <span class="option-text">Ride a bike</span>
+                        </div>
+                        <div class="option-item" data-opt="b">
+                            <span class="option-letter">b</span>
+                            <span class="option-text">Cook a meal</span>
+                        </div>
+                        <div class="option-item" data-opt="c">
+                            <span class="option-letter">c</span>
+                            <span class="option-text">Do vlogging</span>
+                        </div>
+                        <div class="option-item" data-opt="d">
+                            <span class="option-letter">d</span>
+                            <span class="option-text">Draw a picture</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- QUESTION 3 -->
+            <div class="question-card" data-q="3" data-correct="d">
+                <!-- Star badge for Q3 -->
+                <div class="q-star-badge">
+                    <img src="https://lh3.googleusercontent.com/d/1tlr-_CyMZShNnbtIol1OyFw8NhS_4MP1" alt="Star badge"
+                        class="star-img">
+                    <span class="star-number">3</span>
+                </div>
+
+                <div class="question-gif-container">
+                    <img src="https://lh3.googleusercontent.com/d/114tY5ObZmWLFNRXF33oeA62myCv0E_FZ" alt="Combing hair"
+                        class="question-gif">
+                </div>
+
+                <div class="question-details">
+                    <div class="options-container">
+                        <div class="option-item" data-opt="a">
+                            <span class="option-letter">a</span>
+                            <span class="option-text">Draw a picture</span>
+                        </div>
+                        <div class="option-item" data-opt="b">
+                            <span class="option-letter">b</span>
+                            <span class="option-text">Fly a kite</span>
+                        </div>
+                        <div class="option-item" data-opt="c">
+                            <span class="option-letter">c</span>
+                            <span class="option-text">Play the guitar</span>
+                        </div>
+                        <div class="option-item" data-opt="d">
+                            <span class="option-letter">d</span>
+                            <span class="option-text">Keep pets</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- QUESTION 4 -->
+            <div class="question-card" data-q="4" data-correct="c">
+                <!-- Star badge for Q4 -->
+                <div class="q-star-badge">
+                    <img src="https://lh3.googleusercontent.com/d/1tlr-_CyMZShNnbtIol1OyFw8NhS_4MP1" alt="Star badge"
+                        class="star-img">
+                    <span class="star-number">4</span>
+                </div>
+
+                <div class="question-gif-container">
+                    <img src="https://lh3.googleusercontent.com/d/1ZEh-dcEy70pGk1tzH91x44Q6-NeWkQSU" alt="Opening mouth"
+                        class="question-gif">
+                </div>
+
+                <div class="question-details">
+                    <div class="options-container">
+                        <div class="option-item" data-opt="a">
+                            <span class="option-letter">a</span>
+                            <span class="option-text">Play football</span>
+                        </div>
+                        <div class="option-item" data-opt="b">
+                            <span class="option-letter">b</span>
+                            <span class="option-text">Fly a kite</span>
+                        </div>
+                        <div class="option-item" data-opt="c">
+                            <span class="option-letter">c</span>
+                            <span class="option-text">Play the guitar</span>
+                        </div>
+                        <div class="option-item" data-opt="d">
+                            <span class="option-letter">d</span>
+                            <span class="option-text">Do vlogging</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- QUESTION 5 -->
+            <div class="question-card" data-q="5" data-correct="a">
+                <!-- Star badge for Q5 -->
+                <div class="q-star-badge">
+                    <img src="https://lh3.googleusercontent.com/d/1tlr-_CyMZShNnbtIol1OyFw8NhS_4MP1" alt="Star badge"
+                        class="star-img">
+                    <span class="star-number">5</span>
+                </div>
+
+                <div class="question-gif-container">
+                    <img src="https://lh3.googleusercontent.com/d/1LpdZcV2jIVJM_vv8aVe66gac7gNTEVJi"
+                        alt="Lifting eyebrows up" class="question-gif">
+                </div>
+
+                <div class="question-details">
+                    <div class="options-container">
+                        <div class="option-item" data-opt="a">
+                            <span class="option-letter">a</span>
+                            <span class="option-text">Ride a bike</span>
+                        </div>
+                        <div class="option-item" data-opt="b">
+                            <span class="option-letter">b</span>
+                            <span class="option-text">Fly a kite</span>
+                        </div>
+                        <div class="option-item" data-opt="c">
+                            <span class="option-letter">c</span>
+                            <span class="option-text">Play the guitar</span>
+                        </div>
+                        <div class="option-item" data-opt="d">
+                            <span class="option-letter">d</span>
+                            <span class="option-text">Do vlogging</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- QUESTION 6 -->
+            <div class="question-card" data-q="6" data-correct="a">
+                <!-- Star badge for Q6 -->
+                <div class="q-star-badge">
+                    <img src="https://lh3.googleusercontent.com/d/1tlr-_CyMZShNnbtIol1OyFw8NhS_4MP1" alt="Star badge"
+                        class="star-img">
+                    <span class="star-number">6</span>
+                </div>
+
+                <div class="question-gif-container">
+                    <img src="https://lh3.googleusercontent.com/d/1WeeR9AWthq7rm4bD8GaEdpCg8heNKsYe"
+                        alt="Trim your nails" class="question-gif">
+                </div>
+
+                <div class="question-details">
+                    <div class="options-container">
+                        <div class="option-item" data-opt="a">
+                            <span class="option-letter">a</span>
+                            <span class="option-text">Dance to the music</span>
+                        </div>
+                        <div class="option-item" data-opt="b">
+                            <span class="option-letter">b</span>
+                            <span class="option-text">Kick a ball</span>
+                        </div>
+                        <div class="option-item" data-opt="c">
+                            <span class="option-letter">c</span>
+                            <span class="option-text">Draw a picture</span>
+                        </div>
+                        <div class="option-item" data-opt="d">
+                            <span class="option-letter">d</span>
+                            <span class="option-text">Read a book</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- QUESTION 7 -->
+            <div class="question-card" data-q="7" data-correct="c">
+                <!-- Star badge for Q7 -->
+                <div class="q-star-badge">
+                    <img src="https://lh3.googleusercontent.com/d/1tlr-_CyMZShNnbtIol1OyFw8NhS_4MP1" alt="Star badge"
+                        class="star-img">
+                    <span class="star-number">7</span>
+                </div>
+
+                <div class="question-gif-container">
+                    <img src="https://lh3.googleusercontent.com/d/1TVlhL_FQ7TZDqRHwxcPtjijW-Bxn1bvH"
+                        alt="Point your elbow" class="question-gif">
+                </div>
+
+                <div class="question-details">
+                    <div class="options-container">
+                        <div class="option-item" data-opt="a">
+                            <span class="option-letter">a</span>
+                            <span class="option-text">Read a book</span>
+                        </div>
+                        <div class="option-item" data-opt="b">
+                            <span class="option-letter">b</span>
+                            <span class="option-text">Play the guitar</span>
+                        </div>
+                        <div class="option-item" data-opt="c">
+                            <span class="option-letter">c</span>
+                            <span class="option-text">Draw a picture</span>
+                        </div>
+                        <div class="option-item" data-opt="d">
+                            <span class="option-letter">d</span>
+                            <span class="option-text">Fly a kite</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- QUESTION 8 -->
+            <div class="question-card" data-q="8" data-correct="c">
+                <!-- Star badge for Q8 -->
+                <div class="q-star-badge">
+                    <img src="https://lh3.googleusercontent.com/d/1tlr-_CyMZShNnbtIol1OyFw8NhS_4MP1" alt="Star badge"
+                        class="star-img">
+                    <span class="star-number">8</span>
+                </div>
+
+                <div class="question-gif-container">
+                    <img src="https://lh3.googleusercontent.com/d/1IWR4TiKMd9QZI03pOZmX_33HZBX0cdV5"
+                        alt="Cross your legs" class="question-gif">
+                </div>
+
+                <div class="question-details">
+                    <div class="options-container">
+                        <div class="option-item" data-opt="a">
+                            <span class="option-letter">a</span>
+                            <span class="option-text">Ride a bike</span>
+                        </div>
+                        <div class="option-item" data-opt="b">
+                            <span class="option-letter">b</span>
+                            <span class="option-text">Dance to the music</span>
+                        </div>
+                        <div class="option-item" data-opt="c">
+                            <span class="option-letter">c</span>
+                            <span class="option-text">Play football</span>
+                        </div>
+                        <div class="option-item" data-opt="d">
+                            <span class="option-letter">d</span>
+                            <span class="option-text">Play guitar</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- QUESTION 9 -->
+            <div class="question-card" data-q="9" data-correct="b">
+                <!-- Star badge for Q9 -->
+                <div class="q-star-badge">
+                    <img src="https://lh3.googleusercontent.com/d/1tlr-_CyMZShNnbtIol1OyFw8NhS_4MP1" alt="Star badge"
+                        class="star-img">
+                    <span class="star-number">9</span>
+                </div>
+
+                <div class="question-gif-container">
+                    <img src="https://lh3.googleusercontent.com/d/1ut8ylXli7cKBhcja4wFgb91fEpQjOvIj"
+                        alt="Stomp your feet" class="question-gif">
+                </div>
+
+                <div class="question-details">
+                    <div class="options-container">
+                        <div class="option-item" data-opt="a">
+                            <span class="option-letter">a</span>
+                            <span class="option-text">Play football</span>
+                        </div>
+                        <div class="option-item" data-opt="b">
+                            <span class="option-letter">b</span>
+                            <span class="option-text">Do vlogging</span>
+                        </div>
+                        <div class="option-item" data-opt="c">
+                            <span class="option-letter">c</span>
+                            <span class="option-text">Play the guitar</span>
+                        </div>
+                        <div class="option-item" data-opt="d">
+                            <span class="option-letter">d</span>
+                            <span class="option-text">Keep pets</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- QUESTION 10 -->
+            <div class="question-card" data-q="10" data-correct="c">
+                <!-- Star badge for Q10 -->
+                <div class="q-star-badge">
+                    <img src="https://lh3.googleusercontent.com/d/1tlr-_CyMZShNnbtIol1OyFw8NhS_4MP1" alt="Star badge"
+                        class="star-img">
+                    <span class="star-number">10</span>
+                </div>
+
+                <div class="question-gif-container">
+                    <img src="https://lh3.googleusercontent.com/d/1U2D71ENv4pOnFOuS0NSlb2-iBXv73LfC"
+                        alt="Point your nose" class="question-gif">
+                </div>
+
+                <div class="question-details">
+                    <div class="options-container">
+                        <div class="option-item" data-opt="a">
+                            <span class="option-letter">a</span>
+                            <span class="option-text">Keep pets</span>
+                        </div>
+                        <div class="option-item" data-opt="b">
+                            <span class="option-letter">b</span>
+                            <span class="option-text">Fly a kite</span>
+                        </div>
+                        <div class="option-item" data-opt="c">
+                            <span class="option-letter">c</span>
+                            <span class="option-text">Read a book</span>
+                        </div>
+                        <div class="option-item" data-opt="d">
+                            <span class="option-letter">d</span>
+                            <span class="option-text">Do vlogging</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- SECTION II HEADER -->
+            <div class="section-title">
+                <p class="en">II. Write down the students' hobbies. Look at the example!</p>
+                <div class="separator"></div>
+                <p class="id">Tuliskan hobi siswa-siswa berikut. Perhatikan contoh!</p>
+            </div>
+
+            <!-- SECTION II EXAMPLE -->
+            <div class="sec2-row"
+                style="background-color: #f8fafc; padding: 16px; padding-top: 32px; border: 2px dashed #94a3b8; border-radius: 16px; width: 100%; position: relative;">
+                <div class="sec2-number-badge sec2-example-badge" style="top: 12px;">EXAMPLE</div>
+                <div class="sec2-answer-area" style="padding-right: 0; width: 100%;">
+                    <div class="sec2-question-text"
+                        style="font-size: 14px; font-weight: 600; color: #1e293b; margin-bottom: 6px;">
+                        Rita loves singing a song. What is her hobby?
+                    </div>
+                    <div class="sec2-input-container">
+                        <div class="sec2-input-inner">
+                            <div class="sec2-example-text">Rita's hobby is singing.</div>
+                        </div>
+                        <img src="https://lh3.googleusercontent.com/d/1cbrqBkAXBIRrbgWG-tOCuZoZYbuD3ry2"
+                            class="sec2-pencil-icon" alt="pencil"
+                            style="position: absolute; top: -15px; right: -8px; width: 32px; z-index: 10; pointer-events: none;">
+                    </div>
+                </div>
+            </div>
+
+            <!-- SECTION II ITEMS -->
+            <!-- Item 1 -->
+            <div class="sec2-row sec2-quiz-row" id="sec2-row-1"
+                style="position: relative; padding-top: 8px; padding-left: 38px;">
+                <div class="sec2-number-badge">1</div>
+                <div class="sec2-answer-area" style="padding-left: 0; width: 100%;">
+                    <div class="sec2-question-text"
+                        style="font-size: 14px; font-weight: 600; color: #1e293b; margin-bottom: 6px;">
+                        Sholeh enjoys cooking food. What is his hobby?
+                    </div>
+                    <div class="sec2-input-container">
+                        <div class="sec2-input-inner">
+                            <input type="text" class="sec2-answer-input" id="sec2-input-1"
+                                data-answer="Sholeh's hobby is cooking." placeholder="Type answer here..."
+                                autocomplete="off" autocorrect="off" autocapitalize="none" spellcheck="false">
+                        </div>
+                        <img src="https://lh3.googleusercontent.com/d/1cbrqBkAXBIRrbgWG-tOCuZoZYbuD3ry2"
+                            class="sec2-pencil-icon" alt="pencil"
+                            style="position: absolute; top: -15px; right: -8px; width: 32px; z-index: 10; pointer-events: none;">
+                    </div>
+                    <div class="sec2-feedback-icon" id="sec2-fb-1"></div>
+                    <div id="sec2-hint-1" class="sec2-correct-hint"></div>
+                </div>
+            </div>
+
+            <!-- Item 2 -->
+            <div class="sec2-row sec2-quiz-row" id="sec2-row-2"
+                style="position: relative; padding-top: 8px; padding-left: 38px;">
+                <div class="sec2-number-badge">2</div>
+                <div class="sec2-answer-area" style="padding-left: 0; width: 100%;">
+                    <div class="sec2-question-text"
+                        style="font-size: 14px; font-weight: 600; color: #1e293b; margin-bottom: 6px;">
+                        Amir likes his bike very much. What is his hobby?
+                    </div>
+                    <div class="sec2-input-container">
+                        <div class="sec2-input-inner">
+                            <input type="text" class="sec2-answer-input" id="sec2-input-2"
+                                data-answer="Amir's hobby is cycling.|Amir's hobby is biking."
+                                placeholder="Type answer here..." autocomplete="off" autocorrect="off"
+                                autocapitalize="none" spellcheck="false">
+                        </div>
+                        <img src="https://lh3.googleusercontent.com/d/1cbrqBkAXBIRrbgWG-tOCuZoZYbuD3ry2"
+                            class="sec2-pencil-icon" alt="pencil"
+                            style="position: absolute; top: -15px; right: -8px; width: 32px; z-index: 10; pointer-events: none;">
+                    </div>
+                    <div class="sec2-feedback-icon" id="sec2-fb-2"></div>
+                    <div id="sec2-hint-2" class="sec2-correct-hint"></div>
+                </div>
+            </div>
+
+            <!-- Item 3 -->
+            <div class="sec2-row sec2-quiz-row" id="sec2-row-3"
+                style="position: relative; padding-top: 8px; padding-left: 38px;">
+                <div class="sec2-number-badge">3</div>
+                <div class="sec2-answer-area" style="padding-left: 0; width: 100%;">
+                    <div class="sec2-question-text"
+                        style="font-size: 14px; font-weight: 600; color: #1e293b; margin-bottom: 6px;">
+                        Dul loves his new kite. What is his hobby?
+                    </div>
+                    <div class="sec2-input-container">
+                        <div class="sec2-input-inner">
+                            <input type="text" class="sec2-answer-input" id="sec2-input-3"
+                                data-answer="Dul's hobby is flying a kite." placeholder="Type answer here..."
+                                autocomplete="off" autocorrect="off" autocapitalize="none" spellcheck="false">
+                        </div>
+                        <img src="https://lh3.googleusercontent.com/d/1cbrqBkAXBIRrbgWG-tOCuZoZYbuD3ry2"
+                            class="sec2-pencil-icon" alt="pencil"
+                            style="position: absolute; top: -15px; right: -8px; width: 32px; z-index: 10; pointer-events: none;">
+                    </div>
+                    <div class="sec2-feedback-icon" id="sec2-fb-3"></div>
+                    <div id="sec2-hint-3" class="sec2-correct-hint"></div>
+                </div>
+            </div>
+
+            <!-- Item 4 -->
+            <div class="sec2-row sec2-quiz-row" id="sec2-row-4"
+                style="position: relative; padding-top: 8px; padding-left: 38px;">
+                <div class="sec2-number-badge">4</div>
+                <div class="sec2-answer-area" style="padding-left: 0; width: 100%;">
+                    <div class="sec2-question-text"
+                        style="font-size: 14px; font-weight: 600; color: #1e293b; margin-bottom: 6px;">
+                        Sarah loves her cats. What is her hobby?
+                    </div>
+                    <div class="sec2-input-container">
+                        <div class="sec2-input-inner">
+                            <input type="text" class="sec2-answer-input" id="sec2-input-4"
+                                data-answer="Sarah's hobby is keeping pets." placeholder="Type answer here..."
+                                autocomplete="off" autocorrect="off" autocapitalize="none" spellcheck="false">
+                        </div>
+                        <img src="https://lh3.googleusercontent.com/d/1cbrqBkAXBIRrbgWG-tOCuZoZYbuD3ry2"
+                            class="sec2-pencil-icon" alt="pencil"
+                            style="position: absolute; top: -15px; right: -8px; width: 32px; z-index: 10; pointer-events: none;">
+                    </div>
+                    <div class="sec2-feedback-icon" id="sec2-fb-4"></div>
+                    <div id="sec2-hint-4" class="sec2-correct-hint"></div>
+                </div>
+            </div>
+
+            <!-- Item 5 -->
+            <div class="sec2-row sec2-quiz-row" id="sec2-row-5"
+                style="position: relative; padding-top: 8px; padding-left: 38px;">
+                <div class="sec2-number-badge">5</div>
+                <div class="sec2-answer-area" style="padding-left: 0; width: 100%;">
+                    <div class="sec2-question-text"
+                        style="font-size: 14px; font-weight: 600; color: #1e293b; margin-bottom: 6px;">
+                        Sofia enjoys reading at the library. What is her hobby?
+                    </div>
+                    <div class="sec2-input-container">
+                        <div class="sec2-input-inner">
+                            <input type="text" class="sec2-answer-input" id="sec2-input-5"
+                                data-answer="Sofia's hobby is reading." placeholder="Type answer here..."
+                                autocomplete="off" autocorrect="off" autocapitalize="none" spellcheck="false">
+                        </div>
+                        <img src="https://lh3.googleusercontent.com/d/1cbrqBkAXBIRrbgWG-tOCuZoZYbuD3ry2"
+                            class="sec2-pencil-icon" alt="pencil"
+                            style="position: absolute; top: -15px; right: -8px; width: 32px; z-index: 10; pointer-events: none;">
+                    </div>
+                    <div class="sec2-feedback-icon" id="sec2-fb-5"></div>
+                    <div id="sec2-hint-5" class="sec2-correct-hint"></div>
+                </div>
+            </div>
+
+
+
+
+            <!-- SCORE BOX -->
+            <div id="score-box" class="score-box" style="display: none;">
+                <div class="score-label">TOTAL SCORE</div>
+                <div class="score-value" id="score-value">100</div>
+            </div>
+
+            <!-- QUIZ CONTROL ACTIONS -->
+            <div class="quiz-actions" id="quiz-actions">
+                <button id="btn-reset" class="reset-btn">
+                    <img src="https://lh3.googleusercontent.com/d/1KuPBOWr81b39cSSCvc2lzqeiIKnZZ_A0" alt="Try Again">
+                </button>
+                <button id="btn-check" class="check-btn" disabled>
+                    <img src="https://lh3.googleusercontent.com/d/16hWAAvA2gprM0l5Vmw8t8_mrvAo4oic_"
+                        alt="Check Answers">
+                </button>
+            </div>
+
+            <!-- RESULT MESSAGE -->
+            <div id="result-msg" class="result-msg" style="display: none;"></div>
+        </div>
+
+        <!-- SOUND ASSETS -->
+        <audio id="audio-click" src="assets/click.mp3"></audio>
+        <audio id="audio-correct" src="assets/correct_sound.mp3"></audio>
+        <audio id="audio-incorrect" src="assets/incorrect_sound.mp3"></audio>
+        <audio id="audio-typing" src="assets/typing.mp3" preload="auto"></audio>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+
+</html>
