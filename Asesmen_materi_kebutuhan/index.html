@@ -1,0 +1,542 @@
+<!DOCTYPE html>
+<html lang="id">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+    <meta name="description" content="Media Pembelajaran Interaktif - Asesmen Materi Kebutuhan untuk Sekolah Dasar">
+    <title>Asesmen Materi Kebutuhan Kelas 4 🎯</title>
+    <!-- Preconnect to Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Fredoka+One&family=Nunito:wght@400;600;700;800;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <!-- BACKGROUND MAGNET WAVES (North & South Poles) -->
+    <div class="magnetic-bg-waves">
+        <div class="wave red-wave"></div>
+        <div class="wave blue-wave"></div>
+    </div>
+
+    <!-- MAIN APP CONTAINER -->
+    <div class="app-container" id="appContainer">
+
+        <!-- ═══ TOP PROGRESS BAR ═══ -->
+        <div class="progress-container">
+            <div class="progress-bar" id="progressBar"></div>
+        </div>
+
+        <!-- ═══ APP SCREEN: COVER ═══ -->
+        <div id="screen-cover" class="screen active">
+            <div class="cover-content">
+                <!-- Floating Fullscreen Button on Cover -->
+                <button class="toolbar-btn fullscreen-cover-btn" id="coverFullscreenBtn" title="Layar Penuh (F)" onclick="toggleFullscreen()">
+                    📺 Layar Penuh
+                </button>
+
+                <!-- Floating Magnets Background Decor -->
+                <div class="decor-magnet dec-left">💰</div>
+                <div class="decor-magnet dec-right">🛒</div>
+
+                <div class="cover-badge">📖 Media Pembelajaran Interaktif</div>
+                <h1 class="cover-title">ASESMEN MATERI<br><span class="highlight-title">KEBUTUHAN</span></h1>
+                
+                <div class="school-tag">
+                    <span class="school-icon">🏫</span>
+                    <p>SD Islam Al Azhar 15</p>
+                    <p class="academic-year">Tahun Pelajaran 2025/2026</p>
+                </div>
+
+                <div class="magnet-illustration" style="background: white; border: 2px solid #E2E8F0; width: 150px; height: 60px;">
+                    <div class="pole" style="background: #4CAF50; color: white; font-size: 1.8rem;">💵</div>
+                    <div class="pole" style="background: #FF9800; color: white; font-size: 1.8rem;">🛍️</div>
+                    <div class="spark-particles">
+                        <span></span><span></span><span></span><span></span>
+                    </div>
+                </div>
+
+                <!-- Dual Action Buttons: Study & Quiz -->
+                <div class="cover-buttons" style="display: flex; flex-direction: column; gap: 12px; width: 100%; max-width: 280px; z-index: 5;">
+                    <button class="action-btn start-btn" onclick="startPresentation()">
+                        Mulai Belajar! 🚀
+                    </button>
+                    <button class="action-btn quiz-launch-btn" onclick="startQuizDirectly()" style="background: linear-gradient(135deg, var(--south-blue), var(--south-blue-dark)); box-shadow: 0 6px 0 #1D549C, 0 10px 20px rgba(74, 144, 226, 0.35);">
+                        Mulai Kuis! 📝
+                    </button>
+                    <button class="action-btn teacher-panel-btn" onclick="openTeacherLogin()" style="background: linear-gradient(135deg, #673AB7, #512DA8); box-shadow: 0 6px 0 #311B92; font-size: 1rem;">
+                        🔓 Panel Nilai Guru
+                    </button>
+                </div>
+
+                <p class="fullscreen-tip" style="font-size: var(--fs-sm); font-weight: 800; color: var(--south-blue-dark); background: rgba(74, 144, 226, 0.1); padding: 8px 20px; border-radius: 20px; z-index: 5; margin-top: 2px; animation: pulseButton 2s infinite;">
+                    👉 Klik tombol <b>📺 Layar Penuh</b> di pojok kanan atas sebelum mulai belajar! ✨
+                </p>
+
+                <div class="cover-footer">
+                    Mata Pelajaran: IPAS Kelas 4
+                </div>
+            </div>
+        </div>
+
+        <!-- ═══ APP SCREEN: PRESENTATION ═══ -->
+        <div id="screen-presentation" class="screen" style="display: none;">
+            
+            <!-- HEADER TOOLBAR -->
+            <header class="app-header">
+                <div class="header-left">
+                    <span class="magnet-logo">🛒</span>
+                    <h2 class="header-title">IPAS KELAS 4</h2>
+                </div>
+                
+                <div class="header-center">
+                    <span class="slide-indicator" id="slideIndicator">Slide 1 / 8</span>
+                </div>
+
+                <div class="header-right">
+                    <!-- Shortcut Quiz Button -->
+                    <button class="toolbar-btn quiz-shortcut-btn" title="Buka Kuis Interaktif (Q)" onclick="startQuizFromPresentation()">
+                        <span class="btn-icon">📝</span>
+                        <span class="btn-lbl">Kuis</span>
+                    </button>
+                    <!-- Autoplay Toggle Button -->
+                    <button class="toolbar-btn" id="autoplayBtn" title="Mainkan Otomatis (A)" onclick="toggleAutoplay()">
+                        <span class="btn-icon">▶️</span>
+                        <span class="btn-lbl">Autoplay</span>
+                    </button>
+                    <!-- Navigation Help Button -->
+                    <button class="toolbar-btn" title="Petunjuk Navigasi (H)" onclick="toggleHelpModal(true)">
+                        <span class="btn-icon">ℹ️</span>
+                    </button>
+                    <!-- Grid Navigator Toggle Button -->
+                    <button class="toolbar-btn" title="Daftar Slide (L)" onclick="toggleSlideDrawer(true)">
+                        <span class="btn-icon">☰</span>
+                    </button>
+                    <!-- Fullscreen Toggle Button -->
+                    <button class="toolbar-btn" id="fullscreenBtn" title="Layar Penuh (F)" onclick="toggleFullscreen()">
+                        <span class="btn-icon">📺</span>
+                    </button>
+                </div>
+            </header>
+
+            <!-- SLIDES CANVAS FRAME (Keep aspect ratio 16:9 like a PPT projector) -->
+            <main class="presentation-canvas">
+                <div class="slides-wrapper" id="slidesWrapper">
+                    
+                    <!-- SLIDE 1 -->
+                    <div class="slide active" id="slide-1" data-index="1">
+                        <div class="slide-spinner"></div>
+                        <img data-src="assets/slide1.png" alt="Slide 1" class="slide-img">
+                    </div>
+
+                    <!-- SLIDE 2 -->
+                    <div class="slide" id="slide-2" data-index="2">
+                        <div class="slide-spinner"></div>
+                        <img data-src="assets/slide2.png" alt="Slide 2" class="slide-img">
+                    </div>
+
+                    <!-- SLIDE 3 -->
+                    <div class="slide" id="slide-3" data-index="3">
+                        <div class="slide-spinner"></div>
+                        <img data-src="assets/slide3.png" alt="Slide 3" class="slide-img">
+                    </div>
+
+                    <!-- SLIDE 4 -->
+                    <div class="slide" id="slide-4" data-index="4">
+                        <div class="slide-spinner"></div>
+                        <img data-src="assets/slide4.png" alt="Slide 4" class="slide-img">
+                    </div>
+
+                    <!-- SLIDE 5 -->
+                    <div class="slide" id="slide-5" data-index="5">
+                        <div class="slide-spinner"></div>
+                        <img data-src="assets/slide5.png" alt="Slide 5" class="slide-img">
+                    </div>
+
+                    <!-- SLIDE 6 -->
+                    <div class="slide" id="slide-6" data-index="6">
+                        <div class="slide-spinner"></div>
+                        <img data-src="assets/slide6.png" alt="Slide 6" class="slide-img">
+                    </div>
+
+                    <!-- SLIDE 7 -->
+                    <div class="slide" id="slide-7" data-index="7">
+                        <div class="slide-spinner"></div>
+                        <img data-src="assets/slide7.png" alt="Slide 7" class="slide-img">
+                    </div>
+
+                    <!-- SLIDE 8 -->
+                    <div class="slide" id="slide-8" data-index="8">
+                        <div class="slide-spinner"></div>
+                        <img data-src="assets/slide8.png" alt="Slide 8" class="slide-img">
+                    </div>
+                </div>
+            </main>
+
+            <!-- BOTTOM NAVIGATION BAR -->
+            <footer class="app-footer">
+                <button class="nav-btn prev-btn" id="prevBtn" onclick="prevSlide()" disabled>
+                    <span class="btn-arrow">⬅️</span> Kembali
+                </button>
+
+                <!-- Clickable dots wrapper -->
+                <div class="dots-indicator" id="dotsIndicator">
+                    <!-- Dots will be generated dynamically -->
+                </div>
+
+                <button class="nav-btn next-btn" id="nextBtn" onclick="nextSlide()">
+                    Lanjut <span class="btn-arrow">➡️</span>
+                </button>
+            </footer>
+        </div>
+
+        <!-- ═══ APP SCREEN: QUIZ ═══ -->
+        <div id="screen-quiz" class="screen" style="display: none;">
+            <!-- HEADER -->
+            <header class="app-header">
+                <div class="header-left">
+                    <button class="toolbar-btn" title="Kembali ke Menu Utama" onclick="goToMainMenu()" style="padding: 6px 12px; border-radius: 20px;">
+                        🏠 <span class="btn-lbl">Menu Utama</span>
+                    </button>
+                </div>
+                <div class="header-center">
+                    <span class="slide-indicator" id="quizQuestionIndicator">Soal 1 / 30</span>
+                </div>
+                <div class="header-right">
+                    <div class="score-badge" style="font-family: 'Fredoka One', cursive; background: var(--accent-gold); color: var(--dark); padding: 6px 14px; border-radius: 20px; font-weight: 800; box-shadow: 0 4px 0 #DCA518; white-space: nowrap; display: none;">
+                        Bintang: <span id="quizScoreText">0</span> ⭐
+                    </div>
+                </div>
+            </header>
+
+            <!-- QUESTION VIEWER CANVAS -->
+            <main class="presentation-canvas">
+                <div class="question-container" style="width: 100%; max-width: 780px; display: flex; flex-direction: column; gap: var(--sp-sm); margin: auto;">
+                    
+                    <!-- Navigator Grid (ANBK Style) -->
+                    <div class="quiz-navigator-container">
+                        <div style="font-size: var(--fs-sm); font-weight: 800; margin-bottom: 8px; color: var(--south-blue-dark); text-align: center; font-family: 'Fredoka One', cursive;">
+                            🧭 NAVIGASI SOAL KUIS (Pilih Nomor Soal)
+                        </div>
+                        <div id="quizNumberGrid" class="number-grid">
+                            <!-- Buttons 1 to 15 generated dynamically -->
+                        </div>
+                    </div>
+
+                    <!-- Floating Question Card -->
+                    <div class="question-box" id="quizQuestionBox" style="background: var(--white); padding: var(--sp-md); border-radius: var(--border-radius-md); box-shadow: var(--shadow-md); border: 4px solid var(--north-red); display: flex; flex-direction: column; align-items: center; gap: 12px;">
+                        <img id="quizQuestionImage" src="" alt="Gambar Soal" style="display: none; width: 100%; max-width: 360px; max-height: 220px; object-fit: contain; border-radius: 8px; border: 2px solid #EBF1F5;">
+                        <p class="question-text" id="quizQuestionText" style="font-size: var(--fs-lg); font-weight: 600; color: var(--dark); line-height: 1.45; text-align: left; width: 100%; white-space: pre-wrap;">
+                            Teks pertanyaan quiz pilihan ganda akan muncul di sini...
+                        </p>
+                    </div>
+
+                    <!-- Options Cards 2x2 Grid -->
+                    <div class="options-grid" id="quizOptionsGrid">
+                        <!-- Options will be loaded dynamically by script.js -->
+                    </div>
+
+                    <!-- Instant Feedback Area -->
+                    <div id="quizFeedbackArea" style="display: none; width: 100%; flex-direction: column; gap: 8px;"></div>
+                </div>
+            </main>
+
+            <!-- QUIZ FOOTER CONTROLS -->
+            <footer class="app-footer" style="justify-content: space-between; gap: 10px; padding: 10px var(--sp-md);">
+                <button class="nav-btn prev-btn" id="quizPrevBtn" onclick="prevQuizQuestion()">
+                    ⬅️ Kembali
+                </button>
+                <button class="nav-btn unsure-btn" id="quizUnsureBtn" onclick="toggleUnsureFlag()" style="background: var(--accent-gold); color: var(--dark); box-shadow: 0 4px 0 #DCA518; border: none;">
+                    ⚠️ Ragu-Ragu
+                </button>
+                <button class="nav-btn next-btn" id="quizNextBtn" onclick="nextQuizQuestion()">
+                    Lanjut ➡️
+                </button>
+                <button class="nav-btn submit-btn" id="quizSubmitBtn" onclick="checkSubmitQuiz()" style="background: linear-gradient(135deg, var(--north-red), var(--north-red-dark)); color: var(--white); box-shadow: 0 4px 0 #B22222; display: none;">
+                    Selesai 🏁
+                </button>
+            </footer>
+        </div>
+
+        <!-- ═══ MODAL: NAVIGATION HELP ═══ -->
+        <div class="overlay modal-overlay" id="helpModal">
+            <div class="popup-box modal-box">
+                <h2>⌨️ Petunjuk Navigasi</h2>
+                <p style="text-align: center; margin-bottom: 15px; color: #555;">
+                    Kamu bisa menggunakan kontrol berikut untuk presentasi yang lebih mudah!
+                </p>
+                <div class="guide-list">
+                    <div class="guide-item">
+                        <kbd class="key-badge">➡️</kbd> atau <kbd class="key-badge">Space</kbd>
+                        <span>Slide Berikutnya</span>
+                    </div>
+                    <div class="guide-item">
+                        <kbd class="key-badge">⬅️</kbd>
+                        <span>Slide Sebelumnya</span>
+                    </div>
+                    <div class="guide-item">
+                        <kbd class="key-badge">F</kbd>
+                        <span>Aktifkan Layar Penuh</span>
+                    </div>
+                    <div class="guide-item">
+                        <kbd class="key-badge">A</kbd>
+                        <span>Mulai/Jeda Autoplay</span>
+                    </div>
+                    <div class="guide-item">
+                        <kbd class="key-badge">L</kbd>
+                        <span>Buka Daftar Slide</span>
+                    </div>
+                    <div class="guide-item">
+                        <span class="swipe-gesture-icon">👆 SWIPE</span>
+                        <span>Geser layar kiri/kanan di HP</span>
+                    </div>
+                </div>
+                <button class="action-btn" onclick="toggleHelpModal(false)" style="margin-top: 15px;">
+                    Mengerti, Siap! 👍
+                </button>
+            </div>
+        </div>
+
+        <!-- ═══ BOTTOM DRAWER: SLIDE INDEX JUMP ═══ -->
+        <div class="overlay drawer-overlay" id="drawerOverlay" onclick="toggleSlideDrawer(false)">
+            <div class="slide-drawer" id="slideDrawer" onclick="event.stopPropagation()">
+                <div class="drawer-header">
+                    <h3>📁 Daftar Slide Presentasi</h3>
+                    <button class="close-drawer-btn" onclick="toggleSlideDrawer(false)">✖️</button>
+                </div>
+                <div class="drawer-grid" id="drawerGrid">
+                    <!-- Drawer grid cards will be generated by JS -->
+                </div>
+            </div>
+        </div>
+
+        <!-- ═══ POPUP: END PRESENTATION ═══ -->
+        <div class="overlay" id="endScreen">
+            <div class="popup-box end-box">
+                <h2>Pembelajaran Selesai! 🎉</h2>
+                <div class="popup-icon">🏆</div>
+                <p style="text-align: center; font-size: 1.15rem; color: var(--dark); margin-bottom: 20px;">
+                    Luar biasa! Kamu sudah menyelesaikan seluruh asesmen materi kebutuhan dengan baik.
+                </p>
+                <div class="btn-group" style="display: flex; flex-direction: column; gap: 12px;">
+                    <button class="action-btn start-btn" onclick="startQuizFromEndScreen()">
+                        Mulai Kuis! 📝
+                    </button>
+                    <button class="action-btn" onclick="restartPresentation()" style="background: var(--south-blue); box-shadow: 0 5px 0 #2B7AF0;">
+                        Ulangi Presentasi 🔄
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- ═══ MODAL: INPUT NOMOR ABSEN ═══ -->
+        <div class="overlay" id="absenModal">
+            <div class="popup-box" style="max-width: 420px; border: 4px solid var(--south-blue);">
+                <h2 style="font-family: 'Fredoka One', cursive; color: var(--south-blue);">Nomor Absen Siswa</h2>
+                <div class="popup-icon">📋</div>
+                <p style="font-size: var(--fs-base); font-weight: 700; color: #4A5568; margin-bottom: 15px;">
+                    Silakan masukkan nomor absenmu untuk memulai kuis!
+                </p>
+                <div style="display: flex; flex-direction: column; gap: 12px; align-items: center; width: 100%;">
+                    <input type="number" id="absenInput" placeholder="Contoh: 15" min="1" max="100" style="width: 100%; max-width: 200px; padding: 12px 16px; border: 3px solid var(--south-blue); border-radius: 8px; font-family: 'Fredoka One', cursive; font-size: var(--fs-lg); text-align: center; outline: none; transition: all 0.2s;" oninput="handleAbsenLookup(this.value)">
+                    
+                    <!-- Dynamic Name Result Badge -->
+                    <div id="absenNameBadge" style="width: 100%; padding: 12px; border-radius: 8px; font-weight: 800; font-size: var(--fs-base); text-align: center; background: #F1F4F8; color: #718096; transition: all 0.25s;">
+                        Belum mengisi nomor absen
+                    </div>
+                </div>
+                
+                <div class="btn-group" style="display: flex; gap: 12px; justify-content: center; margin-top: 20px; width: 100%;">
+                    <button class="action-btn" id="startQuizBtn" onclick="confirmAbsenAndStart()" style="background: linear-gradient(135deg, var(--green), var(--green-dark)); box-shadow: 0 5px 0 var(--green-dark); flex: 1; opacity: 0.5; pointer-events: none;">
+                        Mulai Kuis! 🚀
+                    </button>
+                    <button class="action-btn" onclick="closeAbsenModal()" style="background: #F1F4F8; color: var(--dark); box-shadow: 0 5px 0 #D0D8E0; flex: 1;">
+                        Batal ❌
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- ═══ MODAL: QUIZ SUBMIT CONFIRMATION ═══ -->
+        <div class="overlay" id="quizSubmitConfirmModal">
+            <div class="popup-box" style="max-width: 440px;">
+                <h2 style="font-family: 'Fredoka One', cursive; color: var(--north-red);">Selesai Kuis?</h2>
+                <div class="popup-icon">📝</div>
+                <p id="quizSubmitStatsText" style="text-align: left; font-size: var(--fs-base); line-height: 1.55; color: var(--dark); margin: 15px 0; font-weight: 700;">
+                    Apakah kamu yakin ingin menyelesaikan kuis ini?<br><br>
+                    Jumlah terjawab: <span id="statAnswered" style="color: var(--south-blue); font-weight: 900;">0</span> / 30<br>
+                    Masih Ragu-Ragu: <span id="statUnsure" style="color: var(--accent-gold); background: var(--dark); padding: 2px 8px; border-radius: 6px; font-weight: 900;">0</span>
+                </p>
+                <div class="btn-group" style="display: flex; gap: 12px; justify-content: center; margin-top: 15px;">
+                    <button class="action-btn" onclick="confirmSubmitQuiz()" style="background: linear-gradient(135deg, var(--green), var(--green-dark)); box-shadow: 0 5px 0 var(--green-dark); flex: 1;">
+                        Ya, Selesai! ✅
+                    </button>
+                    <button class="action-btn" onclick="closeSubmitConfirmModal()" style="background: #F1F4F8; color: var(--dark); box-shadow: 0 5px 0 #D0D8E0; flex: 1;">
+                        Tidak, Kembali ❌
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- ═══ OVERLAY: QUIZ COMPLETION SCREEN ═══ -->
+        <div class="overlay" id="quizEndScreen">
+            <div class="popup-box end-box">
+                <h2>Kuis Selesai! 🎉</h2>
+                <div class="popup-icon">🏆</div>
+                <p style="text-align: center; font-size: 1.15rem; font-weight: 800; margin-bottom: 15px; color: var(--dark);">
+                    Luar biasa! Kamu telah menyelesaikan kuis kebutuhan.<br>
+                    Skor Kamu: <span id="quizFinalScore" style="font-size: var(--fs-xl); color: var(--south-blue); font-weight: 900; display: block; margin: 8px 0;">0 / 100 Poin ⭐</span>
+                    <span id="autoSubmitStatus" style="font-size: 0.9rem; color: #155724; display: block; margin: 10px auto; font-weight: bold; background: #d4edda; padding: 8px 12px; border-radius: 8px; border: 1px solid #c3e6cb; text-align: center; max-width: 90%;">✓ Nilai berhasil dikirim otomatis ke Google Form Guru!</span>
+                </p>
+
+
+                <div class="btn-group" style="margin-top: 16px; display: flex; flex-direction: column; gap: 10px;">
+                    <button class="action-btn" onclick="openReviewScreen()" style="background: linear-gradient(135deg, #F6AD55, #DD6B20); box-shadow: 0 5px 0 #C05621;">
+                        📖 Lihat Pembahasan
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- ═══ APP SCREEN: REVIEW PEMBAHASAN ═══ -->
+        <div id="screen-review" class="screen" style="display: none; background: #FFF8F0; overflow-y: auto; padding: 20px;">
+            <div style="max-width: 760px; margin: 0 auto; width: 100%; display: flex; flex-direction: column; gap: 20px; padding-bottom: 30px;">
+                <!-- Header -->
+                <div style="background: linear-gradient(135deg, #F6AD55, #DD6B20); padding: 20px 24px; border-radius: 16px; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 12px; box-shadow: 0 6px 0 #C05621;">
+                    <div>
+                        <h1 style="font-family: 'Fredoka One', cursive; color: white; font-size: 1.7rem; margin: 0; text-shadow: 0 2px 4px rgba(0,0,0,0.2);">Pembahasan Soal 📖</h1>
+                        <p style="margin: 4px 0 0 0; color: rgba(255,255,255,0.9); font-weight: 700; font-size: 0.95rem;">Review semua jawaban dan penjelasannya</p>
+                    </div>
+                    <button class="action-btn" onclick="closeReviewScreen()" style="background: rgba(255,255,255,0.2); color: white; box-shadow: 0 4px 0 rgba(0,0,0,0.15); border: 2px solid rgba(255,255,255,0.4); font-size: 0.9rem; padding: 10px 16px;">
+                        ← Kembali
+                    </button>
+                </div>
+                <!-- Skor ringkasan di atas -->
+                <div id="reviewScoreSummary" style="background: white; border-radius: 12px; padding: 15px 20px; display: flex; gap: 20px; flex-wrap: wrap; align-items: center; justify-content: center; box-shadow: 0 2px 8px rgba(0,0,0,0.05); border: 2px solid #FEEBC8;"></div>
+                <!-- Cards soal -->
+                <div id="reviewQuestionsContainer"></div>
+            </div>
+        </div>
+
+        <!-- ═══ MODAL: LOGIN PASSCODE GURU ═══ -->
+        <div class="overlay" id="teacherLoginModal">
+            <div class="popup-box" style="max-width: 400px; border: 4px solid #673AB7; padding: var(--sp-lg);">
+                <h2 style="font-family: 'Fredoka One', cursive; color: #673AB7;">Akses Panel Guru</h2>
+                <div class="popup-icon">🔐</div>
+                <p style="font-size: var(--fs-base); font-weight: 700; color: #4A5568; margin-bottom: 15px;">
+                    Masukkan sandi keamanan khusus Guru:
+                </p>
+                <div style="display: flex; flex-direction: column; gap: 12px; align-items: center; width: 100%;">
+                    <input type="password" id="teacherPasscodeInput" placeholder="Masukkan Sandi" style="width: 100%; max-width: 200px; padding: 12px 16px; border: 3px solid #673AB7; border-radius: 8px; font-family: 'Fredoka One', cursive; font-size: var(--fs-lg); text-align: center; outline: none; transition: all 0.2s;" onkeypress="if(event.key === 'Enter') verifyTeacherPasscode()">
+                </div>
+                
+                <div class="btn-group" style="display: flex; gap: 12px; justify-content: center; margin-top: 20px; width: 100%;">
+                    <button class="action-btn" onclick="verifyTeacherPasscode()" style="background: linear-gradient(135deg, #673AB7, #512DA8); box-shadow: 0 5px 0 #311B92; flex: 1;">
+                        Masuk 🔓
+                    </button>
+                    <button class="action-btn" onclick="closeTeacherLogin()" style="background: #F1F4F8; color: var(--dark); box-shadow: 0 5px 0 #D0D8E0; flex: 1;">
+                        Batal ❌
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- ═══ APP SCREEN: PANEL NILAI GURU ═══ -->
+        <div id="screen-teacher" class="screen" style="display: none; background: #F8FAFC; overflow-y: auto; padding: 20px;">
+            <div class="teacher-container" style="max-width: 1000px; margin: 0 auto; width: 100%; display: flex; flex-direction: column; gap: 20px;">
+                <!-- Header Panel -->
+                <div class="teacher-header" style="background: white; padding: 20px; border-radius: 16px; box-shadow: 0 4px 6px rgba(0,0,0,0.05); display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 15px; border-left: 8px solid #673AB7; text-align: left;">
+                    <div>
+                        <h1 style="font-family: 'Fredoka One', cursive; color: #311B92; font-size: 1.8rem; margin: 0;">Panel Rekap Nilai Siswa 🏫</h1>
+                        <p style="margin: 5px 0 0 0; color: #718096; font-weight: 700;">SD Islam Al Azhar 15 • Tahun Pelajaran 2025/2026</p>
+                    </div>
+                    <div style="display: flex; gap: 10px;">
+                        <button class="action-btn" id="teacherRefreshBtn" onclick="fetchClassScores()" style="background: linear-gradient(135deg, #673AB7, #512DA8); box-shadow: 0 5px 0 #311B92; font-size: 0.95rem; padding: 10px 18px; display: flex; align-items: center; gap: 8px;">
+                            <span id="refreshIconSpan" class="refresh-icon" style="display: inline-block;">🔄</span> Refresh Data
+                        </button>
+                        <button class="action-btn" onclick="closeTeacherPanel()" style="background: #E2E8F0; color: #475569; box-shadow: 0 5px 0 #CBD5E1; font-size: 0.95rem; padding: 10px 18px;">
+                            🏠 Beranda
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Stats Dashboard Grid -->
+                <div class="teacher-stats-grid" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 15px;">
+                    <!-- Stat 1: Total Siswa -->
+                    <div class="stat-card" style="background: white; padding: 20px; border-radius: 12px; box-shadow: 0 4px 6px rgba(0,0,0,0.02); border-bottom: 5px solid #3182CE; text-align: center;">
+                        <span style="font-size: 2.2rem; display: block; margin-bottom: 5px;">👥</span>
+                        <span style="color: #718096; font-weight: 800; font-size: 0.9rem; display: block;">TOTAL SISWA</span>
+                        <span style="font-size: 1.8rem; font-weight: 900; color: #2B6CB0; display: block; margin-top: 5px;">33 Siswa</span>
+                    </div>
+                    <!-- Stat 2: Sudah Mengerjakan -->
+                    <div class="stat-card" style="background: white; padding: 20px; border-radius: 12px; box-shadow: 0 4px 6px rgba(0,0,0,0.02); border-bottom: 5px solid #38A169; text-align: center;">
+                        <span style="font-size: 2.2rem; display: block; margin-bottom: 5px;">✅</span>
+                        <span style="color: #718096; font-weight: 800; font-size: 0.9rem; display: block;">SUDAH MENGERJAKAN</span>
+                        <span id="statSubmissions" style="font-size: 1.8rem; font-weight: 900; color: #2F855A; display: block; margin-top: 5px;">0 / 33</span>
+                    </div>
+                    <!-- Stat 3: Belum Mengerjakan -->
+                    <div class="stat-card" style="background: white; padding: 20px; border-radius: 12px; box-shadow: 0 4px 6px rgba(0,0,0,0.02); border-bottom: 5px solid #E53E3E; text-align: center;">
+                        <span style="font-size: 2.2rem; display: block; margin-bottom: 5px;">❌</span>
+                        <span style="color: #718096; font-weight: 800; font-size: 0.9rem; display: block;">BELUM MENGERJAKAN</span>
+                        <span id="statUnsubmitted" style="font-size: 1.8rem; font-weight: 900; color: #C53030; display: block; margin-top: 5px;">33 Siswa</span>
+                    </div>
+                    <!-- Stat 4: Rata-rata Nilai -->
+                    <div class="stat-card" style="background: white; padding: 20px; border-radius: 12px; box-shadow: 0 4px 6px rgba(0,0,0,0.02); border-bottom: 5px solid #D69E2E; text-align: center;">
+                        <span style="font-size: 2.2rem; display: block; margin-bottom: 5px;">🏆</span>
+                        <span style="color: #718096; font-weight: 800; font-size: 0.9rem; display: block;">RATA-RATA NILAI</span>
+                        <span id="statClassAverage" style="font-size: 1.8rem; font-weight: 900; color: #B7791F; display: block; margin-top: 5px;">0.0 Poin</span>
+                    </div>
+                </div>
+
+                <!-- Controls & Filters -->
+                <div class="teacher-controls" style="background: white; padding: 15px 20px; border-radius: 12px; box-shadow: 0 4px 6px rgba(0,0,0,0.02); display: flex; gap: 15px; align-items: center; flex-wrap: wrap; justify-content: space-between;">
+                    <div style="display: flex; gap: 10px; align-items: center; flex-wrap: wrap; flex: 1;">
+                        <!-- Search Bar -->
+                        <div style="position: relative; flex: 1; min-width: 250px;">
+                            <input type="text" id="teacherSearchInput" oninput="filterTeacherTable()" placeholder="🔍 Cari nama siswa..." style="width: 100%; padding: 10px 14px; border: 2px solid #E2E8F0; border-radius: 8px; outline: none; font-size: 0.95rem; font-weight: bold; transition: all 0.2s;">
+                        </div>
+                        
+                        <!-- Dropdown Filter Status -->
+                        <select id="teacherStatusFilter" onchange="filterTeacherTable()" style="padding: 10px 14px; border: 2px solid #E2E8F0; border-radius: 8px; outline: none; font-size: 0.95rem; font-weight: bold; color: #4A5568; background: white; cursor: pointer;">
+                            <option value="all">📁 Semua Status</option>
+                            <option value="completed">✅ Sudah Mengerjakan</option>
+                            <option value="unsubmitted">❌ Belum Mengerjakan</option>
+                        </select>
+                    </div>
+                    
+                    <div id="connectionStatusBadge" style="font-size: 0.85rem; font-weight: 800; color: #718096; background: #EDF2F7; padding: 6px 12px; border-radius: 20px;">
+                        Status: Belum Terhubung
+                    </div>
+                </div>
+
+                <!-- Score Table Container -->
+                <div class="table-container" style="background: white; border-radius: 16px; box-shadow: 0 4px 10px rgba(0,0,0,0.03); overflow: hidden; border: 1px solid #E2E8F0;">
+                    <div style="overflow-x: auto; width: 100%;">
+                        <table style="width: 100%; border-collapse: collapse; text-align: left; font-size: 0.95rem;">
+                            <thead>
+                                <tr style="background: #F7FAFC; border-bottom: 2px solid #EDF2F7; color: #4A5568; font-weight: 800;">
+                                    <th style="padding: 15px 20px; width: 80px; text-align: center;">ABSEN</th>
+                                    <th style="padding: 15px 20px;">NAMA LENGKAP SISWA</th>
+                                    <th style="padding: 15px 20px; width: 220px; text-align: center;">STATUS PENGERJAAN</th>
+                                    <th style="padding: 15px 20px; width: 140px; text-align: center;">SKOR AKHIR</th>
+                                    <th style="padding: 15px 20px; width: 180px; text-align: center;">TANGGAL / WAKTU</th>
+                                </tr>
+                            </thead>
+                            <tbody id="teacherTableBody">
+                                <!-- Generated Dynamically in JS -->
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+    </div>
+
+    <script src="script.js"></script>
+</body>
+
+</html>
