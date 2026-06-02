@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Move Your Body! - Read and Say</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <div class="page">
+        <header class="module-header">
+            <!-- PNG Judul -->
+            <img src="https://lh3.googleusercontent.com/d/1F05FA2K1rdU4cQZeARx-U2gwprvYCeeN" alt="Listen and Read" class="title-badge">
+            
+            <div class="instructions">
+                <p class="en">Listen to the sentence. Then, say it aloud!</p>
+                <div class="separator"></div>
+                <p class="id">Dengarkan kalimatnya. Lalu, ucapkan dengan lantang!</p>
+            </div>
+        </header>
+
+        <!-- Scrollable Content -->
+        <div class="scroll-content">
+
+
+            <div class="image-container">
+                <!-- Main GIF -->
+                <img src="https://lh3.googleusercontent.com/d/1qjWVWykanJfzSgkcTCk-VXQnJfYylzgi" alt="Children jumping and moving their bodies" class="main-gif">
+
+                <button class="sound-btn" id="play-btn" title="Play/Pause Sound">
+                    <!-- Play Icon (Default) -->
+                    <svg id="sound-icon" viewBox="0 0 24 24">
+                        <path
+                            d="M14,3.23V5.29C16.89,6.15 19,8.83 19,12C19,15.17 16.89,17.85 14,18.71V20.77C18.03,19.86 21,16.28 21,12C21,7.72 18.03,4.14 14,3.23M16.5,12C16.5,10.23 15.5,8.71 14,7.97V16.04C15.5,15.29 16.5,13.77 16.5,12M3,9V15H7L12,20V4L7,9H3Z" />
+                    </svg>
+                </button>
+            </div>
+
+            <table class="phrase-table">
+                <tr>
+                    <td>
+                        <div class="phrase" id="phrase-0">Sing a song</div>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <div class="phrase" id="phrase-1">Singing</div>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <div class="phrase" id="phrase-2">Ride a bike</div>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <div class="phrase" id="phrase-3">Cycling</div>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <div class="phrase" id="phrase-4">Dance to the music</div>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <div class="phrase" id="phrase-5">Dancing</div>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <div class="phrase" id="phrase-6">Play a guitar</div>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <div class="phrase" id="phrase-7">Playing guitar</div>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <div class="phrase" id="phrase-8">Read the book</div>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <div class="phrase" id="phrase-9">Reading</div>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <div class="phrase" id="phrase-10">Cook the food</div>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <div class="phrase" id="phrase-11">Cooking</div>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <div class="phrase" id="phrase-12">Fly a kite</div>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <div class="phrase" id="phrase-13">Flying kite</div>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <div class="phrase" id="phrase-14">Draw a picture</div>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <div class="phrase" id="phrase-15">Drawing</div>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <div class="phrase" id="phrase-16">Keep pets</div>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <div class="phrase" id="phrase-17">Keeping pets</div>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <div class="phrase" id="phrase-18">Do vlogging</div>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <div class="phrase" id="phrase-19">Vlogging</div>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <div class="phrase" id="phrase-20">Kick a ball</div>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <div class="phrase" id="phrase-21">Playing football</div>
+                    </td>
+                </tr>
+            </table>
+        </div>
+
+        <audio id="main-audio"></audio>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+
+</html>
