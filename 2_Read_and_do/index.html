@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Read and Do! - Pair Activity</title>
+    <link rel="stylesheet" href="style.css">
+    <!-- Confetti Library for celebration -->
+    <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
+</head>
+
+<body>
+    <div class="page">
+        <header class="module-header">
+            <!-- PNG Judul -->
+            <img src="https://lh3.googleusercontent.com/d/1LE14wY71B7t9z4oQDzunYvQs7iEXJVHn" alt="Read and Do" class="title-badge">
+
+            <div class="instructions">
+                <p class="en">Read and do the instruction!</p>
+                <div class="separator"></div>
+                <p class="id">Bacalah dan lakukan instruksinya!</p>
+            </div>
+        </header>
+
+        <!-- Scrollable Content -->
+        <div class="scroll-content">
+            <!-- Name Entry Screen -->
+            <div id="name-screen" class="screen">
+                <div style="width: 100%; margin-bottom: 16px; text-align: center;">
+                    <img src="https://lh3.googleusercontent.com/d/1EjM1PQovKYs5xOuVLayVX2TywGQz0-R9" alt="Instructions"
+                        style="width: 100%; max-width: 340px; height: auto; display: block; margin: 0 auto; filter: drop-shadow(0 4px 6px rgba(0,0,0,0.1));">
+                </div>
+                <div class="name-box">
+                    <h3>Enter Your Names:</h3>
+                    <div class="input-group">
+                        <label for="p1-name">Student 1:</label>
+                        <input type="text" id="p1-name" placeholder="Name 1" maxlength="15">
+                    </div>
+                    <div class="input-group">
+                        <label for="p2-name">Student 2:</label>
+                        <input type="text" id="p2-name" placeholder="Name 2" maxlength="15">
+                    </div>
+                    <button id="submit-names-btn" class="img-btn disabled" disabled>
+                        <img src="https://lh3.googleusercontent.com/d/1NAkUu4-y5Jnxb-eDN9MTRVDtmVjGAzA5" alt="Start Game">
+                    </button>
+                </div>
+            </div>
+
+            <!-- Progress and Role Info (Hidden initially) -->
+            <div class="game-info hidden" id="ui-info">
+                <div class="progress-container">
+                    <span id="progress-text">Card 1 / 14</span>
+                    <div class="progress-bar">
+                        <div id="progress-fill" style="width: 7%;"></div>
+                    </div>
+                </div>
+                <div class="role-badge" id="role-indicator">
+                    <span class="role-label">Current Role:</span>
+                    <span class="role-name" id="current-role">Partner</span>
+                </div>
+            </div>
+
+            <!-- Main Game Card -->
+            <div class="game-container" id="game-board">
+                <!-- Shuffle Screen -->
+                <div id="shuffle-screen" class="screen hidden">
+                    <div class="shuffle-container">
+                        <div id="click-to-shuffle" class="shuffle-trigger">
+                            <img src="https://lh3.googleusercontent.com/d/1v8X1pky5HjUnEQVxzTFs2RPoc8cqzJU_" alt="Tap to shuffle" class="pile-img">
+                        </div>
+                        <img id="shuffle-image" src="https://lh3.googleusercontent.com/d/1CHWbs-AJnsbCeVLoDss1aCHKpY-paUwL" alt="Shuffling..." class="shuffle-img hidden">
+                        <p class="shuffle-label">Shuffling cards...</p>
+                    </div>
+                </div>
+
+                <!-- Card Screen -->
+                <div id="card-screen" class="screen hidden">
+                    <div class="instruction-card-container">
+                        <img id="instruction-image" src="" alt="Instruction Card" class="card-img">
+                    </div>
+
+                    <div class="partner-controls">
+                        <p class="control-label" id="control-label">Partner, is the action correct?</p>
+                        <div class="btn-group">
+                            <button id="wrong-btn" class="control-btn wrong">
+                                <svg viewBox="0 0 24 24">
+                                    <path
+                                        d="M19,6.41L17.59,5L12,10.59L6.41,5L5,6.41L10.59,12L5,17.59L6.41,19L12,13.41L17.59,19L19,17.59L13.41,12L19,6.41Z" />
+                                </svg>
+                                <span>Wrong</span>
+                            </button>
+                            <button id="correct-btn" class="control-btn correct">
+                                <svg viewBox="0 0 24 24">
+                                    <path d="M21,7L9,19L3.5,13.5L4.91,12.09L9,16.17L19.59,5.59L21,7Z" />
+                                </svg>
+                                <span>Correct</span>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Feedback Screen -->
+                <div id="feedback-screen" class="screen hidden">
+                    <div class="feedback-content">
+                        <h2 id="feedback-title">Great!</h2>
+                        <div class="feedback-split">
+                            <div id="feedback-card-container" class="split-item">
+                                <p class="split-label">The Card:</p>
+                                <img id="feedback-card-img" src="" alt="Instruction Card" class="card-img">
+                            </div>
+                            <div id="demonstration-container" class="split-item hidden">
+                                <p class="split-label">The Action:</p>
+                                <div class="gif-box">
+                                    <img id="feedback-gif" src="" alt="Demonstration">
+                                </div>
+                            </div>
+                        </div>
+                        <div id="role-switch-reminder" class="switch-text">
+                            <p class="en">Time to switch roles!</p>
+                            <p class="id">Saatnya bertukar peran!</p>
+                        </div>
+                        <button id="next-btn" class="img-btn bounce">
+                            <img src="https://lh3.googleusercontent.com/d/1iJdc9war2yDrsJRN6Kr5z8ox-Y5znu-T" alt="Next Card">
+                        </button>
+                    </div>
+                </div>
+
+                <!-- End Screen -->
+                <div id="end-screen" class="screen hidden">
+                    <div class="finish-box">
+                        <h2>Excellent!</h2>
+                        <p>You have finished all the cards.</p>
+                        <button id="restart-btn" class="main-btn">Play Again</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <audio id="typing-audio" src="assets/typing.MP3" preload="auto"></audio>
+    <audio id="correct-audio" src="assets/correct_sound.MP3" preload="auto"></audio>
+    <audio id="wrong-audio" src="assets/incorrect_sound.MP3" preload="auto"></audio>
+    <audio id="click-audio" src="assets/click.MP3" preload="auto"></audio>
+    <audio id="shuffle-audio" src="assets/shuffle.mp3" preload="auto"></audio>
+    <audio id="tada-audio" src="assets/tada.MP3" preload="auto"></audio>
+
+    <script src="script.js"></script>
+</body>
+
+</html>
