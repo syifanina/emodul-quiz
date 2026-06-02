@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Move Your Body! - Say and Do</title>
+    <link rel="stylesheet" href="style.css">
+    <!-- Confetti Library for celebration -->
+    <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
+</head>
+
+<body>
+    <div class="page">
+        <header class="module-header">
+            <!-- PNG Judul -->
+            <img src="https://lh3.googleusercontent.com/d/1BC8VrBBczLh4GgFFRu3eJ9x8Wtn19V9-" alt="Say and Do" class="title-badge">
+            
+            <div class="instructions">
+                <p class="en">Act and say the action in the picture!</p>
+                <div class="separator"></div>
+                <p class="id">Peragakan dan ucapkan tindakan sesuai gambar!</p>
+            </div>
+        </header>
+
+        <!-- Scrollable Content -->
+        <div class="scroll-content">
+
+        <main class="grid-container">
+            <!-- 1. Sing a song -->
+            <div class="action-card" data-action="sing_a_song">
+                <div class="image-wrapper">
+                    <img src="https://lh3.googleusercontent.com/d/1_HmpBs5xQSphOko4lhN5hYnu35ahNNyU" alt="Sing a song" class="action-image">
+                    <button class="sound-btn" aria-label="Play sound">
+                        <svg viewBox="0 0 24 24">
+                            <path
+                                d="M14,3.23V5.29C16.89,6.15 19,8.83 19,12C19,15.17 16.89,17.85 14,18.71V20.77C18.03,19.86 21,16.28 21,12C21,7.72 18.03,4.14 14,3.23M16.5,12C16.5,10.23 15.5,8.71 14,7.97V16.04C15.5,15.29 16.5,13.77 16.5,12M3,9V15H7L12,20V4L7,9H3Z" />
+                        </svg>
+                    </button>
+                </div>
+                <div class="text-wrapper">
+                    <span class="action-text">Sing a song</span>
+                    <span class="hobby-text">My hobby is singing</span>
+                </div>
+            </div>
+
+            <!-- 2. Ride a bike -->
+            <div class="action-card" data-action="ride_a_bike">
+                <div class="image-wrapper">
+                    <img src="https://lh3.googleusercontent.com/d/100kzxiDLMSWYIKTRa1z_IE-6kMQ8RXfb" alt="Ride a bike" class="action-image">
+                    <button class="sound-btn" aria-label="Play sound">
+                        <svg viewBox="0 0 24 24">
+                            <path
+                                d="M14,3.23V5.29C16.89,6.15 19,8.83 19,12C19,15.17 16.89,17.85 14,18.71V20.77C18.03,19.86 21,16.28 21,12C21,7.72 18.03,4.14 14,3.23M16.5,12C16.5,10.23 15.5,8.71 14,7.97V16.04C15.5,15.29 16.5,13.77 16.5,12M3,9V15H7L12,20V4L7,9H3Z" />
+                        </svg>
+                    </button>
+                </div>
+                <div class="text-wrapper">
+                    <span class="action-text">Ride a bike</span>
+                    <span class="hobby-text">My hobby is cycling</span>
+                </div>
+            </div>
+
+            <!-- 3. Draw a picture -->
+            <div class="action-card" data-action="draw_a_picture">
+                <div class="image-wrapper">
+                    <img src="https://lh3.googleusercontent.com/d/12-xMjyhgMzY5YmJNOWNHJhUE7MLLk0jG" alt="Draw a picture" class="action-image">
+                    <button class="sound-btn" aria-label="Play sound">
+                        <svg viewBox="0 0 24 24">
+                            <path
+                                d="M14,3.23V5.29C16.89,6.15 19,8.83 19,12C19,15.17 16.89,17.85 14,18.71V20.77C18.03,19.86 21,16.28 21,12C21,7.72 18.03,4.14 14,3.23M16.5,12C16.5,10.23 15.5,8.71 14,7.97V16.04C15.5,15.29 16.5,13.77 16.5,12M3,9V15H7L12,20V4L7,9H3Z" />
+                        </svg>
+                    </button>
+                </div>
+                <div class="text-wrapper">
+                    <span class="action-text">Draw a picture</span>
+                    <span class="hobby-text">My hobby is drawing</span>
+                </div>
+            </div>
+
+            <!-- 4. Dance to the music -->
+            <div class="action-card" data-action="dance_to_the_music">
+                <div class="image-wrapper">
+                    <img src="https://lh3.googleusercontent.com/d/1GiteOjO0sffyb-j7sBY-S87jCEOT6EpX" alt="Dance to the music" class="action-image">
+                    <button class="sound-btn" aria-label="Play sound">
+                        <svg viewBox="0 0 24 24">
+                            <path
+                                d="M14,3.23V5.29C16.89,6.15 19,8.83 19,12C19,15.17 16.89,17.85 14,18.71V20.77C18.03,19.86 21,16.28 21,12C21,7.72 18.03,4.14 14,3.23M16.5,12C16.5,10.23 15.5,8.71 14,7.97V16.04C15.5,15.29 16.5,13.77 16.5,12M3,9V15H7L12,20V4L7,9H3Z" />
+                        </svg>
+                    </button>
+                </div>
+                <div class="text-wrapper">
+                    <span class="action-text">Dance to the music</span>
+                    <span class="hobby-text">My hobby is dancing</span>
+                </div>
+            </div>
+
+            <!-- 5. Keep pets -->
+            <div class="action-card" data-action="keep_pets">
+                <div class="image-wrapper">
+                    <img src="https://lh3.googleusercontent.com/d/1poycEQgDvEfQIQ2GTwXUxhnXiqbdBW_u" alt="Keep pets" class="action-image">
+                    <button class="sound-btn" aria-label="Play sound">
+                        <svg viewBox="0 0 24 24">
+                            <path
+                                d="M14,3.23V5.29C16.89,6.15 19,8.83 19,12C19,15.17 16.89,17.85 14,18.71V20.77C18.03,19.86 21,16.28 21,12C21,7.72 18.03,4.14 14,3.23M16.5,12C16.5,10.23 15.5,8.71 14,7.97V16.04C15.5,15.29 16.5,13.77 16.5,12M3,9V15H7L12,20V4L7,9H3Z" />
+                        </svg>
+                    </button>
+                </div>
+                <div class="text-wrapper">
+                    <span class="action-text">Keep pets</span>
+                    <span class="hobby-text">My hobby is keeping pets</span>
+                </div>
+            </div>
+
+            <!-- 6. Do vlogging -->
+            <div class="action-card" data-action="do_vlogging">
+                <div class="image-wrapper">
+                    <img src="https://lh3.googleusercontent.com/d/1e0afGXTh9AJs_5vAwnUozMk01khB4Lgs" alt="Do vlogging" class="action-image">
+                    <button class="sound-btn" aria-label="Play sound">
+                        <svg viewBox="0 0 24 24">
+                            <path
+                                d="M14,3.23V5.29C16.89,6.15 19,8.83 19,12C19,15.17 16.89,17.85 14,18.71V20.77C18.03,19.86 21,16.28 21,12C21,7.72 18.03,4.14 14,3.23M16.5,12C16.5,10.23 15.5,8.71 14,7.97V16.04C15.5,15.29 16.5,13.77 16.5,12M3,9V15H7L12,20V4L7,9H3Z" />
+                        </svg>
+                    </button>
+                </div>
+                <div class="text-wrapper">
+                    <span class="action-text">Do vlogging</span>
+                    <span class="hobby-text">My hobby is doing vlogging</span>
+                </div>
+            </div>
+
+            <!-- 7. Cook a meal -->
+            <div class="action-card" data-action="cook_a_meal">
+                <div class="image-wrapper">
+                    <img src="https://lh3.googleusercontent.com/d/1rEjloYrEfVyhpDonk0EbErtRr4CHMfsK" alt="Cook a meal" class="action-image">
+                    <button class="sound-btn" aria-label="Play sound">
+                        <svg viewBox="0 0 24 24">
+                            <path
+                                d="M14,3.23V5.29C16.89,6.15 19,8.83 19,12C19,15.17 16.89,17.85 14,18.71V20.77C18.03,19.86 21,16.28 21,12C21,7.72 18.03,4.14 14,3.23M16.5,12C16.5,10.23 15.5,8.71 14,7.97V16.04C15.5,15.29 16.5,13.77 16.5,12M3,9V15H7L12,20V4L7,9H3Z" />
+                        </svg>
+                    </button>
+                </div>
+                <div class="text-wrapper">
+                    <span class="action-text">Cook a meal</span>
+                    <span class="hobby-text">My hobby is cooking</span>
+                </div>
+            </div>
+
+            <!-- 8. Read a book -->
+            <div class="action-card" data-action="read_a_book">
+                <div class="image-wrapper">
+                    <img src="https://lh3.googleusercontent.com/d/1EyLKWKyLJ0gtd1ygxpL5B4Np918khR2X" alt="Read a book" class="action-image">
+                    <button class="sound-btn" aria-label="Play sound">
+                        <svg viewBox="0 0 24 24">
+                            <path
+                                d="M14,3.23V5.29C16.89,6.15 19,8.83 19,12C19,15.17 16.89,17.85 14,18.71V20.77C18.03,19.86 21,16.28 21,12C21,7.72 18.03,4.14 14,3.23M16.5,12C16.5,10.23 15.5,8.71 14,7.97V16.04C15.5,15.29 16.5,13.77 16.5,12M3,9V15H7L12,20V4L7,9H3Z" />
+                        </svg>
+                    </button>
+                </div>
+                <div class="text-wrapper">
+                    <span class="action-text">Read a book</span>
+                    <span class="hobby-text">My hobby is reading</span>
+                </div>
+            </div>
+
+            <!-- 9. Play guitar -->
+            <div class="action-card" data-action="play_guitar">
+                <div class="image-wrapper">
+                    <img src="https://lh3.googleusercontent.com/d/1WaFLSNza4dIZo8H0d_1EBMTuCG9xT11J" alt="Play guitar" class="action-image">
+                    <button class="sound-btn" aria-label="Play sound">
+                        <svg viewBox="0 0 24 24">
+                            <path
+                                d="M14,3.23V5.29C16.89,6.15 19,8.83 19,12C19,15.17 16.89,17.85 14,18.71V20.77C18.03,19.86 21,16.28 21,12C21,7.72 18.03,4.14 14,3.23M16.5,12C16.5,10.23 15.5,8.71 14,7.97V16.04C15.5,15.29 16.5,13.77 16.5,12M3,9V15H7L12,20V4L7,9H3Z" />
+                        </svg>
+                    </button>
+                </div>
+                <div class="text-wrapper">
+                    <span class="action-text">Play guitar</span>
+                    <span class="hobby-text">My hobby is playing guitar</span>
+                </div>
+            </div>
+
+            <!-- 10. Fly a kite -->
+            <div class="action-card" data-action="fly_a_kite">
+                <div class="image-wrapper">
+                    <img src="https://lh3.googleusercontent.com/d/1ykITr_FQcNj7BJmKHPVXwGjF11HQltpn" alt="Fly a kite" class="action-image">
+                    <button class="sound-btn" aria-label="Play sound">
+                        <svg viewBox="0 0 24 24">
+                            <path
+                                d="M14,3.23V5.29C16.89,6.15 19,8.83 19,12C19,15.17 16.89,17.85 14,18.71V20.77C18.03,19.86 21,16.28 21,12C21,7.72 18.03,4.14 14,3.23M16.5,12C16.5,10.23 15.5,8.71 14,7.97V16.04C15.5,15.29 16.5,13.77 16.5,12M3,9V15H7L12,20V4L7,9H3Z" />
+                        </svg>
+                    </button>
+                </div>
+                <div class="text-wrapper">
+                    <span class="action-text">Fly a kite</span>
+                    <span class="hobby-text">My hobby is flying a kite</span>
+                </div>
+            </div>
+
+            <!-- 11. Play football -->
+            <div class="action-card" data-action="play_football">
+                <div class="image-wrapper">
+                    <img src="https://lh3.googleusercontent.com/d/1RCSlSlmH3WJtlJ5H9Tazn_m7FUAuaw41" alt="Play football" class="action-image">
+                    <button class="sound-btn" aria-label="Play sound">
+                        <svg viewBox="0 0 24 24">
+                            <path
+                                d="M14,3.23V5.29C16.89,6.15 19,8.83 19,12C19,15.17 16.89,17.85 14,18.71V20.77C18.03,19.86 21,16.28 21,12C21,7.72 18.03,4.14 14,3.23M16.5,12C16.5,10.23 15.5,8.71 14,7.97V16.04C15.5,15.29 16.5,13.77 16.5,12M3,9V15H7L12,20V4L7,9H3Z" />
+                        </svg>
+                    </button>
+                </div>
+                <div class="text-wrapper">
+                    <span class="action-text">Play football</span>
+                    <span class="hobby-text">My hobby is playing football</span>
+                </div>
+            </div>
+        </main>
+
+        <!-- SINGLE AUDIO SOURCE -->
+        <audio id="main-audio" src="assets/move_your_body.mp3"></audio>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+
+</html>
