@@ -94,7 +94,7 @@ document.addEventListener('DOMContentLoaded', () => {
         'wave_hand': 'https://lh3.googleusercontent.com/d/1dnuSUMQ-WCUrtqWg8pQ70zchVXiFJ5ml',
         'comb_hair': 'https://lh3.googleusercontent.com/d/1iFNtMJKe8P9AJQJKhKB3BFdaEfWd5S0K',
         'open_mouth': 'https://lh3.googleusercontent.com/d/1HtLS43Q7EnA5G1Kh8KeA3ZC6TRLcAW5F',
-        'bend_fingers': 'https://lh3.googleusercontent.com/d/1HwXQoJ-J1JBWUIL9PdwPlU-fF7TNmg2c',
+        'bend_fingers': 'https://lh3.googleusercontent.com/d/1XGU1nSg3eT8YyXZdYJ-d-5EtwWUrIMOT',
         'touch_elbow': 'https://lh3.googleusercontent.com/d/1YYh4uFTd_IilYbPwWYHPTK0hrDWciuBY',
         'wiggle_your_waist': 'https://lh3.googleusercontent.com/d/1fyW78hBKTeYe2LNCJHOi7NQK4_RKQKcl',
         'lift_your_eyebrows_up': 'https://lh3.googleusercontent.com/d/1uXFwuRH88OBTxych7D3ynyfpbjgpqwqB',
