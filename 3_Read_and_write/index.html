@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Drag and Drop Quiz</title>
+    <link rel="stylesheet" href="style.css?v=1.1">
+</head>
+
+<body>
+    <div class="page">
+        <header class="module-header">
+            <!-- PNG Judul -->
+            <img src="https://lh3.googleusercontent.com/d/1HTJpA4ubVTm8IxnfAisqzw8UKj-W4R5x" alt="Look and Write"
+                class="title-badge">
+
+            <div class="instructions">
+                <p class="en">Look at the picture and complete the story! Look at the example!</p>
+                <div class="separator"></div>
+                <p class="id">Perhatikan gambar dan lengkapi cerita! Perhatikan contoh!</p>
+            </div>
+        </header>
+
+        <!-- Scrollable Content -->
+        <div class="scroll-content">
+
+            <!-- INTRO SECTION -->
+            <div class="intro-section">
+                <div class="intro-text-block" style="margin-top: 10px; margin-bottom: 20px;">
+                    <p>Hi! I'm Riska. Here are my daily activities.</p>
+                </div>
+            </div>
+
+            <!-- EXAMPLE -->
+            <div class="quiz-block"
+                style="display: flex; flex-direction: column; align-items: center; gap: 10px; margin-bottom: 20px; text-align: center;">
+                <div class="img-placeholder" id="img-ex" style="width: 120px; height: 120px;">
+                    <img src="https://lh3.googleusercontent.com/d/1lg7ZVQahlDyBE640evWVlDcOzJOzu9a4" alt="Wake up">
+                </div>
+                <div class="sentence-area">
+                    <span class="sentence-text">
+                        First, (example) I
+                        <span class="example-answer-box">wake up</span> at five o'clock in the morning.
+                    </span>
+                </div>
+            </div>
+
+            <div id="quiz-container">
+                <!-- Q1 & Q2 -->
+                <div class="quiz-block" id="row-1-2"
+                    style="display: flex; flex-direction: column; align-items: center; gap: 10px; margin-bottom: 20px; text-align: center;">
+                    <div style="display: flex; gap: 15px;">
+                        <div class="img-placeholder" id="img-1" style="width: 110px; height: 110px;">
+                            <span class="img-badge">1</span>
+                            <img src="https://lh3.googleusercontent.com/d/1uKdK2ECDLj32tZFx2NL5gCmnnCxQSmPo" alt="Question 1">
+                        </div>
+                        <div class="img-placeholder" id="img-2" style="width: 110px; height: 110px;">
+                            <span class="img-badge">2</span>
+                            <img src="https://lh3.googleusercontent.com/d/1myGmXobTqQk4UELFaz2wrGsqMXgJ2E1s" alt="Question 2">
+                        </div>
+                    </div>
+                    <div class="sentence-area">
+                        <span class="sentence-text">
+                            Then, I (1) <input type="text" class="input-zone" autocapitalize="off" autocomplete="off" spellcheck="false" autocorrect="off" data-answer="take a bath|take a shower"
+                                id="input-1" placeholder="...">
+                            and (2) <input type="text" class="input-zone" autocapitalize="off" autocomplete="off" spellcheck="false" autocorrect="off" data-answer="brush my teeth" id="input-2"
+                                placeholder="...">.
+                        </span>
+                    </div>
+                </div>
+
+                <!-- Q3 -->
+                <div class="quiz-block" id="row-3"
+                    style="display: flex; flex-direction: row; align-items: center; gap: 15px; margin-bottom: 20px; text-align: left;">
+                    <div class="img-placeholder" id="img-3" style="width: 110px; height: 110px; flex-shrink: 0;">
+                        <span class="img-badge">3</span>
+                        <img src="https://lh3.googleusercontent.com/d/1x4tWORkNyeWoKxx1PuKiVEsC2dzXjCH9" alt="Question 3">
+                    </div>
+                    <div class="sentence-area">
+                        <span class="sentence-text">
+                            I (3) <input type="text" class="input-zone" autocapitalize="off" autocomplete="off" spellcheck="false" autocorrect="off" data-answer="have breakfast" id="input-3"
+                                placeholder="..."> at 5.30 in the morning.
+                        </span>
+                    </div>
+                </div>
+
+                <!-- Q4 -->
+                <div class="quiz-block" id="row-4"
+                    style="display: flex; flex-direction: row-reverse; align-items: center; gap: 15px; margin-bottom: 20px; text-align: right;">
+                    <div class="img-placeholder" id="img-4" style="width: 110px; height: 110px; flex-shrink: 0;">
+                        <span class="img-badge">4</span>
+                        <img src="https://lh3.googleusercontent.com/d/1oTIlLFoq0JHHlCtL0YOH-UkMhWeO2Qn_" alt="Question 4">
+                    </div>
+                    <div class="sentence-area">
+                        <span class="sentence-text">
+                            I (4) <input type="text" class="input-zone" autocapitalize="off" autocomplete="off" spellcheck="false" autocorrect="off" data-answer="go to school" id="input-4"
+                                placeholder="..."> at six o'clock in the morning.
+                        </span>
+                    </div>
+                </div>
+
+                <!-- Q5 -->
+                <div class="quiz-block" id="row-5"
+                    style="display: flex; flex-direction: row; align-items: center; gap: 15px; margin-bottom: 20px; text-align: left;">
+                    <div class="img-placeholder" id="img-5" style="width: 110px; height: 110px; flex-shrink: 0;">
+                        <span class="img-badge">5</span>
+                        <img src="https://lh3.googleusercontent.com/d/1-i2tQ8J0zSKiUZy6CTwuajeHli4gpMAn" alt="Question 5">
+                    </div>
+                    <div class="sentence-area">
+                        <span class="sentence-text">
+                            I (5) <input type="text" class="input-zone" autocapitalize="off" autocomplete="off" spellcheck="false" autocorrect="off" data-answer="study in class" id="input-5"
+                                placeholder="..."> at seven o' clock in the morning.
+                        </span>
+                    </div>
+                </div>
+
+                <!-- Q6 -->
+                <div class="quiz-block" id="row-6"
+                    style="display: flex; flex-direction: row-reverse; align-items: center; gap: 15px; margin-bottom: 20px; text-align: right;">
+                    <div class="img-placeholder" id="img-6" style="width: 110px; height: 110px; flex-shrink: 0;">
+                        <span class="img-badge">6</span>
+                        <img src="https://lh3.googleusercontent.com/d/141KSuVu25yBv2Pv-wzFEHNcy3e588xrs" alt="Question 6">
+                    </div>
+                    <div class="sentence-area">
+                        <span class="sentence-text">
+                            I (6) <input type="text" class="input-zone" autocapitalize="off" autocomplete="off" spellcheck="false" autocorrect="off" data-answer="go home|go home from school"
+                                id="input-6" placeholder="..."> at two o'clock in the afternoon.
+                        </span>
+                    </div>
+                </div>
+
+                <!-- Q7 -->
+                <div class="quiz-block" id="row-7"
+                    style="display: flex; flex-direction: row; align-items: center; gap: 15px; margin-bottom: 20px; text-align: left;">
+                    <div class="img-placeholder" id="img-7" style="width: 110px; height: 110px; flex-shrink: 0;">
+                        <span class="img-badge">7</span>
+                        <img src="https://lh3.googleusercontent.com/d/1peD1lCmuN3ZS5H0YNYSe5VIJ5XXS5brQ" alt="Question 7">
+                    </div>
+                    <div class="sentence-area">
+                        <span class="sentence-text">
+                            Then, I (7) <input type="text" class="input-zone" autocapitalize="off" autocomplete="off" spellcheck="false" autocorrect="off" data-answer="play with friends"
+                                id="input-7" placeholder="..."> at four o'clock in the afternoon.
+                        </span>
+                    </div>
+                </div>
+
+                <!-- Q8 -->
+                <div class="quiz-block" id="row-8"
+                    style="display: flex; flex-direction: row-reverse; align-items: center; gap: 15px; margin-bottom: 20px; text-align: right;">
+                    <div class="img-placeholder" id="img-8" style="width: 110px; height: 110px; flex-shrink: 0;">
+                        <span class="img-badge">8</span>
+                        <img src="https://lh3.googleusercontent.com/d/10zbcZYwJ8IiEIFOJ0eHa7QvH2pPI-Bvf" alt="Question 8">
+                    </div>
+                    <div class="sentence-area">
+                        <span class="sentence-text">
+                            I (8) <input type="text" class="input-zone" autocapitalize="off" autocomplete="off" spellcheck="false" autocorrect="off" data-answer="have dinner" id="input-8"
+                                placeholder="..."> with my family at seven o' clock in the evening.
+                        </span>
+                    </div>
+                </div>
+
+                <!-- Q9 -->
+                <div class="quiz-block" id="row-9"
+                    style="display: flex; flex-direction: row; align-items: center; gap: 15px; margin-bottom: 20px; text-align: left;">
+                    <div class="img-placeholder" id="img-9" style="width: 110px; height: 110px; flex-shrink: 0;">
+                        <span class="img-badge">9</span>
+                        <img src="https://lh3.googleusercontent.com/d/117q87PuxuwW7ZhhvGIYcEph4EgHUto9M" alt="Question 9">
+                    </div>
+                    <div class="sentence-area">
+                        <span class="sentence-text">
+                            I (9) <input type="text" class="input-zone" autocapitalize="off" autocomplete="off" spellcheck="false" autocorrect="off" data-answer="do homework" id="input-9"
+                                placeholder="..."> at eight o'clock in the evening.
+                        </span>
+                    </div>
+                </div>
+
+                <!-- Q10 -->
+                <div class="quiz-block" id="row-10"
+                    style="display: flex; flex-direction: row-reverse; align-items: center; gap: 15px; margin-bottom: 20px; text-align: right;">
+                    <div class="img-placeholder" id="img-10" style="width: 110px; height: 110px; flex-shrink: 0;">
+                        <span class="img-badge">10</span>
+                        <img src="https://lh3.googleusercontent.com/d/1dT4EY0Nyxj6GgpQ-yOQNpHl-ia3GhEg3" alt="Question 10">
+                    </div>
+                    <div class="sentence-area">
+                        <span class="sentence-text">
+                            Finally, I (10) <input type="text" class="input-zone" autocapitalize="off" autocomplete="off" spellcheck="false" autocorrect="off" data-answer="go to bed|go to sleep"
+                                id="input-10" placeholder="..."> at nine o' clock in the evening.
+                        </span>
+                    </div>
+                </div>
+            </div><!-- end quiz-container -->
+
+
+
+            <div class="btn-row">
+                <button class="reset-btn" onclick="resetQuiz()">
+                    <img src="https://lh3.googleusercontent.com/d/1fAmVV8TLq2mjlGmNpAAPe99HaG0M_V7R" alt="Reset">
+                </button>
+                <button class="check-btn" onclick="checkAnswers()">
+                    <img src="https://lh3.googleusercontent.com/d/1Z_q3WYuNnBo20_9mbhnN5MoC1-7pDhOp" alt="Check Answer">
+                </button>
+            </div>
+            <div class="result-msg" id="result-msg"></div>
+
+        </div><!-- end scroll-content -->
+
+        <audio id="correct-audio" src="assets/correct_sound.MP3" preload="auto"></audio>
+        <audio id="wrong-audio" src="assets/incorrect_sound.MP3" preload="auto"></audio>
+        <audio id="click-audio" src="assets/click.MP3" preload="auto"></audio>
+    </div><!-- end page -->
+
+    <div id="touch-ghost"></div>
+    <script src="script.js?v=1.1"></script>
+</body>
+
+</html>
