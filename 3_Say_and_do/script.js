@@ -15,18 +15,18 @@ document.addEventListener('DOMContentLoaded', () => {
     const DEFAULT_GIF_DURATION = 3500;
 
     const timingMap = {
-        'wake_up': { customAudio: 'assets/wake-up.MP3', gifDuration: 5630 },
-        'take_a_bath': { customAudio: 'assets/take-a-bath.MP3', gifDuration: 2500 },
-        'have_breakfast': { customAudio: 'assets/have-breakfast.MP3', gifDuration: 6000 },
-        'brush_my_teeth': { customAudio: 'assets/brush-my-teeth.MP3', gifDuration: 6060 },
-        'go_to_school': { customAudio: 'assets/go-to-school.MP3', gifDuration: 6160 },
-        'study_in_class': { customAudio: 'assets/study-in-class.MP3', gifDuration: 6000 },
-        'have_lunch': { customAudio: 'assets/have-lunch.MP3', gifDuration: 2560 },
-        'go_home': { customAudio: 'assets/go-home.MP3', gifDuration: 6000 },
-        'play_with_friends': { customAudio: 'assets/play-with-friends.MP3', gifDuration: 3500 },
-        'have_dinner': { customAudio: 'assets/have-dinner.MP3', gifDuration: 5600 },
-        'do_homework': { customAudio: 'assets/do-homework.MP3', gifDuration: 6100 },
-        'go_to_bed': { customAudio: 'assets/go-to-bed.MP3', gifDuration: 6000 }
+        'wake_up': { customAudio: 'assets/wake-up.MP3', gifDuration: 2815 },
+        'take_a_bath': { customAudio: 'assets/take-a-bath.MP3', gifDuration: 1250 },
+        'have_breakfast': { customAudio: 'assets/have-breakfast.MP3', gifDuration: 3000 },
+        'brush_my_teeth': { customAudio: 'assets/brush-my-teeth.MP3', gifDuration: 3030 },
+        'go_to_school': { customAudio: 'assets/go-to-school.MP3', gifDuration: 3080 },
+        'study_in_class': { customAudio: 'assets/study-in-class.MP3', gifDuration: 3000 },
+        'have_lunch': { customAudio: 'assets/have-lunch.MP3', gifDuration: 1280 },
+        'go_home': { customAudio: 'assets/go-home.MP3', gifDuration: 3000 },
+        'play_with_friends': { customAudio: 'assets/play-with-friends.MP3', gifDuration: 1750 },
+        'have_dinner': { customAudio: 'assets/have-dinner.MP3', gifDuration: 2800 },
+        'do_homework': { customAudio: 'assets/do-homework.MP3', gifDuration: 3050 },
+        'go_to_bed': { customAudio: 'assets/go-to-bed.MP3', gifDuration: 3000 }
     };
 
     // List of actions that have a static PNG version
@@ -37,33 +37,33 @@ document.addEventListener('DOMContentLoaded', () => {
     ];
 
     const gifLinks = {
-        'wake_up': 'assets/wake-up.gif',
-        'take_a_bath': 'assets/take-a-bath.gif',
-        'have_breakfast': 'assets/breakfast.gif',
-        'brush_my_teeth': 'assets/brush-teeth.gif',
-        'go_to_school': 'assets/go-to-school.gif',
-        'study_in_class': 'assets/study-in-class.gif',
-        'have_lunch': 'assets/have-lunch.gif',
-        'go_home': 'assets/go-home.gif',
-        'play_with_friends': 'assets/playing-with-friends.gif',
-        'have_dinner': 'assets/have-dinner.gif',
-        'do_homework': 'assets/do-homework.gif',
-        'go_to_bed': 'assets/go-to-bed.gif'
+        'wake_up': 'https://lh3.googleusercontent.com/d/14i4FYZ7m8RO4P7ZaNV9lPPpBfB-ZtJlQ',
+        'take_a_bath': 'https://lh3.googleusercontent.com/d/1E324f6GReDsz2Ykpy7IyK_rklKke1vPj',
+        'have_breakfast': 'https://lh3.googleusercontent.com/d/13EtZ0RzuPH3B4JurkWxGyo9zB9rFmz3h',
+        'brush_my_teeth': 'https://lh3.googleusercontent.com/d/1UvwAQXck66fm-4TaYnAPKsK7tIefGRXl',
+        'go_to_school': 'https://lh3.googleusercontent.com/d/1FjOGSwhvKbfwpdC1_j7Bp0RFadXVvhrz',
+        'study_in_class': 'https://lh3.googleusercontent.com/d/1r-UZl_ww-3jQuqKqlpAkQbkQALj9varB',
+        'have_lunch': 'https://lh3.googleusercontent.com/d/1VXFiW8hk3dgLchRLWJm-c2oPy2J95npi',
+        'go_home': 'https://lh3.googleusercontent.com/d/1mMcsbbCiFHKSZ_D9WG6b1ntVKZDyVIO5',
+        'play_with_friends': 'https://lh3.googleusercontent.com/d/1A3iu7TdUwKfv_Bh9fnjWci39kgQy6mUq',
+        'have_dinner': 'https://lh3.googleusercontent.com/d/1HvpEbtxEwIsSiMXKMyXrsE1xKR7jzUfN',
+        'do_homework': 'https://lh3.googleusercontent.com/d/1-we_5hGPUeowv5XKHZC8KBA_80AJBbbE',
+        'go_to_bed': 'https://lh3.googleusercontent.com/d/1V62nofMEJGMBBDuVL-rNVpZfF5HVzS1e'
     };
 
     const staticLinks = {
-        'wake_up': 'assets/wake-up.png',
-        'take_a_bath': 'assets/take-a-bath.png',
-        'have_breakfast': 'assets/breakfast.png',
-        'brush_my_teeth': 'assets/brush-teeth.png',
-        'go_to_school': 'assets/go-school.png',
-        'study_in_class': 'assets/study-in-class.png',
-        'have_lunch': 'assets/have-lunch.png',
-        'go_home': 'assets/go-home.png',
-        'play_with_friends': 'assets/playing-with-friends.png',
-        'have_dinner': 'assets/have-dinner.png',
-        'do_homework': 'assets/do-homework.png',
-        'go_to_bed': 'assets/go-to-bed.png'
+        'wake_up': 'https://lh3.googleusercontent.com/d/1yaYMBdFsuvYAd9Jm8SbERb1SSGj_H1WE',
+        'take_a_bath': 'https://lh3.googleusercontent.com/d/1Dz5y4uBis3fkopOS7eu-ATKzV6JRmeXi',
+        'have_breakfast': 'https://lh3.googleusercontent.com/d/1iLS5CenfegrcbKm3BbFin8QMpSYn-vWm',
+        'brush_my_teeth': 'https://lh3.googleusercontent.com/d/1LV-avrYMRpNBJorQfuYF-XKYXTgD216m',
+        'go_to_school': 'https://lh3.googleusercontent.com/d/1ToRThMT2WSSmNv66IEKeIngAy8A1Ysw8',
+        'study_in_class': 'https://lh3.googleusercontent.com/d/1CV3kCriydB3cnw7Y7nistJHFp1sbRtSO',
+        'have_lunch': 'https://lh3.googleusercontent.com/d/1LpgG5frKfqjBgHMYrpMXZ-rIVRxFctBB',
+        'go_home': 'https://lh3.googleusercontent.com/d/1w84IRe0YT8P03LESiZNNpfYn518gPqwF',
+        'play_with_friends': 'https://lh3.googleusercontent.com/d/1yQuaTedjGt3C72dCYDqjR0UYiI3u_FRk',
+        'have_dinner': 'https://lh3.googleusercontent.com/d/1uI4WYwxLA42PEY1T2Y1C75DRs24Mvthg',
+        'do_homework': 'https://lh3.googleusercontent.com/d/1DzowzSCvg64U39ifeD3em4AKkHMf0uPe',
+        'go_to_bed': 'https://lh3.googleusercontent.com/d/1uoUw2IblJjMYXcQ-1sYCdSpjrInlONb2'
     };
 
     const checkNaturalStop = (targetCard) => {
@@ -114,7 +114,10 @@ document.addEventListener('DOMContentLoaded', () => {
         // Status tracking untuk audio dan gif
         stopAtTime = time.end || null;
 
-        const gifSrc = gifLinks[actionName] + '?t=' + new Date().getTime();
+        // Gunakan Blob URL dan tambahkan timestamp agar GIF mengulang dari awal TANPA download ulang
+        const baseGifUrl = gifObjectUrls[actionName] || gifLinks[actionName];
+        const separator = baseGifUrl.startsWith('blob:') ? '#t=' : '?t=';
+        const gifSrc = baseGifUrl + separator + new Date().getTime();
 
         const playAudioAndSetTimeout = () => {
             if (currentlyPlaying !== card) return; // Jika terlanjur klik lain
@@ -140,17 +143,13 @@ document.addEventListener('DOMContentLoaded', () => {
                 audio.play().catch(err => console.warn("Audio playback failed:", err));
             }
 
-            // GIF Duration: gunakan timingMap.gifDuration jika ada, jika tidak gunakan DEFAULT_GIF_DURATION
-            const duration = time.gifDuration || DEFAULT_GIF_DURATION;
+            // Calculate true duration or fallback to hardcoded
+            const duration = gifDurations[actionName] || time.gifDuration || DEFAULT_GIF_DURATION;
+            
             gifTimeout = setTimeout(() => {
                 if (currentlyPlaying === card) {
                     card.isGifPlaying = false;
-                    const targetAction = card.dataset.action;
-                    if (actionsWithStatic.includes(targetAction)) {
-                        img.src = staticLinks[targetAction];
-                    } else {
-                        img.src = gifLinks[targetAction];
-                    }
+                    img.src = staticLinks[actionName];
                     checkNaturalStop(card);
                 }
             }, duration);
@@ -272,4 +271,80 @@ document.addEventListener('DOMContentLoaded', () => {
             checkNaturalStop(currentlyPlaying);
         }
     });
+
+    // Auto-parse GIF and create Blob URL for instant replay
+    const gifDurations = {};
+    const gifObjectUrls = {};
+
+    async function processGif(actionName, url) {
+        try {
+            const response = await fetch(url);
+            const buffer = await response.arrayBuffer();
+            const arr = new Uint8Array(buffer);
+            
+            // Caching as Blob URL to avoid network delay on replay
+            const blob = new Blob([buffer], { type: 'image/gif' });
+            gifObjectUrls[actionName] = URL.createObjectURL(blob);
+
+            let duration = 0;
+            let i = 13;
+            if (arr[10] & 0x80) {
+                const gctSize = 2 << (arr[10] & 0x07);
+                i += 3 * gctSize;
+            }
+            
+            while (i < arr.length) {
+                if (arr[i] === 0x21) { 
+                    const extType = arr[i + 1];
+                    let blockSize = arr[i + 2];
+                    if (extType === 0xF9 && blockSize === 4) {
+                        const delay = arr[i + 4] | (arr[i + 5] << 8);
+                        duration += (delay === 0 ? 10 : delay) * 10;
+                    }
+                    i += 3;
+                    while (blockSize > 0 && i < arr.length) {
+                        i += blockSize;
+                        blockSize = arr[i];
+                        i++;
+                    }
+                } else if (arr[i] === 0x2C) { 
+                    const packed = arr[i + 9];
+                    i += 10;
+                    if (packed & 0x80) { 
+                        const lctSize = 2 << (packed & 0x07);
+                        i += 3 * lctSize;
+                    }
+                    i++; 
+                    let blockSize = arr[i];
+                    i++;
+                    while (blockSize > 0 && i < arr.length) {
+                        i += blockSize;
+                        blockSize = arr[i];
+                        i++;
+                    }
+                } else if (arr[i] === 0x3B) { 
+                    break;
+                } else {
+                    break; 
+                }
+            }
+            return duration > 0 ? duration : 3000;
+        } catch (e) {
+            console.warn("Failed to process GIF", e);
+            gifObjectUrls[actionName] = url;
+            return 3000;
+        }
+    }
+
+    // Preload images and calculate GIF durations
+    const preloadImages = async () => {
+        for (const [actionName, url] of Object.entries(gifLinks)) {
+            gifDurations[actionName] = await processGif(actionName, url);
+        }
+        Object.values(staticLinks).forEach(url => {
+            const img = new Image();
+            img.src = url;
+        });
+    };
+    preloadImages();
 });
