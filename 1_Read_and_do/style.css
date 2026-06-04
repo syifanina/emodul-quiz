@@ -606,9 +606,6 @@ body {
     background: transparent;
 }
 
-.flip-card-front {
-    /* Transparent front */
-}
 
 .flip-card-back {
     transform: rotateY(180deg);
