@@ -1,0 +1,280 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Say the Time</title>
+    <link rel="stylesheet" href="style.css">
+    <!-- Confetti Library for celebration -->
+    <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
+</head>
+
+<body>
+    <div class="page">
+        <header class="module-header">
+            <!-- PNG Judul -->
+            <img src="https://lh3.googleusercontent.com/d/1vZObxzlLkCpBAJYbMpPurxC52R1KFLfr" alt="Say the Time"
+                class="title-badge">
+
+            <div class="instructions">
+                <p class="en">SAY THE TIME OUT!</p>
+                <div class="separator"></div>
+                <p class="id">Katakan jam berapa ini!</p>
+            </div>
+        </header>
+
+        <!-- Scrollable Content -->
+        <div class="scroll-content">
+
+            <main class="grid-container">
+                <!-- 1. One o'clock -->
+                <div class="action-card" data-action="one">
+                    <div class="image-wrapper">
+                        <img src="https://lh3.googleusercontent.com/d/1DNNndRiJ1LcMhTRch3zIt6JVLBKyRX0X"
+                            alt="One o'clock" class="action-image">
+                        <button class="sound-btn" aria-label="Play sound">
+                            <svg viewBox="0 0 24 24">
+                                <path
+                                    d="M14,3.23V5.29C16.89,6.15 19,8.83 19,12C19,15.17 16.89,17.85 14,18.71V20.77C18.03,19.86 21,16.28 21,12C21,7.72 18.03,4.14 14,3.23M16.5,12C16.5,10.23 15.5,8.71 14,7.97V16.04C15.5,15.29 16.5,13.77 16.5,12M3,9V15H7L12,20V4L7,9H3Z" />
+                            </svg>
+                        </button>
+                    </div>
+                    <div class="text-wrapper"><span class="action-text">One o'clock</span></div>
+                </div>
+
+                <!-- 2. Two o'clock -->
+                <div class="action-card" data-action="two">
+                    <div class="image-wrapper">
+                        <img src="https://lh3.googleusercontent.com/d/1F10Hei2pkxo6vFy12H-ys0dALrib0XFx"
+                            alt="Two o'clock" class="action-image">
+                        <button class="sound-btn" aria-label="Play sound">
+                            <svg viewBox="0 0 24 24">
+                                <path
+                                    d="M14,3.23V5.29C16.89,6.15 19,8.83 19,12C19,15.17 16.89,17.85 14,18.71V20.77C18.03,19.86 21,16.28 21,12C21,7.72 18.03,4.14 14,3.23M16.5,12C16.5,10.23 15.5,8.71 14,7.97V16.04C15.5,15.29 16.5,13.77 16.5,12M3,9V15H7L12,20V4L7,9H3Z" />
+                            </svg>
+                        </button>
+                    </div>
+                    <div class="text-wrapper"><span class="action-text">Two o'clock</span></div>
+                </div>
+
+                <!-- 3. Three o'clock -->
+                <div class="action-card" data-action="three">
+                    <div class="image-wrapper">
+                        <img src="https://lh3.googleusercontent.com/d/1x865MLa4xL454M0qsNLgxjWBEaz4LMbZ"
+                            alt="Three o'clock" class="action-image">
+                        <button class="sound-btn" aria-label="Play sound">
+                            <svg viewBox="0 0 24 24">
+                                <path
+                                    d="M14,3.23V5.29C16.89,6.15 19,8.83 19,12C19,15.17 16.89,17.85 14,18.71V20.77C18.03,19.86 21,16.28 21,12C21,7.72 18.03,4.14 14,3.23M16.5,12C16.5,10.23 15.5,8.71 14,7.97V16.04C15.5,15.29 16.5,13.77 16.5,12M3,9V15H7L12,20V4L7,9H3Z" />
+                            </svg>
+                        </button>
+                    </div>
+                    <div class="text-wrapper"><span class="action-text">Three o'clock</span></div>
+                </div>
+
+                <!-- 4. Four o'clock -->
+                <div class="action-card" data-action="four">
+                    <div class="image-wrapper">
+                        <img src="https://lh3.googleusercontent.com/d/1H5wFrPLgsS22ye5yVCdMT40lBHlsne3U"
+                            alt="Four o'clock" class="action-image">
+                        <button class="sound-btn" aria-label="Play sound">
+                            <svg viewBox="0 0 24 24">
+                                <path
+                                    d="M14,3.23V5.29C16.89,6.15 19,8.83 19,12C19,15.17 16.89,17.85 14,18.71V20.77C18.03,19.86 21,16.28 21,12C21,7.72 18.03,4.14 14,3.23M16.5,12C16.5,10.23 15.5,8.71 14,7.97V16.04C15.5,15.29 16.5,13.77 16.5,12M3,9V15H7L12,20V4L7,9H3Z" />
+                            </svg>
+                        </button>
+                    </div>
+                    <div class="text-wrapper"><span class="action-text">Four o'clock</span></div>
+                </div>
+
+                <!-- 5. Five o'clock -->
+                <div class="action-card" data-action="five">
+                    <div class="image-wrapper">
+                        <img src="https://lh3.googleusercontent.com/d/1vaKrAAFK-3RjqYikjGyjwOTS2nB3nyLR"
+                            alt="Five o'clock" class="action-image">
+                        <button class="sound-btn" aria-label="Play sound">
+                            <svg viewBox="0 0 24 24">
+                                <path
+                                    d="M14,3.23V5.29C16.89,6.15 19,8.83 19,12C19,15.17 16.89,17.85 14,18.71V20.77C18.03,19.86 21,16.28 21,12C21,7.72 18.03,4.14 14,3.23M16.5,12C16.5,10.23 15.5,8.71 14,7.97V16.04C15.5,15.29 16.5,13.77 16.5,12M3,9V15H7L12,20V4L7,9H3Z" />
+                            </svg>
+                        </button>
+                    </div>
+                    <div class="text-wrapper"><span class="action-text">Five o'clock</span></div>
+                </div>
+
+                <!-- 6. Six o'clock -->
+                <div class="action-card" data-action="six">
+                    <div class="image-wrapper">
+                        <img src="https://lh3.googleusercontent.com/d/1wumuDHkeadPzqdxjd7QD1uY6DFZbs-sv"
+                            alt="Six o'clock" class="action-image">
+                        <button class="sound-btn" aria-label="Play sound">
+                            <svg viewBox="0 0 24 24">
+                                <path
+                                    d="M14,3.23V5.29C16.89,6.15 19,8.83 19,12C19,15.17 16.89,17.85 14,18.71V20.77C18.03,19.86 21,16.28 21,12C21,7.72 18.03,4.14 14,3.23M16.5,12C16.5,10.23 15.5,8.71 14,7.97V16.04C15.5,15.29 16.5,13.77 16.5,12M3,9V15H7L12,20V4L7,9H3Z" />
+                            </svg>
+                        </button>
+                    </div>
+                    <div class="text-wrapper"><span class="action-text">Six o'clock</span></div>
+                </div>
+
+                <!-- 7. Seven o'clock -->
+                <div class="action-card" data-action="seven">
+                    <div class="image-wrapper">
+                        <img src="https://lh3.googleusercontent.com/d/1pvqLVEyonWgtYvros0KZuRhQ_i03gMzU"
+                            alt="Seven o'clock" class="action-image">
+                        <button class="sound-btn" aria-label="Play sound">
+                            <svg viewBox="0 0 24 24">
+                                <path
+                                    d="M14,3.23V5.29C16.89,6.15 19,8.83 19,12C19,15.17 16.89,17.85 14,18.71V20.77C18.03,19.86 21,16.28 21,12C21,7.72 18.03,4.14 14,3.23M16.5,12C16.5,10.23 15.5,8.71 14,7.97V16.04C15.5,15.29 16.5,13.77 16.5,12M3,9V15H7L12,20V4L7,9H3Z" />
+                            </svg>
+                        </button>
+                    </div>
+                    <div class="text-wrapper"><span class="action-text">Seven o'clock</span></div>
+                </div>
+
+                <!-- 8. Eight o'clock -->
+                <div class="action-card" data-action="eight">
+                    <div class="image-wrapper">
+                        <img src="https://lh3.googleusercontent.com/d/1Inln57d5AAYXYE5t0ONbVXlDLs8sim0T"
+                            alt="Eight o'clock" class="action-image">
+                        <button class="sound-btn" aria-label="Play sound">
+                            <svg viewBox="0 0 24 24">
+                                <path
+                                    d="M14,3.23V5.29C16.89,6.15 19,8.83 19,12C19,15.17 16.89,17.85 14,18.71V20.77C18.03,19.86 21,16.28 21,12C21,7.72 18.03,4.14 14,3.23M16.5,12C16.5,10.23 15.5,8.71 14,7.97V16.04C15.5,15.29 16.5,13.77 16.5,12M3,9V15H7L12,20V4L7,9H3Z" />
+                            </svg>
+                        </button>
+                    </div>
+                    <div class="text-wrapper"><span class="action-text">Eight o'clock</span></div>
+                </div>
+
+                <!-- 9. Nine o'clock -->
+                <div class="action-card" data-action="nine">
+                    <div class="image-wrapper">
+                        <img src="https://lh3.googleusercontent.com/d/1kTliiJsGs9cKAODaLgt3Gbp-AmxKAcUq"
+                            alt="Nine o'clock" class="action-image">
+                        <button class="sound-btn" aria-label="Play sound">
+                            <svg viewBox="0 0 24 24">
+                                <path
+                                    d="M14,3.23V5.29C16.89,6.15 19,8.83 19,12C19,15.17 16.89,17.85 14,18.71V20.77C18.03,19.86 21,16.28 21,12C21,7.72 18.03,4.14 14,3.23M16.5,12C16.5,10.23 15.5,8.71 14,7.97V16.04C15.5,15.29 16.5,13.77 16.5,12M3,9V15H7L12,20V4L7,9H3Z" />
+                            </svg>
+                        </button>
+                    </div>
+                    <div class="text-wrapper"><span class="action-text">Nine o'clock</span></div>
+                </div>
+
+                <!-- 10. Ten o'clock -->
+                <div class="action-card" data-action="ten">
+                    <div class="image-wrapper">
+                        <img src="https://lh3.googleusercontent.com/d/1BxENjgRMV6JHsz9l8iXDBNnBjMstLODB"
+                            alt="Ten o'clock" class="action-image">
+                        <button class="sound-btn" aria-label="Play sound">
+                            <svg viewBox="0 0 24 24">
+                                <path
+                                    d="M14,3.23V5.29C16.89,6.15 19,8.83 19,12C19,15.17 16.89,17.85 14,18.71V20.77C18.03,19.86 21,16.28 21,12C21,7.72 18.03,4.14 14,3.23M16.5,12C16.5,10.23 15.5,8.71 14,7.97V16.04C15.5,15.29 16.5,13.77 16.5,12M3,9V15H7L12,20V4L7,9H3Z" />
+                            </svg>
+                        </button>
+                    </div>
+                    <div class="text-wrapper"><span class="action-text">Ten o'clock</span></div>
+                </div>
+
+                <!-- 11. Eleven o'clock -->
+                <div class="action-card" data-action="eleven">
+                    <div class="image-wrapper">
+                        <img src="https://lh3.googleusercontent.com/d/17-Sr2oMxTHuXa284poCx5NQW8RnP9Pne"
+                            alt="Eleven o'clock" class="action-image">
+                        <button class="sound-btn" aria-label="Play sound">
+                            <svg viewBox="0 0 24 24">
+                                <path
+                                    d="M14,3.23V5.29C16.89,6.15 19,8.83 19,12C19,15.17 16.89,17.85 14,18.71V20.77C18.03,19.86 21,16.28 21,12C21,7.72 18.03,4.14 14,3.23M16.5,12C16.5,10.23 15.5,8.71 14,7.97V16.04C15.5,15.29 16.5,13.77 16.5,12M3,9V15H7L12,20V4L7,9H3Z" />
+                            </svg>
+                        </button>
+                    </div>
+                    <div class="text-wrapper"><span class="action-text">Eleven o'clock</span></div>
+                </div>
+
+                <!-- 12. Twelve o'clock -->
+                <div class="action-card" data-action="twelve">
+                    <div class="image-wrapper">
+                        <img src="https://lh3.googleusercontent.com/d/1L8EsFMF5CWYTPE2SyD_uArndGSRB1KJs"
+                            alt="Twelve o'clock" class="action-image">
+                        <button class="sound-btn" aria-label="Play sound">
+                            <svg viewBox="0 0 24 24">
+                                <path
+                                    d="M14,3.23V5.29C16.89,6.15 19,8.83 19,12C19,15.17 16.89,17.85 14,18.71V20.77C18.03,19.86 21,16.28 21,12C21,7.72 18.03,4.14 14,3.23M16.5,12C16.5,10.23 15.5,8.71 14,7.97V16.04C15.5,15.29 16.5,13.77 16.5,12M3,9V15H7L12,20V4L7,9H3Z" />
+                            </svg>
+                        </button>
+                    </div>
+                    <div class="text-wrapper"><span class="action-text">Twelve o'clock</span></div>
+                </div>
+
+                <!-- 13. Five past a half/ a half past five -->
+                <div class="action-card" data-action="five-past-a-half">
+                    <div class="image-wrapper">
+                        <img src="https://lh3.googleusercontent.com/d/1FyyQrcppw-1PFiSOraTJsbzKN7ghCxg_"
+                            alt="Five past a half/ a half past five" class="action-image">
+                        <button class="sound-btn" aria-label="Play sound">
+                            <svg viewBox="0 0 24 24">
+                                <path
+                                    d="M14,3.23V5.29C16.89,6.15 19,8.83 19,12C19,15.17 16.89,17.85 14,18.71V20.77C18.03,19.86 21,16.28 21,12C21,7.72 18.03,4.14 14,3.23M16.5,12C16.5,10.23 15.5,8.71 14,7.97V16.04C15.5,15.29 16.5,13.77 16.5,12M3,9V15H7L12,20V4L7,9H3Z" />
+                            </svg>
+                        </button>
+                    </div>
+                    <div class="text-wrapper"><span class="action-text">Five past a half/ a half past five</span></div>
+                </div>
+
+                <!-- 14. Eight past a half/ a half past eight -->
+                <div class="action-card" data-action="eight-past-a-half">
+                    <div class="image-wrapper">
+                        <img src="https://lh3.googleusercontent.com/d/1QRUOyaTvEuB7zpLCu8ImYQs3yo_jcoiZ"
+                            alt="Eight past a half/ a half past eight" class="action-image">
+                        <button class="sound-btn" aria-label="Play sound">
+                            <svg viewBox="0 0 24 24">
+                                <path
+                                    d="M14,3.23V5.29C16.89,6.15 19,8.83 19,12C19,15.17 16.89,17.85 14,18.71V20.77C18.03,19.86 21,16.28 21,12C21,7.72 18.03,4.14 14,3.23M16.5,12C16.5,10.23 15.5,8.71 14,7.97V16.04C15.5,15.29 16.5,13.77 16.5,12M3,9V15H7L12,20V4L7,9H3Z" />
+                            </svg>
+                        </button>
+                    </div>
+                    <div class="text-wrapper"><span class="action-text">Eight past a half/ a half past eight</span></div>
+                </div>
+
+                <!-- 15. Fifteen minutes to seven / A quarter to seven -->
+                <div class="action-card" data-action="fifteen-minutes-to-seven">
+                    <div class="image-wrapper">
+                        <img src="https://lh3.googleusercontent.com/d/11aOxxO4V8H4sJaQstpRumwDiWx6PWzmH"
+                            alt="Fifteen minutes to seven / A quarter to seven" class="action-image">
+                        <button class="sound-btn" aria-label="Play sound">
+                            <svg viewBox="0 0 24 24">
+                                <path
+                                    d="M14,3.23V5.29C16.89,6.15 19,8.83 19,12C19,15.17 16.89,17.85 14,18.71V20.77C18.03,19.86 21,16.28 21,12C21,7.72 18.03,4.14 14,3.23M16.5,12C16.5,10.23 15.5,8.71 14,7.97V16.04C15.5,15.29 16.5,13.77 16.5,12M3,9V15H7L12,20V4L7,9H3Z" />
+                            </svg>
+                        </button>
+                    </div>
+                    <div class="text-wrapper"><span class="action-text">Fifteen minutes to seven / A quarter to seven</span></div>
+                </div>
+
+                <!-- 16. Fifteen minutes past six/ A quarter past six -->
+                <div class="action-card" data-action="fifteen-minutes-past-six">
+                    <div class="image-wrapper">
+                        <img src="https://lh3.googleusercontent.com/d/1cHaBDljVB4Nb3KzcWoXOR2PuG3oOIr6C"
+                            alt="Fifteen minutes past six/ A quarter past six" class="action-image">
+                        <button class="sound-btn" aria-label="Play sound">
+                            <svg viewBox="0 0 24 24">
+                                <path
+                                    d="M14,3.23V5.29C16.89,6.15 19,8.83 19,12C19,15.17 16.89,17.85 14,18.71V20.77C18.03,19.86 21,16.28 21,12C21,7.72 18.03,4.14 14,3.23M16.5,12C16.5,10.23 15.5,8.71 14,7.97V16.04C15.5,15.29 16.5,13.77 16.5,12M3,9V15H7L12,20V4L7,9H3Z" />
+                            </svg>
+                        </button>
+                    </div>
+                    <div class="text-wrapper"><span class="action-text">Fifteen minutes past six/ A quarter past six</span></div>
+                </div>
+            </main>
+        </div>
+
+        <!-- SINGLE AUDIO SOURCE -->
+        <audio id="main-audio"></audio>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+
+</html>
