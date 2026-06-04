@@ -1,0 +1,773 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Formative Assessment Lesson 3</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <div class="page">
+        <!-- Sticky Header with Instructions -->
+        <header class="module-header">
+            <!-- PNG Judul -->
+            <img src="https://lh3.googleusercontent.com/d/1EWfII1YQB8Ze6KtPmPfB2fZDMIzEYeNd"
+                alt="Formative Assessment Lesson 3" class="title-badge">
+
+            <div class="instructions">
+                <p class="en">Look at the pictures and cross (X) A, B, C or D for the correct actions! Look to the
+                    example!</p>
+                <div class="separator"></div>
+                <p class="id">Perhatikan gambar dan beri tanda silang (X) A, B, C atau D pada aksi yang benar.
+                    Perhatikan contoh berikut!</p>
+            </div>
+        </header>
+
+        <!-- Scrollable Content Area -->
+        <div class="scroll-content" id="quiz-container">
+
+            <!-- STUDENT INFO -->
+            <div class="student-info-card">
+
+                <!-- Person Input Row -->
+                <div class="info-row">
+                    <div class="icon-container">
+                        <div class="icon-circle">
+                            <svg viewBox="0 0 24 24" fill="white" width="24" height="24">
+                                <path
+                                    d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z" />
+                            </svg>
+                        </div>
+                    </div>
+                    <div class="input-wrapper">
+                        <label for="student-name" class="student-label">
+                            <span class="en-label">Name</span>
+                            <span class="id-label">/ Nama Siswa</span>
+                        </label>
+                        <input type="text" id="student-name" class="student-input" placeholder="Type your name here..."
+                            autocomplete="off">
+                    </div>
+                </div>
+
+                <!-- School Input Row -->
+                <div class="info-row">
+                    <div class="icon-container">
+                        <div class="icon-circle">
+                            <svg viewBox="0 0 24 24" fill="white" width="24" height="24">
+                                <path
+                                    d="M4 10v7h3v-7H4zm6 0v7h3v-7h-3zM2 22h19v-3H2v3zm14-12v7h3v-7h-3zm-8.5-9L2 6v2h19V6l-9.5-5z" />
+                            </svg>
+                        </div>
+                    </div>
+                    <div class="input-wrapper">
+                        <label for="school-name" class="student-label">
+                            <span class="en-label">School Name</span>
+                            <span class="id-label">/ Nama Sekolah</span>
+                        </label>
+                        <input type="text" id="school-name" class="student-input"
+                            placeholder="Type your school name here..." autocomplete="off">
+                    </div>
+                </div>
+            </div>
+
+            <!-- SCORING INFO -->
+            <div class="scoring-info-card">
+                <div class="scoring-icon">💡</div>
+                <div class="scoring-text">
+                    <div class="scoring-title">
+                        <span class="en-text">Scoring System</span>
+                        <span class="id-text">/ Sistem Penilaian:</span>
+                    </div>
+                    <ul class="scoring-list">
+                        <li>
+                            <span class="en-text">Part I (Multiple Choice)</span>
+                            <span class="id-text">/ Benar PG:</span><br>
+                            <b class="point-badge">+2 points / Q</b>
+                        </li>
+                        <li>
+                            <span class="en-text">Part II (Activity Ordering)</span>
+                            <span class="id-text">/ Benar Urutan:</span><br>
+                            <b class="point-badge">+3 points / Q</b>
+                        </li>
+                        <li>
+                            <span class="en-text">Part III (Text Completion)</span>
+                            <span class="id-text">/ Benar Isian:</span><br>
+                            <b class="point-badge">+5 points / Q</b>
+                        </li>
+                    </ul>
+                    <div class="scoring-total">
+                        <span class="en-text">Final Score</span>
+                        <span class="id-text">/ Nilai Akhir</span>
+                        = Sum of all points (Max 100)
+                    </div>
+                </div>
+            </div>
+
+            <!-- EXAMPLE CARD (Read-Only) -->
+            <div class="question-card example-card">
+                <!-- Star badge for Example -->
+                <div class="q-star-badge">
+                    <img src="https://lh3.googleusercontent.com/d/1tlr-_CyMZShNnbtIol1OyFw8NhS_4MP1" alt="Star badge"
+                        class="star-img">
+                    <span class="star-number star-ex">Ex</span>
+                </div>
+
+                <div class="question-gif-container">
+                    <img src="https://lh3.googleusercontent.com/d/1CD1bFqDOB7ar7tDdQEQg0I4dmkH5HLAw" alt="Example"
+                        class="question-gif">
+                </div>
+
+                <div class="question-details">
+                    <div class="options-container">
+                        <div class="option-item disabled" data-opt="a">
+                            <span class="option-letter">a</span>
+                            <span class="option-text">Wake up</span>
+                        </div>
+                        <div class="option-item disabled crossed-example" data-opt="b">
+                            <span class="option-letter">b</span>
+                            <span class="option-text">Go home from school</span>
+                        </div>
+                        <div class="option-item disabled" data-opt="c">
+                            <span class="option-letter">c</span>
+                            <span class="option-text">Have a lunch</span>
+                        </div>
+                        <div class="option-item disabled" data-opt="d">
+                            <span class="option-letter">d</span>
+                            <span class="option-text">Take a bath</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- QUESTION 1 -->
+            <div class="question-card" data-q="1" data-correct="b">
+                <!-- Star badge for Q1 -->
+                <div class="q-star-badge">
+                    <img src="https://lh3.googleusercontent.com/d/1tlr-_CyMZShNnbtIol1OyFw8NhS_4MP1" alt="Star badge"
+                        class="star-img">
+                    <span class="star-number">1</span>
+                </div>
+
+                <div class="question-gif-container">
+                    <img src="https://lh3.googleusercontent.com/d/16f5ltKBNDUBdsO5twYV2XloFi_SiaRPD" alt="Question 1"
+                        class="question-gif">
+                </div>
+
+                <div class="question-details">
+                    <div class="options-container">
+                        <div class="option-item" data-opt="a">
+                            <span class="option-letter">a</span>
+                            <span class="option-text">Go to school</span>
+                        </div>
+                        <div class="option-item" data-opt="b">
+                            <span class="option-letter">b</span>
+                            <span class="option-text">Wake-up</span>
+                        </div>
+                        <div class="option-item" data-opt="c">
+                            <span class="option-letter">c</span>
+                            <span class="option-text">Have a breakfast</span>
+                        </div>
+                        <div class="option-item" data-opt="d">
+                            <span class="option-letter">d</span>
+                            <span class="option-text">Brush my teeth</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- QUESTION 2 -->
+            <div class="question-card" data-q="2" data-correct="c">
+                <!-- Star badge for Q2 -->
+                <div class="q-star-badge">
+                    <img src="https://lh3.googleusercontent.com/d/1tlr-_CyMZShNnbtIol1OyFw8NhS_4MP1" alt="Star badge"
+                        class="star-img">
+                    <span class="star-number">2</span>
+                </div>
+
+                <div class="question-gif-container">
+                    <img src="https://lh3.googleusercontent.com/d/1LFgxmcJ3A2kQ6Y55Q_eNOStoaVdTlmj2" alt="Question 2"
+                        class="question-gif">
+                </div>
+
+                <div class="question-details">
+                    <div class="options-container">
+                        <div class="option-item" data-opt="a">
+                            <span class="option-letter">a</span>
+                            <span class="option-text">Take a bath</span>
+                        </div>
+                        <div class="option-item" data-opt="b">
+                            <span class="option-letter">b</span>
+                            <span class="option-text">Go to school</span>
+                        </div>
+                        <div class="option-item" data-opt="c">
+                            <span class="option-letter">c</span>
+                            <span class="option-text">Study in class</span>
+                        </div>
+                        <div class="option-item" data-opt="d">
+                            <span class="option-letter">d</span>
+                            <span class="option-text">Brush my teeth</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- QUESTION 3 -->
+            <div class="question-card" data-q="3" data-correct="b">
+                <!-- Star badge for Q3 -->
+                <div class="q-star-badge">
+                    <img src="https://lh3.googleusercontent.com/d/1tlr-_CyMZShNnbtIol1OyFw8NhS_4MP1" alt="Star badge"
+                        class="star-img">
+                    <span class="star-number">3</span>
+                </div>
+
+                <div class="question-gif-container">
+                    <img src="https://lh3.googleusercontent.com/d/1xUvlLAj-w19CRdF5Y7Bbh3Gr8xYMMMmY" alt="Question 3"
+                        class="question-gif">
+                </div>
+
+                <div class="question-details">
+                    <div class="options-container">
+                        <div class="option-item" data-opt="a">
+                            <span class="option-letter">a</span>
+                            <span class="option-text">Have lunch</span>
+                        </div>
+                        <div class="option-item" data-opt="b">
+                            <span class="option-letter">b</span>
+                            <span class="option-text">Brush my teeth</span>
+                        </div>
+                        <div class="option-item" data-opt="c">
+                            <span class="option-letter">c</span>
+                            <span class="option-text">Wake-up</span>
+                        </div>
+                        <div class="option-item" data-opt="d">
+                            <span class="option-letter">d</span>
+                            <span class="option-text">Take a bath</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- QUESTION 4 -->
+            <div class="question-card" data-q="4" data-correct="c">
+                <!-- Star badge for Q4 -->
+                <div class="q-star-badge">
+                    <img src="https://lh3.googleusercontent.com/d/1tlr-_CyMZShNnbtIol1OyFw8NhS_4MP1" alt="Star badge"
+                        class="star-img">
+                    <span class="star-number">4</span>
+                </div>
+
+                <div class="question-gif-container">
+                    <img src="https://lh3.googleusercontent.com/d/1qah8gDe99ooem6lpxukJrxHPqSrUnNbA" alt="Question 4"
+                        class="question-gif">
+                </div>
+
+                <div class="question-details">
+                    <div class="options-container">
+                        <div class="option-item" data-opt="a">
+                            <span class="option-letter">a</span>
+                            <span class="option-text">Have lunch</span>
+                        </div>
+                        <div class="option-item" data-opt="b">
+                            <span class="option-letter">b</span>
+                            <span class="option-text">Have dinner</span>
+                        </div>
+                        <div class="option-item" data-opt="c">
+                            <span class="option-letter">c</span>
+                            <span class="option-text">Have breakfast</span>
+                        </div>
+                        <div class="option-item" data-opt="d">
+                            <span class="option-letter">d</span>
+                            <span class="option-text">Wake-up</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- QUESTION 5 -->
+            <div class="question-card" data-q="5" data-correct="b">
+                <!-- Star badge for Q5 -->
+                <div class="q-star-badge">
+                    <img src="https://lh3.googleusercontent.com/d/1tlr-_CyMZShNnbtIol1OyFw8NhS_4MP1" alt="Star badge"
+                        class="star-img">
+                    <span class="star-number">5</span>
+                </div>
+
+                <div class="question-gif-container">
+                    <img src="https://lh3.googleusercontent.com/d/1Ci6B4E2XVC81_14CI0loSJsiX4NLCKpZ" alt="Question 5"
+                        class="question-gif">
+                </div>
+
+                <div class="question-details">
+                    <div class="options-container">
+                        <div class="option-item" data-opt="a">
+                            <span class="option-letter">a</span>
+                            <span class="option-text">Go home from school</span>
+                        </div>
+                        <div class="option-item" data-opt="b">
+                            <span class="option-letter">b</span>
+                            <span class="option-text">Go to school</span>
+                        </div>
+                        <div class="option-item" data-opt="c">
+                            <span class="option-letter">c</span>
+                            <span class="option-text">Go to bed</span>
+                        </div>
+                        <div class="option-item" data-opt="d">
+                            <span class="option-letter">d</span>
+                            <span class="option-text">Wake-up</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- QUESTION 6 -->
+            <div class="question-card" data-q="6" data-correct="d">
+                <!-- Star badge for Q6 -->
+                <div class="q-star-badge">
+                    <img src="https://lh3.googleusercontent.com/d/1tlr-_CyMZShNnbtIol1OyFw8NhS_4MP1" alt="Star badge"
+                        class="star-img">
+                    <span class="star-number">6</span>
+                </div>
+
+                <div class="question-gif-container">
+                    <img src="https://lh3.googleusercontent.com/d/1K07aoL_-L6zw3wIq-dKTNb8K-rvVxbRq" alt="Question 6"
+                        class="question-gif">
+                </div>
+
+                <div class="question-details">
+                    <div class="options-container">
+                        <div class="option-item" data-opt="a">
+                            <span class="option-letter">a</span>
+                            <span class="option-text">Have dinner</span>
+                        </div>
+                        <div class="option-item" data-opt="b">
+                            <span class="option-letter">b</span>
+                            <span class="option-text">Go to school</span>
+                        </div>
+                        <div class="option-item" data-opt="c">
+                            <span class="option-letter">c</span>
+                            <span class="option-text">Go home from school</span>
+                        </div>
+                        <div class="option-item" data-opt="d">
+                            <span class="option-letter">d</span>
+                            <span class="option-text">Play with friends</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- QUESTION 7 -->
+            <div class="question-card" data-q="7" data-correct="d">
+                <!-- Star badge for Q7 -->
+                <div class="q-star-badge">
+                    <img src="https://lh3.googleusercontent.com/d/1tlr-_CyMZShNnbtIol1OyFw8NhS_4MP1" alt="Star badge"
+                        class="star-img">
+                    <span class="star-number">7</span>
+                </div>
+
+                <div class="question-gif-container">
+                    <img src="https://lh3.googleusercontent.com/d/1lI-GPfzsCYJ4VcSYB8OpWqh5IBahRBBx" alt="Question 7"
+                        class="question-gif">
+                </div>
+
+                <div class="question-details">
+                    <div class="options-container">
+                        <div class="option-item" data-opt="a">
+                            <span class="option-letter">a</span>
+                            <span class="option-text">Have lunch</span>
+                        </div>
+                        <div class="option-item" data-opt="b">
+                            <span class="option-letter">b</span>
+                            <span class="option-text">Go home from school</span>
+                        </div>
+                        <div class="option-item" data-opt="c">
+                            <span class="option-letter">c</span>
+                            <span class="option-text">Study in class</span>
+                        </div>
+                        <div class="option-item" data-opt="d">
+                            <span class="option-letter">d</span>
+                            <span class="option-text">Do homework</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- QUESTION 8 -->
+            <div class="question-card" data-q="8" data-correct="a">
+                <!-- Star badge for Q8 -->
+                <div class="q-star-badge">
+                    <img src="https://lh3.googleusercontent.com/d/1tlr-_CyMZShNnbtIol1OyFw8NhS_4MP1" alt="Star badge"
+                        class="star-img">
+                    <span class="star-number">8</span>
+                </div>
+
+                <div class="question-gif-container">
+                    <img src="https://lh3.googleusercontent.com/d/1U0rys7eeedkNEPeTP6-OkOgwF5T1o_rA" alt="Question 8"
+                        class="question-gif">
+                </div>
+
+                <div class="question-details">
+                    <div class="options-container">
+                        <div class="option-item" data-opt="a">
+                            <span class="option-letter">a</span>
+                            <span class="option-text">Take a bath</span>
+                        </div>
+                        <div class="option-item" data-opt="b">
+                            <span class="option-letter">b</span>
+                            <span class="option-text">Wake-up</span>
+                        </div>
+                        <div class="option-item" data-opt="c">
+                            <span class="option-letter">c</span>
+                            <span class="option-text">Brush my teeth</span>
+                        </div>
+                        <div class="option-item" data-opt="d">
+                            <span class="option-letter">d</span>
+                            <span class="option-text">Go to school</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- QUESTION 9 -->
+            <div class="question-card" data-q="9" data-correct="b">
+                <!-- Star badge for Q9 -->
+                <div class="q-star-badge">
+                    <img src="https://lh3.googleusercontent.com/d/1tlr-_CyMZShNnbtIol1OyFw8NhS_4MP1" alt="Star badge"
+                        class="star-img">
+                    <span class="star-number">9</span>
+                </div>
+
+                <div class="question-gif-container">
+                    <img src="https://lh3.googleusercontent.com/d/15gK9R2WyZXV2TP5PlpJQqO-a-7c0LARt" alt="Question 9"
+                        class="question-gif">
+                </div>
+
+                <div class="question-details">
+                    <div class="options-container">
+                        <div class="option-item" data-opt="a">
+                            <span class="option-letter">a</span>
+                            <span class="option-text">Have lunch</span>
+                        </div>
+                        <div class="option-item" data-opt="b">
+                            <span class="option-letter">b</span>
+                            <span class="option-text">Have dinner</span>
+                        </div>
+                        <div class="option-item" data-opt="c">
+                            <span class="option-letter">c</span>
+                            <span class="option-text">Have breakfast</span>
+                        </div>
+                        <div class="option-item" data-opt="d">
+                            <span class="option-letter">d</span>
+                            <span class="option-text">Wake-up</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- QUESTION 10 -->
+            <div class="question-card" data-q="10" data-correct="c">
+                <!-- Star badge for Q10 -->
+                <div class="q-star-badge">
+                    <img src="https://lh3.googleusercontent.com/d/1tlr-_CyMZShNnbtIol1OyFw8NhS_4MP1" alt="Star badge"
+                        class="star-img">
+                    <span class="star-number">10</span>
+                </div>
+
+                <div class="question-gif-container">
+                    <img src="https://lh3.googleusercontent.com/d/1IDXxaV7AZlQQvTCmqf_k6AqOilkpxjVE" alt="Question 10"
+                        class="question-gif">
+                </div>
+
+                <div class="question-details">
+                    <div class="options-container">
+                        <div class="option-item" data-opt="a">
+                            <span class="option-letter">a</span>
+                            <span class="option-text">Go gome from school</span>
+                        </div>
+                        <div class="option-item" data-opt="b">
+                            <span class="option-letter">b</span>
+                            <span class="option-text">Go to school</span>
+                        </div>
+                        <div class="option-item" data-opt="c">
+                            <span class="option-letter">c</span>
+                            <span class="option-text">Go to bed</span>
+                        </div>
+                        <div class="option-item" data-opt="d">
+                            <span class="option-letter">d</span>
+                            <span class="option-text">Wake-up</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- SECTION II HEADER -->
+            <div class="section-title">
+                <p class="en">II. Write the correct numbers for the daily activities below. Look at the example!</p>
+                <div class="separator"></div>
+                <p class="id">Tuliskan nomer yang tepat sesuai urutan aktivitas harian di bawah ini. Perhatikan contoh berikut!</p>
+            </div>
+
+            <!-- SECTION II CONTENT -->
+            <div class="sec2-order-list">
+                <!-- 1. Do homework (9) -->
+                <div class="sec2-order-row" id="sec2-row-1">
+                    <span class="sec2-bullet">•</span>
+                    <span class="sec2-paren-wrapper">
+                        ( <input type="text" class="sec2-order-input" id="sec2-input-1" data-answer="9" maxlength="2" placeholder="..." autocomplete="off"> )
+                    </span>
+                    <div class="sec2-text">Do homework</div>
+                    <div class="sec2-fb-badge" id="sec2-fb-1"></div>
+                    <div class="sec2-hint-text" id="sec2-hint-1">9</div>
+                </div>
+
+                <!-- 2. Play with friends (7) -->
+                <div class="sec2-order-row" id="sec2-row-2">
+                    <span class="sec2-bullet">•</span>
+                    <span class="sec2-paren-wrapper">
+                        ( <input type="text" class="sec2-order-input" id="sec2-input-2" data-answer="7" maxlength="2" placeholder="..." autocomplete="off"> )
+                    </span>
+                    <div class="sec2-text">Play with friends</div>
+                    <div class="sec2-fb-badge" id="sec2-fb-2"></div>
+                    <div class="sec2-hint-text" id="sec2-hint-2">7</div>
+                </div>
+
+                <!-- 3. Go to school (3) -->
+                <div class="sec2-order-row" id="sec2-row-3">
+                    <span class="sec2-bullet">•</span>
+                    <span class="sec2-paren-wrapper">
+                        ( <input type="text" class="sec2-order-input" id="sec2-input-3" data-answer="3" maxlength="2" placeholder="..." autocomplete="off"> )
+                    </span>
+                    <div class="sec2-text">Go to school</div>
+                    <div class="sec2-fb-badge" id="sec2-fb-3"></div>
+                    <div class="sec2-hint-text" id="sec2-hint-3">3</div>
+                </div>
+
+                <!-- 4. Go to bed (10) -->
+                <div class="sec2-order-row" id="sec2-row-4">
+                    <span class="sec2-bullet">•</span>
+                    <span class="sec2-paren-wrapper">
+                        ( <input type="text" class="sec2-order-input" id="sec2-input-4" data-answer="10" maxlength="2" placeholder="..." autocomplete="off"> )
+                    </span>
+                    <div class="sec2-text">Go to bed</div>
+                    <div class="sec2-fb-badge" id="sec2-fb-4"></div>
+                    <div class="sec2-hint-text" id="sec2-hint-4">10</div>
+                </div>
+
+                <!-- 5. Study in class (4) -->
+                <div class="sec2-order-row" id="sec2-row-5">
+                    <span class="sec2-bullet">•</span>
+                    <span class="sec2-paren-wrapper">
+                        ( <input type="text" class="sec2-order-input" id="sec2-input-5" data-answer="4" maxlength="2" placeholder="..." autocomplete="off"> )
+                    </span>
+                    <div class="sec2-text">Study in class</div>
+                    <div class="sec2-fb-badge" id="sec2-fb-5"></div>
+                    <div class="sec2-hint-text" id="sec2-hint-5">4</div>
+                </div>
+
+                <!-- 6. Have breakfast (2) -->
+                <div class="sec2-order-row" id="sec2-row-6">
+                    <span class="sec2-bullet">•</span>
+                    <span class="sec2-paren-wrapper">
+                        ( <input type="text" class="sec2-order-input" id="sec2-input-6" data-answer="2" maxlength="2" placeholder="..." autocomplete="off"> )
+                    </span>
+                    <div class="sec2-text">Have breakfast</div>
+                    <div class="sec2-fb-badge" id="sec2-fb-6"></div>
+                    <div class="sec2-hint-text" id="sec2-hint-6">2</div>
+                </div>
+
+                <!-- 7. Wake up (Example) -->
+                <div class="sec2-order-row example-row">
+                    <span class="sec2-bullet">•</span>
+                    <span class="sec2-paren-wrapper">( <span style="color: #64748b; font-size: 11px; font-weight: 800;">Example</span> )</span>
+                    <div class="sec2-text">Wake up</div>
+                    <div class="sec2-fb-badge"></div>
+                </div>
+
+                <!-- 8. Have lunch (5) -->
+                <div class="sec2-order-row" id="sec2-row-8">
+                    <span class="sec2-bullet">•</span>
+                    <span class="sec2-paren-wrapper">
+                        ( <input type="text" class="sec2-order-input" id="sec2-input-8" data-answer="5" maxlength="2" placeholder="..." autocomplete="off"> )
+                    </span>
+                    <div class="sec2-text">Have lunch</div>
+                    <div class="sec2-fb-badge" id="sec2-fb-8"></div>
+                    <div class="sec2-hint-text" id="sec2-hint-8">5</div>
+                </div>
+
+                <!-- 9. Have dinner (8) -->
+                <div class="sec2-order-row" id="sec2-row-9">
+                    <span class="sec2-bullet">•</span>
+                    <span class="sec2-paren-wrapper">
+                        ( <input type="text" class="sec2-order-input" id="sec2-input-9" data-answer="8" maxlength="2" placeholder="..." autocomplete="off"> )
+                    </span>
+                    <div class="sec2-text">Have dinner</div>
+                    <div class="sec2-fb-badge" id="sec2-fb-9"></div>
+                    <div class="sec2-hint-text" id="sec2-hint-9">8</div>
+                </div>
+
+                <!-- 10. Go home (6) -->
+                <div class="sec2-order-row" id="sec2-row-10">
+                    <span class="sec2-bullet">•</span>
+                    <span class="sec2-paren-wrapper">
+                        ( <input type="text" class="sec2-order-input" id="sec2-input-10" data-answer="6" maxlength="2" placeholder="..." autocomplete="off"> )
+                    </span>
+                    <div class="sec2-text">Go home</div>
+                    <div class="sec2-fb-badge" id="sec2-fb-10"></div>
+                    <div class="sec2-hint-text" id="sec2-hint-10">6</div>
+                </div>
+
+                <!-- 11. Take a bath and brush my teeth (1) -->
+                <div class="sec2-order-row" id="sec2-row-11">
+                    <span class="sec2-bullet">•</span>
+                    <span class="sec2-paren-wrapper">
+                        ( <input type="text" class="sec2-order-input" id="sec2-input-11" data-answer="1" maxlength="2" placeholder="..." autocomplete="off"> )
+                    </span>
+                    <div class="sec2-text">Take a bath and brush my teeth</div>
+                    <div class="sec2-fb-badge" id="sec2-fb-11"></div>
+                    <div class="sec2-hint-text" id="sec2-hint-11">1</div>
+                </div>
+            </div>
+
+            <!-- SECTION III HEADER -->
+            <div class="section-title">
+                <p class="en">III. Now complete the text with the sentences you have put in order above. Look at the example!</p>
+                <div class="separator"></div>
+                <p class="id">Sekarang lengkapi teks di bawah ini dengan kalimat yang sudah diurutkan di atas. Perhatikan contoh!</p>
+            </div>
+
+            <!-- SECTION III CONTENT (NOTEBOOK THEME) -->
+            <div class="notebook-card">
+                <!-- Example line -->
+                <div class="notebook-line example-line">
+                    <span class="line-prefix">Here are my daily activities. First, I (example)</span>
+                    <span style="font-weight: 800; text-decoration: underline; color: #1e293b; padding: 0 4px;">wake-up</span>
+                    <span class="line-suffix">at 5.</span>
+                </div>
+
+                <!-- Line 1 -->
+                <div class="notebook-line" id="sec3-line-1">
+                    <span class="line-prefix">Then, I (1)</span>
+                    <input type="text" class="cloze-input" id="sec3-input-1" data-answer="take a bath and brush my teeth|take a bath and brush teeth|take a bath & brush teeth" placeholder="..." autocomplete="off" autocorrect="off" autocapitalize="none" spellcheck="false">
+                    <span class="line-suffix">.</span>
+                    <span class="cloze-fb-badge" id="sec3-fb-1"></span>
+                    <span class="cloze-hint-text" id="sec3-hint-1">take a bath and brush my teeth</span>
+                </div>
+
+                <!-- Line 2 -->
+                <div class="notebook-line" id="sec3-line-2">
+                    <span class="line-prefix">After that, I (2)</span>
+                    <input type="text" class="cloze-input" id="sec3-input-2" data-answer="have breakfast|eat breakfast" placeholder="..." autocomplete="off" autocorrect="off" autocapitalize="none" spellcheck="false">
+                    <span class="line-suffix">.</span>
+                    <span class="cloze-fb-badge" id="sec3-fb-2"></span>
+                    <span class="cloze-hint-text" id="sec3-hint-2">have breakfast</span>
+                </div>
+
+                <!-- Line 3 -->
+                <div class="notebook-line" id="sec3-line-3">
+                    <span class="line-prefix">I (3)</span>
+                    <input type="text" class="cloze-input" id="sec3-input-3" data-answer="go to school|walk to school" placeholder="..." autocomplete="off" autocorrect="off" autocapitalize="none" spellcheck="false">
+                    <span class="line-suffix">at 6.</span>
+                    <span class="cloze-fb-badge" id="sec3-fb-3"></span>
+                    <span class="cloze-hint-text" id="sec3-hint-3">go to school</span>
+                </div>
+
+                <!-- Line 4 -->
+                <div class="notebook-line" id="sec3-line-4">
+                    <span class="line-prefix">I (4)</span>
+                    <input type="text" class="cloze-input" id="sec3-input-4" data-answer="study in class|study|learn in class" placeholder="..." autocomplete="off" autocorrect="off" autocapitalize="none" spellcheck="false">
+                    <span class="line-suffix">at 6.30.</span>
+                    <span class="cloze-fb-badge" id="sec3-fb-4"></span>
+                    <span class="cloze-hint-text" id="sec3-hint-4">study in class</span>
+                </div>
+
+                <!-- Line 5 -->
+                <div class="notebook-line" id="sec3-line-5">
+                    <span class="line-prefix">Then, I (5)</span>
+                    <input type="text" class="cloze-input" id="sec3-input-5" data-answer="have lunch|eat lunch" placeholder="..." autocomplete="off" autocorrect="off" autocapitalize="none" spellcheck="false">
+                    <span class="line-suffix">at 12 noon.</span>
+                    <span class="cloze-fb-badge" id="sec3-fb-5"></span>
+                    <span class="cloze-hint-text" id="sec3-hint-5">have lunch</span>
+                </div>
+
+                <!-- Line 6 -->
+                <div class="notebook-line" id="sec3-line-6">
+                    <span class="line-prefix">I (6)</span>
+                    <input type="text" class="cloze-input" id="sec3-input-6" data-answer="go home|go back home|return home|walk home" placeholder="..." autocomplete="off" autocorrect="off" autocapitalize="none" spellcheck="false">
+                    <span class="line-suffix">at 2 in the afternoon.</span>
+                    <span class="cloze-fb-badge" id="sec3-fb-6"></span>
+                    <span class="cloze-hint-text" id="sec3-hint-6">go home</span>
+                </div>
+
+                <!-- Line 7 -->
+                <div class="notebook-line" id="sec3-line-7">
+                    <span class="line-prefix">Then, I (7)</span>
+                    <input type="text" class="cloze-input" id="sec3-input-7" data-answer="play with friends|play with my friends|play outside" placeholder="..." autocomplete="off" autocorrect="off" autocapitalize="none" spellcheck="false">
+                    <span class="line-suffix">at 4 in the afternoon.</span>
+                    <span class="cloze-fb-badge" id="sec3-fb-7"></span>
+                    <span class="cloze-hint-text" id="sec3-hint-7">play with friends</span>
+                </div>
+
+                <!-- Line 8 -->
+                <div class="notebook-line" id="sec3-line-8">
+                    <span class="line-prefix">I (8)</span>
+                    <input type="text" class="cloze-input" id="sec3-input-8" data-answer="have dinner|eat dinner|have dinner with my family" placeholder="..." autocomplete="off" autocorrect="off" autocapitalize="none" spellcheck="false">
+                    <span class="line-suffix">with my family at 7 in the evening.</span>
+                    <span class="cloze-fb-badge" id="sec3-fb-8"></span>
+                    <span class="cloze-hint-text" id="sec3-hint-8">have dinner</span>
+                </div>
+
+                <!-- Line 9 -->
+                <div class="notebook-line" id="sec3-line-9">
+                    <span class="line-prefix">I (9)</span>
+                    <input type="text" class="cloze-input" id="sec3-input-9" data-answer="do homework|do my homework" placeholder="..." autocomplete="off" autocorrect="off" autocapitalize="none" spellcheck="false">
+                    <span class="line-suffix">at 8 in the evening.</span>
+                    <span class="cloze-fb-badge" id="sec3-fb-9"></span>
+                    <span class="cloze-hint-text" id="sec3-hint-9">do homework</span>
+                </div>
+
+                <!-- Line 10 -->
+                <div class="notebook-line" id="sec3-line-10">
+                    <span class="line-prefix">Finally, I (10)</span>
+                    <input type="text" class="cloze-input" id="sec3-input-10" data-answer="go to bed|sleep|go to sleep" placeholder="..." autocomplete="off" autocorrect="off" autocapitalize="none" spellcheck="false">
+                    <span class="line-suffix">at 9 in the evening.</span>
+                    <span class="cloze-fb-badge" id="sec3-fb-10"></span>
+                    <span class="cloze-hint-text" id="sec3-hint-10">go to bed</span>
+                </div>
+            </div>
+
+
+
+
+            <!-- SCORE BOX -->
+            <div id="score-box" class="score-box" style="display: none;">
+                <div class="score-label">TOTAL SCORE</div>
+                <div class="score-value" id="score-value">100</div>
+            </div>
+
+            <!-- QUIZ CONTROL ACTIONS -->
+            <div class="quiz-actions" id="quiz-actions">
+                <button id="btn-reset" class="reset-btn">
+                    <img src="https://lh3.googleusercontent.com/d/1KuPBOWr81b39cSSCvc2lzqeiIKnZZ_A0" alt="Try Again">
+                </button>
+                <button id="btn-check" class="check-btn" disabled>
+                    <img src="https://lh3.googleusercontent.com/d/16hWAAvA2gprM0l5Vmw8t8_mrvAo4oic_"
+                        alt="Check Answers">
+                </button>
+            </div>
+
+            <!-- RESULT MESSAGE -->
+            <div id="result-msg" class="result-msg" style="display: none;"></div>
+        </div>
+
+        <!-- SOUND ASSETS -->
+        <audio id="audio-click" src="assets/click.mp3"></audio>
+        <audio id="audio-correct" src="assets/correct_sound.mp3"></audio>
+        <audio id="audio-incorrect" src="assets/incorrect_sound.mp3"></audio>
+        <audio id="audio-typing" src="assets/typing.mp3" preload="auto"></audio>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+
+</html>
