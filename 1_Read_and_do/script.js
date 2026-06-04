@@ -1,7 +1,7 @@
 // Preload GIF assets so there's no delay when Play is clicked
 const GIF_URLS = [
-    'gif1.gif',
-    'gif2.gif'
+    'https://lh3.googleusercontent.com/d/151f1yq96FqbKRMfFKm0KXB4yPoroSeNy',
+    'https://lh3.googleusercontent.com/d/1vt8Iv28Rfo1-T9PR8DzhTkleY5hkTXWS'
 ];
 
 window.addEventListener('load', () => {
