@@ -1,0 +1,671 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Formative Assessment Lesson 4</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <div class="page">
+        <!-- Sticky Header with Instructions -->
+        <header class="module-header">
+            <!-- PNG Judul -->
+            <img src="https://lh3.googleusercontent.com/d/1K4Rg6Mr0NtCKXtbe1nHBd5HPhzvNUH2H"
+                alt="Formative Assessment Lesson 4" class="title-badge">
+
+            <div class="instructions">
+                <p class="en">Look at the pictures and cross (X) A, B, C or D for the correct actions! Look to the
+                    example!</p>
+                <div class="separator"></div>
+                <p class="id">Perhatikan gambar dan beri tanda silang (X) A, B, C atau D pada aksi yang benar.
+                    Perhatikan contoh berikut!</p>
+            </div>
+        </header>
+
+        <!-- Scrollable Content Area -->
+        <div class="scroll-content" id="quiz-container">
+
+            <!-- STUDENT INFO -->
+            <div class="student-info-card">
+
+                <!-- Person Input Row -->
+                <div class="info-row">
+                    <div class="icon-container">
+                        <div class="icon-circle">
+                            <svg viewBox="0 0 24 24" fill="white" width="24" height="24">
+                                <path
+                                    d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z" />
+                            </svg>
+                        </div>
+                    </div>
+                    <div class="input-wrapper">
+                        <label for="student-name" class="student-label">
+                            <span class="en-label">Name</span>
+                            <span class="id-label">/ Nama Siswa</span>
+                        </label>
+                        <input type="text" id="student-name" class="student-input" placeholder="Type your name here..."
+                            autocomplete="off">
+                    </div>
+                </div>
+
+                <!-- School Input Row -->
+                <div class="info-row">
+                    <div class="icon-container">
+                        <div class="icon-circle">
+                            <svg viewBox="0 0 24 24" fill="white" width="24" height="24">
+                                <path
+                                    d="M4 10v7h3v-7H4zm6 0v7h3v-7h-3zM2 22h19v-3H2v3zm14-12v7h3v-7h-3zm-8.5-9L2 6v2h19V6l-9.5-5z" />
+                            </svg>
+                        </div>
+                    </div>
+                    <div class="input-wrapper">
+                        <label for="school-name" class="student-label">
+                            <span class="en-label">School Name</span>
+                            <span class="id-label">/ Nama Sekolah</span>
+                        </label>
+                        <input type="text" id="school-name" class="student-input"
+                            placeholder="Type your school name here..." autocomplete="off">
+                    </div>
+                </div>
+            </div>
+
+            <!-- SCORING INFO -->
+            <div class="scoring-info-card">
+                <div class="scoring-icon">💡</div>
+                <div class="scoring-text">
+                    <div class="scoring-title">
+                        <span class="en-text">Scoring System</span>
+                        <span class="id-text">/ Sistem Penilaian:</span>
+                    </div>
+                    <ul class="scoring-list">
+                        <li>
+                            <span class="en-text">Part I (Multiple Choice)</span>
+                            <span class="id-text">/ Benar PG:</span><br>
+                            <b class="point-badge">+ 4 points / Q</b>
+                        </li>
+                        <li>
+                            <span class="en-text">Part II (Text Completion)</span>
+                            <span class="id-text">/ Benar Isian:</span><br>
+                            <b class="point-badge">+6 points / Q</b>
+                        </li>
+                    </ul>
+                    <div class="scoring-total">
+                        <span class="en-text">Final Score</span>
+                        <span class="id-text">/ Nilai Akhir</span>
+                        = Sum of all points (Max 100)
+                    </div>
+                </div>
+            </div>
+
+            <!-- EXAMPLE CARD (Read-Only) -->
+            <div class="question-card example-card">
+                <!-- Star badge for Example -->
+                <div class="q-star-badge">
+                    <img src="https://lh3.googleusercontent.com/d/1tlr-_CyMZShNnbtIol1OyFw8NhS_4MP1" alt="Star badge"
+                        class="star-img">
+                    <span class="star-number star-ex">Ex</span>
+                </div>
+
+                <div class="question-gif-container">
+                    <img src="https://lh3.googleusercontent.com/d/1Z8WDrgfcTEXLqr3YS6-b3ZSx97OdiAXn" alt="Example"
+                        class="question-gif">
+                </div>
+
+                <div class="question-details">
+                    <div class="options-container">
+                        <div class="option-item disabled" data-opt="a">
+                            <span class="option-letter">a</span>
+                            <span class="option-text">It is five o'clock.</span>
+                        </div>
+                        <div class="option-item disabled crossed-example" data-opt="b">
+                            <span class="option-letter">b</span>
+                            <span class="option-text">It is a half past four.</span>
+                        </div>
+                        <div class="option-item disabled" data-opt="c">
+                            <span class="option-letter">c</span>
+                            <span class="option-text">It is four o'clock.</span>
+                        </div>
+                        <div class="option-item disabled" data-opt="d">
+                            <span class="option-letter">d</span>
+                            <span class="option-text">It is a half past five.</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- QUESTION 1 -->
+            <div class="question-card" data-q="1" data-correct="a">
+                <!-- Star badge for Q1 -->
+                <div class="q-star-badge">
+                    <img src="https://lh3.googleusercontent.com/d/1tlr-_CyMZShNnbtIol1OyFw8NhS_4MP1" alt="Star badge"
+                        class="star-img">
+                    <span class="star-number">1</span>
+                </div>
+
+                <div class="question-gif-container">
+                    <img src="https://lh3.googleusercontent.com/d/1pCKQ2LqcIhdgsPiMdY4urK7dgpOWB00C" alt="Question 1"
+                        class="question-gif">
+                </div>
+
+                <div class="question-details">
+                    <div class="options-container">
+                        <div class="option-item" data-opt="a">
+                            <span class="option-letter">a</span>
+                            <span class="option-text">It is four o'clock.</span>
+                        </div>
+                        <div class="option-item" data-opt="b">
+                            <span class="option-letter">b</span>
+                            <span class="option-text">It is a half past four.</span>
+                        </div>
+                        <div class="option-item" data-opt="c">
+                            <span class="option-letter">c</span>
+                            <span class="option-text">It is three o'clock.</span>
+                        </div>
+                        <div class="option-item" data-opt="d">
+                            <span class="option-letter">d</span>
+                            <span class="option-text">It is a half past three.</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- QUESTION 2 -->
+            <div class="question-card" data-q="2" data-correct="a">
+                <!-- Star badge for Q2 -->
+                <div class="q-star-badge">
+                    <img src="https://lh3.googleusercontent.com/d/1tlr-_CyMZShNnbtIol1OyFw8NhS_4MP1" alt="Star badge"
+                        class="star-img">
+                    <span class="star-number">2</span>
+                </div>
+
+                <div class="question-gif-container">
+                    <img src="https://lh3.googleusercontent.com/d/15cU_sIK6yV5DSqSyMl9H600YELkuNDiT" alt="Question 2"
+                        class="question-gif">
+                </div>
+
+                <div class="question-details">
+                    <div class="options-container">
+                        <div class="option-item" data-opt="a">
+                            <span class="option-letter">a</span>
+                            <span class="option-text">It is a half past five.</span>
+                        </div>
+                        <div class="option-item" data-opt="b">
+                            <span class="option-letter">b</span>
+                            <span class="option-text">It is a half past six.</span>
+                        </div>
+                        <div class="option-item" data-opt="c">
+                            <span class="option-letter">c</span>
+                            <span class="option-text">It is five o'clock.</span>
+                        </div>
+                        <div class="option-item" data-opt="d">
+                            <span class="option-letter">d</span>
+                            <span class="option-text">It is six o'clock.</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- QUESTION 3 -->
+            <div class="question-card" data-q="3" data-correct="c">
+                <!-- Star badge for Q3 -->
+                <div class="q-star-badge">
+                    <img src="https://lh3.googleusercontent.com/d/1tlr-_CyMZShNnbtIol1OyFw8NhS_4MP1" alt="Star badge"
+                        class="star-img">
+                    <span class="star-number">3</span>
+                </div>
+
+                <div class="question-gif-container">
+                    <img src="https://lh3.googleusercontent.com/d/14CiI78n-mHM2vxUoBuPeg6Ff5U8Rxc8D" alt="Question 3"
+                        class="question-gif">
+                </div>
+
+                <div class="question-details">
+                    <div class="options-container">
+                        <div class="option-item" data-opt="a">
+                            <span class="option-letter">a</span>
+                            <span class="option-text">It is a quarter past eleven.</span>
+                        </div>
+                        <div class="option-item" data-opt="b">
+                            <span class="option-letter">b</span>
+                            <span class="option-text">It is ahalf past eleven.</span>
+                        </div>
+                        <div class="option-item" data-opt="c">
+                            <span class="option-letter">c</span>
+                            <span class="option-text">It is eleven o'clock.</span>
+                        </div>
+                        <div class="option-item" data-opt="d">
+                            <span class="option-letter">d</span>
+                            <span class="option-text">It is a half past ten.</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- QUESTION 4 -->
+            <div class="question-card" data-q="4" data-correct="b">
+                <!-- Star badge for Q4 -->
+                <div class="q-star-badge">
+                    <img src="https://lh3.googleusercontent.com/d/1tlr-_CyMZShNnbtIol1OyFw8NhS_4MP1" alt="Star badge"
+                        class="star-img">
+                    <span class="star-number">4</span>
+                </div>
+
+                <div class="question-gif-container">
+                    <img src="https://lh3.googleusercontent.com/d/16RXgk2wQCyExg9NzGLgyddRlAIYUELE7" alt="Question 4"
+                        class="question-gif">
+                </div>
+
+                <div class="question-details">
+                    <div class="options-container">
+                        <div class="option-item" data-opt="a">
+                            <span class="option-letter">a</span>
+                            <span class="option-text">It is a half past five.</span>
+                        </div>
+                        <div class="option-item" data-opt="b">
+                            <span class="option-letter">b</span>
+                            <span class="option-text">It is a half past six.</span>
+                        </div>
+                        <div class="option-item" data-opt="c">
+                            <span class="option-letter">c</span>
+                            <span class="option-text">It is five o'clock.</span>
+                        </div>
+                        <div class="option-item" data-opt="d">
+                            <span class="option-letter">d</span>
+                            <span class="option-text">It is six o'clock.</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- QUESTION 5 -->
+            <div class="question-card" data-q="5" data-correct="d">
+                <!-- Star badge for Q5 -->
+                <div class="q-star-badge">
+                    <img src="https://lh3.googleusercontent.com/d/1tlr-_CyMZShNnbtIol1OyFw8NhS_4MP1" alt="Star badge"
+                        class="star-img">
+                    <span class="star-number">5</span>
+                </div>
+
+                <div class="question-gif-container">
+                    <img src="https://lh3.googleusercontent.com/d/19bBQrkCFEVZLHYE_vQyMl0rGBxpTAFkN" alt="Question 5"
+                        class="question-gif">
+                </div>
+
+                <div class="question-details">
+                    <div class="options-container">
+                        <div class="option-item" data-opt="a">
+                            <span class="option-letter">a</span>
+                            <span class="option-text">It is a half past eleven.</span>
+                        </div>
+                        <div class="option-item" data-opt="b">
+                            <span class="option-letter">b</span>
+                            <span class="option-text">It is ten o'clock.</span>
+                        </div>
+                        <div class="option-item" data-opt="c">
+                            <span class="option-letter">c</span>
+                            <span class="option-text">It is eleven o'clock.</span>
+                        </div>
+                        <div class="option-item" data-opt="d">
+                            <span class="option-letter">d</span>
+                            <span class="option-text">It is a quarter to eleven.</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- QUESTION 6 -->
+            <div class="question-card" data-q="6" data-correct="d">
+                <!-- Star badge for Q6 -->
+                <div class="q-star-badge">
+                    <img src="https://lh3.googleusercontent.com/d/1tlr-_CyMZShNnbtIol1OyFw8NhS_4MP1" alt="Star badge"
+                        class="star-img">
+                    <span class="star-number">6</span>
+                </div>
+
+                <div class="question-gif-container">
+                    <img src="https://lh3.googleusercontent.com/d/10UwFnPV4xslwiR6n_wmJu1GDPa9WmyZf" alt="Question 6"
+                        class="question-gif">
+                </div>
+
+                <div class="question-details">
+                    <div class="options-container">
+                        <div class="option-item" data-opt="a">
+                            <span class="option-letter">a</span>
+                            <span class="option-text">It is a half past nine.</span>
+                        </div>
+                        <div class="option-item" data-opt="b">
+                            <span class="option-letter">b</span>
+                            <span class="option-text">It is a half past eight.</span>
+                        </div>
+                        <div class="option-item" data-opt="c">
+                            <span class="option-letter">c</span>
+                            <span class="option-text">It is nine o'clock.</span>
+                        </div>
+                        <div class="option-item" data-opt="d">
+                            <span class="option-letter">d</span>
+                            <span class="option-text">It is eight o'clock.</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- QUESTION 7 -->
+            <div class="question-card" data-q="7" data-correct="c">
+                <!-- Star badge for Q7 -->
+                <div class="q-star-badge">
+                    <img src="https://lh3.googleusercontent.com/d/1tlr-_CyMZShNnbtIol1OyFw8NhS_4MP1" alt="Star badge"
+                        class="star-img">
+                    <span class="star-number">7</span>
+                </div>
+
+                <div class="question-gif-container">
+                    <img src="https://lh3.googleusercontent.com/d/1cUA7Tbnijqc_-47QQGXRZ4eWI0oaLkpL" alt="Question 7"
+                        class="question-gif">
+                </div>
+
+                <div class="question-details">
+                    <div class="options-container">
+                        <div class="option-item" data-opt="a">
+                            <span class="option-letter">a</span>
+                            <span class="option-text">It is a half past ten.</span>
+                        </div>
+                        <div class="option-item" data-opt="b">
+                            <span class="option-letter">b</span>
+                            <span class="option-text">It is a half past seven.</span>
+                        </div>
+                        <div class="option-item" data-opt="c">
+                            <span class="option-letter">c</span>
+                            <span class="option-text">It is a half past eight.</span>
+                        </div>
+                        <div class="option-item" data-opt="d">
+                            <span class="option-letter">d</span>
+                            <span class="option-text">It is a half past six.</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- QUESTION 8 -->
+            <div class="question-card" data-q="8" data-correct="b">
+                <!-- Star badge for Q8 -->
+                <div class="q-star-badge">
+                    <img src="https://lh3.googleusercontent.com/d/1tlr-_CyMZShNnbtIol1OyFw8NhS_4MP1" alt="Star badge"
+                        class="star-img">
+                    <span class="star-number">8</span>
+                </div>
+
+                <div class="question-gif-container">
+                    <img src="https://lh3.googleusercontent.com/d/12ux5KTnUAC8WDo-7IcEtjMTdod5UWgu1" alt="Question 8"
+                        class="question-gif">
+                </div>
+
+                <div class="question-details">
+                    <div class="options-container">
+                        <div class="option-item" data-opt="a">
+                            <span class="option-letter">a</span>
+                            <span class="option-text">It is a quarter past two.</span>
+                        </div>
+                        <div class="option-item" data-opt="b">
+                            <span class="option-letter">b</span>
+                            <span class="option-text">It is two o'clock.</span>
+                        </div>
+                        <div class="option-item" data-opt="c">
+                            <span class="option-letter">c</span>
+                            <span class="option-text">It is three o'clock.</span>
+                        </div>
+                        <div class="option-item" data-opt="d">
+                            <span class="option-letter">d</span>
+                            <span class="option-text">It is a half past two.</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- QUESTION 9 -->
+            <div class="question-card" data-q="9" data-correct="d">
+                <!-- Star badge for Q9 -->
+                <div class="q-star-badge">
+                    <img src="https://lh3.googleusercontent.com/d/1tlr-_CyMZShNnbtIol1OyFw8NhS_4MP1" alt="Star badge"
+                        class="star-img">
+                    <span class="star-number">9</span>
+                </div>
+
+                <div class="question-gif-container">
+                    <img src="https://lh3.googleusercontent.com/d/1uJIdGfPLec_ReWu0zIJRW_EFO1XjO7-d" alt="Question 9"
+                        class="question-gif">
+                </div>
+
+                <div class="question-details">
+                    <div class="options-container">
+                        <div class="option-item" data-opt="a">
+                            <span class="option-letter">a</span>
+                            <span class="option-text">It is a half past six.</span>
+                        </div>
+                        <div class="option-item" data-opt="b">
+                            <span class="option-letter">b</span>
+                            <span class="option-text">It is a half past five.</span>
+                        </div>
+                        <div class="option-item" data-opt="c">
+                            <span class="option-letter">c</span>
+                            <span class="option-text">It is five o'clock.</span>
+                        </div>
+                        <div class="option-item" data-opt="d">
+                            <span class="option-letter">d</span>
+                            <span class="option-text">It is a quarter past five.</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- QUESTION 10 -->
+            <div class="question-card" data-q="10" data-correct="c">
+                <!-- Star badge for Q10 -->
+                <div class="q-star-badge">
+                    <img src="https://lh3.googleusercontent.com/d/1tlr-_CyMZShNnbtIol1OyFw8NhS_4MP1" alt="Star badge"
+                        class="star-img">
+                    <span class="star-number">10</span>
+                </div>
+
+                <div class="question-gif-container">
+                    <img src="https://lh3.googleusercontent.com/d/1Voi2rZZ-jkWsyHlofwQyjAqCOMIc3W-v" alt="Question 10"
+                        class="question-gif">
+                </div>
+
+                <div class="question-details">
+                    <div class="options-container">
+                        <div class="option-item" data-opt="a">
+                            <span class="option-letter">a</span>
+                            <span class="option-text">It is a half past one.</span>
+                        </div>
+                        <div class="option-item" data-opt="b">
+                            <span class="option-letter">b</span>
+                            <span class="option-text">It is one o'clock.</span>
+                        </div>
+                        <div class="option-item" data-opt="c">
+                            <span class="option-letter">c</span>
+                            <span class="option-text">It is twelve o'clock.</span>
+                        </div>
+                        <div class="option-item" data-opt="d">
+                            <span class="option-letter">d</span>
+                            <span class="option-text">It is a quarter past twelve.</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- SECTION II HEADER -->
+            <div class="section-title">
+                <p class="en">II. Complete the sentences based on the time shown on the clocks! Look at the example.</p>
+                <div class="separator"></div>
+                <p class="id">Lengkapi kalimat di bawah ini berdasarkan waktu yang ditunjukkan pada jam! Perhatikan contoh.</p>
+            </div>
+
+            <!-- SECTION II CONTENT (NOTEBOOK THEME WITH IMAGES) -->
+            <div class="notebook-card">
+                <!-- Example -->
+                <div class="story-item example-item">
+                    <img src="https://lh3.googleusercontent.com/d/1obPGZJe7UP_CVCHr6wn97bXqktZKuD4N" alt="Clock Example" class="story-clock-img">
+                    <div class="notebook-line example-line">
+                        <span class="line-prefix">First, I wake up at (example)</span>
+                        <span style="font-weight: 800; text-decoration: underline; color: #1e293b; padding: 0 4px;">five o'clock</span>
+                        <span class="line-suffix">in the morning.</span>
+                    </div>
+                </div>
+
+                <!-- Line 1 -->
+                <div class="story-item">
+                    <img src="https://lh3.googleusercontent.com/d/1kqGOGSVFxExE1o3AMJ5w52P7_byyPXxY" alt="Clock 1" class="story-clock-img">
+                    <div class="notebook-line" id="sec3-line-1">
+                        <span class="line-prefix">Then, I take a bath and brush my teeth at (1)</span>
+                        <input type="text" class="cloze-input" id="sec3-input-1" data-answer="eight past a half|half past eight|eight thirty|thirty minutes past eight" placeholder="..." autocomplete="off" autocorrect="off" autocapitalize="none" spellcheck="false">
+                        <span class="line-suffix">.</span>
+                        <span class="cloze-fb-badge" id="sec3-fb-1"></span>
+                        <span class="cloze-hint-text" id="sec3-hint-1">eight past a half</span>
+                    </div>
+                </div>
+
+                <!-- Line 2 -->
+                <div class="story-item">
+                    <img src="https://lh3.googleusercontent.com/d/10vkPeRt-y9K7JrG4zirhY1ow45ScgEs4" alt="Clock 2" class="story-clock-img">
+                    <div class="notebook-line" id="sec3-line-2">
+                        <span class="line-prefix">I have breakfast at (2)</span>
+                        <input type="text" class="cloze-input" id="sec3-input-2" data-answer="four past a half|half past four|four thirty|thirty minutes past four" placeholder="..." autocomplete="off" autocorrect="off" autocapitalize="none" spellcheck="false">
+                        <span class="line-suffix">.</span>
+                        <span class="cloze-fb-badge" id="sec3-fb-2"></span>
+                        <span class="cloze-hint-text" id="sec3-hint-2">four past a half</span>
+                    </div>
+                </div>
+
+                <!-- Line 3 -->
+                <div class="story-item">
+                    <img src="https://lh3.googleusercontent.com/d/1DcQEVuitLQJRC7LT72iYQEwYi-UQMJAF" alt="Clock 3" class="story-clock-img">
+                    <div class="notebook-line" id="sec3-line-3">
+                        <span class="line-prefix">I go to school at (3)</span>
+                        <input type="text" class="cloze-input" id="sec3-input-3" data-answer="two o'clock|two o’clock|two|2:00" placeholder="..." autocomplete="off" autocorrect="off" autocapitalize="none" spellcheck="false">
+                        <span class="line-suffix">.</span>
+                        <span class="cloze-fb-badge" id="sec3-fb-3"></span>
+                        <span class="cloze-hint-text" id="sec3-hint-3">two o'clock</span>
+                    </div>
+                </div>
+
+                <!-- Line 4 -->
+                <div class="story-item">
+                    <img src="https://lh3.googleusercontent.com/d/1lrbzYTJ73bd9SRsn10d8jZCaHOUwrw1L" alt="Clock 4" class="story-clock-img">
+                    <div class="notebook-line" id="sec3-line-4">
+                        <span class="line-prefix">I study in class at (4)</span>
+                        <input type="text" class="cloze-input" id="sec3-input-4" data-answer="one o'clock|one o’clock|one|1:00" placeholder="..." autocomplete="off" autocorrect="off" autocapitalize="none" spellcheck="false">
+                        <span class="line-suffix">.</span>
+                        <span class="cloze-fb-badge" id="sec3-fb-4"></span>
+                        <span class="cloze-hint-text" id="sec3-hint-4">one o'clock</span>
+                    </div>
+                </div>
+
+                <!-- Line 5 -->
+                <div class="story-item">
+                    <img src="https://lh3.googleusercontent.com/d/1WItbyYF_h4dtRNkRiwjhahXKqwAETL85" alt="Clock 5" class="story-clock-img">
+                    <div class="notebook-line" id="sec3-line-5">
+                        <span class="line-prefix">I have lunch at (5)</span>
+                        <input type="text" class="cloze-input" id="sec3-input-5" data-answer="fifteen minutes past three|quarter past three|three fifteen|3:15" placeholder="..." autocomplete="off" autocorrect="off" autocapitalize="none" spellcheck="false">
+                        <span class="line-suffix">in the afternoon.</span>
+                        <span class="cloze-fb-badge" id="sec3-fb-5"></span>
+                        <span class="cloze-hint-text" id="sec3-hint-5">fifteen minutes past three</span>
+                    </div>
+                </div>
+
+                <!-- Line 6 -->
+                <div class="story-item">
+                    <img src="https://lh3.googleusercontent.com/d/1m0UMF7wH-V6grsrdsislKCNBJx8G8D7H" alt="Clock 6" class="story-clock-img">
+                    <div class="notebook-line" id="sec3-line-6">
+                        <span class="line-prefix">I go home from school at (6)</span>
+                        <input type="text" class="cloze-input" id="sec3-input-6" data-answer="three past a half|half past three|three thirty|thirty minutes past three" placeholder="..." autocomplete="off" autocorrect="off" autocapitalize="none" spellcheck="false">
+                        <span class="line-suffix">in the afternoon.</span>
+                        <span class="cloze-fb-badge" id="sec3-fb-6"></span>
+                        <span class="cloze-hint-text" id="sec3-hint-6">three past a half</span>
+                    </div>
+                </div>
+
+                <!-- Line 7 -->
+                <div class="story-item">
+                    <img src="https://lh3.googleusercontent.com/d/1ycEA3pZKc66bG3UZZTNGMd14FhZOEqUO" alt="Clock 7" class="story-clock-img">
+                    <div class="notebook-line" id="sec3-line-7">
+                        <span class="line-prefix">Then, I play with my friends at (7)</span>
+                        <input type="text" class="cloze-input" id="sec3-input-7" data-answer="nine past a half|half past nine|nine thirty|thirty minutes past nine" placeholder="..." autocomplete="off" autocorrect="off" autocapitalize="none" spellcheck="false">
+                        <span class="line-suffix">in the afternoon.</span>
+                        <span class="cloze-fb-badge" id="sec3-fb-7"></span>
+                        <span class="cloze-hint-text" id="sec3-hint-7">nine past a half</span>
+                    </div>
+                </div>
+
+                <!-- Line 8 -->
+                <div class="story-item">
+                    <img src="https://lh3.googleusercontent.com/d/1KZQeVwdzKc-yv_x1pzdbWb22vuS2FDry" alt="Clock 8" class="story-clock-img">
+                    <div class="notebook-line" id="sec3-line-8">
+                        <span class="line-prefix">I have dinner with my family at (8)</span>
+                        <input type="text" class="cloze-input" id="sec3-input-8" data-answer="fifteen minutes to one|quarter to one|twelve forty-five|12:45" placeholder="..." autocomplete="off" autocorrect="off" autocapitalize="none" spellcheck="false">
+                        <span class="line-suffix">in the evening.</span>
+                        <span class="cloze-fb-badge" id="sec3-fb-8"></span>
+                        <span class="cloze-hint-text" id="sec3-hint-8">fifteen minutes to one</span>
+                    </div>
+                </div>
+
+                <!-- Line 9 -->
+                <div class="story-item">
+                    <img src="https://lh3.googleusercontent.com/d/1RZ3SqW8-YqCt3MTtQ8Q8NTsMn7BIDHO5" alt="Clock 9" class="story-clock-img">
+                    <div class="notebook-line" id="sec3-line-9">
+                        <span class="line-prefix">I do my homework at (9)</span>
+                        <input type="text" class="cloze-input" id="sec3-input-9" data-answer="one o'clock|one o’clock|one|1:00" placeholder="..." autocomplete="off" autocorrect="off" autocapitalize="none" spellcheck="false">
+                        <span class="line-suffix">in the evening.</span>
+                        <span class="cloze-fb-badge" id="sec3-fb-9"></span>
+                        <span class="cloze-hint-text" id="sec3-hint-9">one o'clock</span>
+                    </div>
+                </div>
+
+                <!-- Line 10 -->
+                <div class="story-item">
+                    <img src="https://lh3.googleusercontent.com/d/1nY3wIUlzKe8k8uMk6GqnyAX_i1X3uy-3" alt="Clock 10" class="story-clock-img">
+                    <div class="notebook-line" id="sec3-line-10">
+                        <span class="line-prefix">Finally, I go to bed at (10)</span>
+                        <input type="text" class="cloze-input" id="sec3-input-10" data-answer="two past a half|half past two|two thirty|thirty minutes past two" placeholder="..." autocomplete="off" autocorrect="off" autocapitalize="none" spellcheck="false">
+                        <span class="line-suffix">in the evening.</span>
+                        <span class="cloze-fb-badge" id="sec3-fb-10"></span>
+                        <span class="cloze-hint-text" id="sec3-hint-10">two past a half</span>
+                    </div>
+                </div>
+            </div>
+
+
+            <!-- SCORE BOX -->
+            <div id="score-box" class="score-box" style="display: none;">
+                <div class="score-label">TOTAL SCORE</div>
+                <div class="score-value" id="score-value">100</div>
+            </div>
+
+            <!-- QUIZ CONTROL ACTIONS -->
+            <div class="quiz-actions" id="quiz-actions">
+                <button id="btn-reset" class="reset-btn">
+                    <img src="https://lh3.googleusercontent.com/d/1KuPBOWr81b39cSSCvc2lzqeiIKnZZ_A0" alt="Try Again">
+                </button>
+                <button id="btn-check" class="check-btn" disabled>
+                    <img src="https://lh3.googleusercontent.com/d/16hWAAvA2gprM0l5Vmw8t8_mrvAo4oic_"
+                        alt="Check Answers">
+                </button>
+            </div>
+
+            <!-- RESULT MESSAGE -->
+            <div id="result-msg" class="result-msg" style="display: none;"></div>
+        </div>
+
+        <!-- SOUND ASSETS -->
+        <audio id="audio-click" src="assets/click.mp3"></audio>
+        <audio id="audio-correct" src="assets/correct_sound.mp3"></audio>
+        <audio id="audio-incorrect" src="assets/incorrect_sound.mp3"></audio>
+        <audio id="audio-typing" src="assets/typing.mp3" preload="auto"></audio>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+
+</html>

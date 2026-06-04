@@ -1,0 +1,965 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&family=Outfit:wght@400;500;600;700;800&family=Quicksand:wght@300..700&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html,
+body {
+    width: 100%;
+    max-width: 100%;
+    overflow: hidden; /* Matikan scroll manual pengguna di root */
+    background: transparent;
+    scroll-behavior: smooth;
+    -ms-overflow-style: none;  /* IE and Edge */
+    scrollbar-width: none;  /* Firefox */
+    touch-action: pan-y; /* Izinkan scroll vertikal */
+}
+
+body::-webkit-scrollbar {
+    display: none; /* Chrome, Safari, Opera */
+}
+
+body {
+    font-family: 'Outfit', 'Quicksand', sans-serif;
+    font-size: 14px;
+    display: flex;
+    justify-content: center;
+    min-height: 100vh;
+}
+
+/* ── MOBILE-STYLE CONTAINER (Max-Width: 360px) ── */
+.page {
+    background: transparent;
+    width: 100%;
+    max-width: 360px;
+    height: 100vh; /* Kunci tinggi sesuai layar/iframe */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    position: relative;
+    overflow: hidden;
+}
+
+/* ── MODULE HEADER (Sticky) ── */
+.module-header {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 16px 16px 10px 16px;
+    background: #fff; /* Pastikan background solid agar konten di bawahnya tidak terlihat saat scroll */
+    z-index: 100;
+    flex-shrink: 0;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.02);
+}
+
+.title-badge {
+    width: 90%;
+    max-width: 280px;
+    height: auto;
+    margin-bottom: 8px;
+}
+
+.instructions {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+}
+
+.instructions .en {
+    font-size: 14px;
+    font-weight: 600;
+    color: #1e293b;
+    margin-bottom: 4px;
+    line-height: 1.3;
+}
+
+.instructions .separator {
+    width: 100%;
+    border-top: 1.5px dotted #93c5fd;
+    margin: 6px 0;
+}
+
+.instructions .id {
+    font-size: 14px;
+    font-weight: 400;
+    color: #475569;
+    line-height: 1.3;
+}
+
+/* ── SCROLLABLE CONTENT ── */
+.scroll-content {
+    width: 100%;
+    flex-grow: 1;
+    overflow-y: auto;
+    padding: 0 12px 20px 12px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: none; /* Firefox */
+}
+
+.scroll-content::-webkit-scrollbar {
+    display: none; /* Chrome, Safari */
+}
+
+/* ── MODULE TITLE ── */
+.module-title {
+    font-size: 15px;
+    font-weight: 700;
+    text-align: center;
+    margin: 8px 0 10px 0;
+    color: #1e293b;
+    width: 100%;
+}
+
+/* ── STUDENT INFO CARD ── */
+.student-info-card {
+    width: 100%;
+    margin-bottom: 20px;
+    background: #ffffff;
+    border-radius: 20px;
+    border: 3px solid #bfdbfe; /* Light blue border */
+    padding: 16px;
+    box-shadow: 0 4px 15px rgba(147, 197, 253, 0.15);
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    position: relative;
+    /* Removed overflow: hidden to prevent clipping */
+}
+
+.info-row {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 12px;
+    width: 100%;
+}
+
+.icon-container {
+    flex-shrink: 0;
+    position: relative;
+}
+
+.icon-circle {
+    width: 38px;
+    height: 38px;
+    background: linear-gradient(135deg, #1e3a8a 0%, #1e40af 100%); /* Dark blue glossy */
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 4px 8px rgba(30, 58, 138, 0.3), inset 0 2px 4px rgba(255, 255, 255, 0.3);
+    border: 2px solid #ffffff;
+}
+
+.input-wrapper {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+}
+
+.student-label {
+    font-family: 'Outfit', sans-serif;
+    margin-bottom: 2px;
+}
+
+.student-label .en-label {
+    font-size: 14px;
+    font-weight: 600;
+    color: #0f172a;
+}
+
+.student-label .id-label {
+    font-size: 13px;
+    font-weight: 500;
+    color: #64748b;
+    margin-left: 2px;
+}
+
+.student-input {
+    width: 100%;
+    background: #f8fafc;
+    border: 2px solid #bfdbfe;
+    border-radius: 10px;
+    padding: 8px 12px;
+    font-family: 'Outfit', sans-serif;
+    font-size: 14px;
+    font-weight: 500;
+    color: #0f172a;
+    outline: none;
+    transition: all 0.2s;
+    border-left: 4px solid #facc15; /* Yellow accent line */
+}
+
+.student-input::placeholder {
+    color: #94a3b8;
+    font-weight: 400;
+}
+
+.student-input:focus {
+    border-color: #3b82f6;
+    background: #ffffff;
+    box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.1);
+}
+
+/* ── SCORING INFO CARD ── */
+.scoring-info-card {
+    width: 100%;
+    margin-bottom: 20px;
+    background: #fffbeb; /* Light yellow background */
+    border: 2px dashed #fcd34d; /* Yellow dashed border */
+    border-radius: 16px;
+    padding: 12px 16px;
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+    gap: 12px;
+}
+
+.scoring-icon {
+    font-size: 24px;
+    line-height: 1;
+    margin-top: 2px;
+}
+
+.scoring-text {
+    flex: 1;
+    font-family: 'Outfit', sans-serif;
+    color: #1e293b;
+}
+
+.scoring-title {
+    font-size: 14px;
+    margin-bottom: 4px;
+}
+
+.scoring-list {
+    margin: 0 0 6px 20px;
+    padding: 0;
+    font-size: 13px;
+    line-height: 1.4;
+    color: #475569;
+}
+
+.scoring-list li {
+    margin-bottom: 4px;
+}
+
+.scoring-list .point-badge {
+    color: #dc2626;
+    font-weight: 600;
+    display: inline-block;
+    margin-top: 4px;
+    background: #fef2f2;
+    padding: 2px 6px;
+    border-radius: 4px;
+}
+
+.scoring-total {
+    font-size: 13px;
+    color: #dc2626; /* Red */
+    background: #fef2f2;
+    padding: 4px 8px;
+    border-radius: 6px;
+    display: inline-block;
+    border: 1px solid #fecaca;
+    font-weight: 600;
+}
+
+.scoring-info-card .en-text {
+    font-weight: 600;
+    color: #0f172a;
+}
+
+.scoring-info-card .id-text {
+    font-weight: 500;
+    color: #64748b;
+    font-size: 0.9em;
+}
+
+/* ── QUESTION CARD ── */
+.question-card {
+    width: 100%;
+    margin-bottom: 12px;
+    background: #ffffff;
+    border-radius: 24px;
+    border: 3px solid #cbd5e1;
+    padding: 12px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.02);
+    transition: border-color 0.3s ease, box-shadow 0.3s ease;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 12px;
+    position: relative;
+}
+
+.question-card.example-card {
+    background: #f8fafc;
+    border-style: dashed;
+    border-color: #94a3b8;
+}
+
+/* ── CARTOON STAR NUMBER BADGE ── */
+.q-star-badge {
+    position: absolute;
+    top: 4px;
+    left: 4px;
+    width: 34px;
+    height: 34px;
+    z-index: 20;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.star-img {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    filter: drop-shadow(0 2px 3px rgba(0, 0, 0, 0.12));
+}
+
+.star-number {
+    position: relative;
+    font-family: 'Outfit', sans-serif;
+    font-weight: 800;
+    font-size: 12px;
+    color: #451a03; /* Matching Dark Brown Text */
+    margin-top: -1px; /* Centered vertically on the yellow face */
+    margin-left: -2px; /* Shifted left to compensate for right shadow */
+    text-shadow: 0 1px 0px rgba(255, 255, 255, 0.4);
+}
+
+.star-ex {
+    font-size: 9px;
+}
+
+/* ── GIF CONTAINER (SOFT BLUE CORNER BORDER) ── */
+.question-gif-container {
+    width: 105px;
+    height: 105px;
+    flex-shrink: 0;
+    border-radius: 18px;
+    overflow: hidden;
+    border: 4px solid #dbeafe; /* Soft blue border matching mockup */
+    background: #ffffff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    transform: translateZ(0); /* Hardware acceleration for GIF clipping */
+    will-change: transform;
+}
+
+.question-gif {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+/* ── DETAILS (FORCED EQUAL HEIGHT TO GIF) ── */
+.question-details {
+    flex-grow: 1;
+    min-height: 105px; /* Cocokkan minimal dengan tinggi GIF */
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    min-width: 0;
+}
+
+/* ── OPTIONS CONTAINER ── */
+.options-container {
+    display: flex;
+    flex-direction: column;
+    gap: 4px; /* Didekatkan sedikit sesuai permintaan */
+    width: 100%;
+}
+
+.option-item {
+    display: flex;
+    align-items: center;
+    padding: 2px 8px; /* Dipertipis atas dan bawahnya */
+    background: #ffffff;
+    border: 1.5px solid #e2e8f0; /* Soft light border */
+    border-radius: 10px;
+    cursor: pointer;
+    transition: all 0.15s cubic-bezier(0.4, 0, 0.2, 1);
+    position: relative;
+    user-select: none;
+    min-height: 24px; /* Dikecilkan agar lebih tipis */
+}
+
+.option-item:not(.disabled):hover {
+    border-color: #cbd5e1;
+    background: #f8fafc;
+}
+
+.option-item.selected {
+    border-color: #4f46e5;
+    background-color: #f5f3ff;
+}
+
+.option-letter {
+    width: 18px;
+    height: 18px;
+    border-radius: 50%;
+    background: #f8fafc;
+    border: 1.5px solid #cbd5e1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: 'Outfit', sans-serif;
+    font-size: 14px;
+    font-weight: 700;
+    color: #475569;
+    margin-right: 6px;
+    flex-shrink: 0;
+    position: relative;
+    transition: all 0.2s ease;
+}
+
+.option-text {
+    font-family: 'Outfit', sans-serif;
+    font-weight: 600; /* Bold font weight matching mockup */
+    color: #1e293b; /* Dark charcoal text */
+    font-size: 13px; /* Sedikit dikecilkan agar muat */
+    line-height: 1.1;
+    word-break: break-word; /* Biarkan teks turun ke bawah jika kepanjangan */
+}
+
+/* ── THE CROSS (X) OVERLAY ── */
+.option-item.selected .option-letter::before,
+.option-item.selected .option-letter::after,
+.option-item.crossed-example .option-letter::before,
+.option-item.crossed-example .option-letter::after {
+    content: '';
+    position: absolute;
+    width: 2px;
+    height: 100%;
+    background-color: #1e293b; /* Dark pencil cross */
+    border-radius: 1px;
+    top: 0;
+    left: calc(50% - 1px);
+    z-index: 10;
+    transition: background-color 0.2s ease;
+}
+
+.option-item.selected .option-letter::before,
+.option-item.crossed-example .option-letter::before {
+    transform: rotate(45deg);
+}
+
+.option-item.selected .option-letter::after,
+.option-item.crossed-example .option-letter::after {
+    transform: rotate(-45deg);
+}
+
+/* Disabled styling */
+.option-item.disabled {
+    cursor: not-allowed;
+    pointer-events: none;
+}
+
+/* ── CORRECT / INCORRECT VISUAL FEEDBACK ── */
+/* 1. Selected and Correct */
+.option-item.selected.correct {
+    border-color: #10b981 !important;
+    background-color: #ecfdf5 !important;
+}
+
+.option-item.selected.correct .option-letter {
+    background-color: #10b981 !important;
+    border-color: #10b981 !important;
+    color: #ffffff !important;
+}
+
+.option-item.selected.correct .option-letter::before,
+.option-item.selected.correct .option-letter::after {
+    background-color: #ffffff !important; /* White cross on green */
+}
+
+/* 2. Selected and Incorrect */
+.option-item.selected.incorrect {
+    border-color: #ef4444 !important;
+    background-color: #fef2f2 !important;
+}
+
+.option-item.selected.incorrect .option-letter {
+    background-color: #ef4444 !important;
+    border-color: #ef4444 !important;
+    color: #ffffff !important;
+}
+
+.option-item.selected.incorrect .option-letter::before,
+.option-item.selected.incorrect .option-letter::after {
+    background-color: #ffffff !important; /* White cross on red */
+}
+
+/* 3. Correct option but not selected by user */
+.option-item.correct:not(.selected) {
+    border-color: #10b981 !important;
+    background-color: #ecfdf5 !important;
+}
+
+.option-item.correct:not(.selected) .option-letter {
+    background-color: #10b981 !important;
+    border-color: #10b981 !important;
+    color: #ffffff !important;
+}
+
+.option-item.correct:not(.selected) .option-letter::before,
+.option-item.correct:not(.selected) .option-letter::after {
+    display: none; /* Do not show cross if the user did not select it */
+}
+
+/* ── ACTION BUTTONS ── */
+.quiz-actions {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    margin-top: 5px;
+}
+
+.reset-btn,
+.check-btn {
+    background: transparent;
+    border: none;
+    padding: 0;
+    cursor: pointer;
+    transition: transform 0.2s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    outline: none;
+}
+
+.reset-btn img,
+.check-btn img {
+    height: 44px; /* Sedikit dikecilkan agar pas di lebar 360px */
+    width: auto;
+    max-width: 100%;
+    display: block;
+}
+
+.reset-btn:hover:not(:disabled),
+.check-btn:hover:not(:disabled) {
+    transform: scale(1.08);
+}
+
+.reset-btn:active:not(:disabled),
+.check-btn:active:not(:disabled) {
+    transform: scale(0.95);
+}
+
+.check-btn:disabled {
+    filter: grayscale(100%);
+    opacity: 0.6;
+    cursor: not-allowed;
+    transform: none;
+}
+
+/* ── RESULT BOX ── */
+.result-msg {
+    width: 100%;
+    text-align: center;
+    padding: 10px;
+    margin-top: 12px;
+    border-radius: 10px;
+    font-family: 'Outfit', sans-serif;
+    font-weight: 700;
+    font-size: 14px;
+    animation: bounceIn 0.5s ease-out;
+}
+
+.result-msg.correct {
+    background-color: #ecfdf5;
+    color: #065f46;
+    border: 1.5px solid #059669;
+}
+
+.result-msg.incorrect {
+    background-color: #fef2f2;
+    color: #991b1b;
+    border: 1.5px solid #dc2626;
+}
+
+@keyframes bounceIn {
+    0% {
+        transform: scale(0.9);
+        opacity: 0;
+    }
+    50% {
+        transform: scale(1.05);
+    }
+    100% {
+        transform: scale(1);
+        opacity: 1;
+    }
+}
+
+/* ── SCORE BOX ── */
+.score-box {
+    width: 100%;
+    border-radius: 16px;
+    padding: 20px;
+    margin-top: 20px;
+    margin-bottom: 15px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    animation: bounceIn 0.6s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+.score-red {
+    background: linear-gradient(135deg, #ef4444 0%, #b91c1c 100%);
+    border: 3px solid #f87171;
+    box-shadow: 0 8px 15px rgba(239, 68, 68, 0.2);
+}
+
+.score-yellow {
+    background: linear-gradient(135deg, #f59e0b 0%, #d97706 100%);
+    border: 3px solid #fbbf24;
+    box-shadow: 0 8px 15px rgba(245, 158, 11, 0.2);
+}
+
+.score-light-green {
+    background: linear-gradient(135deg, #84cc16 0%, #4d7c0f 100%);
+    border: 3px solid #a3e635;
+    box-shadow: 0 8px 15px rgba(132, 204, 22, 0.2);
+}
+
+.score-blue {
+    background: linear-gradient(135deg, #3b82f6 0%, #1d4ed8 100%);
+    border: 3px solid #60a5fa;
+    box-shadow: 0 8px 15px rgba(59, 130, 246, 0.2);
+}
+
+.score-label {
+    font-family: 'Outfit', sans-serif;
+    font-weight: 800;
+    font-size: 16px;
+    color: #fff;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    margin-bottom: 4px;
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+.score-value {
+    font-family: 'Outfit', sans-serif;
+    font-weight: 800;
+    font-size: 48px;
+    color: #fff;
+    line-height: 1;
+    text-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+}
+
+/* Responsive adjustments */
+@media (max-width: 360px) {
+    .page {
+        box-shadow: none;
+    }
+}
+
+/* ── SECTION II & III STYLING ── */
+.section-title {
+    width: 100%;
+    text-align: center;
+    margin: 32px 0 20px 0;
+    padding-top: 24px;
+    border-top: 3px dashed #cbd5e1;
+}
+
+.section-title .en {
+    font-size: 15px;
+    font-weight: 700;
+    color: #1e293b;
+    margin-bottom: 4px;
+}
+
+.section-title .separator {
+    width: 100%;
+    border-top: 1.5px dotted #93c5fd;
+    margin: 6px 0;
+}
+
+.section-title .id {
+    font-size: 13px;
+    font-weight: 500;
+    color: #475569;
+}
+
+/* ── PART II : ORDERING LIST ── */
+.sec2-order-list {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    background: #ffffff;
+    border: 3px solid #cbd5e1; /* Bubbly blue/gray outer card */
+    border-radius: 24px;
+    padding: 16px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.02);
+    margin-bottom: 24px;
+}
+
+.sec2-order-row {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 8px 0;
+    border-bottom: 1.5px dashed #cbd5e1; /* Dotted line like paper quiz sheets! */
+    position: relative;
+}
+
+.sec2-order-row:last-child {
+    border-bottom: none;
+}
+
+.sec2-order-row.example-row {
+    background-color: #f8fafc;
+    border-bottom-style: solid;
+    padding: 6px 8px;
+    border-radius: 8px;
+}
+
+.sec2-bullet {
+    color: #3b82f6;
+    font-size: 16px;
+    font-weight: 700;
+    flex-shrink: 0;
+}
+
+.sec2-paren-wrapper {
+    display: inline-flex;
+    align-items: center;
+    color: #475569;
+    font-size: 14px;
+    font-weight: 800;
+    flex-shrink: 0;
+}
+
+.sec2-order-input {
+    width: 32px;
+    height: 24px;
+    border: none;
+    border-bottom: 2px solid #93c5fd;
+    background: #eff6ff; /* Soft blue match */
+    text-align: center;
+    font-size: 13px;
+    font-weight: 800;
+    color: #1e3a8a;
+    font-family: 'Outfit', sans-serif;
+    outline: none;
+    border-radius: 4px;
+    margin: 0 4px;
+    transition: all 0.2s ease;
+}
+
+.sec2-order-input:focus {
+    border-bottom-color: #2563eb;
+    background: #dbeafe;
+}
+
+.sec2-order-input:disabled {
+    color: #475569;
+    background: transparent;
+    border-bottom: none;
+}
+
+.sec2-order-input.correct {
+    color: #16a34a !important;
+    border-bottom-color: #16a34a !important;
+    background: #ecfdf5 !important;
+}
+
+.sec2-order-input.wrong {
+    color: #dc2626 !important;
+    border-bottom-color: #dc2626 !important;
+    background: #fef2f2 !important;
+}
+
+.sec2-text {
+    font-weight: 600;
+    font-size: 13px;
+    color: #334155;
+    flex-grow: 1;
+}
+
+.sec2-fb-badge {
+    font-size: 14px;
+    font-weight: 700;
+    margin-left: auto;
+    display: flex;
+    align-items: center;
+}
+
+.sec2-hint-text {
+    position: absolute;
+    bottom: -16px;
+    left: 50%;
+    transform: translateX(-50%);
+    font-size: 10px;
+    font-weight: 800;
+    color: #16a34a;
+    background: #ecfdf5;
+    border: 1px solid #bbf7d0;
+    padding: 2px 6px;
+    border-radius: 6px;
+    display: none;
+    z-index: 20;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+}
+
+/* ── PART III : NOTEBOOK DIARY LAYOUT ── */
+.notebook-card {
+    background: #fffdf9;
+    border: 3px solid #fbcfe8; /* Bubbly pink border */
+    border-left: 8px solid #f43f5e; /* Pink margin representing paper spiral bind */
+    border-radius: 20px;
+    padding: 12px 16px;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    box-shadow: 0 6px 16px rgba(244, 63, 94, 0.08);
+    position: relative;
+    margin-bottom: 24px;
+}
+
+/* Spiral rings mockup */
+.notebook-card::before {
+    content: '';
+    position: absolute;
+    top: 15px;
+    left: -13px;
+    width: 10px;
+    height: calc(100% - 30px);
+    background-image: radial-gradient(circle, #cbd5e1 40%, transparent 45%);
+    background-size: 10px 24px;
+    display: none; /* Can enable if needed, border-left already represents it cleanly */
+}
+
+.notebook-line {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 4px;
+    padding: 10px 0;
+    border-bottom: 1.5px dashed #bfdbfe; /* Blue notebook paper line decoration */
+    font-size: 13px;
+    font-weight: 600;
+    color: #334155;
+    line-height: 1.4;
+    position: relative;
+}
+
+.notebook-line:last-child {
+    border-bottom: none;
+}
+
+.notebook-line.example-line {
+    background: #f8fafc;
+    border-bottom-style: solid;
+    padding: 8px;
+    border-radius: 8px;
+    font-style: italic;
+    color: #64748b;
+}
+
+.line-prefix {
+    white-space: nowrap;
+}
+
+.cloze-input {
+    flex-grow: 1;
+    min-width: 150px;
+    border: none;
+    border-bottom: 2.5px solid #93c5fd;
+    background: #eff6ff; /* Soft blue ink blend */
+    font-family: 'Outfit', sans-serif;
+    font-size: 13px;
+    font-weight: 700;
+    text-align: center;
+    color: #1e40af; /* Ink pen blue */
+    padding: 2px 8px;
+    border-radius: 6px 6px 0 0;
+    outline: none;
+    transition: all 0.2s ease;
+}
+
+.cloze-input:focus {
+    border-bottom-color: #2563eb;
+    background: #dbeafe;
+}
+
+.cloze-input.correct {
+    border-bottom-color: #10b981 !important;
+    color: #10b981 !important;
+    background: #ecfdf5 !important;
+}
+
+.cloze-input.wrong {
+    border-bottom-color: #ef4444 !important;
+    color: #ef4444 !important;
+    background: #fef2f2 !important;
+}
+
+.cloze-fb-badge {
+    font-size: 14px;
+    font-weight: 700;
+    margin-left: 2px;
+}
+
+.cloze-hint-text {
+    width: 100%;
+    font-size: 11px;
+    font-weight: 800;
+    color: #10b981;
+    background: #ecfdf5;
+    border: 1px solid #a7f3d0;
+    padding: 2px 6px;
+    border-radius: 6px;
+    display: none;
+    margin-top: 4px;
+    text-align: center;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.02);
+}
+
+
+/* ── NEW STORY CLOZE STYLING ── */
+.story-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-bottom: 24px;
+    width: 100%;
+}
+
+.story-clock-img {
+    width: 140px;
+    height: 140px;
+    object-fit: contain;
+    margin-bottom: 12px;
+    border-radius: 12px;
+    border: 3px solid #cbd5e1;
+    background: #ffffff;
+}
+
+.example-item .story-clock-img {
+    border-color: #94a3b8;
+    border-style: dashed;
+}
