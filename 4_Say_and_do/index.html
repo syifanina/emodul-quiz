@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>What Time Is It? - Say and Do</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <div class="page">
+        <!-- HEADER WITH SAY AND DO BADGE -->
+        <header class="module-header">
+            <img src="assets/say_and_do.png" alt="Say and Do"
+                class="title-badge">
+
+            <div class="instructions-container">
+                <h1 class="main-heading">WHAT TIME IS IT?</h1>
+
+                <div class="en-instructions">
+                    <p class="en-main">Say the time and move your hands like a watch!</p>
+                    <ul class="en-sub">
+                        <li>Right hand = minute watch’s hand</li>
+                        <li>Left hand = hour watch’s hand</li>
+                        <li>Look at the example!</li>
+                    </ul>
+                </div>
+
+                <div class="separator"></div>
+
+                <div class="id-instructions">
+                    <p class="id-main">Ucapkan waktu sesuai gambar dan gerakkan tanganmu seolah jadi jarum.</p>
+                    <p class="id-sub">Tangan kanan = jarum menit (jarum panjang)<br>Tangan kiri = jarum jam (jarum
+                        pendek). Perhatikan contoh!</p>
+                </div>
+            </div>
+        </header>
+
+        <!-- SCROLLABLE CONTENT AREA -->
+        <div class="scroll-content">
+            <main class="content-container">
+
+                <!-- CARD 1: THE BOY REPRESENTING CLOCK HANDS -->
+                <div class="display-card boy-card">
+                    <div class="illustration-wrapper">
+                        <!-- Boy Illustration -->
+                        <img src="assets/student_clock_hands.png" alt="Student raising hands" class="illustration-img">
+
+                        <!-- Hand indicator labels above hands -->
+                        <div class="label-indicator text-right-hand">right hand</div>
+                        <div class="label-indicator text-left-hand">left hand</div>
+
+                        <!-- Callout Bubble for Minute Hand (Boy's Right Hand, Our Left) -->
+                        <div class="pointer-bubble bubble-boy-minute">
+                            <span class="bubble-text">Minute<br>hand</span>
+                            <div class="bubble-tail tail-right"></div>
+                        </div>
+
+                        <!-- Callout Bubble for Hour Hand (Boy's Left Hand, Our Right) -->
+                        <div class="pointer-bubble bubble-boy-hour">
+                            <span class="bubble-text">Hour<br>hand</span>
+                            <div class="bubble-tail tail-left"></div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- CARD 2: THE 5:00 EXAMPLE CLOCK -->
+                <div class="display-card clock-card">
+                    <div class="illustration-wrapper">
+                        <!-- Clock Illustration -->
+                        <img src="assets/analog_clock_five.png" alt="Clock showing 5:00" class="illustration-img">
+
+                        <!-- Callout Bubble for Clock Minute Hand (pointing to 12) -->
+                        <div class="pointer-bubble bubble-clock-minute">
+                            <span class="bubble-text">Minute<br>hand</span>
+                        </div>
+
+                        <!-- Callout Bubble for Clock Hour Hand (pointing to 5) -->
+                        <div class="pointer-bubble bubble-clock-hour">
+                            <span class="bubble-text">Hour<br>hand</span>
+                        </div>
+
+                        <!-- Precision SVG Pointers Overlay (matching red arrows exactly) -->
+                        <svg class="pointers-overlay" viewBox="0 0 100 100">
+                            <defs>
+                                <marker id="arrow-clock" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="4" markerHeight="4" orient="auto-start-reverse">
+                                    <path d="M 0 2 L 10 5 L 0 8 z" fill="#2C3E50" />
+                                </marker>
+                            </defs>
+                            <!-- Point from Minute hand bubble right edge (26.5, 38.5) to Long Minute Hand at 12 (49.5, 24) -->
+                            <line x1="26.5" y1="38.5" x2="49.5" y2="24" stroke="#2C3E50" stroke-width="1.2" marker-end="url(#arrow-clock)" />
+                            
+                            <!-- Point from Hour hand bubble top-left edge (71.5, 74) to Short Hour Hand at 5 (59.5, 65.5) -->
+                            <line x1="71.5" y1="74" x2="59.5" y2="65.5" stroke="#2C3E50" stroke-width="1.2" marker-end="url(#arrow-clock)" />
+                        </svg>
+                    </div>
+                </div>
+
+                <!-- CARD DIVIDER -->
+                <div class="card-divider"></div>
+
+                <!-- CARD 3: CONTINUATION EXAMPLE (GIRL SHOWING CLOCK HANDS) -->
+                <div class="display-card girl-card" id="girl-action-card">
+                    <h2 class="card-subtitle">Example:</h2>
+                    <p class="card-description-en">Put your right hand at number 12 and put left hand at number 5</p>
+                    
+                    <div class="illustration-wrapper">
+                        <!-- Girl Illustration (starts as PNG) -->
+                        <img src="assets/girl_clock_hands.png" alt="Girl showing clock hands" class="illustration-img" id="girl-image">
+                        
+                        <!-- Sound Play Button -->
+                        <button class="sound-btn" id="girl-sound-btn" aria-label="Play sound">
+                            <svg viewBox="0 0 24 24">
+                                <path id="girl-sound-icon" d="M14,3.23V5.29C16.89,6.15 19,8.83 19,12C19,15.17 16.89,17.85 14,18.71V20.77C18.03,19.86 21,16.28 21,12C21,7.72 18.03,4.14 14,3.23M16.5,12C16.5,10.23 15.5,8.71 14,7.97V16.04C15.5,15.29 16.5,13.77 16.5,12M3,9V15H7L12,20V4L7,9H3Z" />
+                            </svg>
+                        </button>
+                    </div>
+                </div>
+
+                <!-- CARD DIVIDER -->
+                <div class="card-divider"></div>
+
+                <!-- SECTION 4: 5 INTERACTIVE EXERCISES LIST -->
+                <div class="exercise-section">
+                    <h3 class="exercise-section-title">Exercises</h3>
+                    <div class="exercise-list">
+                        <div class="exercise-item" data-id="1">
+                            <span class="exercise-num">1</span>
+                            <p class="exercise-text">Put your right hand at number 12 and left hand at number 1</p>
+                        </div>
+                        <div class="exercise-item" data-id="2">
+                            <span class="exercise-num">2</span>
+                            <p class="exercise-text">Put your right hand at number 12 and left hand at number 2</p>
+                        </div>
+                        <div class="exercise-item" data-id="3">
+                            <span class="exercise-num">3</span>
+                            <p class="exercise-text">Put your right hand at number 12 and left hand at number 3</p>
+                        </div>
+                        <div class="exercise-item" data-id="4">
+                            <span class="exercise-num">4</span>
+                            <p class="exercise-text">Put your right hand at number 12 and left hand at number 4</p>
+                        </div>
+                        <div class="exercise-item" data-id="5">
+                            <span class="exercise-num">5</span>
+                            <p class="exercise-text">Put your right hand at number 12 and left hand at number 5</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- SINGLE AUDIO SOURCE -->
+                <audio id="click-sound" src="assets/click.MP3"></audio>
+                <audio id="girl-audio" src="assets/asset-sayanddo.MP3"></audio>
+
+    <script src="script.js"></script>
+</body>
+
+</html>
