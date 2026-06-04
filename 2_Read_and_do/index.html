@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Read and Do – Do the Instructions Game</title>
+    <link rel="stylesheet" href="style.css?v=1.0">
+</head>
+
+<body>
+    <div class="page">
+        <!-- Sticky Header -->
+        <header class="module-header">
+            <!-- PNG Judul -->
+            <img src="https://lh3.googleusercontent.com/d/1LE14wY71B7t9z4oQDzunYvQs7iEXJVHn" alt="Read and Do" class="title-badge">
+
+            <div class="instructions">
+                <h3 style="font-size: 15px; font-weight: 800; color: #1e293b; margin-bottom: 6px;">"Guess the Activity" Game</h3>
+                <p class="en">Play the game with your friend! Pick one of the card! Pretend to do the hobby in the card. Ask your friend “What is the hobby?” Say if your friend’s guessing is right or wrong. Look at the example!</p>
+                <div class="separator"></div>
+                <p class="id">Mainkan bersama teman! Pilihlah salah satu kartu! Peragakan hoby yang digambarkan dalam kartu tadi. Tanyakan kepada temanmu “Tebak apa hobinya?” Katakan jika tebakan temanmu benar atau salah! Perhatikan contoh!</p>
+            </div>
+        </header>
+
+        <!-- Scrollable Content -->
+        <div class="scroll-content">
+            <div id="quiz-container" style="width: 100%;">
+                
+                <!-- GIFs -->
+                <div class="cards-title">EXAMPLE</div>
+                <div class="examples-section" style="background: transparent; border: none; box-shadow: none; padding: 0; margin-bottom: 30px;">
+                    
+                    <div class="gif-container" onclick="playGifAudio('audio-gif1', this, 'wrong.gif', 'https://lh3.googleusercontent.com/d/1sQSujWbE3mwAKv2WoZoCGBJoBOSZoAYW')">
+                        <img src="https://lh3.googleusercontent.com/d/1sQSujWbE3mwAKv2WoZoCGBJoBOSZoAYW" alt="Example 1" class="gif-image">
+                        <div class="play-overlay">
+                            <svg viewBox="0 0 24 24" fill="white" width="64px" height="64px">
+                                <path d="M8 5v14l11-7z" />
+                            </svg>
+                        </div>
+                    </div>
+
+                    <div class="gif-container" style="margin-bottom: 0;" onclick="playGifAudio('audio-gif2', this, 'correct.gif', 'https://lh3.googleusercontent.com/d/1qDz0Tj9gCGD16rQlHqC4TjMUoS9ZJtq7')">
+                        <img src="https://lh3.googleusercontent.com/d/1qDz0Tj9gCGD16rQlHqC4TjMUoS9ZJtq7" alt="Example 2" class="gif-image">
+                        <div class="play-overlay">
+                            <svg viewBox="0 0 24 24" fill="white" width="64px" height="64px">
+                                <path d="M8 5v14l11-7z" />
+                            </svg>
+                        </div>
+                    </div>
+
+                </div>
+
+                <div class="cards-title">THE CARDS</div>
+                <div class="cards-grid">
+                    <!-- card1 → answercard1 -->
+                    <div class="flip-card" onclick="flipCard(this)">
+                        <div class="flip-card-inner">
+                            <div class="flip-card-front"><img src="https://lh3.googleusercontent.com/d/18nHqBxwlt81IWhZEL79jXy5Pr01xxGdA" alt="Cover"></div>
+                            <div class="flip-card-back"><img src="https://lh3.googleusercontent.com/d/1C4_Jb3sF80GH42HNGXmPzjzH7JjOn9EL" alt="Card"></div>
+                        </div>
+                    </div>
+                    <!-- card2 → answercard2 -->
+                    <div class="flip-card" onclick="flipCard(this)">
+                        <div class="flip-card-inner">
+                            <div class="flip-card-front"><img src="https://lh3.googleusercontent.com/d/1Nxv2f-uuVd41SA7mJ0BdtWNoHv8yMHYQ" alt="Cover"></div>
+                            <div class="flip-card-back"><img src="https://lh3.googleusercontent.com/d/1QGNtHx8Tihh12f2s5fbSTUGqEZwnY2uk" alt="Card"></div>
+                        </div>
+                    </div>
+                    <!-- card3 → answercard3 -->
+                    <div class="flip-card" onclick="flipCard(this)">
+                        <div class="flip-card-inner">
+                            <div class="flip-card-front"><img src="https://lh3.googleusercontent.com/d/1MUjXu2G77oHULGUksvyUgs6-IBvmyDz3" alt="Cover"></div>
+                            <div class="flip-card-back"><img src="https://lh3.googleusercontent.com/d/1q1JYtwkCJhuw73mBpYf3l8KiGJFSzOYe" alt="Card"></div>
+                        </div>
+                    </div>
+                    <!-- card4 → answercard4 -->
+                    <div class="flip-card" onclick="flipCard(this)">
+                        <div class="flip-card-inner">
+                            <div class="flip-card-front"><img src="https://lh3.googleusercontent.com/d/1N-TK7hWB6jIm8kMcivDmlaXXlEUf5tTL" alt="Cover"></div>
+                            <div class="flip-card-back"><img src="https://lh3.googleusercontent.com/d/1M198A792XRWpY0pYSx5EqiC7CW-sKRAS" alt="Card"></div>
+                        </div>
+                    </div>
+                    <!-- card5 → answercard5 -->
+                    <div class="flip-card" onclick="flipCard(this)">
+                        <div class="flip-card-inner">
+                            <div class="flip-card-front"><img src="https://lh3.googleusercontent.com/d/1SZfD02svDe7Ypk2egnSErXyRXUGm4nUb" alt="Cover"></div>
+                            <div class="flip-card-back"><img src="https://lh3.googleusercontent.com/d/12xhRjsRWbfRx9GWLLXymmczCHVEy7ZdU" alt="Card"></div>
+                        </div>
+                    </div>
+                    <!-- card6 → answercard6 -->
+                    <div class="flip-card" onclick="flipCard(this)">
+                        <div class="flip-card-inner">
+                            <div class="flip-card-front"><img src="https://lh3.googleusercontent.com/d/1Mf6inePehf3ZNoG9hJjJ_g2qo3thzntb" alt="Cover"></div>
+                            <div class="flip-card-back"><img src="https://lh3.googleusercontent.com/d/1kjAS4wKhjXbzLSxGFvej6LNJXjGX1yB-" alt="Card"></div>
+                        </div>
+                    </div>
+                    <!-- card7 → answercard7 -->
+                    <div class="flip-card" onclick="flipCard(this)">
+                        <div class="flip-card-inner">
+                            <div class="flip-card-front"><img src="https://lh3.googleusercontent.com/d/1KIqgqjix-8eSTg_rds5jokPZM-wm4At1" alt="Cover"></div>
+                            <div class="flip-card-back"><img src="https://lh3.googleusercontent.com/d/18Kgh6Hw1938TtIInNirT_rNBldm3zD07" alt="Card"></div>
+                        </div>
+                    </div>
+                    <!-- card8 → answercard8 -->
+                    <div class="flip-card" onclick="flipCard(this)">
+                        <div class="flip-card-inner">
+                            <div class="flip-card-front"><img src="https://lh3.googleusercontent.com/d/1KUbWTx8NjfBO2f3LOos0iEgxCkbbSdW-" alt="Cover"></div>
+                            <div class="flip-card-back"><img src="https://lh3.googleusercontent.com/d/1HJyVQUV_O_jKG__APSXlihtRmRI0sVrV" alt="Card"></div>
+                        </div>
+                    </div>
+                    <!-- card9 → answercard9 -->
+                    <div class="flip-card" onclick="flipCard(this)">
+                        <div class="flip-card-inner">
+                            <div class="flip-card-front"><img src="https://lh3.googleusercontent.com/d/1pWksGup-MbNHNIgsZa3rjM0nTG7PKTKM" alt="Cover"></div>
+                            <div class="flip-card-back"><img src="https://lh3.googleusercontent.com/d/1V297IL3GbigSuDGlcmm3mtvFf-IOj-L8" alt="Card"></div>
+                        </div>
+                    </div>
+            </div>
+        </div>
+
+        <!-- Preloaded Sounds -->
+        <audio id="click-audio" src="click.MP3" preload="auto"></audio>
+        <audio id="correct-audio" src="assets/correct_sound.MP3" preload="auto"></audio>
+        <audio id="wrong-audio" src="assets/incorrect_sound.MP3" preload="auto"></audio>
+        <audio id="typing-audio" src="assets/typing.MP3" preload="auto"></audio>
+        <audio id="audio-gif1" src="wrong.MP3" preload="auto"></audio>
+        <audio id="audio-gif2" src="correct.MP3" preload="auto"></audio>
+    </div>
+
+    <script src="script.js?v=1.0"></script>
+</body>
+
+</html>
