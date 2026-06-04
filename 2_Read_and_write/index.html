@@ -1,0 +1,373 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Read and Write Quiz – Hobbies Dialogue</title>
+    <link rel="stylesheet" href="style.css?v=1.1">
+</head>
+
+<body>
+    <div class="page">
+        <!-- Sticky Header -->
+        <header class="module-header">
+            <!-- PNG Judul -->
+            <img src="https://lh3.googleusercontent.com/d/1edskB8jNv9NfmT1cf2z4QDw8MswGTNLe" alt="Read and Write" class="title-badge">
+
+            <div class="instructions">
+                <p class="en">Complete the dialog with the correct hobbies based the descriptions of the hobbies!</p>
+                <div class="separator"></div>
+                <p class="id">Lengkapi dialog di bawah ini dengan menuliskan hoby sesuai dengan deskripsi yang diberikan!</p>
+            </div>
+        </header>
+
+        <!-- Scrollable Content -->
+        <div class="scroll-content">
+            <div id="quiz-container" style="width: 100%;">
+                
+                <!-- EXAMPLE CARD -->
+                <div class="quiz-card example-card">
+                    <div class="card-grid">
+                        <!-- LEFT COLUMN (Your Friend) -->
+                        <div class="col-left">
+                            <div class="q-number" style="color: #475569;">Ex.</div>
+                            <div class="friend-container">
+                                <div class="friend-avatar-box">
+                                    <img src="assets/READ-AND-WRITE.png" class="friend-avatar" alt="Rina">
+                                </div>
+                                <div class="speech-bubble">
+                                    <p class="bubble-text">Rina loves helping her mother cooking in the kitchen. Do you know her hobby?</p>
+                                </div>
+                            </div>
+                            <div class="col-label">Your friend</div>
+                        </div>
+                        <!-- RIGHT COLUMN (You) -->
+                        <div class="col-right">
+                            <div class="input-area">
+                                <div class="handwritten-input-container">
+                                    <div class="example-text-lines">
+                                        <span>Yes, I do. Rina's</span>
+                                        <span>hobby is cooking</span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-label">You</div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- QUESTION 1: Santi (reading) -->
+                <div class="quiz-card" id="row-1">
+                    <div class="card-grid">
+                        <div class="col-left">
+                            <div class="q-number">1.</div>
+                            <div class="friend-container">
+                                <div class="friend-avatar-box">
+                                    <img src="assets/READ-AND-WRITE.png" class="friend-avatar" alt="Friend">
+                                </div>
+                                <div class="speech-bubble">
+                                    <p class="bubble-text">Santi likes books very much. Do you know her hobby?</p>
+                                </div>
+                            </div>
+                            <div class="col-label">Your friend</div>
+                        </div>
+                        <div class="col-right">
+                            <div class="input-area">
+                                <div class="handwritten-input-container" id="wrapper-1">
+                                    <textarea class="answer-input" id="input-1" data-q="1" placeholder="Type answer here..." autocomplete="off" autocorrect="off" spellcheck="false" rows="2"></textarea>
+                                </div>
+                                <div class="feedback-icon" id="fb-1"></div>
+                                <div id="hint-1" class="correct-hint"></div>
+                            </div>
+                            <div class="col-label">You</div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- QUESTION 2: Ucok (playing/flying kite) -->
+                <div class="quiz-card" id="row-2">
+                    <div class="card-grid">
+                        <div class="col-left">
+                            <div class="q-number">2.</div>
+                            <div class="friend-container">
+                                <div class="friend-avatar-box">
+                                    <img src="assets/READ-AND-WRITE.png" class="friend-avatar" alt="Friend">
+                                </div>
+                                <div class="speech-bubble">
+                                    <p class="bubble-text">Ucok loves his new kite. Do you know his hobby?</p>
+                                </div>
+                            </div>
+                            <div class="col-label">Your friend</div>
+                        </div>
+                        <div class="col-right">
+                            <div class="input-area">
+                                <div class="handwritten-input-container" id="wrapper-2">
+                                    <textarea class="answer-input" id="input-2" data-q="2" placeholder="Type answer here..." autocomplete="off" autocorrect="off" spellcheck="false" rows="2"></textarea>
+                                </div>
+                                <div class="feedback-icon" id="fb-2"></div>
+                                <div id="hint-2" class="correct-hint"></div>
+                            </div>
+                            <div class="col-label">You</div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- QUESTION 3: Anita (making contents) -->
+                <div class="quiz-card" id="row-3">
+                    <div class="card-grid">
+                        <div class="col-left">
+                            <div class="q-number">3.</div>
+                            <div class="friend-container">
+                                <div class="friend-avatar-box">
+                                    <img src="assets/READ-AND-WRITE.png" class="friend-avatar" alt="Friend">
+                                </div>
+                                <div class="speech-bubble">
+                                    <p class="bubble-text">Anita loves to make contents for Youtube. Do you know her hobby?</p>
+                                </div>
+                            </div>
+                            <div class="col-label">Your friend</div>
+                        </div>
+                        <div class="col-right">
+                            <div class="input-area">
+                                <div class="handwritten-input-container" id="wrapper-3">
+                                    <textarea class="answer-input" id="input-3" data-q="3" placeholder="Type answer here..." autocomplete="off" autocorrect="off" spellcheck="false" rows="2"></textarea>
+                                </div>
+                                <div class="feedback-icon" id="fb-3"></div>
+                                <div id="hint-3" class="correct-hint"></div>
+                            </div>
+                            <div class="col-label">You</div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- QUESTION 4: Yanto (watching football) -->
+                <div class="quiz-card" id="row-4">
+                    <div class="card-grid">
+                        <div class="col-left">
+                            <div class="q-number">4.</div>
+                            <div class="friend-container">
+                                <div class="friend-avatar-box">
+                                    <img src="assets/READ-AND-WRITE.png" class="friend-avatar" alt="Friend">
+                                </div>
+                                <div class="speech-bubble">
+                                    <p class="bubble-text">Yanto enjoys to watch football. Do you know his hobby?</p>
+                                </div>
+                            </div>
+                            <div class="col-label">Your friend</div>
+                        </div>
+                        <div class="col-right">
+                            <div class="input-area">
+                                <div class="handwritten-input-container" id="wrapper-4">
+                                    <textarea class="answer-input" id="input-4" data-q="4" placeholder="Type answer here..." autocomplete="off" autocorrect="off" spellcheck="false" rows="2"></textarea>
+                                </div>
+                                <div class="feedback-icon" id="fb-4"></div>
+                                <div id="hint-4" class="correct-hint"></div>
+                            </div>
+                            <div class="col-label">You</div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- QUESTION 5: Made (dancing) -->
+                <div class="quiz-card" id="row-5">
+                    <div class="card-grid">
+                        <div class="col-left">
+                            <div class="q-number">5.</div>
+                            <div class="friend-container">
+                                <div class="friend-avatar-box">
+                                    <img src="assets/READ-AND-WRITE.png" class="friend-avatar" alt="Friend">
+                                </div>
+                                <div class="speech-bubble">
+                                    <p class="bubble-text">Made is good in dancing. Do you know his hobby?</p>
+                                </div>
+                            </div>
+                            <div class="col-label">Your friend</div>
+                        </div>
+                        <div class="col-right">
+                            <div class="input-area">
+                                <div class="handwritten-input-container" id="wrapper-5">
+                                    <textarea class="answer-input" id="input-5" data-q="5" placeholder="Type answer here..." autocomplete="off" autocorrect="off" spellcheck="false" rows="2"></textarea>
+                                </div>
+                                <div class="feedback-icon" id="fb-5"></div>
+                                <div id="hint-5" class="correct-hint"></div>
+                            </div>
+                            <div class="col-label">You</div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- QUESTION 6: Rahmat (drawing) -->
+                <div class="quiz-card" id="row-6">
+                    <div class="card-grid">
+                        <div class="col-left">
+                            <div class="q-number">6.</div>
+                            <div class="friend-container">
+                                <div class="friend-avatar-box">
+                                    <img src="assets/READ-AND-WRITE.png" class="friend-avatar" alt="Friend">
+                                </div>
+                                <div class="speech-bubble">
+                                    <p class="bubble-text">Rahmat loves to draw pictures. Do you know his hobby?</p>
+                                </div>
+                            </div>
+                            <div class="col-label">Your friend</div>
+                        </div>
+                        <div class="col-right">
+                            <div class="input-area">
+                                <div class="handwritten-input-container" id="wrapper-6">
+                                    <textarea class="answer-input" id="input-6" data-q="6" placeholder="Type answer here..." autocomplete="off" autocorrect="off" spellcheck="false" rows="2"></textarea>
+                                </div>
+                                <div class="feedback-icon" id="fb-6"></div>
+                                <div id="hint-6" class="correct-hint"></div>
+                            </div>
+                            <div class="col-label">You</div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- QUESTION 7: Dedeh (playing with cats) -->
+                <div class="quiz-card" id="row-7">
+                    <div class="card-grid">
+                        <div class="col-left">
+                            <div class="q-number">7.</div>
+                            <div class="friend-container">
+                                <div class="friend-avatar-box">
+                                    <img src="assets/READ-AND-WRITE.png" class="friend-avatar" alt="Friend">
+                                </div>
+                                <div class="speech-bubble">
+                                    <p class="bubble-text">Dedeh loves her cats. Do you know her hobby?</p>
+                                </div>
+                            </div>
+                            <div class="col-label">Your friend</div>
+                        </div>
+                        <div class="col-right">
+                            <div class="input-area">
+                                <div class="handwritten-input-container" id="wrapper-7">
+                                    <textarea class="answer-input" id="input-7" data-q="7" placeholder="Type answer here..." autocomplete="off" autocorrect="off" spellcheck="false" rows="2"></textarea>
+                                </div>
+                                <div class="feedback-icon" id="fb-7"></div>
+                                <div id="hint-7" class="correct-hint"></div>
+                            </div>
+                            <div class="col-label">You</div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- QUESTION 8: cycling (inline) -->
+                <div class="quiz-card" id="row-8">
+                    <div class="card-grid">
+                        <div class="col-left">
+                            <div class="q-number">8.</div>
+                            <div class="friend-container">
+                                <div class="friend-avatar-box">
+                                    <img src="assets/READ-AND-WRITE.png" class="friend-avatar" alt="Friend">
+                                </div>
+                                <div class="speech-bubble">
+                                    <p class="bubble-text">I love to go with my bike. Do you know my hobby?</p>
+                                </div>
+                            </div>
+                            <div class="col-label">Your friend</div>
+                        </div>
+                        <div class="col-right">
+                            <div class="input-area" style="padding-top: 10px;">
+                                <div class="inline-input-area" id="wrapper-8">
+                                    <div class="inline-prefix">Your hobby is</div>
+                                    <div class="inline-input-container">
+                                        <input type="text" class="answer-input inline-input" id="input-8" data-q="8" placeholder="cycling" autocomplete="off" autocorrect="off" spellcheck="false">
+                                    </div>
+                                </div>
+                                <div class="feedback-icon" id="fb-8" style="top: 10px;"></div>
+                                <div id="hint-8" class="correct-hint" style="bottom: 24px;"></div>
+                            </div>
+                            <div class="col-label">You</div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- QUESTION 9: playing guitar (inline) -->
+                <div class="quiz-card" id="row-9">
+                    <div class="card-grid">
+                        <div class="col-left">
+                            <div class="q-number">9.</div>
+                            <div class="friend-container">
+                                <div class="friend-avatar-box">
+                                    <img src="assets/READ-AND-WRITE.png" class="friend-avatar" alt="Friend">
+                                </div>
+                                <div class="speech-bubble">
+                                    <p class="bubble-text">Our teacher loves to play musical instruments, especially guitar. Do you know her hobby?</p>
+                                </div>
+                            </div>
+                            <div class="col-label">Your friend</div>
+                        </div>
+                        <div class="col-right">
+                            <div class="input-area" style="padding-top: 10px;">
+                                <div class="inline-input-area" id="wrapper-9">
+                                    <div class="inline-prefix">Our teacher's hobby is</div>
+                                    <div class="inline-input-container">
+                                        <input type="text" class="answer-input inline-input" id="input-9" data-q="9" placeholder="playing guitar" autocomplete="off" autocorrect="off" spellcheck="false">
+                                    </div>
+                                </div>
+                                <div class="feedback-icon" id="fb-9" style="top: 10px;"></div>
+                                <div id="hint-9" class="correct-hint" style="bottom: 24px;"></div>
+                            </div>
+                            <div class="col-label">You</div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- QUESTION 10: open-ended (inline) -->
+                <div class="quiz-card" id="row-10">
+                    <div class="card-grid">
+                        <div class="col-left">
+                            <div class="q-number">10.</div>
+                            <div class="friend-container">
+                                <div class="friend-avatar-box">
+                                    <img src="assets/READ-AND-WRITE.png" class="friend-avatar" alt="Friend">
+                                </div>
+                                <div class="speech-bubble">
+                                    <p class="bubble-text">Now, tell me your hobby!</p>
+                                </div>
+                            </div>
+                            <div class="col-label">Your friend</div>
+                        </div>
+                        <div class="col-right">
+                            <div class="input-area" style="padding-top: 10px;">
+                                <div class="inline-input-area" id="wrapper-10">
+                                    <div class="inline-prefix">My Hobby is</div>
+                                    <div class="inline-input-container">
+                                        <input type="text" class="answer-input inline-input" id="input-10" data-q="10" placeholder="e.g. reading" autocomplete="off" autocorrect="off" spellcheck="false">
+                                    </div>
+                                </div>
+                                <div class="feedback-icon" id="fb-10" style="top: 10px;"></div>
+                                <div id="hint-10" class="correct-hint" style="bottom: 24px;"></div>
+                            </div>
+                            <div class="col-label">You</div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
+            <!-- BUTTONS AND RESULT -->
+            <div class="btn-row">
+                <button class="reset-btn" onclick="resetAnswers()">
+                    <img src="https://lh3.googleusercontent.com/d/18vFFWCTR8DNhzv9NGJK26cylpbpduXsG" alt="Reset">
+                </button>
+                <button class="check-btn" onclick="checkAnswers()">
+                    <img src="https://lh3.googleusercontent.com/d/1367wQwMMFdzxUdUQkhLC8bcoiELWGKsm" alt="Check Answer">
+                </button>
+            </div>
+            <div class="result-msg" id="result-msg"></div>
+        </div>
+
+        <!-- Preloaded Sounds -->
+        <audio id="typing-audio" src="assets/typing.MP3" preload="auto"></audio>
+        <audio id="correct-audio" src="assets/correct_sound.MP3" preload="auto"></audio>
+        <audio id="wrong-audio" src="assets/incorrect_sound.MP3" preload="auto"></audio>
+        <audio id="click-audio" src="assets/click.MP3" preload="auto"></audio>
+    </div>
+
+    <script src="script.js?v=1.1"></script>
+</body>
+
+</html>
