@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Read and Match – Quiz</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <div class="page">
+        <header class="module-header">
+            <img src="https://lh3.googleusercontent.com/d/1kLDRKq4BqY2MucsrhJzmU0Cv_myUKRA0" alt="Read and Match" class="title-badge">
+            <div class="instructions">
+                <p class="en">Match the pictures with the correct sentences!</p>
+                <div class="separator"></div>
+                <p class="id">Pasangkan gambar dengan kalimat yang tepat!</p>
+            </div>
+        </header>
+
+        <div class="scroll-content" id="quiz-container">
+            <!-- SVG Overlay for Lines -->
+            <svg id="svg-overlay"></svg>
+            <!-- EXAMPLE SECTION -->
+            <div class="quiz-section example-section">
+                <div class="example-badge">EXAMPLE</div>
+                <div class="quiz-row example-row">
+                    <div class="image-side">
+                        <div class="image-box">
+                            <img src="https://lh3.googleusercontent.com/d/1Mtj7DKMhnUF-fxBg0HkbS-c1RM4oSNWM" alt="Example">
+                        </div>
+                        <div class="dot source-dot example-connected" id="dot-ex-src"></div>
+                    </div>
+                    <div class="options-side">
+                        <div class="option-row">
+                            <div class="dot target-dot"></div>
+                            <div class="option-pill">A. Have lunch</div>
+                        </div>
+                        <div class="option-row">
+                            <div class="dot target-dot example-connected" id="dot-ex-target"></div>
+                            <div class="option-pill selected">B. Wake-up</div>
+                        </div>
+                        <div class="option-row">
+                            <div class="dot target-dot"></div>
+                            <div class="option-pill">C. Go home from school</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- QUIZ QUESTIONS -->
+            <div class="quiz-main matching-grid">
+                <!-- Left Column: Images -->
+                <div class="images-column">
+                    <div class="image-item" data-id="1">
+                        <div class="image-box">
+                            <img src="https://lh3.googleusercontent.com/d/18PKl1ZLepK24bPyhWrOKPEkR5xVXp-3Q" alt="Question 1">
+                            <span class="q-number">1</span>
+                        </div>
+                        <div class="dot source-dot" id="src-1" data-id="1"></div>
+                    </div>
+                    <div class="image-item" data-id="2">
+                        <div class="image-box">
+                            <img src="https://lh3.googleusercontent.com/d/1j86W1xCCkQxViUOj48PCxPCkrNuUlPWG" alt="Question 2">
+                            <span class="q-number">2</span>
+                        </div>
+                        <div class="dot source-dot" id="src-2" data-id="2"></div>
+                    </div>
+                    <div class="image-item" data-id="3">
+                        <div class="image-box">
+                            <img src="https://lh3.googleusercontent.com/d/1KmKWk7ljzKYQZ-tT813ssBo3uSXpfUpT" alt="Question 3">
+                            <span class="q-number">3</span>
+                        </div>
+                        <div class="dot source-dot" id="src-3" data-id="3"></div>
+                    </div>
+                    <div class="image-item" data-id="4">
+                        <div class="image-box">
+                            <img src="https://lh3.googleusercontent.com/d/1329xsQXLKZKJ3sx_YATtQrbUrBKlm757" alt="Question 4">
+                            <span class="q-number">4</span>
+                        </div>
+                        <div class="dot source-dot" id="src-4" data-id="4"></div>
+                    </div>
+                    <div class="image-item" data-id="5">
+                        <div class="image-box">
+                            <img src="https://lh3.googleusercontent.com/d/10TnaebO24NBkQ1nYt9MCf-rSv3BOByCa" alt="Question 5">
+                            <span class="q-number">5</span>
+                        </div>
+                        <div class="dot source-dot" id="src-5" data-id="5"></div>
+                    </div>
+                    <div class="image-item" data-id="6">
+                        <div class="image-box">
+                            <img src="https://lh3.googleusercontent.com/d/1pPcS-oAgXtDFx-EtIbT-yLk6hAE71taH" alt="Question 6">
+                            <span class="q-number">6</span>
+                        </div>
+                        <div class="dot source-dot" id="src-6" data-id="6"></div>
+                    </div>
+                    <div class="image-item" data-id="7">
+                        <div class="image-box">
+                            <img src="https://lh3.googleusercontent.com/d/1_8_6_VQdz_epcDYjRg8ZoXEVe-z3NwK8" alt="Question 7">
+                            <span class="q-number">7</span>
+                        </div>
+                        <div class="dot source-dot" id="src-7" data-id="7"></div>
+                    </div>
+                    <div class="image-item" data-id="8">
+                        <div class="image-box">
+                            <img src="https://lh3.googleusercontent.com/d/1PBseXHdaPn_X5jakN7Bsq1c_WEW4S2gy" alt="Question 8">
+                            <span class="q-number">8</span>
+                        </div>
+                        <div class="dot source-dot" id="src-8" data-id="8"></div>
+                    </div>
+                </div>
+
+                <!-- Right Column: Options -->
+                <div class="options-column">
+                    <div class="option-item">
+                        <div class="dot target-dot" id="target-A" data-opt="A"></div>
+                        <div class="option-pill">A. Do homework</div>
+                    </div>
+                    <div class="option-item">
+                        <div class="dot target-dot" id="target-B" data-opt="B"></div>
+                        <div class="option-pill">B. Have breakfast</div>
+                    </div>
+                    <div class="option-item">
+                        <div class="dot target-dot" id="target-C" data-opt="C"></div>
+                        <div class="option-pill">C. Play with friends</div>
+                    </div>
+                    <div class="option-item">
+                        <div class="dot target-dot" id="target-D" data-opt="D"></div>
+                        <div class="option-pill">D. Study in class</div>
+                    </div>
+                    <div class="option-item">
+                        <div class="dot target-dot" id="target-E" data-opt="E"></div>
+                        <div class="option-pill">E. Go to bed</div>
+                    </div>
+                    <div class="option-item">
+                        <div class="dot target-dot" id="target-F" data-opt="F"></div>
+                        <div class="option-pill">F. Have dinner with my family</div>
+                    </div>
+                    <div class="option-item">
+                        <div class="dot target-dot" id="target-G" data-opt="G"></div>
+                        <div class="option-pill">G. Brush my teeth</div>
+                    </div>
+                    <div class="option-item">
+                        <div class="dot target-dot" id="target-H" data-opt="H"></div>
+                        <div class="option-pill">H. Go home from school</div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="bottom-padding"></div>
+            <div id="result-msg" class="result-msg"></div>
+            <div class="btn-row">
+                <button id="btn-reset" class="reset-btn">
+                    <img src="https://lh3.googleusercontent.com/d/1OLOpwDXA-4NJJwSuAUjTytDegXzpB659" alt="Reset">
+                </button>
+                <button id="btn-check" class="check-btn">
+                    <img src="https://lh3.googleusercontent.com/d/1yLq-XgaVDpBd331LdRjt84uEVfOxCW4l" alt="Check Answer">
+                </button>
+            </div>
+        </div>
+
+        <audio id="correct-audio" src="assets/correct_sound.MP3" preload="auto"></audio>
+        <audio id="wrong-audio" src="assets/incorrect_sound.MP3" preload="auto"></audio>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+
+</html>
