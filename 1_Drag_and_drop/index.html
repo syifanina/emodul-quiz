@@ -1,0 +1,278 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Drag and Drop Quiz</title>
+    <link rel="stylesheet" href="style.css?v=1.1">
+</head>
+
+<body>
+    <div class="page">
+        <img src="https://lh3.googleusercontent.com/d/1Wtb9UWtvVhVA13B0HLBagfyx1bD1LU5x" class="top-border" alt="Top Border">
+        <img src="https://lh3.googleusercontent.com/d/19NE3XzidRxaYa56e4OBOdI38n3nYJhwK" class="bottom-border" alt="Bottom Border">
+        <header class="module-header">
+            <!-- PNG Judul -->
+            <img src="https://lh3.googleusercontent.com/d/1MhoTQnToi_CgLC6e1pPBLSgo-Rk6l91v" alt="Drag and Drop"
+                class="title-badge">
+
+            <div class="instructions">
+                <p class="en">Drag the correct action from the word bank and drop it into the blanks!</p>
+                <div class="separator"></div>
+                <p class="id">Tarik tindakan yang benar dari bank kata dan letakkan di bagian yang kosong!</p>
+            </div>
+        </header>
+
+        <!-- Scrollable Content -->
+        <div class="scroll-content">
+
+            <!-- INTRO SECTION -->
+            <div class="intro-section">
+                <h1 class="intro-title">Let's Do Gymnastic</h1>
+
+                <div class="intro-image-container">
+                    <img src="https://lh3.googleusercontent.com/d/1K-wkyiayuGgMK6Itya7dyIaCG7pZQ3u3" alt="Do Gymnastic"
+                        class="intro-gif">
+                </div>
+
+                <div class="intro-text-block">
+                    <p>Today, we do gymnastic.</p>
+                    <p>Ibu Ida is our sport teacher.</p>
+                    <p>We follow her instructions.</p>
+                    <p>She says, "Good morning, everyone."</p>
+                </div>
+            </div>
+
+            <!-- WORD BANK 1 -->
+            <div class="wordbank-section">
+                <div class="wordbank-label">WORD BANK</div>
+                <div class="wordbank top-wordbank" id="word-bank-1">
+                    <span class="word-chip chip-1 chip-disabled" id="word-1" draggable="false"
+                        data-color="#ffef92">Touch your head</span>
+                    <span class="word-chip chip-6" id="word-6" draggable="true" data-color="#ffc58f"
+                        ondragstart="dragStart(event)">Stomp your feet</span>
+                    <span class="word-chip chip-2" id="word-2" draggable="true" data-color="#93eeff"
+                        ondragstart="dragStart(event)">Stretch your arms</span>
+                    <span class="word-chip chip-8" id="word-8" draggable="true" data-color="#fcbaba"
+                        ondragstart="dragStart(event)">Clap your hands</span>
+                    <span class="word-chip chip-3" id="word-3" draggable="true" data-color="#dcd1ff"
+                        ondragstart="dragStart(event)">Bend your knees</span>
+                </div>
+            </div>
+
+            <!-- EXAMPLE -->
+            <div class="quiz-row example-row">
+                <div class="sentence-area">
+                    <span class="sentence-text">
+                        First, <span class="example-label-tag">Example</span>
+                        <span class="example-answer-box">touch your head</span>.
+                    </span>
+                </div>
+                <div class="img-side right-img"
+                    style="display: flex; flex-direction: column; align-items: center; gap: 6px;">
+                    <span class="badge-example-top">EXAMPLE</span>
+                    <div class="img-placeholder" id="img-ex">
+                        <img src="https://lh3.googleusercontent.com/d/1n2HGaStbCcVR4pfpEjIXNpA3jklZ5vTB"
+                            alt="Touch your head">
+                    </div>
+                </div>
+            </div>
+
+            <div id="quiz-container">
+                <!-- Q1 — image LEFT -->
+                <div class="quiz-row" id="row-1">
+                    <div class="img-side left-img">
+                        <div class="img-placeholder" id="img-1">
+                            <span class="img-badge">1</span>
+                            <img src="https://lh3.googleusercontent.com/d/1TP_KLsrjTvvZC9I_4tZ9HBqvH-OpSoVB"
+                                alt="Stretch your arms">
+                        </div>
+                    </div>
+                    <div class="sentence-area">
+                        <span class="sentence-text">
+                            Then (1)
+                            <span class="drop-zone" data-answer="stretch your arms" id="drop-1"
+                                ondragover="allowDrop(event)" ondrop="dropWord(event)"></span>
+                            to the left and right.
+                        </span>
+                    </div>
+                </div>
+
+                <!-- Q2 — image RIGHT -->
+                <div class="quiz-row" id="row-2">
+                    <div class="sentence-area">
+                        <span class="sentence-text">
+                            (2)
+                            <span class="drop-zone" data-answer="clap your hands" id="drop-2"
+                                ondragover="allowDrop(event)" ondrop="dropWord(event)"></span>
+                            four times.
+                        </span>
+                    </div>
+                    <div class="img-side right-img">
+                        <div class="img-placeholder" id="img-2">
+                            <span class="img-badge">2</span>
+                            <img src="https://lh3.googleusercontent.com/d/1hJtm27TwWJDSNwX4Hk4IUj4Q-nk7tA0B"
+                                alt="Clap your hands">
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Q3 — image LEFT -->
+                <div class="quiz-row" id="row-3">
+                    <div class="img-side left-img">
+                        <div class="img-placeholder" id="img-3">
+                            <span class="img-badge">3</span>
+                            <img src="https://lh3.googleusercontent.com/d/1QRS2B3tD0HGQ5RiWC-R8mSNNv_bDv6xu"
+                                alt="Stomp your feet">
+                        </div>
+                    </div>
+                    <div class="sentence-area">
+                        <span class="sentence-text">
+                            Now, (3)
+                            <span class="drop-zone" data-answer="stomp your feet" id="drop-3"
+                                ondragover="allowDrop(event)" ondrop="dropWord(event)"></span>
+                            on the floor.
+                        </span>
+                    </div>
+                </div>
+
+                <!-- Q4 — image RIGHT -->
+                <div class="quiz-row" id="row-4">
+                    <div class="sentence-area">
+                        <span class="sentence-text">
+                            (4)
+                            <span class="drop-zone" data-answer="bend your knees" id="drop-4"
+                                ondragover="allowDrop(event)" ondrop="dropWord(event)"></span>
+                            and jump high!
+                        </span>
+                    </div>
+                    <div class="img-side right-img">
+                        <div class="img-placeholder" id="img-4">
+                            <span class="img-badge">4</span>
+                            <img src="https://lh3.googleusercontent.com/d/1Xq_BQdyedX9kKgc-J9Mc1MAK1t9K03Oi"
+                                alt="Bend your knees">
+                        </div>
+                    </div>
+                </div>
+
+                <!-- WORD BANK 2 -->
+                <div class="wordbank-section">
+                    <div class="wordbank-label">WORD BANK</div>
+                    <div class="wordbank" id="word-bank-2">
+                        <span class="word-chip chip-7" id="word-7" draggable="true" data-color="#ccdfff"
+                            ondragstart="dragStart(event)">Clap your hands</span>
+                        <span class="word-chip chip-9" id="word-9" draggable="true" data-color="#bdfcba"
+                            ondragstart="dragStart(event)">Close your eyes</span>
+                        <span class="word-chip chip-5" id="word-5" draggable="true" data-color="#b2ffe1"
+                            ondragstart="dragStart(event)">Cross your legs</span>
+                        <span class="word-chip chip-4" id="word-4" draggable="true" data-color="#ffb9d6"
+                            ondragstart="dragStart(event)">Wave your hand</span>
+                    </div>
+                </div>
+
+                <!-- Q5 — image LEFT -->
+                <div class="quiz-row" id="row-5">
+                    <div class="img-side left-img">
+                        <div class="img-placeholder" id="img-5">
+                            <span class="img-badge">5</span>
+                            <img src="https://lh3.googleusercontent.com/d/1JaqfItusRjpfzUlGHj1PkUNlppbgyGu6"
+                                alt="Wave your hand">
+                        </div>
+                    </div>
+                    <div class="sentence-area">
+                        <span class="sentence-text">
+                            Now (5)
+                            <span class="drop-zone" data-answer="wave your hand" id="drop-5"
+                                ondragover="allowDrop(event)" ondrop="dropWord(event)"></span>
+                            in the air.
+                        </span>
+                    </div>
+                </div>
+
+                <!-- Q6 — image RIGHT -->
+                <div class="quiz-row" id="row-6">
+                    <div class="sentence-area">
+                        <span class="sentence-text">
+                            Finally, sit down and (6)
+                            <span class="drop-zone" data-answer="cross your legs" id="drop-6"
+                                ondragover="allowDrop(event)" ondrop="dropWord(event)"></span>
+                        </span>
+                    </div>
+                    <div class="img-side right-img">
+                        <div class="img-placeholder" id="img-6">
+                            <span class="img-badge">6</span>
+                            <img src="https://lh3.googleusercontent.com/d/1uk9fEMi2Pr_VSzwjgqsb5RA9CCtUqNFL"
+                                alt="Cross your legs">
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Q7 — image LEFT -->
+                <div class="quiz-row" id="row-7">
+                    <div class="img-side left-img">
+                        <div class="img-placeholder" id="img-7">
+                            <span class="img-badge">7</span>
+                            <img src="https://lh3.googleusercontent.com/d/1TRyKsN4-BGfBcrGDk19Nvk7z-4ZEHhU0"
+                                alt="Close your eyes">
+                        </div>
+                    </div>
+                    <div class="sentence-area">
+                        <span class="sentence-text">
+                            (7)
+                            <span class="drop-zone" data-answer="close your eyes" id="drop-7"
+                                ondragover="allowDrop(event)" ondrop="dropWord(event)"></span>
+                            and breathe.
+                        </span>
+                    </div>
+                </div>
+
+                <!-- Q8 — image RIGHT -->
+                <div class="quiz-row" id="row-8">
+                    <div class="sentence-area">
+                        <span class="sentence-text">
+                            <span class="good-job">Good job everyone!</span>
+                            (8)
+                            <span class="drop-zone drop-zone-wide" data-answer="clap your hands" id="drop-8"
+                                ondragover="allowDrop(event)" ondrop="dropWord(event)"></span>
+                        </span>
+                    </div>
+                    <div class="img-side right-img">
+                        <div class="img-placeholder" id="img-8">
+                            <span class="img-badge">8</span>
+                            <img src="https://lh3.googleusercontent.com/d/1hJtm27TwWJDSNwX4Hk4IUj4Q-nk7tA0B"
+                                alt="Clap your hands">
+                        </div>
+                    </div>
+                </div>
+            </div><!-- end quiz-container -->
+
+            <!-- Info box -->
+            <div class="info-area">
+                <div class="info-box">
+                    Doing gymnastic every week <br> keeps your body healthy!
+                </div>
+            </div>
+
+            <div class="btn-row">
+                <button class="reset-btn" onclick="resetQuiz()">
+                    <img src="https://lh3.googleusercontent.com/d/1rVMSnvf7F67n6_92jIC6RNR_NiR0g-WW" alt="Reset">
+                </button>
+                <button class="check-btn" onclick="checkAnswers()">
+                    <img src="https://lh3.googleusercontent.com/d/1f87slDwiEXyymrp2ls7Q7rJmzWLtJyWg" alt="Check Answer">
+                </button>
+            </div>
+            <div class="result-msg" id="result-msg"></div>
+
+        </div><!-- end scroll-content -->
+
+        <audio id="correct-audio" src="assets/correct_sound.MP3" preload="auto"></audio>
+        <audio id="wrong-audio" src="assets/incorrect_sound.MP3" preload="auto"></audio>
+        <audio id="click-audio" src="assets/click.MP3" preload="auto"></audio>
+    </div><!-- end page -->
+
+    <div id="touch-ghost"></div>
+    <script src="script.js?v=1.1"></script>
+</body>
+
+</html>
