@@ -352,7 +352,7 @@ body {
     align-items: center;
     width: 100%;
     flex-wrap: wrap;
-    margin: 40px auto;
+    margin: 20px auto 0;
 }
 
 .reset-btn,
