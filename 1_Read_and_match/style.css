@@ -433,7 +433,7 @@ html, body {
 .module-header {
     background: transparent !important;
     padding-top: 65px !important;
-    z-index: 100 !important;
+    z-index: 10000 !important;
 }
 
 .scroll-content {
