@@ -1,0 +1,311 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Move Your Body! - Say and Do</title>
+    <link rel="stylesheet" href="style.css">
+    <!-- Confetti Library for celebration -->
+    <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
+</head>
+
+<body>
+    <div class="page">
+        <img src="https://lh3.googleusercontent.com/d/1Wtb9UWtvVhVA13B0HLBagfyx1bD1LU5x" class="top-border" alt="Top Border">
+        <img src="https://lh3.googleusercontent.com/d/19NE3XzidRxaYa56e4OBOdI38n3nYJhwK" class="bottom-border" alt="Bottom Border">
+        <header class="module-header">
+            <!-- PNG Judul -->
+            <img src="https://lh3.googleusercontent.com/d/15VmjSbq-wiAzz-yfaBcs-I40XB2-ePDh" alt="Say and Do"
+                class="title-badge">
+
+            <div class="instructions">
+                <p class="en">Click the sound icon to see the action!</p>
+                <div class="separator"></div>
+                <p class="id">Klik ikon suara untuk melihat gerakannya!</p>
+            </div>
+        </header>
+
+        <!-- Scrollable Content -->
+        <div class="scroll-content">
+
+            <main class="grid-container">
+                <!-- 1. Touch your head -->
+                <div class="action-card" data-action="touch_head">
+                    <div class="image-wrapper">
+                        <img src="https://lh3.googleusercontent.com/d/1ZO76B6ZXhsJ3tZ4npdPnyQHHJf0GG-EB"
+                            alt="Touch your head" class="action-image">
+                        <button class="sound-btn" aria-label="Play sound">
+                            <svg viewBox="0 0 24 24">
+                                <path
+                                    d="M14,3.23V5.29C16.89,6.15 19,8.83 19,12C19,15.17 16.89,17.85 14,18.71V20.77C18.03,19.86 21,16.28 21,12C21,7.72 18.03,4.14 14,3.23M16.5,12C16.5,10.23 15.5,8.71 14,7.97V16.04C15.5,15.29 16.5,13.77 16.5,12M3,9V15H7L12,20V4L7,9H3Z" />
+                            </svg>
+                        </button>
+                    </div>
+                    <div class="text-wrapper"><span class="action-text">Touch your head</span></div>
+                </div>
+
+                <!-- 2. Stretch your arms -->
+                <div class="action-card" data-action="stretch_arms">
+                    <div class="image-wrapper">
+                        <img src="https://lh3.googleusercontent.com/d/1hnioNg9OwM3xR2vKpta7oLMpZRIfOKlj"
+                            alt="Stretch your arms" class="action-image">
+                        <button class="sound-btn" aria-label="Play sound">
+                            <svg viewBox="0 0 24 24">
+                                <path
+                                    d="M14,3.23V5.29C16.89,6.15 19,8.83 19,12C19,15.17 16.89,17.85 14,18.71V20.77C18.03,19.86 21,16.28 21,12C21,7.72 18.03,4.14 14,3.23M16.5,12C16.5,10.23 15.5,8.71 14,7.97V16.04C15.5,15.29 16.5,13.77 16.5,12M3,9V15H7L12,20V4L7,9H3Z" />
+                            </svg>
+                        </button>
+                    </div>
+                    <div class="text-wrapper"><span class="action-text">Stretch your arms</span></div>
+                </div>
+
+                <!-- 3. Clap your hands -->
+                <div class="action-card" data-action="clap_hands">
+                    <div class="image-wrapper">
+                        <img src="https://lh3.googleusercontent.com/d/1nXAExlTcrQm0cVGXcOfUHXK-IuzElKh_"
+                            alt="Clap your hands" class="action-image">
+                        <button class="sound-btn" aria-label="Play sound">
+                            <svg viewBox="0 0 24 24">
+                                <path
+                                    d="M14,3.23V5.29C16.89,6.15 19,8.83 19,12C19,15.17 16.89,17.85 14,18.71V20.77C18.03,19.86 21,16.28 21,12C21,7.72 18.03,4.14 14,3.23M16.5,12C16.5,10.23 15.5,8.71 14,7.97V16.04C15.5,15.29 16.5,13.77 16.5,12M3,9V15H7L12,20V4L7,9H3Z" />
+                            </svg>
+                        </button>
+                    </div>
+                    <div class="text-wrapper"><span class="action-text">Clap your hands</span></div>
+                </div>
+
+                <!-- 4. Stomp your feet -->
+                <div class="action-card" data-action="stomp_feet">
+                    <div class="image-wrapper">
+                        <img src="https://lh3.googleusercontent.com/d/1R8ez-A3ZuUlbIC3ohAGEJgqjRehYwNG9"
+                            alt="Stomp your feet" class="action-image">
+                        <button class="sound-btn" aria-label="Play sound">
+                            <svg viewBox="0 0 24 24">
+                                <path
+                                    d="M14,3.23V5.29C16.89,6.15 19,8.83 19,12C19,15.17 16.89,17.85 14,18.71V20.77C18.03,19.86 21,16.28 21,12C21,7.72 18.03,4.14 14,3.23M16.5,12C16.5,10.23 15.5,8.71 14,7.97V16.04C15.5,15.29 16.5,13.77 16.5,12M3,9V15H7L12,20V4L7,9H3Z" />
+                            </svg>
+                        </button>
+                    </div>
+                    <div class="text-wrapper"><span class="action-text">Stomp your feet</span></div>
+                </div>
+
+                <!-- 5. Lift your shoulders up -->
+                <div class="action-card" data-action="lift_shoulders">
+                    <div class="image-wrapper">
+                        <img src="https://lh3.googleusercontent.com/d/1lEGnUWzu78nlo77GKo8i6fTpZuIPZd6x"
+                            alt="Lift your shoulders up" class="action-image">
+                        <button class="sound-btn" aria-label="Play sound">
+                            <svg viewBox="0 0 24 24">
+                                <path
+                                    d="M14,3.23V5.29C16.89,6.15 19,8.83 19,12C19,15.17 16.89,17.85 14,18.71V20.77C18.03,19.86 21,16.28 21,12C21,7.72 18.03,4.14 14,3.23M16.5,12C16.5,10.23 15.5,8.71 14,7.97V16.04C15.5,15.29 16.5,13.77 16.5,12M3,9V15H7L12,20V4L7,9H3Z" />
+                            </svg>
+                        </button>
+                    </div>
+                    <div class="text-wrapper"><span class="action-text">Lift your shoulders up</span></div>
+                </div>
+
+                <!-- 6. Close your eyes -->
+                <div class="action-card" data-action="close_eyes">
+                    <div class="image-wrapper">
+                        <img src="https://lh3.googleusercontent.com/d/1Sk--tH1LAfgcefU0dwVX794SaRt2FNMa"
+                            alt="Close your eyes" class="action-image">
+                        <button class="sound-btn" aria-label="Play sound">
+                            <svg viewBox="0 0 24 24">
+                                <path
+                                    d="M14,3.23V5.29C16.89,6.15 19,8.83 19,12C19,15.17 16.89,17.85 14,18.71V20.77C18.03,19.86 21,16.28 21,12C21,7.72 18.03,4.14 14,3.23M16.5,12C16.5,10.23 15.5,8.71 14,7.97V16.04C15.5,15.29 16.5,13.77 16.5,12M3,9V15H7L12,20V4L7,9H3Z" />
+                            </svg>
+                        </button>
+                    </div>
+                    <div class="text-wrapper"><span class="action-text">Close your eyes</span></div>
+                </div>
+
+                <!-- 7. Bend your knees -->
+                <div class="action-card" data-action="bend_knees">
+                    <div class="image-wrapper">
+                        <img src="https://lh3.googleusercontent.com/d/1TrdMXbyUSAHY6sDrQHKG94L-k6lLXWjR"
+                            alt="Bend your knees" class="action-image">
+                        <button class="sound-btn" aria-label="Play sound">
+                            <svg viewBox="0 0 24 24">
+                                <path
+                                    d="M14,3.23V5.29C16.89,6.15 19,8.83 19,12C19,15.17 16.89,17.85 14,18.71V20.77C18.03,19.86 21,16.28 21,12C21,7.72 18.03,4.14 14,3.23M16.5,12C16.5,10.23 15.5,8.71 14,7.97V16.04C15.5,15.29 16.5,13.77 16.5,12M3,9V15H7L12,20V4L7,9H3Z" />
+                            </svg>
+                        </button>
+                    </div>
+                    <div class="text-wrapper"><span class="action-text">Bend your knees</span></div>
+                </div>
+
+                <!-- 8. Point your nose -->
+                <div class="action-card" data-action="point_your_nose">
+                    <div class="image-wrapper">
+                        <img src="https://lh3.googleusercontent.com/d/1aXJeZDoN0wsx-wntgRCVre5PMQOXvuTB"
+                            alt="Point your nose" class="action-image">
+                        <button class="sound-btn" aria-label="Play sound">
+                            <svg viewBox="0 0 24 24">
+                                <path
+                                    d="M14,3.23V5.29C16.89,6.15 19,8.83 19,12C19,15.17 16.89,17.85 14,18.71V20.77C18.03,19.86 21,16.28 21,12C21,7.72 18.03,4.14 14,3.23M16.5,12C16.5,10.23 15.5,8.71 14,7.97V16.04C15.5,15.29 16.5,13.77 16.5,12M3,9V15H7L12,20V4L7,9H3Z" />
+                            </svg>
+                        </button>
+                    </div>
+                    <div class="text-wrapper"><span class="action-text">Point your nose</span></div>
+                </div>
+
+                <!-- 9. Cross your legs -->
+                <div class="action-card" data-action="cross_your_legs">
+                    <div class="image-wrapper">
+                        <img src="https://lh3.googleusercontent.com/d/1UsxuBeRjhDGVWTVr4ST7whxgR6Di-kXU"
+                            alt="Cross your legs" class="action-image">
+                        <button class="sound-btn" aria-label="Play sound">
+                            <svg viewBox="0 0 24 24">
+                                <path
+                                    d="M14,3.23V5.29C16.89,6.15 19,8.83 19,12C19,15.17 16.89,17.85 14,18.71V20.77C18.03,19.86 21,16.28 21,12C21,7.72 18.03,4.14 14,3.23M16.5,12C16.5,10.23 15.5,8.71 14,7.97V16.04C15.5,15.29 16.5,13.77 16.5,12M3,9V15H7L12,20V4L7,9H3Z" />
+                            </svg>
+                        </button>
+                    </div>
+                    <div class="text-wrapper"><span class="action-text">Cross your legs</span></div>
+                </div>
+
+                <!-- 10. Wave your hand -->
+                <div class="action-card" data-action="wave_hand">
+                    <div class="image-wrapper">
+                        <img src="https://lh3.googleusercontent.com/d/1dnuSUMQ-WCUrtqWg8pQ70zchVXiFJ5ml"
+                            alt="Wave your hand" class="action-image">
+                        <button class="sound-btn" aria-label="Play sound">
+                            <svg viewBox="0 0 24 24">
+                                <path
+                                    d="M14,3.23V5.29C16.89,6.15 19,8.83 19,12C19,15.17 16.89,17.85 14,18.71V20.77C18.03,19.86 21,16.28 21,12C21,7.72 18.03,4.14 14,3.23M16.5,12C16.5,10.23 15.5,8.71 14,7.97V16.04C15.5,15.29 16.5,13.77 16.5,12M3,9V15H7L12,20V4L7,9H3Z" />
+                            </svg>
+                        </button>
+                    </div>
+                    <div class="text-wrapper"><span class="action-text">Wave your hand</span></div>
+                </div>
+
+                <!-- 11. Comb your hair -->
+                <div class="action-card" data-action="comb_hair">
+                    <div class="image-wrapper">
+                        <img src="https://lh3.googleusercontent.com/d/1iFNtMJKe8P9AJQJKhKB3BFdaEfWd5S0K"
+                            alt="Comb your hair" class="action-image">
+                        <button class="sound-btn" aria-label="Play sound">
+                            <svg viewBox="0 0 24 24">
+                                <path
+                                    d="M14,3.23V5.29C16.89,6.15 19,8.83 19,12C19,15.17 16.89,17.85 14,18.71V20.77C18.03,19.86 21,16.28 21,12C21,7.72 18.03,4.14 14,3.23M16.5,12C16.5,10.23 15.5,8.71 14,7.97V16.04C15.5,15.29 16.5,13.77 16.5,12M3,9V15H7L12,20V4L7,9H3Z" />
+                            </svg>
+                        </button>
+                    </div>
+                    <div class="text-wrapper"><span class="action-text">Comb your hair</span></div>
+                </div>
+
+                <!-- 12. Open Mouth -->
+                <div class="action-card" data-action="open_mouth">
+                    <div class="image-wrapper">
+                        <img src="https://lh3.googleusercontent.com/d/1HtLS43Q7EnA5G1Kh8KeA3ZC6TRLcAW5F"
+                            alt="Open mouth" class="action-image">
+                        <button class="sound-btn" aria-label="Play sound">
+                            <svg viewBox="0 0 24 24">
+                                <path
+                                    d="M14,3.23V5.29C16.89,6.15 19,8.83 19,12C19,15.17 16.89,17.85 14,18.71V20.77C18.03,19.86 21,16.28 21,12C21,7.72 18.03,4.14 14,3.23M16.5,12C16.5,10.23 15.5,8.71 14,7.97V16.04C15.5,15.29 16.5,13.77 16.5,12M3,9V15H7L12,20V4L7,9H3Z" />
+                            </svg>
+                        </button>
+                    </div>
+                    <div class="text-wrapper"><span class="action-text">Open mouth</span></div>
+                </div>
+
+                <!-- 13. Touch your elbow -->
+                <div class="action-card" data-action="touch_elbow">
+                    <div class="image-wrapper">
+                        <img src="https://lh3.googleusercontent.com/d/1YYh4uFTd_IilYbPwWYHPTK0hrDWciuBY"
+                            alt="Touch your elbow" class="action-image">
+                        <button class="sound-btn" aria-label="Play sound">
+                            <svg viewBox="0 0 24 24">
+                                <path
+                                    d="M14,3.23V5.29C16.89,6.15 19,8.83 19,12C19,15.17 16.89,17.85 14,18.71V20.77C18.03,19.86 21,16.28 21,12C21,7.72 18.03,4.14 14,3.23M16.5,12C16.5,10.23 15.5,8.71 14,7.97V16.04C15.5,15.29 16.5,13.77 16.5,12M3,9V15H7L12,20V4L7,9H3Z" />
+                            </svg>
+                        </button>
+                    </div>
+                    <div class="text-wrapper"><span class="action-text">Touch your elbow</span></div>
+                </div>
+
+                <!-- 14. Show your teeth -->
+                <div class="action-card" data-action="show_teeth">
+                    <div class="image-wrapper">
+                        <img src="https://lh3.googleusercontent.com/d/1EUmRichvlidkj8z-ngt4XUJ3oE8V0mpO"
+                            alt="Show your teeth" class="action-image">
+                        <button class="sound-btn" aria-label="Play sound">
+                            <svg viewBox="0 0 24 24">
+                                <path
+                                    d="M14,3.23V5.29C16.89,6.15 19,8.83 19,12C19,15.17 16.89,17.85 14,18.71V20.77C18.03,19.86 21,16.28 21,12C21,7.72 18.03,4.14 14,3.23M16.5,12C16.5,10.23 15.5,8.71 14,7.97V16.04C15.5,15.29 16.5,13.77 16.5,12M3,9V15H7L12,20V4L7,9H3Z" />
+                            </svg>
+                        </button>
+                    </div>
+                    <div class="text-wrapper"><span class="action-text">Show your teeth</span></div>
+                </div>
+
+                <!-- 15. Lift your eyebrows up -->
+                <div class="action-card" data-action="lift_your_eyebrows_up">
+                    <div class="image-wrapper">
+                        <img src="https://lh3.googleusercontent.com/d/1uXFwuRH88OBTxych7D3ynyfpbjgpqwqB"
+                            alt="Lift your eyebrows up" class="action-image">
+                        <button class="sound-btn" aria-label="Play sound">
+                            <svg viewBox="0 0 24 24">
+                                <path
+                                    d="M14,3.23V5.29C16.89,6.15 19,8.83 19,12C19,15.17 16.89,17.85 14,18.71V20.77C18.03,19.86 21,16.28 21,12C21,7.72 18.03,4.14 14,3.23M16.5,12C16.5,10.23 15.5,8.71 14,7.97V16.04C15.5,15.29 16.5,13.77 16.5,12M3,9V15H7L12,20V4L7,9H3Z" />
+                            </svg>
+                        </button>
+                    </div>
+                    <div class="text-wrapper"><span class="action-text">Lift your eyebrows up</span></div>
+                </div>
+
+                <!-- 16. Trim your nails -->
+                <div class="action-card" data-action="trim_nails">
+                    <div class="image-wrapper">
+                        <img src="https://lh3.googleusercontent.com/d/1dT5mb6y9ULuSSeflTmy8zDkDMTGEv4sV"
+                            alt="Trim your nails" class="action-image">
+                        <button class="sound-btn" aria-label="Play sound">
+                            <svg viewBox="0 0 24 24">
+                                <path
+                                    d="M14,3.23V5.29C16.89,6.15 19,8.83 19,12C19,15.17 16.89,17.85 14,18.71V20.77C18.03,19.86 21,16.28 21,12C21,7.72 18.03,4.14 14,3.23M16.5,12C16.5,10.23 15.5,8.71 14,7.97V16.04C15.5,15.29 16.5,13.77 16.5,12M3,9V15H7L12,20V4L7,9H3Z" />
+                            </svg>
+                        </button>
+                    </div>
+                    <div class="text-wrapper"><span class="action-text">Trim your nails</span></div>
+                </div>
+
+                <!-- 17. Wiggle your waist -->
+                <div class="action-card" data-action="wiggle_your_waist">
+                    <div class="image-wrapper">
+                        <img src="https://lh3.googleusercontent.com/d/1fyW78hBKTeYe2LNCJHOi7NQK4_RKQKcl"
+                            alt="Wiggle your waist" class="action-image">
+                        <button class="sound-btn" aria-label="Play sound">
+                            <svg viewBox="0 0 24 24">
+                                <path
+                                    d="M14,3.23V5.29C16.89,6.15 19,8.83 19,12C19,15.17 16.89,17.85 14,18.71V20.77C18.03,19.86 21,16.28 21,12C21,7.72 18.03,4.14 14,3.23M16.5,12C16.5,10.23 15.5,8.71 14,7.97V16.04C15.5,15.29 16.5,13.77 16.5,12M3,9V15H7L12,20V4L7,9H3Z" />
+                            </svg>
+                        </button>
+                    </div>
+                    <div class="text-wrapper"><span class="action-text">Wiggle your waist</span></div>
+                </div>
+
+                <!-- 18. Bend your fingers -->
+                <div class="action-card" data-action="bend_fingers">
+                    <div class="image-wrapper">
+                        <img src="https://lh3.googleusercontent.com/d/1XGU1nSg3eT8YyXZdYJ-d-5EtwWUrIMOT"
+                            alt="Bend your fingers" class="action-image">
+                        <button class="sound-btn" aria-label="Play sound">
+                            <svg viewBox="0 0 24 24">
+                                <path
+                                    d="M14,3.23V5.29C16.89,6.15 19,8.83 19,12C19,15.17 16.89,17.85 14,18.71V20.77C18.03,19.86 21,16.28 21,12C21,7.72 18.03,4.14 14,3.23M16.5,12C16.5,10.23 15.5,8.71 14,7.97V16.04C15.5,15.29 16.5,13.77 16.5,12M3,9V15H7L12,20V4L7,9H3Z" />
+                            </svg>
+                        </button>
+                    </div>
+                    <div class="text-wrapper"><span class="action-text">Bend your fingers</span></div>
+                </div>
+        </div>
+
+        <!-- SINGLE AUDIO SOURCE -->
+        <audio id="main-audio" src="assets/move_your_body.mp3"></audio>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+
+</html>
