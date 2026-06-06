@@ -10,8 +10,9 @@ html,
 body {
     width: 100%;
     max-width: 100%;
-    overflow: hidden;
-    /* Matikan scroll manual pengguna */
+    overflow-x: hidden;
+    overflow-y: auto;
+    /* Biarkan scroll manual pengguna */
     background: transparent;
     scroll-behavior: smooth;
     /* Sembunyikan scrollbar agar tidak double scroll di Genially */
@@ -41,13 +42,13 @@ body {
     background: transparent;
     width: 100%;
     max-width: 360px;
-    height: 100vh;
-    /* Kunci tinggi sesuai layar/iframe */
+    min-height: 100vh;
+    /* Minimal tinggi sesuai layar, akan memanjang mengikuti konten */
     display: flex;
     flex-direction: column;
     align-items: center;
     position: relative;
-    overflow: hidden;
+    overflow-x: hidden;
 }
 
 /* ── MODULE HEADER (Sticky) ── */
@@ -56,10 +57,10 @@ body {
     display: flex;
     flex-direction: column;
     align-items: center;
-    padding: 24px 16px 10px 16px;
-    background: #fff;
-    /* Pastikan background solid agar konten di bawahnya tidak terlihat saat scroll */
-    z-index: 100;
+    padding: 65px 16px 10px 16px; /* Menyesuaikan ulang padding atas */
+    background: transparent;
+    /* Pastikan background transparent agar border top terlihat */
+    z-index: 10;
     flex-shrink: 0;
 }
 
@@ -102,14 +103,11 @@ body {
 .scroll-content {
     width: 100%;
     flex-grow: 1;
-    overflow-y: auto;
-    padding: 0 16px 24px 16px;
+    padding: 0 16px 180px 16px; /* Memberi space besar untuk border bawah dan pagination Genially */
     display: flex;
     flex-direction: column;
     align-items: center;
-    -webkit-overflow-scrolling: touch;
-    scrollbar-width: none;
-    /* Firefox */
+    z-index: 5;
 }
 
 .scroll-content::-webkit-scrollbar {
@@ -280,4 +278,27 @@ tr:nth-child(12n+11) .phrase.active, tr:nth-child(12n+12) .phrase.active {
     .page {
         box-shadow: none;
     }
+}
+
+/* ── BORDERS ── */
+.top-border {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 1;
+    pointer-events: none;
+    image-rendering: -webkit-optimize-contrast;
+    image-rendering: high-quality;
+}
+
+.bottom-border {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    z-index: 20;
+    pointer-events: none;
+    image-rendering: -webkit-optimize-contrast;
+    image-rendering: high-quality;
 }
