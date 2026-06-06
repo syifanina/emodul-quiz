@@ -960,3 +960,19 @@ body {
     z-index: 9999 !important;
     pointer-events: none !important;
 }
+
+
+
+/* -- HEADER OVERRIDE FOR BORDERS -- */
+.module-header {
+    background: transparent !important;
+    padding-top: 65px !important;
+    position: relative !important;
+    z-index: 10000 !important;
+    box-shadow: none !important;
+}
+
+.scroll-content {
+    padding-bottom: 120px !important;
+    overflow-y: visible !important;
+}
