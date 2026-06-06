@@ -57,7 +57,8 @@ body {
     display: flex;
     flex-direction: column;
     align-items: center;
-    padding: 65px 16px 10px 16px; /* Menyesuaikan ulang padding atas */
+    padding: 65px 16px 10px 16px;
+    /* Menyesuaikan ulang padding atas */
     background: transparent;
     /* Pastikan background transparent agar border top terlihat */
     z-index: 10;
@@ -103,7 +104,8 @@ body {
 .scroll-content {
     width: 100%;
     flex-grow: 1;
-    padding: 0 16px 105px 16px; /* Memberi space besar untuk border bawah dan pagination Genially */
+    padding: 0 16px 120px 16px;
+    /* Memberi space besar untuk border bawah dan pagination Genially */
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -210,27 +212,33 @@ body {
 }
 
 /* Base Pastel Colors */
-tr:nth-child(12n+1) .phrase, tr:nth-child(12n+2) .phrase {
+tr:nth-child(12n+1) .phrase,
+tr:nth-child(12n+2) .phrase {
     background: #fff5f8;
 }
 
-tr:nth-child(12n+3) .phrase, tr:nth-child(12n+4) .phrase {
+tr:nth-child(12n+3) .phrase,
+tr:nth-child(12n+4) .phrase {
     background: #f0f9ff;
 }
 
-tr:nth-child(12n+5) .phrase, tr:nth-child(12n+6) .phrase {
+tr:nth-child(12n+5) .phrase,
+tr:nth-child(12n+6) .phrase {
     background: #f0fff4;
 }
 
-tr:nth-child(12n+7) .phrase, tr:nth-child(12n+8) .phrase {
+tr:nth-child(12n+7) .phrase,
+tr:nth-child(12n+8) .phrase {
     background: #f5f3ff;
 }
 
-tr:nth-child(12n+9) .phrase, tr:nth-child(12n+10) .phrase {
+tr:nth-child(12n+9) .phrase,
+tr:nth-child(12n+10) .phrase {
     background: #fffaf5;
 }
 
-tr:nth-child(12n+11) .phrase, tr:nth-child(12n+12) .phrase {
+tr:nth-child(12n+11) .phrase,
+tr:nth-child(12n+12) .phrase {
     background: #f7fee7;
 }
 
@@ -249,27 +257,33 @@ tr:nth-child(12n+11) .phrase, tr:nth-child(12n+12) .phrase {
 }
 
 /* Cycle through 6 fun highlight colors */
-tr:nth-child(12n+1) .phrase.active, tr:nth-child(12n+2) .phrase.active {
+tr:nth-child(12n+1) .phrase.active,
+tr:nth-child(12n+2) .phrase.active {
     background: #ffb9d6 !important;
 }
 
-tr:nth-child(12n+3) .phrase.active, tr:nth-child(12n+4) .phrase.active {
+tr:nth-child(12n+3) .phrase.active,
+tr:nth-child(12n+4) .phrase.active {
     background: #93eeff !important;
 }
 
-tr:nth-child(12n+5) .phrase.active, tr:nth-child(12n+6) .phrase.active {
+tr:nth-child(12n+5) .phrase.active,
+tr:nth-child(12n+6) .phrase.active {
     background: #b2ffe1 !important;
 }
 
-tr:nth-child(12n+7) .phrase.active, tr:nth-child(12n+8) .phrase.active {
+tr:nth-child(12n+7) .phrase.active,
+tr:nth-child(12n+8) .phrase.active {
     background: #dcd1ff !important;
 }
 
-tr:nth-child(12n+9) .phrase.active, tr:nth-child(12n+10) .phrase.active {
+tr:nth-child(12n+9) .phrase.active,
+tr:nth-child(12n+10) .phrase.active {
     background: #ffc58f !important;
 }
 
-tr:nth-child(12n+11) .phrase.active, tr:nth-child(12n+12) .phrase.active {
+tr:nth-child(12n+11) .phrase.active,
+tr:nth-child(12n+12) .phrase.active {
     background: #bdfcba !important;
 }
 
