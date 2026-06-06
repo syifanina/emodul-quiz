@@ -316,3 +316,48 @@ tr:nth-child(12n+12) .phrase.active {
     image-rendering: -webkit-optimize-contrast;
     image-rendering: high-quality;
 }
+/* --- OVERRIDES FOR BORDERS & SCROLL LAYOUT --- */
+html, body {
+    overflow-y: auto !important;
+    overflow-x: hidden !important;
+}
+
+.page {
+    height: auto !important;
+    min-height: 100vh !important;
+    overflow-y: visible !important;
+    overflow-x: hidden !important;
+    position: relative !important;
+}
+
+.module-header {
+    background: transparent !important;
+    padding-top: 65px !important;
+    z-index: 10000 !important;
+}
+
+.scroll-content {
+    padding-bottom: 120px !important;
+    overflow-y: visible !important;
+}
+
+/* ── BORDERS ── */
+.top-border {
+    position: absolute !important;
+    top: 0 !important;
+    left: 0 !important;
+    width: 100% !important;
+    height: auto !important;
+    z-index: 9999 !important;
+    pointer-events: none !important;
+}
+
+.bottom-border {
+    position: absolute !important;
+    bottom: 0 !important;
+    left: 0 !important;
+    width: 100% !important;
+    height: auto !important;
+    z-index: 9999 !important;
+    pointer-events: none !important;
+}
