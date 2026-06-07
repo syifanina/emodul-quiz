@@ -1,0 +1,528 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Write and Draw</title>
+    <link rel="stylesheet" href="style.css?v=1.0">
+</head>
+
+<body>
+    <div class="page">
+        <img src="https://lh3.googleusercontent.com/d/1Wtb9UWtvVhVA13B0HLBagfyx1bD1LU5x" class="top-border" alt="Top Border">
+        <img src="https://lh3.googleusercontent.com/d/19NE3XzidRxaYa56e4OBOdI38n3nYJhwK" class="bottom-border" alt="Bottom Border">
+
+        <header class="module-header">
+            <!-- PNG Judul -->
+            <img src="https://lh3.googleusercontent.com/d/1E3aHDw0iHP4a0-T9OhCxWxDRYFR-t58X" alt="Write and Draw" class="title-badge">
+
+            <div class="instructions">
+                <p class="en">Rewrite the time you do your daily activities and draw the time on the clock! Look at the example!</p>
+                <div class="separator"></div>
+                <p class="id">Tuliskan kembali jam kamu melakukan aktivitas harianmu dan gambarkanlah waktunya pada jam berikut! Perhatikan contoh!</p>
+            </div>
+        </header>
+
+        <div class="scroll-content">
+            
+            <!-- Example Row -->
+            <div class="quiz-row">
+                <!-- Left (Write) -->
+                <div class="left-col example-block">
+                    <div class="image-wrapper">
+                        <img src="https://lh3.googleusercontent.com/d/1W7n14BXJVc5u701kHr12mW8ShMxqG1VT" class="item-image" alt="Example">
+                    </div>
+                    <div class="example-text">
+                        <span class="label">Example:</span>
+                        <div class="example-answer">I wake up at five o'clock in the morning</div>
+                    </div>
+                </div>
+
+                <!-- Right (Draw/Clock) -->
+                <div class="right-col example-block">
+                    <div class="clock-container">
+                        <svg class="clock-svg static-clock" viewBox="0 0 200 200">
+                            <circle cx="100" cy="100" r="95" class="clock-rim" />
+                            <circle cx="100" cy="100" r="90" class="clock-face" />
+                            
+                            <text x="100" y="32" class="clock-number">12</text>
+                            <text x="136" y="42" class="clock-number">1</text>
+                            <text x="162" y="68" class="clock-number">2</text>
+                            <text x="172" y="104" class="clock-number">3</text>
+                            <text x="162" y="140" class="clock-number">4</text>
+                            <text x="136" y="166" class="clock-number">5</text>
+                            <text x="100" y="176" class="clock-number">6</text>
+                            <text x="64" y="166" class="clock-number">7</text>
+                            <text x="38" y="140" class="clock-number">8</text>
+                            <text x="28" y="104" class="clock-number">9</text>
+                            <text x="38" y="68" class="clock-number">10</text>
+                            <text x="64" y="42" class="clock-number">11</text>
+
+                            <circle cx="100" cy="100" r="6" class="clock-pin" />
+
+                            <g transform="rotate(150, 100, 100)">
+                                <line x1="100" y1="100" x2="100" y2="62" class="hour-hand" />
+                                <polygon points="94,62 106,62 100,50" fill="#ef4444" />
+                            </g>
+                            <g transform="rotate(0, 100, 100)">
+                                <line x1="100" y1="100" x2="100" y2="47" class="minute-hand" />
+                                <polygon points="95,47 105,47 100,35" fill="#3b82f6" />
+                            </g>
+                        </svg>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Number 1 -->
+            <div class="quiz-row">
+                <div class="left-col">
+                    <div class="image-wrapper">
+                        <div class="item-number">1</div>
+                        <img src="https://lh3.googleusercontent.com/d/1zDYu7kYK3BU9sezNwQ1dAT6KSudOgM7b" class="item-image" alt="Activity 1">
+                    </div>
+                    <input type="text" class="line-input" autocomplete="off" placeholder="Type your answer here...">
+                </div>
+                <div class="right-col">
+                    <div class="clock-container" data-q="1">
+                        <svg class="clock-svg interactive-clock" id="clock-1" viewBox="0 0 200 200">
+                            <circle cx="100" cy="100" r="95" class="clock-rim" />
+                            <circle cx="100" cy="100" r="90" class="clock-face" />
+                            <text x="100" y="32" class="clock-number">12</text>
+                            <text x="136" y="42" class="clock-number">1</text>
+                            <text x="162" y="68" class="clock-number">2</text>
+                            <text x="172" y="104" class="clock-number">3</text>
+                            <text x="162" y="140" class="clock-number">4</text>
+                            <text x="136" y="166" class="clock-number">5</text>
+                            <text x="100" y="176" class="clock-number">6</text>
+                            <text x="64" y="166" class="clock-number">7</text>
+                            <text x="38" y="140" class="clock-number">8</text>
+                            <text x="28" y="104" class="clock-number">9</text>
+                            <text x="38" y="68" class="clock-number">10</text>
+                            <text x="64" y="42" class="clock-number">11</text>
+                            <circle cx="100" cy="100" r="6" class="clock-pin" />
+                            <g class="hand-group hour-group" id="hour-group-1">
+                                <line x1="100" y1="100" x2="100" y2="62" class="hour-hand" />
+                                <polygon points="94,62 106,62 100,50" fill="#ef4444" />
+                            </g>
+                            <g class="hand-group minute-group" id="minute-group-1">
+                                <line x1="100" y1="100" x2="100" y2="47" class="minute-hand" />
+                                <polygon points="95,47 105,47 100,35" fill="#3b82f6" />
+                            </g>
+                        </svg>
+                    </div>
+                    <div class="control-row">
+                        <button class="rotate-btn btn-hour" onclick="rotateHour(1)">Short Hand ↻</button>
+                        <button class="rotate-btn btn-minute" onclick="rotateMinute(1)">Long Hand ↻</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Number 2 -->
+            <div class="quiz-row">
+                <div class="left-col">
+                    <div class="image-wrapper">
+                        <div class="item-number">2</div>
+                        <img src="https://lh3.googleusercontent.com/d/1IOJ8K5njp3Ljx46XsFQaWaddXiBYP66P" class="item-image" alt="Activity 2">
+                    </div>
+                    <input type="text" class="line-input" autocomplete="off" placeholder="Type your answer here...">
+                </div>
+                <div class="right-col">
+                    <div class="clock-container" data-q="2">
+                        <svg class="clock-svg interactive-clock" id="clock-2" viewBox="0 0 200 200">
+                            <circle cx="100" cy="100" r="95" class="clock-rim" />
+                            <circle cx="100" cy="100" r="90" class="clock-face" />
+                            <text x="100" y="32" class="clock-number">12</text>
+                            <text x="136" y="42" class="clock-number">1</text>
+                            <text x="162" y="68" class="clock-number">2</text>
+                            <text x="172" y="104" class="clock-number">3</text>
+                            <text x="162" y="140" class="clock-number">4</text>
+                            <text x="136" y="166" class="clock-number">5</text>
+                            <text x="100" y="176" class="clock-number">6</text>
+                            <text x="64" y="166" class="clock-number">7</text>
+                            <text x="38" y="140" class="clock-number">8</text>
+                            <text x="28" y="104" class="clock-number">9</text>
+                            <text x="38" y="68" class="clock-number">10</text>
+                            <text x="64" y="42" class="clock-number">11</text>
+                            <circle cx="100" cy="100" r="6" class="clock-pin" />
+                            <g class="hand-group hour-group" id="hour-group-2">
+                                <line x1="100" y1="100" x2="100" y2="62" class="hour-hand" />
+                                <polygon points="94,62 106,62 100,50" fill="#ef4444" />
+                            </g>
+                            <g class="hand-group minute-group" id="minute-group-2">
+                                <line x1="100" y1="100" x2="100" y2="47" class="minute-hand" />
+                                <polygon points="95,47 105,47 100,35" fill="#3b82f6" />
+                            </g>
+                        </svg>
+                    </div>
+                    <div class="control-row">
+                        <button class="rotate-btn btn-hour" onclick="rotateHour(2)">Short Hand ↻</button>
+                        <button class="rotate-btn btn-minute" onclick="rotateMinute(2)">Long Hand ↻</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Number 3 -->
+            <div class="quiz-row">
+                <div class="left-col">
+                    <div class="image-wrapper">
+                        <div class="item-number">3</div>
+                        <img src="https://lh3.googleusercontent.com/d/1wPXfTT0yJSup1jIxZqSMwDZMS9iMOAmI" class="item-image" alt="Activity 3">
+                    </div>
+                    <input type="text" class="line-input" autocomplete="off" placeholder="Type your answer here...">
+                </div>
+                <div class="right-col">
+                    <div class="clock-container" data-q="3">
+                        <svg class="clock-svg interactive-clock" id="clock-3" viewBox="0 0 200 200">
+                            <circle cx="100" cy="100" r="95" class="clock-rim" />
+                            <circle cx="100" cy="100" r="90" class="clock-face" />
+                            <text x="100" y="32" class="clock-number">12</text>
+                            <text x="136" y="42" class="clock-number">1</text>
+                            <text x="162" y="68" class="clock-number">2</text>
+                            <text x="172" y="104" class="clock-number">3</text>
+                            <text x="162" y="140" class="clock-number">4</text>
+                            <text x="136" y="166" class="clock-number">5</text>
+                            <text x="100" y="176" class="clock-number">6</text>
+                            <text x="64" y="166" class="clock-number">7</text>
+                            <text x="38" y="140" class="clock-number">8</text>
+                            <text x="28" y="104" class="clock-number">9</text>
+                            <text x="38" y="68" class="clock-number">10</text>
+                            <text x="64" y="42" class="clock-number">11</text>
+                            <circle cx="100" cy="100" r="6" class="clock-pin" />
+                            <g class="hand-group hour-group" id="hour-group-3">
+                                <line x1="100" y1="100" x2="100" y2="62" class="hour-hand" />
+                                <polygon points="94,62 106,62 100,50" fill="#ef4444" />
+                            </g>
+                            <g class="hand-group minute-group" id="minute-group-3">
+                                <line x1="100" y1="100" x2="100" y2="47" class="minute-hand" />
+                                <polygon points="95,47 105,47 100,35" fill="#3b82f6" />
+                            </g>
+                        </svg>
+                    </div>
+                    <div class="control-row">
+                        <button class="rotate-btn btn-hour" onclick="rotateHour(3)">Short Hand ↻</button>
+                        <button class="rotate-btn btn-minute" onclick="rotateMinute(3)">Long Hand ↻</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Number 4 -->
+            <div class="quiz-row">
+                <div class="left-col">
+                    <div class="image-wrapper">
+                        <div class="item-number">4</div>
+                        <img src="https://lh3.googleusercontent.com/d/1CpdYoRISRoSFPBu0UIJzIoYbHgeKHaHW" class="item-image" alt="Activity 4">
+                    </div>
+                    <input type="text" class="line-input" autocomplete="off" placeholder="Type your answer here...">
+                </div>
+                <div class="right-col">
+                    <div class="clock-container" data-q="4">
+                        <svg class="clock-svg interactive-clock" id="clock-4" viewBox="0 0 200 200">
+                            <circle cx="100" cy="100" r="95" class="clock-rim" />
+                            <circle cx="100" cy="100" r="90" class="clock-face" />
+                            <text x="100" y="32" class="clock-number">12</text>
+                            <text x="136" y="42" class="clock-number">1</text>
+                            <text x="162" y="68" class="clock-number">2</text>
+                            <text x="172" y="104" class="clock-number">3</text>
+                            <text x="162" y="140" class="clock-number">4</text>
+                            <text x="136" y="166" class="clock-number">5</text>
+                            <text x="100" y="176" class="clock-number">6</text>
+                            <text x="64" y="166" class="clock-number">7</text>
+                            <text x="38" y="140" class="clock-number">8</text>
+                            <text x="28" y="104" class="clock-number">9</text>
+                            <text x="38" y="68" class="clock-number">10</text>
+                            <text x="64" y="42" class="clock-number">11</text>
+                            <circle cx="100" cy="100" r="6" class="clock-pin" />
+                            <g class="hand-group hour-group" id="hour-group-4">
+                                <line x1="100" y1="100" x2="100" y2="62" class="hour-hand" />
+                                <polygon points="94,62 106,62 100,50" fill="#ef4444" />
+                            </g>
+                            <g class="hand-group minute-group" id="minute-group-4">
+                                <line x1="100" y1="100" x2="100" y2="47" class="minute-hand" />
+                                <polygon points="95,47 105,47 100,35" fill="#3b82f6" />
+                            </g>
+                        </svg>
+                    </div>
+                    <div class="control-row">
+                        <button class="rotate-btn btn-hour" onclick="rotateHour(4)">Short Hand ↻</button>
+                        <button class="rotate-btn btn-minute" onclick="rotateMinute(4)">Long Hand ↻</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Number 5 -->
+            <div class="quiz-row">
+                <div class="left-col">
+                    <div class="image-wrapper">
+                        <div class="item-number">5</div>
+                        <img src="https://lh3.googleusercontent.com/d/1EPQ7NqPgCnEKJp-XQ9-jRwS6UpuL7qTU" class="item-image" alt="Activity 5">
+                    </div>
+                    <input type="text" class="line-input" autocomplete="off" placeholder="Type your answer here...">
+                </div>
+                <div class="right-col">
+                    <div class="clock-container" data-q="5">
+                        <svg class="clock-svg interactive-clock" id="clock-5" viewBox="0 0 200 200">
+                            <circle cx="100" cy="100" r="95" class="clock-rim" />
+                            <circle cx="100" cy="100" r="90" class="clock-face" />
+                            <text x="100" y="32" class="clock-number">12</text>
+                            <text x="136" y="42" class="clock-number">1</text>
+                            <text x="162" y="68" class="clock-number">2</text>
+                            <text x="172" y="104" class="clock-number">3</text>
+                            <text x="162" y="140" class="clock-number">4</text>
+                            <text x="136" y="166" class="clock-number">5</text>
+                            <text x="100" y="176" class="clock-number">6</text>
+                            <text x="64" y="166" class="clock-number">7</text>
+                            <text x="38" y="140" class="clock-number">8</text>
+                            <text x="28" y="104" class="clock-number">9</text>
+                            <text x="38" y="68" class="clock-number">10</text>
+                            <text x="64" y="42" class="clock-number">11</text>
+                            <circle cx="100" cy="100" r="6" class="clock-pin" />
+                            <g class="hand-group hour-group" id="hour-group-5">
+                                <line x1="100" y1="100" x2="100" y2="62" class="hour-hand" />
+                                <polygon points="94,62 106,62 100,50" fill="#ef4444" />
+                            </g>
+                            <g class="hand-group minute-group" id="minute-group-5">
+                                <line x1="100" y1="100" x2="100" y2="47" class="minute-hand" />
+                                <polygon points="95,47 105,47 100,35" fill="#3b82f6" />
+                            </g>
+                        </svg>
+                    </div>
+                    <div class="control-row">
+                        <button class="rotate-btn btn-hour" onclick="rotateHour(5)">Short Hand ↻</button>
+                        <button class="rotate-btn btn-minute" onclick="rotateMinute(5)">Long Hand ↻</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Number 6 -->
+            <div class="quiz-row">
+                <div class="left-col">
+                    <div class="image-wrapper">
+                        <div class="item-number">6</div>
+                        <img src="https://lh3.googleusercontent.com/d/1adcEHsTJMdbmdW7kBO3c_Jf87Ux4Qbf3" class="item-image" alt="Activity 6">
+                    </div>
+                    <input type="text" class="line-input" autocomplete="off" placeholder="Type your answer here...">
+                </div>
+                <div class="right-col">
+                    <div class="clock-container" data-q="6">
+                        <svg class="clock-svg interactive-clock" id="clock-6" viewBox="0 0 200 200">
+                            <circle cx="100" cy="100" r="95" class="clock-rim" />
+                            <circle cx="100" cy="100" r="90" class="clock-face" />
+                            <text x="100" y="32" class="clock-number">12</text>
+                            <text x="136" y="42" class="clock-number">1</text>
+                            <text x="162" y="68" class="clock-number">2</text>
+                            <text x="172" y="104" class="clock-number">3</text>
+                            <text x="162" y="140" class="clock-number">4</text>
+                            <text x="136" y="166" class="clock-number">5</text>
+                            <text x="100" y="176" class="clock-number">6</text>
+                            <text x="64" y="166" class="clock-number">7</text>
+                            <text x="38" y="140" class="clock-number">8</text>
+                            <text x="28" y="104" class="clock-number">9</text>
+                            <text x="38" y="68" class="clock-number">10</text>
+                            <text x="64" y="42" class="clock-number">11</text>
+                            <circle cx="100" cy="100" r="6" class="clock-pin" />
+                            <g class="hand-group hour-group" id="hour-group-6">
+                                <line x1="100" y1="100" x2="100" y2="62" class="hour-hand" />
+                                <polygon points="94,62 106,62 100,50" fill="#ef4444" />
+                            </g>
+                            <g class="hand-group minute-group" id="minute-group-6">
+                                <line x1="100" y1="100" x2="100" y2="47" class="minute-hand" />
+                                <polygon points="95,47 105,47 100,35" fill="#3b82f6" />
+                            </g>
+                        </svg>
+                    </div>
+                    <div class="control-row">
+                        <button class="rotate-btn btn-hour" onclick="rotateHour(6)">Short Hand ↻</button>
+                        <button class="rotate-btn btn-minute" onclick="rotateMinute(6)">Long Hand ↻</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Number 7 -->
+            <div class="quiz-row">
+                <div class="left-col">
+                    <div class="image-wrapper">
+                        <div class="item-number">7</div>
+                        <img src="https://lh3.googleusercontent.com/d/1Bt0As_USyr0_3vHH2s8BlZyCuNxTRN-b" class="item-image" alt="Activity 7">
+                    </div>
+                    <input type="text" class="line-input" autocomplete="off" placeholder="Type your answer here...">
+                </div>
+                <div class="right-col">
+                    <div class="clock-container" data-q="7">
+                        <svg class="clock-svg interactive-clock" id="clock-7" viewBox="0 0 200 200">
+                            <circle cx="100" cy="100" r="95" class="clock-rim" />
+                            <circle cx="100" cy="100" r="90" class="clock-face" />
+                            <text x="100" y="32" class="clock-number">12</text>
+                            <text x="136" y="42" class="clock-number">1</text>
+                            <text x="162" y="68" class="clock-number">2</text>
+                            <text x="172" y="104" class="clock-number">3</text>
+                            <text x="162" y="140" class="clock-number">4</text>
+                            <text x="136" y="166" class="clock-number">5</text>
+                            <text x="100" y="176" class="clock-number">6</text>
+                            <text x="64" y="166" class="clock-number">7</text>
+                            <text x="38" y="140" class="clock-number">8</text>
+                            <text x="28" y="104" class="clock-number">9</text>
+                            <text x="38" y="68" class="clock-number">10</text>
+                            <text x="64" y="42" class="clock-number">11</text>
+                            <circle cx="100" cy="100" r="6" class="clock-pin" />
+                            <g class="hand-group hour-group" id="hour-group-7">
+                                <line x1="100" y1="100" x2="100" y2="62" class="hour-hand" />
+                                <polygon points="94,62 106,62 100,50" fill="#ef4444" />
+                            </g>
+                            <g class="hand-group minute-group" id="minute-group-7">
+                                <line x1="100" y1="100" x2="100" y2="47" class="minute-hand" />
+                                <polygon points="95,47 105,47 100,35" fill="#3b82f6" />
+                            </g>
+                        </svg>
+                    </div>
+                    <div class="control-row">
+                        <button class="rotate-btn btn-hour" onclick="rotateHour(7)">Short Hand ↻</button>
+                        <button class="rotate-btn btn-minute" onclick="rotateMinute(7)">Long Hand ↻</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Number 8 -->
+            <div class="quiz-row">
+                <div class="left-col">
+                    <div class="image-wrapper">
+                        <div class="item-number">8</div>
+                        <img src="https://lh3.googleusercontent.com/d/1VGVbAY05AER-vstSSh-sygbPj35K63wK" class="item-image" alt="Activity 8">
+                    </div>
+                    <input type="text" class="line-input" autocomplete="off" placeholder="Type your answer here...">
+                </div>
+                <div class="right-col">
+                    <div class="clock-container" data-q="8">
+                        <svg class="clock-svg interactive-clock" id="clock-8" viewBox="0 0 200 200">
+                            <circle cx="100" cy="100" r="95" class="clock-rim" />
+                            <circle cx="100" cy="100" r="90" class="clock-face" />
+                            <text x="100" y="32" class="clock-number">12</text>
+                            <text x="136" y="42" class="clock-number">1</text>
+                            <text x="162" y="68" class="clock-number">2</text>
+                            <text x="172" y="104" class="clock-number">3</text>
+                            <text x="162" y="140" class="clock-number">4</text>
+                            <text x="136" y="166" class="clock-number">5</text>
+                            <text x="100" y="176" class="clock-number">6</text>
+                            <text x="64" y="166" class="clock-number">7</text>
+                            <text x="38" y="140" class="clock-number">8</text>
+                            <text x="28" y="104" class="clock-number">9</text>
+                            <text x="38" y="68" class="clock-number">10</text>
+                            <text x="64" y="42" class="clock-number">11</text>
+                            <circle cx="100" cy="100" r="6" class="clock-pin" />
+                            <g class="hand-group hour-group" id="hour-group-8">
+                                <line x1="100" y1="100" x2="100" y2="62" class="hour-hand" />
+                                <polygon points="94,62 106,62 100,50" fill="#ef4444" />
+                            </g>
+                            <g class="hand-group minute-group" id="minute-group-8">
+                                <line x1="100" y1="100" x2="100" y2="47" class="minute-hand" />
+                                <polygon points="95,47 105,47 100,35" fill="#3b82f6" />
+                            </g>
+                        </svg>
+                    </div>
+                    <div class="control-row">
+                        <button class="rotate-btn btn-hour" onclick="rotateHour(8)">Short Hand ↻</button>
+                        <button class="rotate-btn btn-minute" onclick="rotateMinute(8)">Long Hand ↻</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Number 9 -->
+            <div class="quiz-row">
+                <div class="left-col">
+                    <div class="image-wrapper">
+                        <div class="item-number">9</div>
+                        <img src="https://lh3.googleusercontent.com/d/1RqRhk3ECRSpUNUimwGqcNye94GZbhPQy" class="item-image" alt="Activity 9">
+                    </div>
+                    <input type="text" class="line-input" autocomplete="off" placeholder="Type your answer here...">
+                </div>
+                <div class="right-col">
+                    <div class="clock-container" data-q="9">
+                        <svg class="clock-svg interactive-clock" id="clock-9" viewBox="0 0 200 200">
+                            <circle cx="100" cy="100" r="95" class="clock-rim" />
+                            <circle cx="100" cy="100" r="90" class="clock-face" />
+                            <text x="100" y="32" class="clock-number">12</text>
+                            <text x="136" y="42" class="clock-number">1</text>
+                            <text x="162" y="68" class="clock-number">2</text>
+                            <text x="172" y="104" class="clock-number">3</text>
+                            <text x="162" y="140" class="clock-number">4</text>
+                            <text x="136" y="166" class="clock-number">5</text>
+                            <text x="100" y="176" class="clock-number">6</text>
+                            <text x="64" y="166" class="clock-number">7</text>
+                            <text x="38" y="140" class="clock-number">8</text>
+                            <text x="28" y="104" class="clock-number">9</text>
+                            <text x="38" y="68" class="clock-number">10</text>
+                            <text x="64" y="42" class="clock-number">11</text>
+                            <circle cx="100" cy="100" r="6" class="clock-pin" />
+                            <g class="hand-group hour-group" id="hour-group-9">
+                                <line x1="100" y1="100" x2="100" y2="62" class="hour-hand" />
+                                <polygon points="94,62 106,62 100,50" fill="#ef4444" />
+                            </g>
+                            <g class="hand-group minute-group" id="minute-group-9">
+                                <line x1="100" y1="100" x2="100" y2="47" class="minute-hand" />
+                                <polygon points="95,47 105,47 100,35" fill="#3b82f6" />
+                            </g>
+                        </svg>
+                    </div>
+                    <div class="control-row">
+                        <button class="rotate-btn btn-hour" onclick="rotateHour(9)">Short Hand ↻</button>
+                        <button class="rotate-btn btn-minute" onclick="rotateMinute(9)">Long Hand ↻</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Number 10 -->
+            <div class="quiz-row">
+                <div class="left-col">
+                    <div class="image-wrapper">
+                        <div class="item-number">10</div>
+                        <img src="https://lh3.googleusercontent.com/d/1tTFFqP_xODz9GxnoMSouIrb7Ai3ckrP2" class="item-image" alt="Activity 10">
+                    </div>
+                    <input type="text" class="line-input" autocomplete="off" placeholder="Type your answer here...">
+                </div>
+                <div class="right-col">
+                    <div class="clock-container" data-q="10">
+                        <svg class="clock-svg interactive-clock" id="clock-10" viewBox="0 0 200 200">
+                            <circle cx="100" cy="100" r="95" class="clock-rim" />
+                            <circle cx="100" cy="100" r="90" class="clock-face" />
+                            <text x="100" y="32" class="clock-number">12</text>
+                            <text x="136" y="42" class="clock-number">1</text>
+                            <text x="162" y="68" class="clock-number">2</text>
+                            <text x="172" y="104" class="clock-number">3</text>
+                            <text x="162" y="140" class="clock-number">4</text>
+                            <text x="136" y="166" class="clock-number">5</text>
+                            <text x="100" y="176" class="clock-number">6</text>
+                            <text x="64" y="166" class="clock-number">7</text>
+                            <text x="38" y="140" class="clock-number">8</text>
+                            <text x="28" y="104" class="clock-number">9</text>
+                            <text x="38" y="68" class="clock-number">10</text>
+                            <text x="64" y="42" class="clock-number">11</text>
+                            <circle cx="100" cy="100" r="6" class="clock-pin" />
+                            <g class="hand-group hour-group" id="hour-group-10">
+                                <line x1="100" y1="100" x2="100" y2="62" class="hour-hand" />
+                                <polygon points="94,62 106,62 100,50" fill="#ef4444" />
+                            </g>
+                            <g class="hand-group minute-group" id="minute-group-10">
+                                <line x1="100" y1="100" x2="100" y2="47" class="minute-hand" />
+                                <polygon points="95,47 105,47 100,35" fill="#3b82f6" />
+                            </g>
+                        </svg>
+                    </div>
+                    <div class="control-row">
+                        <button class="rotate-btn btn-hour" onclick="rotateHour(10)">Short Hand ↻</button>
+                        <button class="rotate-btn btn-minute" onclick="rotateMinute(10)">Long Hand ↻</button>
+                    </div>
+                </div>
+            </div>
+
+        <div class="result-msg" id="result-msg"></div>
+        </div>
+    </div>
+    
+    <!-- Audio Elements (Typing + Click) -->
+    <audio id="audioCorrect" src="../3_My_daily_routine/ASSETS/correct_sound.MP3" preload="auto"></audio>
+    <audio id="audioTyping" src="typing.MP3" preload="auto"></audio>
+    <audio id="audioClick" src="../3_My_daily_routine/ASSETS/click.MP3" preload="auto"></audio>
+
+    <script src="script.js"></script>
+</body>
+</html>

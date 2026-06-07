@@ -1,0 +1,354 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&family=Outfit:wght@400;500;600;700;800&family=Caveat:wght@600;700&display=swap');
+
+:root {
+    --bg-color: #ffffff;
+    --text-color: #333;
+    --transition: all 0.2s ease;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    -webkit-tap-highlight-color: transparent;
+}
+
+html, body {
+    width: 100%;
+    max-width: 100%;
+    overflow-x: hidden;
+    overflow-y: auto;
+    background: transparent;
+    scroll-behavior: smooth;
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+}
+
+body::-webkit-scrollbar {
+    display: none;
+}
+
+body {
+    font-family: 'Outfit', 'Inter', sans-serif;
+    display: flex;
+    justify-content: center;
+    min-height: 100vh;
+}
+
+.page {
+    background: #ffffff;
+    width: 100%;
+    max-width: 360px;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    position: relative;
+    overflow-x: hidden;
+    box-shadow: none;
+}
+
+/* Borders */
+.top-border {
+    position: absolute !important;
+    top: 0 !important;
+    left: 0 !important;
+    width: 100% !important;
+    height: auto !important;
+    z-index: 9999 !important;
+    pointer-events: none !important;
+}
+
+.bottom-border {
+    position: absolute !important;
+    bottom: 0 !important;
+    left: 0 !important;
+    width: 100% !important;
+    height: auto !important;
+    z-index: 9999 !important;
+    pointer-events: none !important;
+}
+
+/* Module Header */
+.module-header {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 65px 16px 10px 16px !important;
+    background: transparent !important;
+    position: relative !important;
+    z-index: 10000 !important;
+    box-shadow: none !important;
+    flex-shrink: 0;
+}
+
+.title-badge {
+    width: 90%;
+    max-width: 280px;
+    height: auto;
+    margin-bottom: 8px;
+    min-height: 40px;
+}
+
+.instructions {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+}
+
+.instructions .en {
+    font-size: 14px;
+    font-weight: 600;
+    color: #1e293b;
+    margin-bottom: 4px;
+    line-height: 1.4;
+}
+
+.instructions .separator {
+    width: 100%;
+    border-top: 2px dotted #93c5fd;
+    margin: 8px 0;
+}
+
+.instructions .id {
+    font-size: 14px;
+    font-weight: 400;
+    color: #475569;
+    line-height: 1.4;
+}
+
+/* Content */
+.scroll-content {
+    width: 100%;
+    flex-grow: 1;
+    padding: 0 16px 120px 16px !important;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    overflow-y: visible !important;
+}
+
+/* Quiz Row (Grid 2 columns) */
+.quiz-row {
+    width: 100%;
+    display: grid;
+    grid-template-columns: 1.2fr 1fr;
+    column-gap: 12px;
+    margin-bottom: 30px;
+    align-items: center;
+}
+
+/* Left Column (Image + Input) */
+.left-col {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+}
+
+.image-wrapper {
+    position: relative;
+    width: 100%;
+    aspect-ratio: 1 / 1;
+    background: #e2e8f0;
+    border: 1.5px solid #cbd5e1;
+    border-radius: 4px;
+    margin-bottom: 8px;
+    overflow: visible;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.item-image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 4px;
+    transform: translateZ(0);
+    will-change: transform;
+}
+
+/* Red Ribbon Number Badge */
+.item-number {
+    position: absolute;
+    top: 8px;
+    left: -6px;
+    background: #e53935;
+    color: white;
+    font-family: 'Outfit', sans-serif;
+    font-weight: 800;
+    padding: 2px 6px;
+    font-size: 13px;
+    border-radius: 4px 4px 4px 0;
+    z-index: 5;
+    display: block;
+    margin: 0;
+}
+
+.item-number::after {
+    content: "";
+    position: absolute;
+    bottom: -6px;
+    left: 0;
+    border-top: 6px solid #b71c1c;
+    border-left: 6px solid transparent;
+}
+
+/* Text Input */
+.line-input {
+    width: 100%;
+    border: none;
+    border-bottom: 1.5px solid #000;
+    background: transparent;
+    outline: none;
+    font-family: 'Outfit', sans-serif;
+    font-size: 15px;
+    font-weight: 600;
+    color: #1e293b;
+    padding: 2px 4px;
+    line-height: 1.2;
+    transition: var(--transition);
+}
+
+.line-input:focus {
+    border-bottom: 2px solid #3b82f6;
+}
+
+.line-input::placeholder {
+    color: #94a3b8;
+    font-weight: 500;
+    font-size: 13px;
+    font-family: "Outfit", sans-serif;
+}
+
+/* Example Text */
+.example-block {
+    align-items: flex-start;
+}
+
+.example-text {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+}
+
+.example-text .label {
+    font-size: 13px;
+    font-weight: 700;
+    color: #000;
+    background: #fef08a; /* Yellow highlight */
+    padding: 2px 6px;
+    border-radius: 4px;
+    display: inline-block;
+    align-self: flex-start;
+    margin-bottom: 4px;
+}
+
+.example-answer {
+    font-family: 'Caveat', cursive;
+    font-size: 16px;
+    font-weight: 700;
+    color: #000;
+    text-decoration: underline;
+    text-decoration-thickness: 1.5px;
+    line-height: 1.2;
+    padding-left: 2px;
+}
+
+/* Right Column (Clock + Buttons) */
+.right-col {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+}
+
+.clock-container {
+    width: 100%;
+    aspect-ratio: 1;
+    background: transparent;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 8px;
+}
+
+.clock-svg {
+    width: 100%;
+    height: 100%;
+    filter: drop-shadow(0 4px 6px rgba(0, 0, 0, 0.1));
+}
+
+.clock-rim {
+    fill: #f3f4f6;
+    stroke: #d1d5db;
+    stroke-width: 4;
+}
+
+.clock-face {
+    fill: #ffffff;
+}
+
+.clock-number {
+    font-family: 'Outfit', sans-serif;
+    font-size: 20px;
+    font-weight: 700;
+    fill: #1e293b;
+    text-anchor: middle;
+    dominant-baseline: middle;
+}
+
+.clock-pin {
+    fill: #1e293b;
+}
+
+.hour-hand, .minute-hand {
+    stroke-width: 6;
+    stroke-linecap: round;
+}
+
+.hour-hand { stroke: #ef4444; }
+.minute-hand { stroke: #3b82f6; stroke-width: 4; }
+
+.hand-group {
+    transform-origin: 100px 100px;
+    transition: transform 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+/* Control Row for Clocks */
+.control-row {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+    width: 100%;
+}
+
+.rotate-btn {
+    background: #f8fafc;
+    border: 2px solid #e2e8f0;
+    border-radius: 8px;
+    padding: 6px 4px;
+    font-family: 'Outfit', sans-serif;
+    font-size: 11px;
+    font-weight: 600;
+    color: #475569;
+    cursor: pointer;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 4px;
+    transition: all 0.2s;
+    user-select: none;
+    -webkit-tap-highlight-color: transparent;
+}
+
+.rotate-btn:active {
+    transform: scale(0.95);
+    background: #e2e8f0;
+}
+
+.btn-hour { color: #ef4444; border-color: #fca5a5; background: #fef2f2; }
+.btn-minute { color: #3b82f6; border-color: #bfdbfe; background: #eff6ff; }
