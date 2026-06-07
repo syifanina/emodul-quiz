@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Look and Write</title>
+    <link rel="stylesheet" href="style.css?v=1.1">
+</head>
+
+<body>
+    <div class="page">
+        <img src="https://lh3.googleusercontent.com/d/1Wtb9UWtvVhVA13B0HLBagfyx1bD1LU5x" class="top-border" alt="Top Border">
+        <img src="https://lh3.googleusercontent.com/d/19NE3XzidRxaYa56e4OBOdI38n3nYJhwK" class="bottom-border" alt="Bottom Border">
+
+        <header class="module-header">
+            <img src="https://lh3.googleusercontent.com/d/1Su9cQ_qty2wDRmZIglMMFMSKFv_LFS2B" alt="Look and Write" class="title-badge">
+
+            <div class="instructions">
+                <p class="en">Look at the clock, then write down the answer to the question "What time is it?". Look at the example!</p>
+                <div class="separator"></div>
+                <p class="id">Perhatikan gambar jam dinding kemudian jawablah pertanyaan "Jam berapa sekarang?" Perhatikan contoh!</p>
+            </div>
+        </header>
+
+        <!-- Scrollable Content -->
+        <div class="scroll-content">
+
+            <!-- EXAMPLE -->
+            <div class="quiz-row example-row">
+                <div class="q-number">E.</div>
+                <div class="q-content">
+                    <div class="clock-and-bubble">
+                        <div class="img-placeholder">
+                            <img src="https://lh3.googleusercontent.com/d/16L1pRdSFD2BNABEHSH0Ld1DNsk_XoC9k" alt="Clock Example">
+                        </div>
+                        <div class="speech-bubble">What time<br>is it?</div>
+                    </div>
+                    <div class="example-answer">
+                        <span class="example-label">Example:</span>
+                        <span class="example-text">It is four o'clock</span>
+                    </div>
+                </div>
+            </div>
+
+            <div id="quiz-container">
+                <!-- Q1 -->
+                <div class="quiz-row">
+                    <div class="q-number">1.</div>
+                    <div class="q-content">
+                        <div class="clock-and-bubble">
+                            <div class="img-placeholder">
+                                <img src="https://lh3.googleusercontent.com/d/1FWWf08dE2kvE-w3KQnhplOqT8lreVEXr" alt="Clock 1">
+                            </div>
+                            <div class="speech-bubble">What time<br>is it?</div>
+                        </div>
+                        <div class="answer-area">
+                            <input type="text" class="input-zone" id="input-1" data-answer="it is eight past a half|it is a half past eight" placeholder="Type your answer here..." autocapitalize="off" autocomplete="off" spellcheck="false" autocorrect="off">
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Q2 -->
+                <div class="quiz-row">
+                    <div class="q-number">2.</div>
+                    <div class="q-content">
+                        <div class="clock-and-bubble">
+                            <div class="img-placeholder">
+                                <img src="https://lh3.googleusercontent.com/d/1jQCKCsWx4zni9auWgsTjoGN2L-aw9TVK" alt="Clock 2">
+                            </div>
+                            <div class="speech-bubble">What time<br>is it?</div>
+                        </div>
+                        <div class="answer-area">
+                            <input type="text" class="input-zone" id="input-2" data-answer="it is four past a half|it is a half past four" placeholder="Type your answer here..." autocapitalize="off" autocomplete="off" spellcheck="false" autocorrect="off">
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Q3 -->
+                <div class="quiz-row">
+                    <div class="q-number">3.</div>
+                    <div class="q-content">
+                        <div class="clock-and-bubble">
+                            <div class="img-placeholder">
+                                <img src="https://lh3.googleusercontent.com/d/1eElHHWqqf0YjZFDuwoQ2k-Q7mU63_SNL" alt="Clock 3">
+                            </div>
+                            <div class="speech-bubble">What time<br>is it?</div>
+                        </div>
+                        <div class="answer-area">
+                            <input type="text" class="input-zone" id="input-3" data-answer="it is two o'clock|it is two o’clock" placeholder="Type your answer here..." autocapitalize="off" autocomplete="off" spellcheck="false" autocorrect="off">
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Q4 -->
+                <div class="quiz-row">
+                    <div class="q-number">4.</div>
+                    <div class="q-content">
+                        <div class="clock-and-bubble">
+                            <div class="img-placeholder">
+                                <img src="https://lh3.googleusercontent.com/d/1igB-p6k_oo2ibIoF-RiibWgLY9jlOk1m" alt="Clock 4">
+                            </div>
+                            <div class="speech-bubble">What time<br>is it?</div>
+                        </div>
+                        <div class="answer-area">
+                            <input type="text" class="input-zone" id="input-4" data-answer="it is one o'clock|it is one o’clock" placeholder="Type your answer here..." autocapitalize="off" autocomplete="off" spellcheck="false" autocorrect="off">
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Q5 -->
+                <div class="quiz-row">
+                    <div class="q-number">5.</div>
+                    <div class="q-content">
+                        <div class="clock-and-bubble">
+                            <div class="img-placeholder">
+                                <img src="https://lh3.googleusercontent.com/d/1Kb08XJfL8F1TuIzIIcN7HgS5vQN-C9oV" alt="Clock 5">
+                            </div>
+                            <div class="speech-bubble">What time<br>is it?</div>
+                        </div>
+                        <div class="answer-area">
+                            <input type="text" class="input-zone" id="input-5" data-answer="it is fifteen minutes past three|it is a quarter past three" placeholder="Type your answer here..." autocapitalize="off" autocomplete="off" spellcheck="false" autocorrect="off">
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Q6 -->
+                <div class="quiz-row">
+                    <div class="q-number">6.</div>
+                    <div class="q-content">
+                        <div class="clock-and-bubble">
+                            <div class="img-placeholder">
+                                <img src="https://lh3.googleusercontent.com/d/1mtkKc5clixx5uTBqpkGTAwB14klBSxr5" alt="Clock 6">
+                            </div>
+                            <div class="speech-bubble">What time<br>is it?</div>
+                        </div>
+                        <div class="answer-area">
+                            <input type="text" class="input-zone" id="input-6" data-answer="it is three past a half|it is a half past three" placeholder="Type your answer here..." autocapitalize="off" autocomplete="off" spellcheck="false" autocorrect="off">
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Q7 -->
+                <div class="quiz-row">
+                    <div class="q-number">7.</div>
+                    <div class="q-content">
+                        <div class="clock-and-bubble">
+                            <div class="img-placeholder">
+                                <img src="https://lh3.googleusercontent.com/d/1X5zUfDijfnmyNFER_wN5FSC1ecAU8gtz" alt="Clock 7">
+                            </div>
+                            <div class="speech-bubble">What time<br>is it?</div>
+                        </div>
+                        <div class="answer-area">
+                            <input type="text" class="input-zone" id="input-7" data-answer="it is nine past a half|it is a half past nine" placeholder="Type your answer here..." autocapitalize="off" autocomplete="off" spellcheck="false" autocorrect="off">
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Q8 -->
+                <div class="quiz-row">
+                    <div class="q-number">8.</div>
+                    <div class="q-content">
+                        <div class="clock-and-bubble">
+                            <div class="img-placeholder">
+                                <img src="https://lh3.googleusercontent.com/d/1HTXj7oL2_xTvZqS6F0sXLv6C9uP9InpP" alt="Clock 8">
+                            </div>
+                            <div class="speech-bubble">What time<br>is it?</div>
+                        </div>
+                        <div class="answer-area">
+                            <input type="text" class="input-zone" id="input-8" data-answer="it is fifteen minutes to one|it is a quarter to one" placeholder="Type your answer here..." autocapitalize="off" autocomplete="off" spellcheck="false" autocorrect="off">
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Q9 -->
+                <div class="quiz-row">
+                    <div class="q-number">9.</div>
+                    <div class="q-content">
+                        <div class="clock-and-bubble">
+                            <div class="img-placeholder">
+                                <img src="https://lh3.googleusercontent.com/d/1T3bBDjzdte6Sz5q5cp9_AOQbM6fokdnQ" alt="Clock 9">
+                            </div>
+                            <div class="speech-bubble">What time<br>is it?</div>
+                        </div>
+                        <div class="answer-area">
+                            <input type="text" class="input-zone" id="input-9" data-answer="it is one o'clock|it is one o’clock" placeholder="Type your answer here..." autocapitalize="off" autocomplete="off" spellcheck="false" autocorrect="off">
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Q10 -->
+                <div class="quiz-row">
+                    <div class="q-number">10.</div>
+                    <div class="q-content">
+                        <div class="clock-and-bubble">
+                            <div class="img-placeholder">
+                                <img src="https://lh3.googleusercontent.com/d/1cu_BFVgk8M8a_t-7gmTWnzgG0ldXt-GE" alt="Clock 10">
+                            </div>
+                            <div class="speech-bubble">What time<br>is it?</div>
+                        </div>
+                        <div class="answer-area">
+                            <input type="text" class="input-zone" id="input-10" data-answer="it is two past a half|it is a half past two" placeholder="Type your answer here..." autocapitalize="off" autocomplete="off" spellcheck="false" autocorrect="off">
+                        </div>
+                    </div>
+                </div>
+            </div><!-- end quiz-container -->
+
+            <div class="btn-row">
+                <button class="reset-btn" onclick="resetQuiz()">
+                    <img src="https://lh3.googleusercontent.com/d/1D6yVmWJMqr21s0jooydnRd8IrnUTACa8" alt="Reset">
+                </button>
+                <button class="check-btn" onclick="checkAnswers()">
+                    <img src="https://lh3.googleusercontent.com/d/162GVeYx0GQkdnWIAHJw3IK1O6a08L58X" alt="Check Answer">
+                </button>
+            </div>
+            <div class="result-msg" id="result-msg"></div>
+
+        </div><!-- end scroll-content -->
+
+        <audio id="correct-audio" src="assets/correct_sound.MP3" preload="auto"></audio>
+        <audio id="wrong-audio" src="assets/incorrect_sound.MP3" preload="auto"></audio>
+        <audio id="click-audio" src="assets/click.MP3" preload="auto"></audio>
+    </div><!-- end page -->
+
+    <script src="script.js?v=1.1"></script>
+</body>
+
+</html>
