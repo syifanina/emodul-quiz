@@ -1,0 +1,259 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Say and Do</title>
+    <link rel="stylesheet" href="style.css">
+    <!-- Confetti Library for celebration -->
+    <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
+</head>
+
+<body>
+    <div class="page">
+        <img src="https://lh3.googleusercontent.com/d/1Wtb9UWtvVhVA13B0HLBagfyx1bD1LU5x" class="top-border" alt="Top Border">
+        <img src="https://lh3.googleusercontent.com/d/19NE3XzidRxaYa56e4OBOdI38n3nYJhwK" class="bottom-border" alt="Bottom Border">
+
+        <header class="module-header">
+            <!-- PNG Judul -->
+            <img src="https://lh3.googleusercontent.com/d/1Tk31ApMsT4AUn94F5K7N_ehLsAvOsLQK" alt="SAY AND DO" class="title-badge">
+
+            <div class="instructions">
+                <p class="en">Act and say the action in the picture!</p>
+                <div class="separator"></div>
+                <p class="id">Peragakan dan ucapkan tindakan sesuai gambar!</p>
+            </div>
+        </header>
+
+        <!-- Scrollable Content -->
+        <div class="scroll-content">
+
+            <main class="grid-container">
+<div class="action-card" data-audio="play_game.MP3">
+    <div class="image-wrapper">
+        <img src="https://lh3.googleusercontent.com/d/1Wq__7tzTwnRkqUHbmKDk0Y6QAqwFNJCS" alt="Play game with your friends at the terrace" class="action-image">
+        <button class="sound-btn" aria-label="Play sound">
+            <svg viewBox="0 0 24 24">
+                <path d="M14,3.23V5.29C16.89,6.15 19,8.83 19,12C19,15.17 16.89,17.85 14,18.71V20.77C18.03,19.86 21,16.28 21,12C21,7.72 18.03,4.14 14,3.23M16.5,12C16.5,10.23 15.5,8.71 14,7.97V16.04C15.5,15.29 16.5,13.77 16.5,12M3,9V15H7L12,20V4L7,9H3Z" />
+            </svg>
+        </button>
+    </div>
+    <div class="text-wrapper"><span class="action-text">Play game with your friends at the terrace</span></div>
+</div>
+
+<div class="action-card" data-audio="pet_your_cat.MP3">
+    <div class="image-wrapper">
+        <img src="https://lh3.googleusercontent.com/d/1_1uOvDmk6iFgKUzMXoBy3zKsKSPSZYu9" alt="Pet your cat at the terrace" class="action-image">
+        <button class="sound-btn" aria-label="Play sound">
+            <svg viewBox="0 0 24 24">
+                <path d="M14,3.23V5.29C16.89,6.15 19,8.83 19,12C19,15.17 16.89,17.85 14,18.71V20.77C18.03,19.86 21,16.28 21,12C21,7.72 18.03,4.14 14,3.23M16.5,12C16.5,10.23 15.5,8.71 14,7.97V16.04C15.5,15.29 16.5,13.77 16.5,12M3,9V15H7L12,20V4L7,9H3Z" />
+            </svg>
+        </button>
+    </div>
+    <div class="text-wrapper"><span class="action-text">Pet your cat at the terrace</span></div>
+</div>
+
+<div class="action-card" data-audio="sit_down.MP3">
+    <div class="image-wrapper">
+        <img src="https://lh3.googleusercontent.com/d/19YJ48XJ8OvpT8tll-PFC2t2qnu4tX781" alt="Sit down on the sofa in living room" class="action-image">
+        <button class="sound-btn" aria-label="Play sound">
+            <svg viewBox="0 0 24 24">
+                <path d="M14,3.23V5.29C16.89,6.15 19,8.83 19,12C19,15.17 16.89,17.85 14,18.71V20.77C18.03,19.86 21,16.28 21,12C21,7.72 18.03,4.14 14,3.23M16.5,12C16.5,10.23 15.5,8.71 14,7.97V16.04C15.5,15.29 16.5,13.77 16.5,12M3,9V15H7L12,20V4L7,9H3Z" />
+            </svg>
+        </button>
+    </div>
+    <div class="text-wrapper"><span class="action-text">Sit down on the sofa in living room</span></div>
+</div>
+
+<div class="action-card" data-audio="watch_tv.MP3">
+    <div class="image-wrapper">
+        <img src="https://lh3.googleusercontent.com/d/1zIlRGxLPUncXvMHxWuJvGXXq6GfF4fA1" alt="Watch TV in the living room" class="action-image">
+        <button class="sound-btn" aria-label="Play sound">
+            <svg viewBox="0 0 24 24">
+                <path d="M14,3.23V5.29C16.89,6.15 19,8.83 19,12C19,15.17 16.89,17.85 14,18.71V20.77C18.03,19.86 21,16.28 21,12C21,7.72 18.03,4.14 14,3.23M16.5,12C16.5,10.23 15.5,8.71 14,7.97V16.04C15.5,15.29 16.5,13.77 16.5,12M3,9V15H7L12,20V4L7,9H3Z" />
+            </svg>
+        </button>
+    </div>
+    <div class="text-wrapper"><span class="action-text">Watch TV in the living room</span></div>
+</div>
+
+<div class="action-card" data-audio="study.MP3">
+    <div class="image-wrapper">
+        <img src="https://lh3.googleusercontent.com/d/1AuBl9NRZbgqCZnv0iyxg2K5tKuL5AtAo" alt="Study in the study room" class="action-image">
+        <button class="sound-btn" aria-label="Play sound">
+            <svg viewBox="0 0 24 24">
+                <path d="M14,3.23V5.29C16.89,6.15 19,8.83 19,12C19,15.17 16.89,17.85 14,18.71V20.77C18.03,19.86 21,16.28 21,12C21,7.72 18.03,4.14 14,3.23M16.5,12C16.5,10.23 15.5,8.71 14,7.97V16.04C15.5,15.29 16.5,13.77 16.5,12M3,9V15H7L12,20V4L7,9H3Z" />
+            </svg>
+        </button>
+    </div>
+    <div class="text-wrapper"><span class="action-text">Study in the study room</span></div>
+</div>
+
+<div class="action-card" data-audio="do_homework.MP3">
+    <div class="image-wrapper">
+        <img src="https://lh3.googleusercontent.com/d/1g6yeP_O1LPpsEIAX5pE3q1ONmbxhHC75" alt="Do homework in the study room" class="action-image">
+        <button class="sound-btn" aria-label="Play sound">
+            <svg viewBox="0 0 24 24">
+                <path d="M14,3.23V5.29C16.89,6.15 19,8.83 19,12C19,15.17 16.89,17.85 14,18.71V20.77C18.03,19.86 21,16.28 21,12C21,7.72 18.03,4.14 14,3.23M16.5,12C16.5,10.23 15.5,8.71 14,7.97V16.04C15.5,15.29 16.5,13.77 16.5,12M3,9V15H7L12,20V4L7,9H3Z" />
+            </svg>
+        </button>
+    </div>
+    <div class="text-wrapper"><span class="action-text">Do homework in the study room</span></div>
+</div>
+
+<div class="action-card" data-audio="make_a_bed.MP3">
+    <div class="image-wrapper">
+        <img src="https://lh3.googleusercontent.com/d/1K9T343OY88mavyDiKlNLU_ugKObS-teK" alt="Make a bed in the bedroom" class="action-image">
+        <button class="sound-btn" aria-label="Play sound">
+            <svg viewBox="0 0 24 24">
+                <path d="M14,3.23V5.29C16.89,6.15 19,8.83 19,12C19,15.17 16.89,17.85 14,18.71V20.77C18.03,19.86 21,16.28 21,12C21,7.72 18.03,4.14 14,3.23M16.5,12C16.5,10.23 15.5,8.71 14,7.97V16.04C15.5,15.29 16.5,13.77 16.5,12M3,9V15H7L12,20V4L7,9H3Z" />
+            </svg>
+        </button>
+    </div>
+    <div class="text-wrapper"><span class="action-text">Make a bed in the bedroom</span></div>
+</div>
+
+<div class="action-card" data-audio="sleep.MP3">
+    <div class="image-wrapper">
+        <img src="https://lh3.googleusercontent.com/d/1fVKKA5K9tKmUjmtYEvMZmAwd4HTuWc6S" alt="Sleep in the bedroom" class="action-image">
+        <button class="sound-btn" aria-label="Play sound">
+            <svg viewBox="0 0 24 24">
+                <path d="M14,3.23V5.29C16.89,6.15 19,8.83 19,12C19,15.17 16.89,17.85 14,18.71V20.77C18.03,19.86 21,16.28 21,12C21,7.72 18.03,4.14 14,3.23M16.5,12C16.5,10.23 15.5,8.71 14,7.97V16.04C15.5,15.29 16.5,13.77 16.5,12M3,9V15H7L12,20V4L7,9H3Z" />
+            </svg>
+        </button>
+    </div>
+    <div class="text-wrapper"><span class="action-text">Sleep in the bedroom</span></div>
+</div>
+
+<div class="action-card" data-audio="eat_a_cake.MP3">
+    <div class="image-wrapper">
+        <img src="https://lh3.googleusercontent.com/d/1JRZiU7ORzBKFXF66QLQkTOFbOSwtoumk" alt="Eat a cake in the dining room" class="action-image">
+        <button class="sound-btn" aria-label="Play sound">
+            <svg viewBox="0 0 24 24">
+                <path d="M14,3.23V5.29C16.89,6.15 19,8.83 19,12C19,15.17 16.89,17.85 14,18.71V20.77C18.03,19.86 21,16.28 21,12C21,7.72 18.03,4.14 14,3.23M16.5,12C16.5,10.23 15.5,8.71 14,7.97V16.04C15.5,15.29 16.5,13.77 16.5,12M3,9V15H7L12,20V4L7,9H3Z" />
+            </svg>
+        </button>
+    </div>
+    <div class="text-wrapper"><span class="action-text">Eat a cake in the dining room</span></div>
+</div>
+
+<div class="action-card" data-audio="have_a_breakfast.MP3">
+    <div class="image-wrapper">
+        <img src="https://lh3.googleusercontent.com/d/1NHWzQaE9DrByGfkCE3LorlBWm6gTC1Ts" alt="Have a breakfast in the dining room" class="action-image">
+        <button class="sound-btn" aria-label="Play sound">
+            <svg viewBox="0 0 24 24">
+                <path d="M14,3.23V5.29C16.89,6.15 19,8.83 19,12C19,15.17 16.89,17.85 14,18.71V20.77C18.03,19.86 21,16.28 21,12C21,7.72 18.03,4.14 14,3.23M16.5,12C16.5,10.23 15.5,8.71 14,7.97V16.04C15.5,15.29 16.5,13.77 16.5,12M3,9V15H7L12,20V4L7,9H3Z" />
+            </svg>
+        </button>
+    </div>
+    <div class="text-wrapper"><span class="action-text">Have a breakfast in the dining room</span></div>
+</div>
+
+<div class="action-card" data-audio="cook_meals.MP3">
+    <div class="image-wrapper">
+        <img src="https://lh3.googleusercontent.com/d/1_9TL-ueiAys_1v3AzEMNrCgDGIJ7Sy_-" alt="Cook meals in the kitchen" class="action-image">
+        <button class="sound-btn" aria-label="Play sound">
+            <svg viewBox="0 0 24 24">
+                <path d="M14,3.23V5.29C16.89,6.15 19,8.83 19,12C19,15.17 16.89,17.85 14,18.71V20.77C18.03,19.86 21,16.28 21,12C21,7.72 18.03,4.14 14,3.23M16.5,12C16.5,10.23 15.5,8.71 14,7.97V16.04C15.5,15.29 16.5,13.77 16.5,12M3,9V15H7L12,20V4L7,9H3Z" />
+            </svg>
+        </button>
+    </div>
+    <div class="text-wrapper"><span class="action-text">Cook meals in the kitchen</span></div>
+</div>
+
+<div class="action-card" data-audio="bake_a_cake.MP3">
+    <div class="image-wrapper">
+        <img src="https://lh3.googleusercontent.com/d/1LdGInFYl4QcU8QcrLIZbIkzhkxuXmehp" alt="Bake a cake in the kitchen" class="action-image">
+        <button class="sound-btn" aria-label="Play sound">
+            <svg viewBox="0 0 24 24">
+                <path d="M14,3.23V5.29C16.89,6.15 19,8.83 19,12C19,15.17 16.89,17.85 14,18.71V20.77C18.03,19.86 21,16.28 21,12C21,7.72 18.03,4.14 14,3.23M16.5,12C16.5,10.23 15.5,8.71 14,7.97V16.04C15.5,15.29 16.5,13.77 16.5,12M3,9V15H7L12,20V4L7,9H3Z" />
+            </svg>
+        </button>
+    </div>
+    <div class="text-wrapper"><span class="action-text">Bake a cake in the kitchen</span></div>
+</div>
+
+<div class="action-card" data-audio="wash_your_hand.MP3">
+    <div class="image-wrapper">
+        <img src="https://lh3.googleusercontent.com/d/1cgSn6g9ZOo4PeQTzVF0smKOF0qCNZLxR" alt="Wash your hand in the bathroom" class="action-image">
+        <button class="sound-btn" aria-label="Play sound">
+            <svg viewBox="0 0 24 24">
+                <path d="M14,3.23V5.29C16.89,6.15 19,8.83 19,12C19,15.17 16.89,17.85 14,18.71V20.77C18.03,19.86 21,16.28 21,12C21,7.72 18.03,4.14 14,3.23M16.5,12C16.5,10.23 15.5,8.71 14,7.97V16.04C15.5,15.29 16.5,13.77 16.5,12M3,9V15H7L12,20V4L7,9H3Z" />
+            </svg>
+        </button>
+    </div>
+    <div class="text-wrapper"><span class="action-text">Wash your hand in the bathroom</span></div>
+</div>
+
+<div class="action-card" data-audio="take_a_bath.MP3">
+    <div class="image-wrapper">
+        <img src="https://lh3.googleusercontent.com/d/1TO--2agsm9QDnQ3mJaN4YH4KcEiu7rGp" alt="Take a bath in the bathroom" class="action-image">
+        <button class="sound-btn" aria-label="Play sound">
+            <svg viewBox="0 0 24 24">
+                <path d="M14,3.23V5.29C16.89,6.15 19,8.83 19,12C19,15.17 16.89,17.85 14,18.71V20.77C18.03,19.86 21,16.28 21,12C21,7.72 18.03,4.14 14,3.23M16.5,12C16.5,10.23 15.5,8.71 14,7.97V16.04C15.5,15.29 16.5,13.77 16.5,12M3,9V15H7L12,20V4L7,9H3Z" />
+            </svg>
+        </button>
+    </div>
+    <div class="text-wrapper"><span class="action-text">Take a bath in the bathroom</span></div>
+</div>
+
+<div class="action-card" data-audio="wash_your_clothes.MP3">
+    <div class="image-wrapper">
+        <img src="https://lh3.googleusercontent.com/d/1zr5l3_bsCgzENE8ws5FgfxJgG3f8-f-U" alt="Wash your clothes in the laundry room" class="action-image">
+        <button class="sound-btn" aria-label="Play sound">
+            <svg viewBox="0 0 24 24">
+                <path d="M14,3.23V5.29C16.89,6.15 19,8.83 19,12C19,15.17 16.89,17.85 14,18.71V20.77C18.03,19.86 21,16.28 21,12C21,7.72 18.03,4.14 14,3.23M16.5,12C16.5,10.23 15.5,8.71 14,7.97V16.04C15.5,15.29 16.5,13.77 16.5,12M3,9V15H7L12,20V4L7,9H3Z" />
+            </svg>
+        </button>
+    </div>
+    <div class="text-wrapper"><span class="action-text">Wash your clothes in the laundry room</span></div>
+</div>
+
+<div class="action-card" data-audio="iron_your_clothes.MP3">
+    <div class="image-wrapper">
+        <img src="https://lh3.googleusercontent.com/d/12YCOcNhWaxDKcyGUofqU71oGFgkoT5XP" alt="Iron your clothes in the laundry room" class="action-image">
+        <button class="sound-btn" aria-label="Play sound">
+            <svg viewBox="0 0 24 24">
+                <path d="M14,3.23V5.29C16.89,6.15 19,8.83 19,12C19,15.17 16.89,17.85 14,18.71V20.77C18.03,19.86 21,16.28 21,12C21,7.72 18.03,4.14 14,3.23M16.5,12C16.5,10.23 15.5,8.71 14,7.97V16.04C15.5,15.29 16.5,13.77 16.5,12M3,9V15H7L12,20V4L7,9H3Z" />
+            </svg>
+        </button>
+    </div>
+    <div class="text-wrapper"><span class="action-text">Iron your clothes in the laundry room</span></div>
+</div>
+
+<div class="action-card" data-audio="park_the_car.MP3">
+    <div class="image-wrapper">
+        <img src="https://lh3.googleusercontent.com/d/1p4MTRVYz7CpBvVn13JjEUSzlNIspbhjp" alt="Park the car in the garage" class="action-image">
+        <button class="sound-btn" aria-label="Play sound">
+            <svg viewBox="0 0 24 24">
+                <path d="M14,3.23V5.29C16.89,6.15 19,8.83 19,12C19,15.17 16.89,17.85 14,18.71V20.77C18.03,19.86 21,16.28 21,12C21,7.72 18.03,4.14 14,3.23M16.5,12C16.5,10.23 15.5,8.71 14,7.97V16.04C15.5,15.29 16.5,13.77 16.5,12M3,9V15H7L12,20V4L7,9H3Z" />
+            </svg>
+        </button>
+    </div>
+    <div class="text-wrapper"><span class="action-text">Park the car in the garage</span></div>
+</div>
+
+<div class="action-card" data-audio="put_the_bike.MP3">
+    <div class="image-wrapper">
+        <img src="https://lh3.googleusercontent.com/d/1F1cv6mx6Bi77s4Ax37Ihg37BEkBcor7k" alt="Put the bike in the garage" class="action-image">
+        <button class="sound-btn" aria-label="Play sound">
+            <svg viewBox="0 0 24 24">
+                <path d="M14,3.23V5.29C16.89,6.15 19,8.83 19,12C19,15.17 16.89,17.85 14,18.71V20.77C18.03,19.86 21,16.28 21,12C21,7.72 18.03,4.14 14,3.23M16.5,12C16.5,10.23 15.5,8.71 14,7.97V16.04C15.5,15.29 16.5,13.77 16.5,12M3,9V15H7L12,20V4L7,9H3Z" />
+            </svg>
+        </button>
+    </div>
+    <div class="text-wrapper"><span class="action-text">Put the bike in the garage</span></div>
+</div>
+
+            </main>
+        </div>
+
+        <!-- SINGLE AUDIO SOURCE -->
+        <audio id="main-audio"></audio>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+
+</html>

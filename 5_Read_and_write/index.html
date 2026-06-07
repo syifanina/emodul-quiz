@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Read and Write</title>
+    <link rel="stylesheet" href="style.css">
+    <!-- Confetti Library for celebration -->
+    <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
+</head>
+<body>
+    <div class="page">
+        <!-- Memakai top dan bottom border -->
+        <img src="https://lh3.googleusercontent.com/d/1Wtb9UWtvVhVA13B0HLBagfyx1bD1LU5x" class="top-border" alt="Top Border">
+        <img src="https://lh3.googleusercontent.com/d/19NE3XzidRxaYa56e4OBOdI38n3nYJhwK" class="bottom-border" alt="Bottom Border">
+        
+        <header class="module-header">
+            <!-- PNG Judul -->
+            <img src="https://lh3.googleusercontent.com/d/1l0pOjwVY3ueWLAY5PPEC9RtBndkAHLTY" alt="READ AND WRITE" class="title-badge">
+            <div class="instructions">
+                <p class="en">Complete the sentences with the activities shown in the pictures. Look at the example!</p>
+                <div class="separator"></div>
+                <p class="id">Lengkapi kalimat-kalimat di bawah ini dengan aktivitas-aktivitas yang dapat dilihat pada gambar. Perhatikan contoh berikut!</p>
+            </div>
+        </header>
+
+        <div class="scroll-content">
+            <div class="story-container">
+                <!-- Block 1: Intro + Living Room -->
+                <div class="quiz-row-block">
+                    <!-- Intro Box -->
+                    <div class="intro-box">
+                        <p class="cursive-text">Hello welcome to my house!</p>
+                        <p class="cursive-text">I am <input type="text" class="name-input-box" placeholder="your name" autocomplete="off" style="font-family: 'Dancing Script', cursive; font-size: 20px;"></p>
+                    </div>
+                    <p class="story-text" style="margin-bottom: 5px;">Let me tell you what activities you can do in my house.</p>
+                    <p class="story-text">Look! This is our <u>living room</u>.</p>
+                    
+                    <div class="images-row">
+                        <div class="image-wrapper">
+                            <div class="badge-label">Example</div>
+                            <img src="https://lh3.googleusercontent.com/d/1QqVJrDf_T483-XCUeA0_K1RlkVC6U03_" class="story-image" alt="Example">
+                        </div>
+                        <div class="image-wrapper">
+                            <div class="badge-number">1</div>
+                            <img src="https://lh3.googleusercontent.com/d/1BGH6C4AJsvbROh-sHXKrSvPid_6rF3sY" class="story-image" alt="Number 1">
+                        </div>
+                    </div>
+                    
+                    <p class="story-text">Example: Please <strong><u>sit on the sofa</u></strong>, and (1) <input type="text" class="input-zone" id="input-1" placeholder="....." data-answer="watch tv" autocomplete="off"></p>
+                </div>
+
+                <!-- Block 2: Study Room -->
+                <div class="quiz-row-block">
+                    <p class="story-text">Let's move to <u>the study room</u>.</p>
+                    
+                    <div class="images-row">
+                        <div class="image-wrapper">
+                            <div class="badge-number">2</div>
+                            <img src="https://lh3.googleusercontent.com/d/1jr7WUR-ucQfADhyWnlZrZnj9GD1P1Qla" class="story-image" alt="Number 2">
+                        </div>
+                        <div class="image-wrapper">
+                            <div class="badge-number">3</div>
+                            <img src="https://lh3.googleusercontent.com/d/1ccOHLrjuV8bayNz2aZYFg2oxPSGeWEPE" class="story-image" alt="Number 3">
+                        </div>
+                    </div>
+                    
+                    <p class="story-text">You can (2) <input type="text" class="input-zone" id="input-2" placeholder="....." data-answer="study" autocomplete="off"> or (3) <input type="text" class="input-zone" id="input-3" placeholder="....." data-answer="do homework" autocomplete="off"> here.</p>
+                </div>
+
+                <!-- Block 3: Dining Room -->
+                <div class="quiz-row-split">
+                    <div class="split-text">
+                        <p class="story-text">Now follow me to <u>dining room</u>. You can (4) <input type="text" class="input-zone" id="input-4" placeholder="....." data-answer="eat a cake" autocomplete="off"> there.</p>
+                    </div>
+                    <div class="split-image">
+                        <div class="image-wrapper">
+                            <div class="badge-number">4</div>
+                            <img src="https://lh3.googleusercontent.com/d/1ApG9iM93Fzbg20Yqwc_wrrMlY503I1fP" class="story-image" alt="Number 4">
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Block 4: Kitchen (Image on Left) -->
+                <div class="quiz-row-split">
+                    <div class="split-image">
+                        <div class="image-wrapper">
+                            <div class="badge-number">5</div>
+                            <img src="https://lh3.googleusercontent.com/d/1ngzITBoi6zEJeBqBUBVtuzza072N2plw" class="story-image" alt="Number 5">
+                        </div>
+                    </div>
+                    <div class="split-text">
+                        <p class="story-text">Next we go to <u>the kitchen</u>. I (5) <input type="text" class="input-zone" id="input-5" placeholder="....." data-answer="cook meals" autocomplete="off"> here.</p>
+                    </div>
+                </div>
+
+                <!-- Block 5: Garage -->
+                <div class="quiz-row-split">
+                    <div class="split-text">
+                        <p class="story-text">And finally, this is our <u>garage</u>. My father (6) <input type="text" class="input-zone" id="input-6" placeholder="....." data-answer="parks the car" autocomplete="off"> here.</p>
+                    </div>
+                    <div class="split-image">
+                        <div class="image-wrapper">
+                            <div class="badge-number">6</div>
+                            <img src="https://lh3.googleusercontent.com/d/1V5lirCwal9fwBm_5Hh19iGCjzFaJ9GO_" class="story-image" alt="Number 6">
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
+            <div class="btn-row">
+                <button class="reset-btn" onclick="resetQuiz()">
+                    <img src="https://lh3.googleusercontent.com/d/1fAmVV8TLq2mjlGmNpAAPe99HaG0M_V7R" alt="Reset">
+                </button>
+                <button class="check-btn" onclick="checkAnswers()">
+                    <img src="https://lh3.googleusercontent.com/d/1Z_q3WYuNnBo20_9mbhnN5MoC1-7pDhOp" alt="Check Answer">
+                </button>
+            </div>
+            
+            <div class="result-msg" id="result-msg"></div>
+        </div>
+    </div>
+
+    <!-- Audio Elements -->
+    <audio id="click-audio" src="../2_Look_and_write/assets/click.MP3" preload="auto"></audio>
+    <audio id="correct-audio" src="../3_My_daily_routine/ASSETS/correct_sound.MP3" preload="auto"></audio>
+    <audio id="wrong-audio" src="../2_Look_and_write/assets/incorrect_sound.MP3" preload="auto"></audio>
+    <audio id="typing-audio" src="../4_Say_and_write/typing.MP3" preload="auto"></audio>
+
+    <script src="script.js"></script>
+</body>
+</html>
