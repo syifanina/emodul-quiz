@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Say and Write - Guess the Room</title>
+    <link rel="stylesheet" href="style.css?v=1.0">
+    <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
+</head>
+
+<body>
+    <div class="page">
+        <img src="https://lh3.googleusercontent.com/d/1Wtb9UWtvVhVA13B0HLBagfyx1bD1LU5x" class="top-border"
+            alt="Top Border">
+        <img src="https://lh3.googleusercontent.com/d/19NE3XzidRxaYa56e4OBOdI38n3nYJhwK" class="bottom-border"
+            alt="Bottom Border">
+
+        <!-- Sticky Header conforming to ketentuan.md -->
+        <header class="module-header">
+            <!-- PNG Judul -->
+            <img src="assets/say_and_write.png" alt="Say and Write" class="title-badge">
+
+            <div class="instructions">
+                <p class="en" style="font-weight: 800; font-size: 13px; margin-bottom: 6px;">“Guess the Room” Game</p>
+                <p class="en" style="text-align: center; font-weight: 600; line-height: 1.4;">Type the correct room name
+                    into the empty boxes based on where the pointer is directing. Look at the example!</p>
+                <div class="separator"></div>
+                <p class="id" style="text-align: center; font-weight: 500;">Ketik nama ruangan yang benar di dalam kotak
+                    kosong sesuai arah penunjuk. Perhatikan contoh!</p>
+            </div>
+        </header>
+
+        <!-- Scrollable Content -->
+        <div class="scroll-content">
+            <div class="quiz-container">
+                <!-- Main House Image -->
+                <img src="assets/NEWEST.png" class="house-bg" alt="House Rooms">
+
+                <!-- SVG Overlay for pointers -->
+                <svg class="pointer-overlay" viewBox="0 0 1122 1402" preserveAspectRatio="none">
+                    <!-- Top Left to Study Room -->
+                    <polygon points="170,250 230,250 250,450" class="pointer-line" />
+                    <!-- Top Mid to Green Bedroom -->
+                    <polygon points="530,140 590,140 500,400" class="pointer-line" />
+                    <!-- Top Right to Bathroom -->
+                    <polygon points="890,250 950,250 950,450" class="pointer-line" />
+                    <!-- Example to Terrace -->
+                    <polygon points="150,630 210,630 150,850" class="pointer-line" />
+                    <!-- Mid Right to Kitchen -->
+                    <polygon points="910,630 970,630 900,800" class="pointer-line" />
+                    <!-- Bottom Left to Living Room -->
+                    <polygon points="170,1090 230,1090 350,850" class="pointer-line" />
+                    <!-- Bottom 2nd Left to Laundry Room -->
+                    <polygon points="240,1290 300,1290 450,1150" class="pointer-line" />
+                    <!-- Bottom 3rd to Dining Room -->
+                    <polygon points="600,1320 660,1320 650,850" class="pointer-line" />
+                    <!-- Bottom Right to Garage -->
+                    <polygon points="950,1290 1010,1290 850,1150" class="pointer-line" />
+                </svg>
+
+                <!-- Absolute positioned bubble inputs -->
+                <!-- Top Left -->
+                <div class="bubble-container" style="left: 18%; top: 18%;">
+                    <input type="text" class="bubble-input" data-answer="STUDY ROOM" maxlength="15" autocomplete="off"
+                        placeholder="Type...">
+                    <div class="answer-key">STUDY ROOM</div>
+                </div>
+
+                <!-- Top Mid -->
+                <div class="bubble-container" style="left: 50%; top: 10%;">
+                    <input type="text" class="bubble-input" data-answer="BEDROOM" maxlength="15" autocomplete="off"
+                        placeholder="Type...">
+                    <div class="answer-key">BEDROOM</div>
+                </div>
+
+                <!-- Top Right -->
+                <div class="bubble-container" style="left: 82%; top: 18%;">
+                    <input type="text" class="bubble-input" data-answer="BATHROOM" maxlength="15" autocomplete="off"
+                        placeholder="Type...">
+                    <div class="answer-key">BATHROOM</div>
+                </div>
+
+                <!-- Mid Left (EXAMPLE) -->
+                <div class="bubble-container example-bubble" style="left: 16%; top: 45%;">
+                    <div class="example-text">Example: Terrace</div>
+                </div>
+
+                <!-- Mid Right -->
+                <div class="bubble-container" style="left: 84%; top: 45%;">
+                    <input type="text" class="bubble-input" data-answer="KITCHEN" maxlength="15" autocomplete="off"
+                        placeholder="Type...">
+                    <div class="answer-key">KITCHEN</div>
+                </div>
+
+                <!-- Bottom Left -->
+                <div class="bubble-container" style="left: 18%; top: 78%;">
+                    <input type="text" class="bubble-input" data-answer="LIVING ROOM" maxlength="15" autocomplete="off"
+                        placeholder="Type...">
+                    <div class="answer-key">LIVING ROOM</div>
+                </div>
+
+                <!-- Bottom 2nd Left -->
+                <div class="bubble-container" style="left: 24%; top: 92%;">
+                    <input type="text" class="bubble-input" data-answer="LAUNDRY ROOM" maxlength="15" autocomplete="off"
+                        placeholder="Type...">
+                    <div class="answer-key">LAUNDRY ROOM</div>
+                </div>
+
+                <!-- Bottom 3rd -->
+                <div class="bubble-container" style="left: 56%; top: 94%;">
+                    <input type="text" class="bubble-input" data-answer="DINING ROOM" maxlength="15" autocomplete="off"
+                        placeholder="Type...">
+                    <div class="answer-key">DINING ROOM</div>
+                </div>
+
+                <!-- Bottom Right -->
+                <div class="bubble-container" style="left: 88%; top: 92%;">
+                    <input type="text" class="bubble-input" data-answer="GARAGE" maxlength="15" autocomplete="off"
+                        placeholder="Type...">
+                    <div class="answer-key">GARAGE</div>
+                </div>
+            </div>
+
+            <!-- Buttons -->
+            <div class="btn-row">
+                <button class="reset-btn" id="resetBtn">
+                    <img src="assets/reset.png" alt="Reset">
+                </button>
+                <button class="check-btn" id="checkBtn">
+                    <img src="assets/check_answer.png" alt="Check Answer">
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Audio Elements -->
+    <audio id="audioTyping" src="assets/typing.MP3" preload="auto"></audio>
+    <audio id="audioClick" src="assets/click.MP3" preload="auto"></audio>
+    <audio id="audioCorrect" src="assets/correct_sound.MP3" preload="auto"></audio>
+    <audio id="audioIncorrect" src="assets/incorrect_sound.MP3" preload="auto"></audio>
+
+    <script src="script.js"></script>
+</body>
+
+</html>
