@@ -1,9 +1,19 @@
-@import url('https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700&family=Quicksand:wght@300..700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&family=Outfit:wght@400;500;600;700&family=Quicksand:wght@300..700&display=swap');
+
+:root {
+    --primary-color: #ff0000;
+    --bg-color: #e8e8e8;
+    --card-bg: #ffffff;
+    --text-color: #333;
+    --radius: 12px;
+    --transition: all 0.2s ease;
+}
 
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
+    -webkit-tap-highlight-color: transparent;
 }
 
 html,
@@ -12,14 +22,15 @@ body {
     max-width: 100%;
     overflow-x: hidden;
     overflow-y: auto; /* Biarkan scroll manual pengguna */
-    /* Disable manual default scrolling */
+    /* Matikan scroll manual pengguna */
     background: transparent;
     scroll-behavior: smooth;
+    /* Sembunyikan scrollbar agar tidak double scroll di Genially */
     -ms-overflow-style: none;
     /* IE and Edge */
     scrollbar-width: none;
     /* Firefox */
-    /* Allow vertical scrolling on content */
+    /* Izinkan scroll vertikal */
 }
 
 body::-webkit-scrollbar {
@@ -27,38 +38,38 @@ body::-webkit-scrollbar {
     /* Chrome, Safari, Opera */
 }
 
+
+
 body {
-    font-family: 'Outfit', 'Quicksand', sans-serif;
-    font-size: 14px;
+    font-family: 'Outfit', 'Quicksand', 'Inter', sans-serif;
     display: flex;
     justify-content: center;
     min-height: 100vh;
 }
 
-/* ── MOBILE CONTAINER (Aligned with project style) ── */
+/* ── MOBILE-STYLE CONTAINER (Max-Width: 360px) ── */
 .page {
-    background: #fdfefe;
-    /* Soft premium background */
+    background: #ffffff;
     width: 100%;
     max-width: 360px;
     min-height: 100vh;
-    /* Lock height to iframe */
+    /* Kunci tinggi sesuai layar/iframe */
     display: flex;
     flex-direction: column;
     align-items: center;
     position: relative;
     overflow-x: hidden;
-    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
 }
 
-/* ── STICKY MODULE HEADER ── */
+/* ── MODULE HEADER (Sticky) ── */
 .module-header {
     width: 100%;
     display: flex;
     flex-direction: column;
     align-items: center;
     padding: 24px 16px 10px 16px;
-    background: #ffffff;
+    background: #fff;
+    /* Pastikan background solid agar konten di bawahnya tidak terlihat saat scroll */
     z-index: 100;
     flex-shrink: 0;
 }
@@ -79,23 +90,22 @@ body {
 }
 
 .instructions .en {
-    font-size: 13px;
+    font-size: 14px;
     font-weight: 600;
     color: #1e293b;
-    line-height: 1.4;
+    margin-bottom: 4px;
 }
 
 .instructions .separator {
     width: 100%;
     border-top: 2px dotted #93c5fd;
-    margin: 6px 0;
+    margin: 8px 0;
 }
 
 .instructions .id {
-    font-size: 12px;
-    font-weight: 500;
-    color: #64748b;
-    line-height: 1.4;
+    font-size: 14px;
+    font-weight: 400;
+    color: #475569;
 }
 
 /* ── SCROLLABLE CONTENT ── */
@@ -103,360 +113,174 @@ body {
     width: 100%;
     flex-grow: 1;
     
-    padding: 16px 14px 24px 14px;
+    padding: 0 16px 24px 16px;
     display: flex;
     flex-direction: column;
     align-items: center;
     
     scrollbar-width: none;
+    /* Firefox */
 }
 
 .scroll-content::-webkit-scrollbar {
     display: none;
+    /* Chrome, Safari */
 }
 
-/* ── EXAMPLE SECTION ── */
-.example-section {
-    width: 100%;
-    margin-bottom: 16px;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-}
-
-.example-label-tag {
-    font-size: 11px;
-    font-weight: 800;
-    color: #ef4444;
-    background: #fee2e2;
-    padding: 2px 10px;
-    border-radius: 12px;
-    letter-spacing: 0.5px;
-    margin-bottom: 8px;
-}
-
-.example-block {
-    background: #fdf8e2 !important;
-    /* Soft gold background for example */
-    border: 2px dashed #facc15 !important;
-    max-width: 200px;
-}
-
-.example-text {
-    font-weight: 700 !important;
-    color: #a16207 !important;
-}
-
-/* ── QUIZ GRID ── */
-.quiz-grid {
+.grid-container {
     display: grid;
-    grid-template-columns: repeat(2, 1fr);
+    grid-template-columns: 1fr 1fr;
     gap: 12px;
     width: 100%;
-    margin-bottom: 20px;
 }
 
-/* ── QUIZ BLOCK CARD ── */
-.quiz-block {
-    background: #ffffff;
-    border: 1.5px solid #e2e8f0;
-    border-radius: 12px;
-    padding: 8px 6px;
+.action-card {
+    background: var(--card-bg);
+    border-radius: var(--radius);
+    padding: 8px;
+    transition: var(--transition);
+    cursor: pointer;
     display: flex;
     flex-direction: column;
     align-items: center;
     position: relative;
-    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-    box-shadow: 0 2px 4px -1px rgba(0, 0, 0, 0.02);
+    overflow: hidden;
+    border: 2px solid #f1f2f6;
+    /* Solid border instead of dashed for a cleaner feel */
 }
 
-.quiz-block:hover {
+.action-card:hover {
     transform: translateY(-2px);
-    box-shadow: 0 8px 16px -4px rgba(0, 0, 0, 0.05);
+    border-color: #cbd5e1;
 }
 
-/* ── CARD STATES (Correct / Incorrect / Checking) ── */
-.quiz-block.correct {
-    border-color: #22c55e !important;
-    background: #f0fdf4 !important;
-    box-shadow: 0 0 15px rgba(34, 197, 94, 0.15) !important;
+.action-card.playing {
+    border: 2px solid #ffb9d6;
+    background: #fff5f8;
 }
 
-.quiz-block.incorrect {
-    border-color: #ef4444 !important;
-    background: #fdf2f2 !important;
-    box-shadow: 0 0 15px rgba(239, 68, 68, 0.15) !important;
+.image-wrapper {
+    width: 100%;
+    aspect-ratio: 1;
+    background: #f1f2f6;
+    border-radius: 8px;
+    margin-bottom: 8px;
+    position: relative;
+    overflow: hidden;
 }
 
-.quiz-block.checking {
-    transform: scale(1.02);
-    border-color: #3b82f6 !important;
-    box-shadow: 0 0 20px rgba(59, 130, 246, 0.25) !important;
+.action-image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: var(--transition);
+    border-radius: 8px;
 }
 
-/* ── BADGE FOR QUESTIONS ── */
-.img-badge {
+/* ── SOUND BUTTON (Matching Read_and_say_1) ── */
+.sound-btn {
     position: absolute;
-    top: 10px;
-    left: -4px;
-    background: #ef4444;
+    top: 6px;
+    right: 6px;
+    width: 28px;
+    height: 28px;
+    border-radius: 50%;
+    background: #ff0000;
+    border: 2px solid #fff;
     color: white;
-    font-weight: 800;
-    padding: 3px 8px;
-    font-size: 11px;
-    border-radius: 4px 4px 4px 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: var(--transition);
     z-index: 10;
 }
 
-.img-badge::after {
-    content: "";
-    position: absolute;
-    bottom: -6px;
-    left: 0;
-    border-top: 6px solid #b91c1c;
-    border-left: 6px solid transparent;
+.sound-btn svg {
+    width: 14px;
+    height: 14px;
+    fill: currentColor;
 }
 
-/* ── CLOCK RENDERING ── */
-.clock-container {
-    width: 100px;
-    height: 100px;
-    margin-bottom: 4px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    position: relative;
+.sound-btn:hover {
+    transform: scale(1.1);
 }
 
-.clock-svg {
+/* ── TEXT STYLE (Matching Read_and_say_1) ── */
+.text-wrapper {
     width: 100%;
-    height: 100%;
-    filter: drop-shadow(0 4px 6px rgba(0, 0, 0, 0.08));
-}
-
-/* Wood-style Outer Rim */
-.clock-rim {
-    fill: #eae6df;
-    stroke: #b3a492;
-    stroke-width: 4px;
-}
-
-/* Smooth Clock Face */
-.clock-face {
-    fill: #fcfbf9;
-}
-
-/* Center Pin */
-.clock-pin {
-    fill: #334155;
-}
-
-/* Clock numbers */
-.clock-number {
-    font-family: 'Outfit', sans-serif;
-    font-size: 14px;
-    font-weight: 700;
-    fill: #475569;
-    text-anchor: middle;
-    dominant-baseline: central;
-    user-select: none;
-}
-
-/* SLEEK CLOCK HANDS */
-.hour-hand {
-    stroke: #ef4444;
-    /* Vivid Red Hour Hand */
-    stroke-width: 5px;
-    stroke-linecap: round;
-}
-
-.minute-hand {
-    stroke: #3b82f6;
-    /* Ocean Blue Minute Hand */
-    stroke-width: 3.5px;
-    stroke-linecap: round;
-}
-
-/* INTERACTIVE HAND GROUPS */
-.hand-group {
-    transform-origin: 100px 100px;
-    pointer-events: none;
-    /* SVG elements ignore mouse/touch interactions */
-}
-
-/* ── QUICK ROTATE CONTROLS ── */
-.control-row {
-    display: flex;
-    gap: 4px;
-    margin-bottom: 4px;
-    width: 100%;
-    justify-content: center;
-}
-
-.rotate-btn {
-    border: 1px solid;
-    padding: 2px 5px;
-    font-size: 8px;
-    font-weight: 700;
-    border-radius: 12px;
-    cursor: pointer;
-    background: #ffffff;
-    display: flex;
-    align-items: center;
-    gap: 2px;
-    transition: all 0.2s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-    outline: none;
-    white-space: nowrap;
-}
-
-.btn-hour {
-    color: #ef4444;
-    border-color: #fca5a5;
-}
-
-.btn-hour:hover {
-    background: #fef2f2;
-}
-
-.btn-hour:active {
-    transform: scale(0.92);
-}
-
-.btn-minute {
-    color: #3b82f6;
-    border-color: #93c5fd;
-}
-
-.btn-minute:hover {
-    background: #eff6ff;
-}
-
-.btn-minute:active {
-    transform: scale(0.92);
-}
-
-/* Rotate indicator animation */
-.rotate-btn .icon {
-    font-size: 10px;
-    transition: transform 0.3s;
-}
-
-.rotate-btn:hover .icon {
-    transform: rotate(360deg);
-}
-
-/* Disabled Controls */
-.rotate-btn.disabled {
-    opacity: 0.4;
-    pointer-events: none;
-    cursor: not-allowed;
-}
-
-/* ── TIME LABELS BELOW CLOCK ── */
-.time-label {
-    font-size: 11px;
-    font-weight: 600;
-    color: #334155;
     text-align: center;
-    line-height: 1.3;
-    margin-top: 2px;
-    width: 100%;
+}
+
+.action-text {
+    font-size: 13px;
+    font-weight: 650;
+    color: #333;
     padding: 2px 4px;
     border-radius: 6px;
-}
-
-/* ── MAIN BOTTOM CONTROL ROW ── */
-.btn-row {
-    display: flex;
-    gap: 12px;
-    justify-content: center;
-    align-items: center;
-    margin-top: 15px;
-    margin-bottom: 12px;
-    width: 100%;
-}
-
-.reset-btn,
-.check-btn {
-    background: transparent;
-    border: none;
-    padding: 0;
-    cursor: pointer;
-    transition: transform 0.2s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    outline: none;
-}
-
-.reset-btn img,
-.check-btn img {
-    height: 40px;
-    width: auto;
-    max-width: 100%;
+    transition: var(--transition);
     display: block;
+    line-height: 1.2;
 }
 
-.reset-btn:hover,
-.check-btn:hover {
-    transform: scale(1.08);
+/* ── HIGHLIGHT COLORS (Cycling pattern like Read_and_say_1) ── */
+.action-card:nth-child(6n+1).playing {
+    border-color: #ffb9d6;
+    background: #fff5f8;
 }
 
-.reset-btn:active,
-.check-btn:active {
-    transform: scale(0.95);
+.action-card:nth-child(6n+1).playing .action-text {
+    background: #ffb9d6;
 }
 
-/* ── RESULT & SCORING BANNERS ── */
-.result-msg {
-    text-align: center;
-    font-size: 13.5px;
-    font-weight: 700;
-    min-height: 24px;
-    color: #1e293b;
-    width: 100%;
-    padding: 4px 12px;
-    margin-bottom: 24px;
-    border-radius: 10px;
+.action-card:nth-child(6n+2).playing {
+    border-color: #93eeff;
+    background: #f0f9ff;
 }
 
-/* Interactive Feedback Checkmarks in cards */
-.feedback-badge {
-    position: absolute;
-    bottom: -6px;
-    right: -6px;
-    width: 22px;
-    height: 22px;
-    border-radius: 50%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-weight: 900;
-    font-size: 12px;
-    color: white;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
-    animation: badgePop 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275) both;
+.action-card:nth-child(6n+2).playing .action-text {
+    background: #93eeff;
 }
 
-.badge-correct {
-    background: #22c55e;
+.action-card:nth-child(6n+3).playing {
+    border-color: #b2ffe1;
+    background: #f0fff4;
 }
 
-.badge-incorrect {
-    background: #ef4444;
+.action-card:nth-child(6n+3).playing .action-text {
+    background: #b2ffe1;
 }
 
-/* ── ANIMATIONS ── */
-@keyframes badgePop {
-    0% {
-        transform: scale(0);
-        opacity: 0;
-    }
+.action-card:nth-child(6n+4).playing {
+    border-color: #dcd1ff;
+    background: #f5f3ff;
+}
 
-    100% {
-        transform: scale(1);
-        opacity: 1;
-    }
+.action-card:nth-child(6n+4).playing .action-text {
+    background: #dcd1ff;
+}
+
+.action-card:nth-child(6n+5).playing {
+    border-color: #ffc58f;
+    background: #fffaf5;
+}
+
+.action-card:nth-child(6n+5).playing .action-text {
+    background: #ffc58f;
+}
+
+.action-card:nth-child(6n+6).playing {
+    border-color: #bdfcba;
+    background: #f7fee7;
+}
+
+.action-card:nth-child(6n+6).playing .action-text {
+    background: #bdfcba;
+}
+
+/* Pulse effect removed for solid feel */
+.action-card.playing .sound-btn {
+    transform: scale(1.1);
 }
 
 @media (max-width: 360px) {
