@@ -1,22 +1,9 @@
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&family=Outfit:wght@400;500;600;700&family=Quicksand:wght@300..700&display=swap');
 
-:root {
-    --bg-color: #e8e8e8;
-    --card-bg: #ffffff;
-    --text-color: #333;
-    --radius-lg: 20px;
-    --radius-md: 12px;
-    --shadow: 0 8px 30px rgba(0, 0, 0, 0.04);
-    --transition: all 0.3s ease;
-    --accent-red: #E53E3E;
-    --accent-blue: #3182CE;
-}
-
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-    -webkit-tap-highlight-color: transparent;
 }
 
 html,
@@ -25,21 +12,25 @@ body {
     max-width: 100%;
     overflow-x: hidden;
     overflow-y: auto; /* Biarkan scroll manual pengguna */
+    /* Matikan scroll manual pengguna */
     background: transparent;
     scroll-behavior: smooth;
     /* Sembunyikan scrollbar agar tidak double scroll di Genially */
-    -ms-overflow-style: none;  /* IE and Edge */
-    scrollbar-width: none;  /* Firefox */
+    -ms-overflow-style: none;
+    /* IE and Edge */
+    scrollbar-width: none;
+    /* Firefox */
+    /* Izinkan scroll vertikal */
 }
 
 body::-webkit-scrollbar {
-    display: none; /* Chrome, Safari, Opera */
+    display: none;
+    /* Chrome, Safari, Opera */
 }
 
-
-
 body {
-    font-family: 'Outfit', 'Quicksand', 'Inter', sans-serif;
+    font-family: 'Outfit', 'Quicksand', sans-serif;
+    font-size: 14px;
     display: flex;
     justify-content: center;
     min-height: 100vh;
@@ -47,10 +38,11 @@ body {
 
 /* ── MOBILE-STYLE CONTAINER (Max-Width: 360px) ── */
 .page {
-    background: #ffffff;
+    background: transparent;
     width: 100%;
     max-width: 360px;
-    min-height: 100vh; /* Kunci tinggi sesuai layar/iframe */
+    min-height: 100vh;
+    /* Kunci tinggi sesuai layar/iframe */
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -65,7 +57,8 @@ body {
     flex-direction: column;
     align-items: center;
     padding: 24px 16px 10px 16px;
-    background: #fff; /* Pastikan background solid agar konten di bawahnya tidak terlihat saat scroll */
+    background: #fff;
+    /* Pastikan background solid agar konten di bawahnya tidak terlihat saat scroll */
     z-index: 100;
     flex-shrink: 0;
 }
@@ -75,9 +68,10 @@ body {
     max-width: 280px;
     height: auto;
     margin-bottom: 8px;
+    /* Menggunakan 8px sesuai permintaan */
 }
 
-.instructions-container {
+.instructions {
     width: 100%;
     display: flex;
     flex-direction: column;
@@ -85,61 +79,23 @@ body {
     text-align: center;
 }
 
-.main-heading {
-    font-size: 18px;
-    font-weight: 800;
-    color: var(--accent-red);
-    margin-bottom: 6px;
-    letter-spacing: 0.5px;
-}
-
-.en-instructions {
-    margin-bottom: 4px;
-}
-
-.en-main {
+.instructions .en {
     font-size: 14px;
     font-weight: 600;
     color: #1e293b;
-    text-align: center;
+    margin-bottom: 4px;
 }
 
-.en-sub {
-    font-size: 12.5px;
-    font-weight: 500;
-    color: #475569;
-    list-style-type: none;
-    padding-left: 0;
-    text-align: center;
-    margin-top: 4px;
-}
-
-.en-sub li {
-    margin-bottom: 2px;
-}
-
-.separator {
+.instructions .separator {
     width: 100%;
     border-top: 2px dotted #93c5fd;
     margin: 8px 0;
 }
 
-.id-instructions {
-    font-size: 12.5px;
-    color: #475569;
-    line-height: 1.4;
-    text-align: center;
-}
-
-.id-main {
-    font-weight: 600;
-    color: #475569;
-}
-
-.id-sub {
+.instructions .id {
+    font-size: 14px;
     font-weight: 400;
-    color: #64748b;
-    margin-top: 2px;
+    color: #475569;
 }
 
 /* ── SCROLLABLE CONTENT ── */
@@ -152,342 +108,174 @@ body {
     flex-direction: column;
     align-items: center;
     
-    scrollbar-width: none; /* Firefox */
+    scrollbar-width: none;
+    /* Firefox */
 }
 
 .scroll-content::-webkit-scrollbar {
     display: none;
+    /* Chrome, Safari */
 }
 
-.content-container {
+/* ── MODULE TITLE ── */
+.module-title {
+    font-size: 18px;
+    font-weight: 700;
+    text-align: center;
+    margin-bottom: 5px;
+    /* Dikurangi drastis */
+    color: #1e293b;
     width: 100%;
-    display: flex;
-    flex-direction: column;
-    gap: 20px;
-    padding-bottom: 24px;
+    flex-shrink: 0;
 }
 
-/* ── CARDS ── */
-.display-card {
-    width: 100%;
-    background: var(--card-bg);
-    border-radius: var(--radius-lg);
-    border: 3px solid #FFF5F5;
-    box-shadow: var(--shadow);
-    padding: 16px;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
+/* ── IMAGE CONTAINER ── */
+.image-container {
     position: relative;
+    width: 100%;
+    margin: 5px 0 16px 0;
+    /* Margin atas dikurangi agar mepet judul */
+    border-radius: 20px;
     overflow: hidden;
+    border: 5px solid #cbd5e1;
+    /* Kembali ke solid yang jelas dan clean */
+    z-index: 5;
+    flex-shrink: 0;
 }
 
-.boy-card {
-    border-color: #EBF8FF;
-    /* Light blue border for boy card */
+.image-container .main-gif {
+    width: 100%;
+    display: block;
+    object-fit: cover;
 }
 
-.clock-card {
-    border-color: #FEFCBF;
-    /* Light yellow border for clock card */
-}
 
-.girl-card {
-    background: transparent !important;
-    border: none !important;
-    box-shadow: none !important;
-    padding: 8px 0 0 0 !important;
-    transition: var(--transition);
-}
-
-.girl-card.playing {
-    background: transparent !important;
-}
-
-.girl-card .illustration-wrapper {
-    aspect-ratio: 580 / 416 !important;
-    background: transparent !important;
-}
-
-.girl-card .sound-btn {
-    top: 10px;
-    right: 10px;
-}
-
-/* ── SOUND BUTTON (Matching other modules) ── */
+/* ── SOUND BUTTON ── */
 .sound-btn {
     position: absolute;
-    top: 6px;
-    right: 6px;
-    width: 28px;
-    height: 28px;
-    border-radius: 50%;
+    top: 8px;
+    right: 8px;
     background: #ff0000;
-    border: 2px solid #fff;
+    /* Sama seperti say_and_do_1 */
     color: white;
+    border: 2px solid #fff;
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    cursor: pointer;
     display: flex;
     align-items: center;
     justify-content: center;
-    cursor: pointer;
-    transition: var(--transition);
-    z-index: 10;
-}
-
-.sound-btn svg {
-    width: 14px;
-    height: 14px;
-    fill: currentColor;
+    transition: all 0.2s ease;
+    z-index: 20;
 }
 
 .sound-btn:hover {
     transform: scale(1.1);
 }
 
-.card-subtitle {
-    font-size: 15px;
-    font-weight: 800;
-    color: var(--accent-red);
-    margin-bottom: 4px;
-    align-self: flex-start;
+.sound-btn svg {
+    width: 16px;
+    height: 16px;
+    fill: currentColor;
 }
 
-.card-description-en {
-    font-size: 13px;
-    font-weight: 600;
-    color: #4A5568;
-    margin-bottom: 12px;
-    align-self: flex-start;
-    line-height: 1.4;
-}
-
-/* ── ILLUSTRATION WRAPPER ── */
-.illustration-wrapper {
-    position: relative;
+/* ── PHRASE TABLE ── */
+.phrase-table {
     width: 100%;
-    aspect-ratio: 1;
-    background: #FFFDF9;
-    border-radius: var(--radius-md);
-    overflow: visible;
-    /* Allow callouts to hang slightly off edges */
+    border-collapse: separate;
+    border-spacing: 0 10px;
+    margin-top: 0;
 }
 
-.illustration-img {
+.phrase-table td {
     width: 100%;
-    height: 100%;
-    object-fit: contain;
-    border-radius: var(--radius-md);
+    vertical-align: middle;
 }
 
-/* ── BOY LABELS ── */
-.label-indicator {
-    position: absolute;
-    font-family: 'Quicksand', sans-serif;
+.phrase {
+    width: 100%;
+    min-height: 23px;
+    padding: 0 16px;
+    margin: 0 auto;
     font-size: 14px;
+    font-weight: 500;
+    /* Normal agar lebih clean */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 8px;
+    border: none;
+    color: #333;
+    cursor: pointer;
+    white-space: nowrap;
+}
+
+/* Base Pastel Colors */
+tr:nth-child(6n+1) .phrase {
+    background: #fff5f8;
+}
+
+tr:nth-child(6n+2) .phrase {
+    background: #f0f9ff;
+}
+
+tr:nth-child(6n+3) .phrase {
+    background: #f0fff4;
+}
+
+tr:nth-child(6n+4) .phrase {
+    background: #f5f3ff;
+}
+
+tr:nth-child(6n+5) .phrase {
+    background: #fffaf5;
+}
+
+tr:nth-child(6n+6) .phrase {
+    background: #f7fee7;
+}
+
+.phrase:hover {
+    background: #ffffff !important;
+    transform: translateY(-2px);
+}
+
+/* ── FUN HIGHLIGHT STATE (Warna-Warni) ── */
+.phrase.active {
+    color: #000 !important;
     font-weight: 700;
-    color: #7B341E;
-    text-transform: lowercase;
-    background: rgba(254, 235, 200, 0.9);
-    padding: 2px 8px;
-    border-radius: 20px;
-    border: 1.5px solid #F6AD55;
-    pointer-events: none;
-    transform: translateX(-50%);
+    /* Menjadi bold hanya saat sound nyala */
+    transform: scale(1.04);
     z-index: 5;
 }
 
-.text-right-hand {
-    top: 9%;
-    left: 28%;
+/* Cycle through 6 fun highlight colors */
+tr:nth-child(6n+1) .phrase.active {
+    background: #ffb9d6 !important;
 }
 
-.text-left-hand {
-    top: 9%;
-    left: 72%;
+tr:nth-child(6n+2) .phrase.active {
+    background: #93eeff !important;
 }
 
-/* ── POINTER BUBBLES ── */
-.pointer-bubble {
-    position: absolute;
-    background: #ffffff;
-    border: 2.5px solid #2C3E50;
-    border-radius: 12px;
-    width: 74px;
-    height: 56px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    z-index: 10;
+tr:nth-child(6n+3) .phrase.active {
+    background: #b2ffe1 !important;
 }
 
-.bubble-text {
-    font-family: Arial, Helvetica, sans-serif;
-    font-size: 13.5px;
-    font-weight: bold;
-    color: #2C3E50;
-    text-align: center;
-    line-height: 1.2;
-    display: block;
+tr:nth-child(6n+4) .phrase.active {
+    background: #dcd1ff !important;
 }
 
-/* ── BUBBLE TAILS FOR BOY ── */
-.bubble-tail {
-    position: absolute;
-    width: 0;
-    height: 0;
-    border-style: solid;
+tr:nth-child(6n+5) .phrase.active {
+    background: #ffc58f !important;
 }
 
-/* Tail pointing RIGHT (for Minute Hand bubble on our left) */
-.tail-right {
-    top: 50%;
-    right: -10px;
-    transform: translateY(-50%);
-    border-width: 6px 0 6px 10px;
-    border-color: transparent transparent transparent #2D3748;
+tr:nth-child(6n+6) .phrase.active {
+    background: #bdfcba !important;
 }
 
-.tail-right::after {
-    content: '';
-    position: absolute;
-    top: -5px;
-    right: 2px;
-    width: 0;
-    height: 0;
-    border-style: solid;
-    border-width: 5px 0 5px 8px;
-    border-color: transparent transparent transparent #ffffff;
-}
-
-/* Tail pointing LEFT (for Hour Hand bubble on our right) */
-.tail-left {
-    top: 50%;
-    left: -10px;
-    transform: translateY(-50%);
-    border-width: 6px 10px 6px 0;
-    border-color: transparent #2D3748 transparent transparent;
-}
-
-.tail-left::after {
-    content: '';
-    position: absolute;
-    top: -5px;
-    left: 2px;
-    width: 0;
-    height: 0;
-    border-style: solid;
-    border-width: 5px 8px 5px 0;
-    border-color: transparent #ffffff transparent transparent;
-}
-
-/* ── BOY BUBBLE POSITIONS ── */
-.bubble-boy-minute {
-    top: 36%;
-    left: 5%;
-}
-
-.bubble-boy-hour {
-    top: 36%;
-    right: 5%;
-}
-
-/* ── CLOCK BUBBLE POSITIONS ── */
-.bubble-clock-minute {
-    top: 30%;
-    left: 4%;
-}
-
-.bubble-clock-hour {
-    top: 72%;
-    right: 6%;
-}
-
-.bubble-girl-time {
-    top: 38%;
-    right: 8%;
-    border-color: #2F855A !important;
-}
-
-.text-green {
-    color: #2F855A !important;
-}
-
-/* ── LINE POINTERS FOR CLOCK ── */
-.pointers-overlay {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    pointer-events: none;
-    overflow: visible;
-    z-index: 9;
-}
-
-/* ── CARD DIVIDER ── */
-.card-divider {
-    width: 100%;
-    border-top: 2px dashed #CBD5E0;
-    margin: 4px 0;
-}
-
-/* ── EXERCISE SECTION ── */
-.exercise-section {
-    width: 100%;
-    display: flex;
-    flex-direction: column;
-    gap: 12px;
-    padding: 0 4px 12px 4px;
-}
-
-.exercise-section-title {
-    font-size: 16px;
-    font-weight: 850;
-    color: #2B6CB0;
-    text-align: center;
-    text-transform: uppercase;
-    letter-spacing: 1px;
-    margin-bottom: 4px;
-}
-
-.exercise-list {
-    width: 100%;
-    display: flex;
-    flex-direction: column;
-    gap: 10px;
-}
-
-.exercise-item {
-    background: #ffffff;
-    border: 2px solid #E2E8F0;
-    border-radius: var(--radius-md);
-    padding: 10px 14px;
-    display: flex;
-    align-items: center;
-    gap: 12px;
-}
-
-.exercise-num {
-    width: 28px;
-    height: 28px;
-    background: linear-gradient(135deg, #FF6B6B 0%, #FF8E53 100%);
-    color: white;
-    border-radius: 50%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-size: 14px;
-    font-weight: bold;
-    flex-shrink: 0;
-}
-
-.exercise-text {
-    font-size: 12.5px;
-    font-weight: 600;
-    color: #2D3748;
-    line-height: 1.4;
-}
-
-/* ── RESPONSIVE DESIGN TWEAKS ── */
+/* Responsive adjustments */
 @media (max-width: 360px) {
     .page {
         box-shadow: none;
@@ -513,6 +301,8 @@ body {
     z-index: 9999 !important;
     pointer-events: none !important;
 }
+
+
 
 /* -- HEADER OVERRIDE FOR BORDERS -- */
 .module-header {
