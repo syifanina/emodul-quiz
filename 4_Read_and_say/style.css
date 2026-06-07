@@ -141,12 +141,51 @@ body {
     /* Kembali ke solid yang jelas dan clean */
     z-index: 5;
     flex-shrink: 0;
+    background: linear-gradient(135deg, #e2e8f0, #f1f5f9);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/* Aspect ratio placeholder when image is empty */
+.image-container:not(:has(.main-gif[src]:not([src=""]))) {
+    aspect-ratio: 4 / 3;
+}
+
+.image-container::before {
+    content: '⏰';
+    font-size: 54px;
+    filter: drop-shadow(0 4px 6px rgba(0, 0, 0, 0.1));
+    animation: float-clock 3s ease-in-out infinite;
+}
+
+@keyframes float-clock {
+
+    0%,
+    100% {
+        transform: translateY(0) rotate(0deg);
+    }
+
+    50% {
+        transform: translateY(-8px) rotate(5deg);
+    }
+}
+
+/* Hide clock placeholder if image has src */
+.image-container:has(.main-gif[src]:not([src=""]))::before {
+    display: none;
 }
 
 .image-container .main-gif {
     width: 100%;
     display: block;
     object-fit: cover;
+}
+
+/* Hide broken image icon when src is empty */
+.main-gif[src=""],
+.main-gif:not([src]) {
+    display: none;
 }
 
 
@@ -196,7 +235,7 @@ body {
 .phrase {
     width: 100%;
     min-height: 23px;
-    padding: 0 16px;
+    padding: 6px 16px;
     margin: 0 auto;
     font-size: 14px;
     font-weight: 500;
@@ -204,11 +243,14 @@ body {
     display: flex;
     align-items: center;
     justify-content: center;
+    text-align: center;
     border-radius: 8px;
     border: none;
     color: #333;
     cursor: pointer;
-    white-space: nowrap;
+    white-space: normal;
+    word-wrap: break-word;
+    line-height: 1.3;
 }
 
 /* Base Pastel Colors */
@@ -301,8 +343,6 @@ tr:nth-child(6n+6) .phrase.active {
     z-index: 9999 !important;
     pointer-events: none !important;
 }
-
-
 
 /* -- HEADER OVERRIDE FOR BORDERS -- */
 .module-header {
