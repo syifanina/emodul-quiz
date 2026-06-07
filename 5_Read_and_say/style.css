@@ -1,0 +1,319 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&family=Outfit:wght@400;500;600;700&family=Quicksand:wght@300..700&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html,
+body {
+    width: 100%;
+    max-width: 100%;
+    overflow-x: hidden;
+    overflow-y: auto; /* Biarkan scroll manual pengguna */
+    /* Matikan scroll manual pengguna */
+    background: transparent;
+    scroll-behavior: smooth;
+    /* Sembunyikan scrollbar agar tidak double scroll di Genially */
+    -ms-overflow-style: none;
+    /* IE and Edge */
+    scrollbar-width: none;
+    /* Firefox */
+    /* Izinkan scroll vertikal */
+}
+
+body::-webkit-scrollbar {
+    display: none;
+    /* Chrome, Safari, Opera */
+}
+
+body {
+    font-family: 'Outfit', 'Quicksand', sans-serif;
+    font-size: 14px;
+    display: flex;
+    justify-content: center;
+    min-height: 100vh;
+}
+
+/* ── MOBILE-STYLE CONTAINER (Max-Width: 360px) ── */
+.page {
+    background: transparent;
+    width: 100%;
+    max-width: 360px;
+    min-height: 100vh;
+    /* Kunci tinggi sesuai layar/iframe */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    position: relative;
+    overflow-x: hidden;
+}
+
+/* ── MODULE HEADER (Sticky) ── */
+.module-header {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 24px 16px 10px 16px;
+    background: #fff;
+    /* Pastikan background solid agar konten di bawahnya tidak terlihat saat scroll */
+    z-index: 100;
+    flex-shrink: 0;
+}
+
+.title-badge {
+    width: 90%;
+    max-width: 280px;
+    height: auto;
+    margin-bottom: 8px;
+    /* Menggunakan 8px sesuai permintaan */
+}
+
+.instructions {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+}
+
+.instructions .en {
+    font-size: 14px;
+    font-weight: 600;
+    color: #1e293b;
+    margin-bottom: 4px;
+}
+
+.instructions .separator {
+    width: 100%;
+    border-top: 2px dotted #93c5fd;
+    margin: 8px 0;
+}
+
+.instructions .id {
+    font-size: 14px;
+    font-weight: 400;
+    color: #475569;
+}
+
+/* ── SCROLLABLE CONTENT ── */
+.scroll-content {
+    width: 100%;
+    flex-grow: 1;
+    
+    padding: 0 16px 24px 16px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    
+    scrollbar-width: none;
+    /* Firefox */
+}
+
+.scroll-content::-webkit-scrollbar {
+    display: none;
+    /* Chrome, Safari */
+}
+
+/* ── MODULE TITLE ── */
+.module-title {
+    font-size: 14px;
+    font-weight: 700;
+    text-align: center;
+    margin-bottom: 5px;
+    /* Dikurangi drastis */
+    color: #1e293b;
+    width: 100%;
+    flex-shrink: 0;
+}
+
+/* ── IMAGE CONTAINER ── */
+.image-container {
+    position: relative;
+    width: 100%;
+    margin: 5px 0 16px 0;
+    /* Margin atas dikurangi agar mepet judul */
+    border-radius: 20px;
+    overflow: hidden;
+    border: 5px solid #cbd5e1;
+    /* Kembali ke solid yang jelas dan clean */
+    z-index: 5;
+    flex-shrink: 0;
+}
+
+.image-container .main-gif {
+    width: 100%;
+    display: block;
+    object-fit: cover;
+}
+
+
+/* ── SOUND BUTTON ── */
+.sound-btn {
+    position: absolute;
+    top: 8px;
+    right: 8px;
+    background: #ff0000;
+    /* Sama seperti say_and_do_1 */
+    color: white;
+    border: 2px solid #fff;
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.2s ease;
+    z-index: 20;
+}
+
+.sound-btn:hover {
+    transform: scale(1.1);
+}
+
+.sound-btn svg {
+    width: 16px;
+    height: 16px;
+    fill: currentColor;
+}
+
+/* ── PHRASE TABLE ── */
+.phrase-table {
+    width: 100%;
+    border-collapse: separate;
+    border-spacing: 0 10px;
+    margin-top: 0;
+}
+
+.phrase-table td {
+    width: 100%;
+    vertical-align: middle;
+}
+
+.phrase {
+    width: 90%;
+    min-height: unset;
+    padding: 4px 16px;
+    margin: 0 auto;
+    font-size: 14px;
+    font-weight: 500;
+    /* Normal agar lebih clean */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    border-radius: 8px;
+    border: none;
+    color: #333;
+    cursor: pointer;
+    white-space: normal;
+    line-height: 1.4;
+}
+
+/* Base Pastel Colors */
+tr:nth-child(6n+1) .phrase {
+    background: #fff5f8;
+}
+
+tr:nth-child(6n+2) .phrase {
+    background: #f0f9ff;
+}
+
+tr:nth-child(6n+3) .phrase {
+    background: #f0fff4;
+}
+
+tr:nth-child(6n+4) .phrase {
+    background: #f5f3ff;
+}
+
+tr:nth-child(6n+5) .phrase {
+    background: #fffaf5;
+}
+
+tr:nth-child(6n+6) .phrase {
+    background: #f7fee7;
+}
+
+.phrase:hover {
+    background: #ffffff !important;
+    transform: translateY(-2px);
+}
+
+/* ── FUN HIGHLIGHT STATE (Warna-Warni) ── */
+.phrase.active {
+    color: #000 !important;
+    font-weight: 700;
+    /* Menjadi bold hanya saat sound nyala */
+    transform: scale(1.04);
+    z-index: 5;
+}
+
+/* Cycle through 6 fun highlight colors */
+tr:nth-child(6n+1) .phrase.active {
+    background: #ffb9d6 !important;
+}
+
+tr:nth-child(6n+2) .phrase.active {
+    background: #93eeff !important;
+}
+
+tr:nth-child(6n+3) .phrase.active {
+    background: #b2ffe1 !important;
+}
+
+tr:nth-child(6n+4) .phrase.active {
+    background: #dcd1ff !important;
+}
+
+tr:nth-child(6n+5) .phrase.active {
+    background: #ffc58f !important;
+}
+
+tr:nth-child(6n+6) .phrase.active {
+    background: #bdfcba !important;
+}
+
+/* Responsive adjustments */
+@media (max-width: 360px) {
+    .page {
+        box-shadow: none;
+    }
+}
+/* -- BORDERS -- */
+.top-border {
+    position: absolute !important;
+    top: 0 !important;
+    left: 0 !important;
+    width: 100% !important;
+    height: auto !important;
+    z-index: 9999 !important;
+    pointer-events: none !important;
+}
+
+.bottom-border {
+    position: absolute !important;
+    bottom: 0 !important;
+    left: 0 !important;
+    width: 100% !important;
+    height: auto !important;
+    z-index: 9999 !important;
+    pointer-events: none !important;
+}
+
+/* -- HEADER OVERRIDE FOR BORDERS -- */
+.module-header {
+    background: transparent !important;
+    padding-top: 65px !important;
+    position: relative !important;
+    z-index: 10000 !important;
+    box-shadow: none !important;
+}
+
+.scroll-content {
+    padding-bottom: 120px !important;
+    overflow-y: visible !important;
+}
