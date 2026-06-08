@@ -1,0 +1,241 @@
+@import url('https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700&family=Quicksand:wght@400;500;600;700&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    -webkit-tap-highlight-color: transparent;
+}
+
+body {
+    font-family: 'Quicksand', 'Outfit', sans-serif;
+    font-size: 12px;
+    background-color: transparent;
+    color: #1e293b;
+    display: flex;
+    justify-content: center;
+    min-height: 100vh;
+}
+
+/* ── CUTE BACKGROUND DECORATIONS ── */
+body::before,
+body::after {
+    content: '';
+    position: fixed;
+    width: 300px;
+    height: 300px;
+    border-radius: 50%;
+    background: radial-gradient(circle, rgba(255, 185, 214, 0.2) 0%, rgba(255, 255, 255, 0) 70%);
+    z-index: -1;
+    filter: blur(40px);
+}
+
+body::before {
+    top: -100px;
+    left: -100px;
+}
+
+body::after {
+    bottom: -100px;
+    right: -100px;
+    background: radial-gradient(circle, rgba(147, 238, 255, 0.2) 0%, rgba(255, 255, 255, 0) 70%);
+}
+
+.page {
+    width: 100%;
+    max-width: 360px;
+    height: auto !important;
+    min-height: 100vh !important;
+    background-color: transparent;
+    margin: 0 auto;
+    position: relative !important;
+    display: flex;
+    flex-direction: column;
+    overflow-y: visible !important;
+    overflow-x: hidden !important;
+}
+
+@media (max-width: 360px) {
+    .page {
+        width: 100vw;
+    }
+}
+
+/* Borders */
+.top-border {
+    position: absolute !important;
+    top: 0 !important;
+    left: 0 !important;
+    width: 100% !important;
+    height: auto !important;
+    z-index: 9999 !important;
+    pointer-events: none !important;
+}
+
+.bottom-border {
+    position: absolute !important;
+    bottom: 0 !important;
+    left: 0 !important;
+    width: 100% !important;
+    height: auto !important;
+    z-index: 9999 !important;
+    pointer-events: none !important;
+}
+
+.header {
+    padding-top: 65px;
+    text-align: center;
+    margin-bottom: 20px;
+    position: relative;
+    z-index: 10000 !important;
+}
+
+.title-badge {
+    width: 85%;
+    max-width: 300px;
+    height: auto;
+}
+
+.content {
+    padding: 0 20px 100px 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    position: relative;
+    z-index: 5;
+}
+
+.main-title {
+    font-family: 'Outfit', sans-serif;
+    font-size: 12px;
+    font-weight: 700;
+    text-align: center;
+    margin-bottom: 20px;
+    color: #0f172a;
+    line-height: 1.4;
+}
+
+.intro-box {
+    background: #f0fdf4;
+    border: 2px dashed #4ade80;
+    border-radius: 12px;
+    padding: 16px;
+    margin-bottom: 24px;
+    text-align: justify;
+    line-height: 1.6;
+    font-weight: 500;
+    color: #166534;
+    box-shadow: 0 4px 6px rgba(74, 222, 128, 0.1);
+}
+
+.sub-title {
+    font-size: 12px;
+    font-weight: 700;
+    text-align: center;
+    margin-bottom: 16px;
+    color: #334155;
+    line-height: 1.4;
+}
+
+.tabs-container {
+    display: flex;
+    justify-content: center;
+    gap: 8px;
+    width: 100%;
+    margin-bottom: 16px;
+    padding: 0 10px;
+}
+
+.tab-btn {
+    flex: 1;
+    background-color: #f1f5f9;
+    border: 2px solid #cbd5e1;
+    border-radius: 8px;
+    padding: 8px 4px;
+    font-family: 'Outfit', sans-serif;
+    font-weight: 700;
+    font-size: 12px;
+    color: #475569;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    text-align: center;
+}
+
+.tab-btn.active {
+    background-color: #84cc16;
+    border-color: #65a30d;
+    color: #fff;
+    box-shadow: 0 4px 6px rgba(132, 204, 22, 0.2);
+}
+
+.table-wrapper {
+    width: 100%;
+    overflow-x: auto;
+    border-radius: 12px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+    background: #fff;
+    border: 1px solid #cbd5e1;
+    margin-bottom: 20px;
+}
+
+.cp-table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 12px;
+    line-height: 1.5;
+}
+
+.cp-table th, .cp-table td {
+    border: 1px solid #cbd5e1;
+    padding: 12px 14px;
+    text-align: justify;
+    vertical-align: top;
+}
+
+.cp-table thead th {
+    text-align: center;
+    font-family: 'Outfit', sans-serif;
+    font-weight: 700;
+    font-size: 12px;
+}
+
+.th-green {
+    background-color: #84cc16; /* Hijau sesuai screenshot */
+    color: #ffffff;
+    border-bottom: 1px solid #cbd5e1;
+}
+
+.th-light-green {
+    background-color: #d9f99d;
+    color: #3f6212;
+}
+
+.cp-table tbody tr:nth-child(even) {
+    background-color: #f8fafc;
+}
+
+.cp-table tbody tr:nth-child(odd) {
+    background-color: #ffffff;
+}
+
+.col-header {
+    font-weight: 700;
+    width: 25%;
+    background-color: #f1f5f9 !important;
+    color: #0f172a;
+    text-align: center !important;
+    vertical-align: middle !important;
+}
+
+.cp-table ul {
+    padding-left: 20px;
+    margin: 0;
+}
+
+.cp-table ul li {
+    margin-bottom: 8px;
+}
+
+.cp-table ul li:last-child {
+    margin-bottom: 0;
+}
