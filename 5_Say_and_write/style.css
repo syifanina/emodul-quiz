@@ -120,7 +120,7 @@ body {
    ========================================================================== */
 .quiz-container {
     position: relative;
-    width: 100%;
+    width: 92%;
     max-width: 600px;
     margin: 0 auto;
 }
