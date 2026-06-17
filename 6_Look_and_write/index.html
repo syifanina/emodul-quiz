@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Look and Write</title>
+    <link rel="stylesheet" href="style.css">
+    <!-- Confetti Library -->
+    <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
+</head>
+
+<body>
+    <div class="page">
+        <!-- Reused Borders from previous modules -->
+        <img src="https://lh3.googleusercontent.com/d/1Wtb9UWtvVhVA13B0HLBagfyx1bD1LU5x" class="top-border" alt="Top Border">
+        <img src="https://lh3.googleusercontent.com/d/19NE3XzidRxaYa56e4OBOdI38n3nYJhwK" class="bottom-border" alt="Bottom Border">
+
+        <header class="module-header">
+            <img src="https://lh3.googleusercontent.com/d/1Su9cQ_qty2wDRmZIglMMFMSKFv_LFS2B" alt="Look and Write" class="title-badge">
+            <div class="instructions">
+                <p class="en">Look at the pictures and answer the questions! Look at the example!</p>
+                <div class="separator"></div>
+                <p class="id">Lihat gambar dan jawablah pertanyaan-pertanyaan berikut! Perhatikan contoh!</p>
+            </div>
+        </header>
+
+        <div class="scroll-content">
+            <!-- GROUP 1 -->
+            <div class="quiz-card">
+                <div class="card-top">
+                    <div class="image-wrapper">
+                        <img src="assets/1_to_4.png" alt="Items on the table" class="main-image">
+                    </div>
+                    <div class="character-wrapper">
+                        <div class="speech-bubble">What are on<br>the table?</div>
+                        <img src="assets/girl_with_hijab.png" alt="Teacher" class="character-image">
+                    </div>
+                </div>
+                <div class="card-bottom">
+                    <div class="example-text">Example: <br><em>The ruler is on the table</em></div>
+                    <div class="inputs-container ordered-group" data-group="1">
+                        <div class="input-row">
+                            <span class="number">(1)</span>
+                            <input type="text" id="q1" class="input-zone" autocomplete="off" spellcheck="false" autocapitalize="off" autocorrect="off" placeholder="Type your answer here...">
+                        </div>
+                        <div class="input-row">
+                            <span class="number">(2)</span>
+                            <input type="text" id="q2" class="input-zone" autocomplete="off" spellcheck="false" autocapitalize="off" autocorrect="off" placeholder="Type your answer here...">
+                        </div>
+                        <div class="input-row">
+                            <span class="number">(3)</span>
+                            <input type="text" id="q3" class="input-zone" autocomplete="off" spellcheck="false" autocapitalize="off" autocorrect="off" placeholder="Type your answer here...">
+                        </div>
+                        <div class="input-row">
+                            <span class="number">(4)</span>
+                            <input type="text" id="q4" class="input-zone" autocomplete="off" spellcheck="false" autocapitalize="off" autocorrect="off" placeholder="Type your answer here...">
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- GROUP 2 -->
+            <div class="quiz-card">
+                <div class="card-top">
+                    <div class="image-wrapper">
+                        <img src="assets/5_to_7.png" alt="Items in the bag" class="main-image">
+                    </div>
+                    <div class="character-wrapper">
+                        <div class="speech-bubble">What are in<br>the bag?</div>
+                        <img src="assets/girl_with_hijab.png" alt="Teacher" class="character-image">
+                    </div>
+                </div>
+                <div class="card-bottom">
+                    <div class="inputs-container unordered-group" data-group="2">
+                        <div class="input-row">
+                            <span class="number">(5)</span>
+                            <input type="text" id="q5" class="input-zone" autocomplete="off" spellcheck="false" autocapitalize="off" autocorrect="off" placeholder="Type your answer here...">
+                        </div>
+                        <div class="input-row">
+                            <span class="number">(6)</span>
+                            <input type="text" id="q6" class="input-zone" autocomplete="off" spellcheck="false" autocapitalize="off" autocorrect="off" placeholder="Type your answer here...">
+                        </div>
+                        <div class="input-row">
+                            <span class="number">(7)</span>
+                            <input type="text" id="q7" class="input-zone" autocomplete="off" spellcheck="false" autocapitalize="off" autocorrect="off" placeholder="Type your answer here...">
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- GROUP 3 -->
+            <div class="quiz-card">
+                <div class="card-top">
+                    <div class="image-wrapper">
+                        <img src="assets/8_to_10.png" alt="Items hanging on the wall" class="main-image">
+                    </div>
+                    <div class="character-wrapper">
+                        <div class="speech-bubble">What are hanging<br>on the wall?</div>
+                        <img src="assets/girl_with_hijab.png" alt="Teacher" class="character-image">
+                    </div>
+                </div>
+                <div class="card-bottom">
+                    <div class="inputs-container unordered-group" data-group="3">
+                        <div class="input-row">
+                            <span class="number">(8)</span>
+                            <input type="text" id="q8" class="input-zone" autocomplete="off" spellcheck="false" autocapitalize="off" autocorrect="off" placeholder="Type your answer here...">
+                        </div>
+                        <div class="input-row">
+                            <span class="number">(9)</span>
+                            <input type="text" id="q9" class="input-zone" autocomplete="off" spellcheck="false" autocapitalize="off" autocorrect="off" placeholder="Type your answer here...">
+                        </div>
+                        <div class="input-row">
+                            <span class="number">(10)</span>
+                            <input type="text" id="q10" class="input-zone" autocomplete="off" spellcheck="false" autocapitalize="off" autocorrect="off" placeholder="Type your answer here...">
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="btn-row">
+                <button class="reset-btn" id="reset-btn">
+                    <img src="https://lh3.googleusercontent.com/d/1D6yVmWJMqr21s0jooydnRd8IrnUTACa8" alt="Reset">
+                </button>
+                <button class="check-btn" id="check-btn">
+                    <img src="https://lh3.googleusercontent.com/d/162GVeYx0GQkdnWIAHJw3IK1O6a08L58X" alt="Check Answer">
+                </button>
+            </div>
+            <div class="result-msg" id="result-msg"></div>
+        </div>
+    </div>
+
+    <!-- Audio Elements -->
+    <audio id="audio-typing" src="assets/typing.MP3" preload="auto"></audio>
+    <audio id="audio-correct" src="assets/correct_sound.MP3" preload="auto"></audio>
+    <audio id="audio-incorrect" src="assets/incorrect_sound.MP3" preload="auto"></audio>
+
+    <script src="script.js"></script>
+</body>
+
+</html>
