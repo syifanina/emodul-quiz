@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SHOW ME PARTS OF YOUR HOUSE - Read and Say</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <div class="page">
+        <img src="https://lh3.googleusercontent.com/d/1Wtb9UWtvVhVA13B0HLBagfyx1bD1LU5x" class="top-border" alt="Top Border">
+        <img src="https://lh3.googleusercontent.com/d/19NE3XzidRxaYa56e4OBOdI38n3nYJhwK" class="bottom-border" alt="Bottom Border">
+
+        <header class="module-header">
+            <!-- PNG Judul -->
+            <img src="https://lh3.googleusercontent.com/d/1H9R30z1FS2WvhoUJNGd_VHJ7n4pCU91I" alt="Read and Say" class="title-badge">
+            
+            <div class="instructions">
+                <p class="en">Listen to the sentence. Then, say it aloud!</p>
+                <div class="separator"></div>
+                <p class="id">Dengarkan kalimatnya. Lalu, ucapkan dengan lantang!</p>
+            </div>
+        </header>
+
+        <!-- Scrollable Content -->
+        <div class="scroll-content">
+
+            <div class="image-container">
+                <!-- Main GIF -->
+                <img src="https://lh3.googleusercontent.com/d/1kcUz0SLO5kF1wWQgBR4neRY0Ll-GZm20" alt="Parts of your house" class="main-gif">
+
+                <button class="sound-btn" id="play-btn" title="Play/Pause Sound">
+                    <!-- Play Icon (Default) -->
+                    <svg id="sound-icon" viewBox="0 0 24 24">
+                        <path
+                            d="M14,3.23V5.29C16.89,6.15 19,8.83 19,12C19,15.17 16.89,17.85 14,18.71V20.77C18.03,19.86 21,16.28 21,12C21,7.72 18.03,4.14 14,3.23M16.5,12C16.5,10.23 15.5,8.71 14,7.97V16.04C15.5,15.29 16.5,13.77 16.5,12M3,9V15H7L12,20V4L7,9H3Z" />
+                    </svg>
+                </button>
+            </div>
+
+            <table class="phrase-table">
+    <tr class="group-1"><td><div class="phrase" data-audio="ON.MP3">On</div></td></tr>
+    <tr class="group-1"><td><div class="phrase" data-audio="put_the_book.MP3">Put the book on the table</div></td></tr>
+
+    <tr class="group-2"><td><div class="phrase" data-audio="UNDER.MP3">Under</div></td></tr>
+    <tr class="group-2"><td><div class="phrase" data-audio="put_the_shoes.MP3">Put the shoes under the table</div></td></tr>
+
+    <tr class="group-3"><td><div class="phrase" data-audio="IN.MP3">In</div></td></tr>
+    <tr class="group-3"><td><div class="phrase" data-audio="put_the_pencil.MP3">Put the pencil case in the bag</div></td></tr>
+
+    <tr class="group-4"><td><div class="phrase" data-audio="BETWEEN.MP3">Between</div></td></tr>
+    <tr class="group-4"><td><div class="phrase" data-audio="place_the_pencil.MP3">Place the pencil between the red book and the blue book</div></td></tr>
+
+    <tr class="group-5"><td><div class="phrase" data-audio="ABOVE.MP3">Above</div></td></tr>
+    <tr class="group-5"><td><div class="phrase" data-audio="hang_the_picture.MP3">Hang the picture above the whiteboard</div></td></tr>
+
+    <tr class="group-6"><td><div class="phrase" data-audio="BESIDE.MP3">Beside/ next to</div></td></tr>
+    <tr class="group-6"><td><div class="phrase" data-audio="sit_beside_me.MP3">Sit beside/ next to me</div></td></tr>
+
+    <tr class="group-1"><td><div class="phrase" data-audio="BEHIND.MP3">Behind</div></td></tr>
+    <tr class="group-1"><td><div class="phrase" data-audio="hang_the_jacket.MP3">Hang the jacket behind the door</div></td></tr>
+
+    <tr class="group-2"><td><div class="phrase" data-audio="NEAR.MP3">Near</div></td></tr>
+    <tr class="group-2"><td><div class="phrase" data-audio="stand_near_the_window.MP3">Stand near the window</div></td></tr>
+
+    <tr class="group-3"><td><div class="phrase" data-audio="FAR.MP3">Far</div></td></tr>
+    <tr class="group-3"><td><div class="phrase" data-audio="put_the_trash.MP3">Put the trash bin far from our class</div></td></tr>
+</table>
+        </div>
+
+        <audio id="main-audio"></audio>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+
+</html>
