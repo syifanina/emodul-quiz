@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Look and Say</title>
+    <link rel="stylesheet" href="style.css">
+    <!-- Confetti Library for celebration -->
+    <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
+</head>
+
+<body>
+    <div class="page">
+        <img src="https://lh3.googleusercontent.com/d/1Wtb9UWtvVhVA13B0HLBagfyx1bD1LU5x" class="top-border" alt="Top Border">
+        <img src="https://lh3.googleusercontent.com/d/19NE3XzidRxaYa56e4OBOdI38n3nYJhwK" class="bottom-border" alt="Bottom Border">
+
+        <header class="module-header">
+            <!-- PNG Judul - Kosong sesuai request -->
+            <img src="https://lh3.googleusercontent.com/d/1sdvA3ywbQeGkv5qEhJMFqMerNin-qLEa" alt="" class="title-badge">
+
+            <div class="instructions">
+                <p class="en">Look at the pictures and say the preposition of place!</p>
+                <div class="separator"></div>
+                <p class="id">Lihat gambar dan ucapkan preposisi tempat berikut!</p>
+            </div>
+        </header>
+
+        <!-- Scrollable Content -->
+        <div class="scroll-content">
+
+            <main class="grid-container">
+                <div class="action-card" data-audio="ON.MP3,the_book_is.MP3">
+                    <div class="image-wrapper">
+                        <img src="https://lh3.googleusercontent.com/d/15fjSjtCvPzTeGVZ9tti80RTkP46e0cJ9" alt="On" class="action-image">
+                        <button class="sound-btn" aria-label="Play sound">
+                            <svg viewBox="0 0 24 24">
+                                <path d="M14,3.23V5.29C16.89,6.15 19,8.83 19,12C19,15.17 16.89,17.85 14,18.71V20.77C18.03,19.86 21,16.28 21,12C21,7.72 18.03,4.14 14,3.23M16.5,12C16.5,10.23 15.5,8.71 14,7.97V16.04C15.5,15.29 16.5,13.77 16.5,12M3,9V15H7L12,20V4L7,9H3Z" />
+                            </svg>
+                        </button>
+                    </div>
+                    <div class="text-wrapper">
+                        <span class="action-text preposition">On</span>
+                        <span class="action-text sentence">The book is on the table</span>
+                    </div>
+                </div>
+
+                <div class="action-card" data-audio="UNDER.MP3,the_shoes_are.MP3">
+                    <div class="image-wrapper">
+                        <img src="https://lh3.googleusercontent.com/d/1KvAHLEJGUF5a2elGkv02MAdzgi1jZRt8" alt="Under" class="action-image">
+                        <button class="sound-btn" aria-label="Play sound">
+                            <svg viewBox="0 0 24 24">
+                                <path d="M14,3.23V5.29C16.89,6.15 19,8.83 19,12C19,15.17 16.89,17.85 14,18.71V20.77C18.03,19.86 21,16.28 21,12C21,7.72 18.03,4.14 14,3.23M16.5,12C16.5,10.23 15.5,8.71 14,7.97V16.04C15.5,15.29 16.5,13.77 16.5,12M3,9V15H7L12,20V4L7,9H3Z" />
+                            </svg>
+                        </button>
+                    </div>
+                    <div class="text-wrapper">
+                        <span class="action-text preposition">Under</span>
+                        <span class="action-text sentence">The shoes are under the table</span>
+                    </div>
+                </div>
+
+                <div class="action-card" data-audio="IN.MP3,the_pencil_case.MP3">
+                    <div class="image-wrapper">
+                        <img src="https://lh3.googleusercontent.com/d/1FLMU4Qyfbkv3SuaKOUPTB1UzPe2UzqeM" alt="In" class="action-image">
+                        <button class="sound-btn" aria-label="Play sound">
+                            <svg viewBox="0 0 24 24">
+                                <path d="M14,3.23V5.29C16.89,6.15 19,8.83 19,12C19,15.17 16.89,17.85 14,18.71V20.77C18.03,19.86 21,16.28 21,12C21,7.72 18.03,4.14 14,3.23M16.5,12C16.5,10.23 15.5,8.71 14,7.97V16.04C15.5,15.29 16.5,13.77 16.5,12M3,9V15H7L12,20V4L7,9H3Z" />
+                            </svg>
+                        </button>
+                    </div>
+                    <div class="text-wrapper">
+                        <span class="action-text preposition">In</span>
+                        <span class="action-text sentence">The pencil case is in the bag</span>
+                    </div>
+                </div>
+
+                <div class="action-card" data-audio="BETWEEN.MP3,the_pencil_is_between.MP3">
+                    <div class="image-wrapper">
+                        <img src="https://lh3.googleusercontent.com/d/1_dgDPO8rloOevR-F4inhxcmEKLCNZox3" alt="Between" class="action-image">
+                        <button class="sound-btn" aria-label="Play sound">
+                            <svg viewBox="0 0 24 24">
+                                <path d="M14,3.23V5.29C16.89,6.15 19,8.83 19,12C19,15.17 16.89,17.85 14,18.71V20.77C18.03,19.86 21,16.28 21,12C21,7.72 18.03,4.14 14,3.23M16.5,12C16.5,10.23 15.5,8.71 14,7.97V16.04C15.5,15.29 16.5,13.77 16.5,12M3,9V15H7L12,20V4L7,9H3Z" />
+                            </svg>
+                        </button>
+                    </div>
+                    <div class="text-wrapper">
+                        <span class="action-text preposition">Between</span>
+                        <span class="action-text sentence">The pencil is between the red book and the blue book</span>
+                    </div>
+                </div>
+
+                <div class="action-card" data-audio="ABOVE.MP3,the_picture_is_above.MP3">
+                    <div class="image-wrapper">
+                        <img src="https://lh3.googleusercontent.com/d/1JAGY2H7ovFL_DQPjXj7RPWyzxRZhX5gB" alt="Above" class="action-image">
+                        <button class="sound-btn" aria-label="Play sound">
+                            <svg viewBox="0 0 24 24">
+                                <path d="M14,3.23V5.29C16.89,6.15 19,8.83 19,12C19,15.17 16.89,17.85 14,18.71V20.77C18.03,19.86 21,16.28 21,12C21,7.72 18.03,4.14 14,3.23M16.5,12C16.5,10.23 15.5,8.71 14,7.97V16.04C15.5,15.29 16.5,13.77 16.5,12M3,9V15H7L12,20V4L7,9H3Z" />
+                            </svg>
+                        </button>
+                    </div>
+                    <div class="text-wrapper">
+                        <span class="action-text preposition">Above</span>
+                        <span class="action-text sentence">The picture is above the whiteboard</span>
+                    </div>
+                </div>
+
+                <div class="action-card" data-audio="BESIDE.MP3,the_pencil_is_beside.MP3">
+                    <div class="image-wrapper">
+                        <img src="https://lh3.googleusercontent.com/d/1u61OFtBP760YjZG8AbmatgaWRNvrwbBi" alt="Beside" class="action-image">
+                        <button class="sound-btn" aria-label="Play sound">
+                            <svg viewBox="0 0 24 24">
+                                <path d="M14,3.23V5.29C16.89,6.15 19,8.83 19,12C19,15.17 16.89,17.85 14,18.71V20.77C18.03,19.86 21,16.28 21,12C21,7.72 18.03,4.14 14,3.23M16.5,12C16.5,10.23 15.5,8.71 14,7.97V16.04C15.5,15.29 16.5,13.77 16.5,12M3,9V15H7L12,20V4L7,9H3Z" />
+                            </svg>
+                        </button>
+                    </div>
+                    <div class="text-wrapper">
+                        <span class="action-text preposition">Beside/ next to</span>
+                        <span class="action-text sentence">The pencil is beside/ next to the eraser</span>
+                    </div>
+                </div>
+
+                <div class="action-card" data-audio="BEHIND.MP3,the_jacket_is_behind.MP3">
+                    <div class="image-wrapper">
+                        <img src="https://lh3.googleusercontent.com/d/1OiAGgPcI-NV8Mxvlo3GU0cZpE9a93AZi" alt="Behind" class="action-image">
+                        <button class="sound-btn" aria-label="Play sound">
+                            <svg viewBox="0 0 24 24">
+                                <path d="M14,3.23V5.29C16.89,6.15 19,8.83 19,12C19,15.17 16.89,17.85 14,18.71V20.77C18.03,19.86 21,16.28 21,12C21,7.72 18.03,4.14 14,3.23M16.5,12C16.5,10.23 15.5,8.71 14,7.97V16.04C15.5,15.29 16.5,13.77 16.5,12M3,9V15H7L12,20V4L7,9H3Z" />
+                            </svg>
+                        </button>
+                    </div>
+                    <div class="text-wrapper">
+                        <span class="action-text preposition">Behind</span>
+                        <span class="action-text sentence">The jacket is behind the door</span>
+                    </div>
+                </div>
+
+                <div class="action-card" data-audio="NEAR.MP3,the_table_is_near.MP3">
+                    <div class="image-wrapper">
+                        <img src="https://lh3.googleusercontent.com/d/1FretEXOQkj0Q9oJd2z3LDkvUEEgIZRiP" alt="Near" class="action-image">
+                        <button class="sound-btn" aria-label="Play sound">
+                            <svg viewBox="0 0 24 24">
+                                <path d="M14,3.23V5.29C16.89,6.15 19,8.83 19,12C19,15.17 16.89,17.85 14,18.71V20.77C18.03,19.86 21,16.28 21,12C21,7.72 18.03,4.14 14,3.23M16.5,12C16.5,10.23 15.5,8.71 14,7.97V16.04C15.5,15.29 16.5,13.77 16.5,12M3,9V15H7L12,20V4L7,9H3Z" />
+                            </svg>
+                        </button>
+                    </div>
+                    <div class="text-wrapper">
+                        <span class="action-text preposition">Near</span>
+                        <span class="action-text sentence">The table is near the window</span>
+                    </div>
+                </div>
+
+                <div class="action-card" data-audio="FAR.MP3,the_table_is_far.MP3">
+                    <div class="image-wrapper">
+                        <img src="https://lh3.googleusercontent.com/d/1kokfXY-S3E9whcXET4pWWUv6p-JxXB16" alt="Far" class="action-image">
+                        <button class="sound-btn" aria-label="Play sound">
+                            <svg viewBox="0 0 24 24">
+                                <path d="M14,3.23V5.29C16.89,6.15 19,8.83 19,12C19,15.17 16.89,17.85 14,18.71V20.77C18.03,19.86 21,16.28 21,12C21,7.72 18.03,4.14 14,3.23M16.5,12C16.5,10.23 15.5,8.71 14,7.97V16.04C15.5,15.29 16.5,13.77 16.5,12M3,9V15H7L12,20V4L7,9H3Z" />
+                            </svg>
+                        </button>
+                    </div>
+                    <div class="text-wrapper">
+                        <span class="action-text preposition">Far</span>
+                        <span class="action-text sentence">The table is far from the window</span>
+                    </div>
+                </div>
+
+                <div class="action-card" data-audio="the_boy_is_in_front_of.MP3">
+                    <div class="image-wrapper">
+                        <img src="https://lh3.googleusercontent.com/d/1Ns53SWeFCZpP7fwHo1p5MKYXBwdBQ34Q" alt="In front of" class="action-image">
+                        <button class="sound-btn" aria-label="Play sound">
+                            <svg viewBox="0 0 24 24">
+                                <path d="M14,3.23V5.29C16.89,6.15 19,8.83 19,12C19,15.17 16.89,17.85 14,18.71V20.77C18.03,19.86 21,16.28 21,12C21,7.72 18.03,4.14 14,3.23M16.5,12C16.5,10.23 15.5,8.71 14,7.97V16.04C15.5,15.29 16.5,13.77 16.5,12M3,9V15H7L12,20V4L7,9H3Z" />
+                            </svg>
+                        </button>
+                    </div>
+                    <div class="text-wrapper">
+                        <span class="action-text preposition">In front of</span>
+                        <span class="action-text sentence">The boy is in front of the girl</span>
+                    </div>
+                </div>
+
+            </main>
+        </div>
+
+        <!-- SINGLE AUDIO SOURCE -->
+        <audio id="main-audio"></audio>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+
+</html>
