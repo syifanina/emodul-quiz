@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Read and Write</title>
+    <link rel="stylesheet" href="style.css">
+    <!-- Confetti Library -->
+    <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
+</head>
+
+<body>
+    <div class="page">
+        <!-- Reused Borders from previous modules -->
+        <img src="https://lh3.googleusercontent.com/d/1Wtb9UWtvVhVA13B0HLBagfyx1bD1LU5x" class="top-border"
+            alt="Top Border">
+        <img src="https://lh3.googleusercontent.com/d/19NE3XzidRxaYa56e4OBOdI38n3nYJhwK" class="bottom-border"
+            alt="Bottom Border">
+
+        <header class="module-header">
+            <img src="https://lh3.googleusercontent.com/d/1l0pOjwVY3ueWLAY5PPEC9RtBndkAHLTY" alt="Read and Write"
+                class="title-badge">
+            <div class="instructions">
+                <p class="en">Complete the sentences using the correct preposition of place! Look at the example!</p>
+                <div class="separator"></div>
+                <p class="id">Lengkapi kalimat berikut dengan preposisi tempat yang tepat! Perhatikan contoh berikut!
+                </p>
+            </div>
+        </header>
+
+        <div class="scroll-content">
+            <div class="quiz-card">
+                <div class="image-container" style="position: relative; width: 100%; max-width: 360px; margin: 0 auto;">
+                    <img src="assets/NEW.png" alt="Classroom with Bubbles"
+                        style="width: 100%; display: block; border-radius: 4px; border: 2px solid #000;">
+
+                    <!-- Q1 -->
+                    <div class="chat-bubble" style="top: 8%; left: 45%;">
+                        <div class="bubble-number">1</div>
+                        <div class="bubble-tail tail-1"></div>
+                        The picture is <input type="text" id="q1" class="input-zone" autocomplete="off"><br>the board.
+                    </div>
+
+                    <!-- Example -->
+                    <div class="example-bubble" style="top: 18%; left: 50%;">
+                        Example:<br>
+                        The books are<br>
+                        <strong><span style="text-decoration: underline;"> on </span></strong> the table.
+                    </div>
+
+                    <!-- Q2 -->
+                    <div class="chat-bubble" style="top: 35%; left: 20%;">
+                        <div class="bubble-number">2</div>
+                        <div class="bubble-tail tail-2"></div>
+                        The flower vase is<br><input type="text" id="q2" class="input-zone" autocomplete="off"> the
+                        table.
+                    </div>
+
+                    <!-- Q3 -->
+                    <div class="chat-bubble" style="top: 36%; left: 63%;">
+                        <div class="bubble-number">3</div>
+                        <div class="bubble-tail tail-3"></div>
+                        The chair is <br><input type="text" id="q3" class="input-zone" autocomplete="off"> the window.
+                    </div>
+
+                    <!-- Q4 -->
+                    <div class="chat-bubble" style="top: 48%; left: 9%;">
+                        <div class="bubble-number">4</div>
+                        <div class="bubble-tail tail-4"></div>
+                        The pencil is <br><input type="text" id="q4" class="input-zone" autocomplete="off"> the books.
+                    </div>
+
+                    <!-- Q5 -->
+                    <div class="chat-bubble" style="top: 61%; left: 56%;">
+                        <div class="bubble-number">5</div>
+                        <div class="bubble-tail tail-5"></div>
+                        The green book is<br><input type="text" id="q5" class="input-zone" autocomplete="off"> the blue
+                        book.
+                    </div>
+
+                    <!-- Q6 -->
+                    <div class="chat-bubble" style="top: 67%; left: 5%;">
+                        <div class="bubble-number">6</div>
+                        <div class="bubble-tail tail-6"></div>
+                        The pencil case is<br><input type="text" id="q6" class="input-zone" autocomplete="off"> the bag.
+                    </div>
+
+                    <!-- Q7 -->
+                    <div class="chat-bubble" style="top: 89%; left: 40%;">
+                        <div class="bubble-number">7</div>
+                        <div class="bubble-tail tail-7"></div>
+                        The bag is <br><input type="text" id="q7" class="input-zone" autocomplete="off"> the floor.
+                    </div>
+
+                    <!-- Q8 -->
+                    <div class="chat-bubble" style="top: 79%; left: 62%;">
+                        <div class="bubble-number">8</div>
+                        <div class="bubble-tail tail-8"></div>
+                        The shoes are<br><input type="text" id="q8" class="input-zone" autocomplete="off"> the table.
+                    </div>
+                </div>
+            </div>
+
+            <div class="btn-row">
+                <button class="reset-btn" id="reset-btn">
+                    <img src="https://lh3.googleusercontent.com/d/1D6yVmWJMqr21s0jooydnRd8IrnUTACa8" alt="Reset">
+                </button>
+                <button class="check-btn" id="check-btn">
+                    <img src="https://lh3.googleusercontent.com/d/162GVeYx0GQkdnWIAHJw3IK1O6a08L58X" alt="Check Answer">
+                </button>
+            </div>
+            <div class="result-msg" id="result-msg"></div>
+        </div>
+    </div>
+
+    <!-- Audio Elements -->
+    <audio id="audio-typing" src="assets/typing.MP3" preload="auto"></audio>
+    <audio id="audio-correct" src="assets/correct_sound.MP3" preload="auto"></audio>
+    <audio id="audio-incorrect" src="assets/incorrect_sound.MP3" preload="auto"></audio>
+
+    <script src="script.js"></script>
+</body>
+
+</html>
