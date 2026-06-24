@@ -1,0 +1,771 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Formative Assessment Lesson 4</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <div class="page">
+        <img src="https://lh3.googleusercontent.com/d/1Wtb9UWtvVhVA13B0HLBagfyx1bD1LU5x" class="top-border" alt="Top Border">
+        <img src="https://lh3.googleusercontent.com/d/19NE3XzidRxaYa56e4OBOdI38n3nYJhwK" class="bottom-border" alt="Bottom Border">
+
+        <!-- Sticky Header with Instructions -->
+        <header class="module-header">
+            <!-- PNG Judul -->
+            <img src="https://lh3.googleusercontent.com/d/1tAaAVsHO75CT2GzjG31bGULkSSJHmHs0"
+                alt="Formative Assessment Lesson 4" class="title-badge">
+
+            <div class="instructions">
+                <p class="en">Look at the pictures and cross (X) A, B, C or D for the correct actions! Look to the
+                    example!</p>
+                <div class="separator"></div>
+                <p class="id">Perhatikan gambar dan beri tanda silang (X) A, B, C atau D pada aksi yang benar.
+                    Perhatikan contoh berikut!</p>
+            </div>
+        </header>
+
+        <!-- Scrollable Content Area -->
+        <div class="scroll-content" id="quiz-container">
+
+            <!-- STUDENT INFO -->
+            <div class="student-info-card">
+
+                <!-- Person Input Row -->
+                <div class="info-row">
+                    <div class="icon-container">
+                        <div class="icon-circle">
+                            <svg viewBox="0 0 24 24" fill="white" width="24" height="24">
+                                <path
+                                    d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z" />
+                            </svg>
+                        </div>
+                    </div>
+                    <div class="input-wrapper">
+                        <label for="student-name" class="student-label">
+                            <span class="en-label">Name</span>
+                            <span class="id-label">/ Nama Siswa</span>
+                        </label>
+                        <input type="text" id="student-name" class="student-input" placeholder="Type your name here..."
+                            autocomplete="off">
+                    </div>
+                </div>
+
+                <!-- School Input Row -->
+                <div class="info-row">
+                    <div class="icon-container">
+                        <div class="icon-circle">
+                            <svg viewBox="0 0 24 24" fill="white" width="24" height="24">
+                                <path
+                                    d="M4 10v7h3v-7H4zm6 0v7h3v-7h-3zM2 22h19v-3H2v3zm14-12v7h3v-7h-3zm-8.5-9L2 6v2h19V6l-9.5-5z" />
+                            </svg>
+                        </div>
+                    </div>
+                    <div class="input-wrapper">
+                        <label for="school-name" class="student-label">
+                            <span class="en-label">School Name</span>
+                            <span class="id-label">/ Nama Sekolah</span>
+                        </label>
+                        <input type="text" id="school-name" class="student-input"
+                            placeholder="Type your school name here..." autocomplete="off">
+                    </div>
+                </div>
+            </div>
+
+            <!-- SCORING INFO -->
+            <div class="scoring-info-card">
+                <div class="scoring-icon">💡</div>
+                <div class="scoring-text">
+                    <div class="scoring-title">
+                        <span class="en-text">Scoring System</span>
+                        <span class="id-text">/ Sistem Penilaian:</span>
+                    </div>
+                    <ul class="scoring-list">
+                        <li>
+                            <span class="en-text">Part I (Multiple Choice)</span>
+                            <span class="id-text">/ Pilihan Ganda:</span><br>
+                            <b class="point-badge">Max 40 Points</b>
+                        </li>
+                        <li>
+                            <span class="en-text">Part II (Sorting Table)</span>
+                            <span class="id-text">/ Isian Tabel:</span><br>
+                            <b class="point-badge">Max 60 Points</b>
+                        </li>
+                    </ul>
+                    <div class="scoring-total">
+                        <span class="en-text">Final Score</span>
+                        <span class="id-text">/ Nilai Akhir</span>
+                        = Sum of all points (Max 100)
+                    </div>
+                </div>
+            </div>
+
+            <!-- EXAMPLE CARD (Read-Only) -->
+            <div class="question-card example-card">
+                <!-- Star badge for Example -->
+                <div class="q-star-badge">
+                    <img src="https://lh3.googleusercontent.com/d/1tlr-_CyMZShNnbtIol1OyFw8NhS_4MP1" alt="Star badge"
+                        class="star-img">
+                    <span class="star-number star-ex">Ex</span>
+                </div>
+
+                <div class="question-gif-container">
+                    <img src="https://lh3.googleusercontent.com/d/1oYfZEFs9HPJxuEcUHhILHIs4H2ZTJVga" alt="Example"
+                        class="question-gif">
+                </div>
+
+                <div class="question-details">
+                    <div class="options-container">
+                        <div class="option-item disabled" data-opt="a">
+                            <span class="option-letter">a</span>
+                            <span class="option-text">Crush the orange</span>
+                        </div>
+                        <div class="option-item disabled crossed-example" data-opt="b">
+                            <span class="option-letter">b</span>
+                            <span class="option-text">Peel the orange</span>
+                        </div>
+                        <div class="option-item disabled" data-opt="c">
+                            <span class="option-letter">c</span>
+                            <span class="option-text">Chop the orange</span>
+                        </div>
+                        <div class="option-item disabled" data-opt="d">
+                            <span class="option-letter">d</span>
+                            <span class="option-text">Cut the orange</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- QUESTION 1 -->
+            <div class="question-card" data-q="1" data-correct="c">
+                <!-- Star badge for Q1 -->
+                <div class="q-star-badge">
+                    <img src="https://lh3.googleusercontent.com/d/1tlr-_CyMZShNnbtIol1OyFw8NhS_4MP1" alt="Star badge"
+                        class="star-img">
+                    <span class="star-number">1</span>
+                </div>
+
+                <div class="question-gif-container">
+                    <img src="https://lh3.googleusercontent.com/d/15X0TDVGZUc9jJBi8k4vUxWV0WwH-lkha" alt="Question 1"
+                        class="question-gif">
+                </div>
+
+                <div class="question-details">
+                    <div class="options-container">
+                        <div class="option-item" data-opt="a">
+                            <span class="option-letter">a</span>
+                            <span class="option-text">Cut the onion</span>
+                        </div>
+                        <div class="option-item" data-opt="b">
+                            <span class="option-letter">b</span>
+                            <span class="option-text">Chop the onion</span>
+                        </div>
+                        <div class="option-item" data-opt="c">
+                            <span class="option-letter">c</span>
+                            <span class="option-text">Peel the onion</span>
+                        </div>
+                        <div class="option-item" data-opt="d">
+                            <span class="option-letter">d</span>
+                            <span class="option-text">Crush the onion</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- QUESTION 2 -->
+            <div class="question-card" data-q="2" data-correct="c">
+                <!-- Star badge for Q2 -->
+                <div class="q-star-badge">
+                    <img src="https://lh3.googleusercontent.com/d/1tlr-_CyMZShNnbtIol1OyFw8NhS_4MP1" alt="Star badge"
+                        class="star-img">
+                    <span class="star-number">2</span>
+                </div>
+
+                <div class="question-gif-container">
+                    <img src="https://lh3.googleusercontent.com/d/1obsRvTESY-Cv22mqhAsArFGEY7ZaF2-6" alt="Question 2"
+                        class="question-gif">
+                </div>
+
+                <div class="question-details">
+                    <div class="options-container">
+                        <div class="option-item" data-opt="a">
+                            <span class="option-letter">a</span>
+                            <span class="option-text">Chop the banana</span>
+                        </div>
+                        <div class="option-item" data-opt="b">
+                            <span class="option-letter">b</span>
+                            <span class="option-text">Cut the banana</span>
+                        </div>
+                        <div class="option-item" data-opt="c">
+                            <span class="option-letter">c</span>
+                            <span class="option-text">Peel the banana</span>
+                        </div>
+                        <div class="option-item" data-opt="d">
+                            <span class="option-letter">d</span>
+                            <span class="option-text">Crush the banana</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- QUESTION 3 -->
+            <div class="question-card" data-q="3" data-correct="a">
+                <!-- Star badge for Q3 -->
+                <div class="q-star-badge">
+                    <img src="https://lh3.googleusercontent.com/d/1tlr-_CyMZShNnbtIol1OyFw8NhS_4MP1" alt="Star badge"
+                        class="star-img">
+                    <span class="star-number">3</span>
+                </div>
+
+                <div class="question-gif-container">
+                    <img src="https://lh3.googleusercontent.com/d/1GEV7za6YvkZjDUpFJkIhEOiRd1yCcYdW" alt="Question 3"
+                        class="question-gif">
+                </div>
+
+                <div class="question-details">
+                    <div class="options-container">
+                        <div class="option-item" data-opt="a">
+                            <span class="option-letter">a</span>
+                            <span class="option-text">Cut the scallion</span>
+                        </div>
+                        <div class="option-item" data-opt="b">
+                            <span class="option-letter">b</span>
+                            <span class="option-text">Peel the scallion</span>
+                        </div>
+                        <div class="option-item" data-opt="c">
+                            <span class="option-letter">c</span>
+                            <span class="option-text">Crush the scallion</span>
+                        </div>
+                        <div class="option-item" data-opt="d">
+                            <span class="option-letter">d</span>
+                            <span class="option-text">Wash the scallion</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- QUESTION 4 -->
+            <div class="question-card" data-q="4" data-correct="b">
+                <!-- Star badge for Q4 -->
+                <div class="q-star-badge">
+                    <img src="https://lh3.googleusercontent.com/d/1tlr-_CyMZShNnbtIol1OyFw8NhS_4MP1" alt="Star badge"
+                        class="star-img">
+                    <span class="star-number">4</span>
+                </div>
+
+                <div class="question-gif-container">
+                    <img src="https://lh3.googleusercontent.com/d/1D9VC8P6tplwGshg2_NSL763STr4bCpaM" alt="Question 4"
+                        class="question-gif">
+                </div>
+
+                <div class="question-details">
+                    <div class="options-container">
+                        <div class="option-item" data-opt="a">
+                            <span class="option-letter">a</span>
+                            <span class="option-text">Wash the potato</span>
+                        </div>
+                        <div class="option-item" data-opt="b">
+                            <span class="option-letter">b</span>
+                            <span class="option-text">Dice the potato</span>
+                        </div>
+                        <div class="option-item" data-opt="c">
+                            <span class="option-letter">c</span>
+                            <span class="option-text">Peel the potato</span>
+                        </div>
+                        <div class="option-item" data-opt="d">
+                            <span class="option-letter">d</span>
+                            <span class="option-text">Crush the potato</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- QUESTION 5 -->
+            <div class="question-card" data-q="5" data-correct="d">
+                <!-- Star badge for Q5 -->
+                <div class="q-star-badge">
+                    <img src="https://lh3.googleusercontent.com/d/1tlr-_CyMZShNnbtIol1OyFw8NhS_4MP1" alt="Star badge"
+                        class="star-img">
+                    <span class="star-number">5</span>
+                </div>
+
+                <div class="question-gif-container">
+                    <img src="https://lh3.googleusercontent.com/d/1kGGy-9E9RSY2mnSeNkv0A_y_z0dAgP1y" alt="Question 5"
+                        class="question-gif">
+                </div>
+
+                <div class="question-details">
+                    <div class="options-container">
+                        <div class="option-item" data-opt="a">
+                            <span class="option-letter">a</span>
+                            <span class="option-text">Peel the spinach</span>
+                        </div>
+                        <div class="option-item" data-opt="b">
+                            <span class="option-letter">b</span>
+                            <span class="option-text">Crush the spinach</span>
+                        </div>
+                        <div class="option-item" data-opt="c">
+                            <span class="option-letter">c</span>
+                            <span class="option-text">Chop the spinach</span>
+                        </div>
+                        <div class="option-item" data-opt="d">
+                            <span class="option-letter">d</span>
+                            <span class="option-text">Wash the spinach</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- QUESTION 6 -->
+            <div class="question-card" data-q="6" data-correct="a">
+                <!-- Star badge for Q6 -->
+                <div class="q-star-badge">
+                    <img src="https://lh3.googleusercontent.com/d/1tlr-_CyMZShNnbtIol1OyFw8NhS_4MP1" alt="Star badge"
+                        class="star-img">
+                    <span class="star-number">6</span>
+                </div>
+
+                <div class="question-gif-container">
+                    <img src="https://lh3.googleusercontent.com/d/1Rlbk7HnwPDAIPwmdVM4R8T5g6Detc6I_" alt="Question 6"
+                        class="question-gif">
+                </div>
+
+                <div class="question-details">
+                    <div class="options-container">
+                        <div class="option-item" data-opt="a">
+                            <span class="option-letter">a</span>
+                            <span class="option-text">Peel the carrot</span>
+                        </div>
+                        <div class="option-item" data-opt="b">
+                            <span class="option-letter">b</span>
+                            <span class="option-text">Chop the carrot</span>
+                        </div>
+                        <div class="option-item" data-opt="c">
+                            <span class="option-letter">c</span>
+                            <span class="option-text">Crush the carrot</span>
+                        </div>
+                        <div class="option-item" data-opt="d">
+                            <span class="option-letter">d</span>
+                            <span class="option-text">Cut the carrot</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- QUESTION 7 -->
+            <div class="question-card" data-q="7" data-correct="b">
+                <!-- Star badge for Q7 -->
+                <div class="q-star-badge">
+                    <img src="https://lh3.googleusercontent.com/d/1tlr-_CyMZShNnbtIol1OyFw8NhS_4MP1" alt="Star badge"
+                        class="star-img">
+                    <span class="star-number">7</span>
+                </div>
+
+                <div class="question-gif-container">
+                    <img src="https://lh3.googleusercontent.com/d/14az1_buGbWQ_otgDdTM7GCXZFRv-xZQk" alt="Question 7"
+                        class="question-gif">
+                </div>
+
+                <div class="question-details">
+                    <div class="options-container">
+                        <div class="option-item" data-opt="a">
+                            <span class="option-letter">a</span>
+                            <span class="option-text">Pull the leaf of the grape</span>
+                        </div>
+                        <div class="option-item" data-opt="b">
+                            <span class="option-letter">b</span>
+                            <span class="option-text">Remove the stem of the grape</span>
+                        </div>
+                        <div class="option-item" data-opt="c">
+                            <span class="option-letter">c</span>
+                            <span class="option-text">Wash the grape</span>
+                        </div>
+                        <div class="option-item" data-opt="d">
+                            <span class="option-letter">d</span>
+                            <span class="option-text">Cut the grape</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- QUESTION 8 -->
+            <div class="question-card" data-q="8" data-correct="c">
+                <!-- Star badge for Q8 -->
+                <div class="q-star-badge">
+                    <img src="https://lh3.googleusercontent.com/d/1tlr-_CyMZShNnbtIol1OyFw8NhS_4MP1" alt="Star badge"
+                        class="star-img">
+                    <span class="star-number">8</span>
+                </div>
+
+                <div class="question-gif-container">
+                    <img src="https://lh3.googleusercontent.com/d/1Mmsigahzs_EYYDz39_nze89OPAaRfoY3" alt="Question 8"
+                        class="question-gif">
+                </div>
+
+                <div class="question-details">
+                    <div class="options-container">
+                        <div class="option-item" data-opt="a">
+                            <span class="option-letter">a</span>
+                            <span class="option-text">Peel the strawberry</span>
+                        </div>
+                        <div class="option-item" data-opt="b">
+                            <span class="option-letter">b</span>
+                            <span class="option-text">Remove the stem of the strawberry</span>
+                        </div>
+                        <div class="option-item" data-opt="c">
+                            <span class="option-letter">c</span>
+                            <span class="option-text">Pull the leaf of the strawberry</span>
+                        </div>
+                        <div class="option-item" data-opt="d">
+                            <span class="option-letter">d</span>
+                            <span class="option-text">Cut the strawberry</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- QUESTION 9 -->
+            <div class="question-card" data-q="9" data-correct="b">
+                <!-- Star badge for Q9 -->
+                <div class="q-star-badge">
+                    <img src="https://lh3.googleusercontent.com/d/1tlr-_CyMZShNnbtIol1OyFw8NhS_4MP1" alt="Star badge"
+                        class="star-img">
+                    <span class="star-number">9</span>
+                </div>
+
+                <div class="question-gif-container">
+                    <img src="https://lh3.googleusercontent.com/d/1-Vn8dP3JyZuJLOFd6gXEs45mEnz1vV5o" alt="Question 9"
+                        class="question-gif">
+                </div>
+
+                <div class="question-details">
+                    <div class="options-container">
+                        <div class="option-item" data-opt="a">
+                            <span class="option-letter">a</span>
+                            <span class="option-text">Cut the avocado</span>
+                        </div>
+                        <div class="option-item" data-opt="b">
+                            <span class="option-letter">b</span>
+                            <span class="option-text">Scoop the flesh of the avocado</span>
+                        </div>
+                        <div class="option-item" data-opt="c">
+                            <span class="option-letter">c</span>
+                            <span class="option-text">Peel the avocado</span>
+                        </div>
+                        <div class="option-item" data-opt="d">
+                            <span class="option-letter">d</span>
+                            <span class="option-text">Crush the avocado</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- QUESTION 10 -->
+            <div class="question-card" data-q="10" data-correct="c">
+                <!-- Star badge for Q10 -->
+                <div class="q-star-badge">
+                    <img src="https://lh3.googleusercontent.com/d/1tlr-_CyMZShNnbtIol1OyFw8NhS_4MP1" alt="Star badge"
+                        class="star-img">
+                    <span class="star-number">10</span>
+                </div>
+
+                <div class="question-gif-container">
+                    <img src="https://lh3.googleusercontent.com/d/1eMnvxLywLXBUjEM_KR2Wt3u2vY2VgVPD" alt="Question 10"
+                        class="question-gif">
+                </div>
+
+                <div class="question-details">
+                    <div class="options-container">
+                        <div class="option-item" data-opt="a">
+                            <span class="option-letter">a</span>
+                            <span class="option-text">Peel the watermelon</span>
+                        </div>
+                        <div class="option-item" data-opt="b">
+                            <span class="option-letter">b</span>
+                            <span class="option-text">Crush the watermelon</span>
+                        </div>
+                        <div class="option-item" data-opt="c">
+                            <span class="option-letter">c</span>
+                            <span class="option-text">Cut the watermelon</span>
+                        </div>
+                        <div class="option-item" data-opt="d">
+                            <span class="option-letter">d</span>
+                            <span class="option-text">Dice the watermelon</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- SECTION II HEADER -->
+            <div class="section-title">
+                <p class="en">II. Write down the names of the fruits and vegetables into the right group of fruits or vegetables. Look at the example!</p>
+                <div class="separator"></div>
+                <p class="id">Tuliskan nama-nama buah dan sayuran dalam kotak ke dalam kelompok buah-buahan atau sayur-sayuran. Perhatikan contoh!</p>
+            </div>
+
+            <!-- SECTION II CONTENT -->
+            <div class="sorting-card">
+                <h3 class="word-bank-title">FRUITS AND VEGETABLES</h3>
+                <div class="word-bank-container">
+                    <table class="word-bank-table">
+                        <tr><td>Spinach</td><td>Eggplant</td><td>Strawberry</td></tr>
+                        <tr><td>Broccoli</td><td class="example-bank">Apple</td><td>Scallion</td></tr>
+                        <tr><td>Cabbage</td><td>Garlic</td><td>Avocado</td></tr>
+                        <tr><td>Pineapple</td><td>Tomato</td><td>Dragon Fruit</td></tr>
+                        <tr><td>Mango</td><td>Grape</td><td>Carrot</td></tr>
+                        <tr><td>Potato</td><td>Papaya</td><td>Corn</td></tr>
+                        <tr><td>Mushroom</td><td>Banana</td><td>Melon</td></tr>
+                        <tr><td>Orange</td><td>Watermelon</td><td>Onion</td></tr>
+                    </table>
+                </div>
+
+                <div class="answer-table-container">
+                    <table class="answer-table">
+                        <thead>
+                            <tr>
+                                <th class="header-fruits">FRUITS</th>
+                                <th class="header-veggies">VEGETABLES</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <!-- Row 1 -->
+                            <tr class="notebook-line">
+                                <td>
+                                    <div class="example-cell-answer">Apple</div>
+                                </td>
+                                <td>
+                                    <div class="cloze-wrapper">
+                                        <input type="text" class="cloze-input" data-answer="spinach|eggplant|broccoli|scallion|cabbage|garlic|tomato|carrot|potato|corn|mushroom|onion" placeholder="..." autocomplete="off" autocorrect="off" spellcheck="false">
+                                        <span class="cloze-fb-badge"></span>
+                                        <span class="cloze-hint-text" style="display:none;"></span>
+                                    </div>
+                                </td>
+                            </tr>
+                            <!-- Row 2 -->
+                            <tr class="notebook-line">
+                                <td>
+                                    <div class="cloze-wrapper">
+                                        <input type="text" class="cloze-input" data-answer="strawberry|avocado|pineapple|mango|grape|papaya|banana|melon|orange|watermelon|dragon fruit|dragonfruit" placeholder="..." autocomplete="off" autocorrect="off" spellcheck="false">
+                                        <span class="cloze-fb-badge"></span>
+                                        <span class="cloze-hint-text" style="display:none;"></span>
+                                    </div>
+                                </td>
+                                <td>
+                                    <div class="cloze-wrapper">
+                                        <input type="text" class="cloze-input" data-answer="spinach|eggplant|broccoli|scallion|cabbage|garlic|tomato|carrot|potato|corn|mushroom|onion" placeholder="..." autocomplete="off" autocorrect="off" spellcheck="false">
+                                        <span class="cloze-fb-badge"></span>
+                                        <span class="cloze-hint-text" style="display:none;"></span>
+                                    </div>
+                                </td>
+                            </tr>
+                            <!-- Row 3 -->
+                            <tr class="notebook-line">
+                                <td>
+                                    <div class="cloze-wrapper">
+                                        <input type="text" class="cloze-input" data-answer="strawberry|avocado|pineapple|mango|grape|papaya|banana|melon|orange|watermelon|dragon fruit|dragonfruit" placeholder="..." autocomplete="off" autocorrect="off" spellcheck="false">
+                                        <span class="cloze-fb-badge"></span>
+                                        <span class="cloze-hint-text" style="display:none;"></span>
+                                    </div>
+                                </td>
+                                <td>
+                                    <div class="cloze-wrapper">
+                                        <input type="text" class="cloze-input" data-answer="spinach|eggplant|broccoli|scallion|cabbage|garlic|tomato|carrot|potato|corn|mushroom|onion" placeholder="..." autocomplete="off" autocorrect="off" spellcheck="false">
+                                        <span class="cloze-fb-badge"></span>
+                                        <span class="cloze-hint-text" style="display:none;"></span>
+                                    </div>
+                                </td>
+                            </tr>
+                            <!-- Row 4 -->
+                            <tr class="notebook-line">
+                                <td>
+                                    <div class="cloze-wrapper">
+                                        <input type="text" class="cloze-input" data-answer="strawberry|avocado|pineapple|mango|grape|papaya|banana|melon|orange|watermelon|dragon fruit|dragonfruit" placeholder="..." autocomplete="off" autocorrect="off" spellcheck="false">
+                                        <span class="cloze-fb-badge"></span>
+                                        <span class="cloze-hint-text" style="display:none;"></span>
+                                    </div>
+                                </td>
+                                <td>
+                                    <div class="cloze-wrapper">
+                                        <input type="text" class="cloze-input" data-answer="spinach|eggplant|broccoli|scallion|cabbage|garlic|tomato|carrot|potato|corn|mushroom|onion" placeholder="..." autocomplete="off" autocorrect="off" spellcheck="false">
+                                        <span class="cloze-fb-badge"></span>
+                                        <span class="cloze-hint-text" style="display:none;"></span>
+                                    </div>
+                                </td>
+                            </tr>
+                            <!-- Row 5 -->
+                            <tr class="notebook-line">
+                                <td>
+                                    <div class="cloze-wrapper">
+                                        <input type="text" class="cloze-input" data-answer="strawberry|avocado|pineapple|mango|grape|papaya|banana|melon|orange|watermelon|dragon fruit|dragonfruit" placeholder="..." autocomplete="off" autocorrect="off" spellcheck="false">
+                                        <span class="cloze-fb-badge"></span>
+                                        <span class="cloze-hint-text" style="display:none;"></span>
+                                    </div>
+                                </td>
+                                <td>
+                                    <div class="cloze-wrapper">
+                                        <input type="text" class="cloze-input" data-answer="spinach|eggplant|broccoli|scallion|cabbage|garlic|tomato|carrot|potato|corn|mushroom|onion" placeholder="..." autocomplete="off" autocorrect="off" spellcheck="false">
+                                        <span class="cloze-fb-badge"></span>
+                                        <span class="cloze-hint-text" style="display:none;"></span>
+                                    </div>
+                                </td>
+                            </tr>
+                            <!-- Row 6 -->
+                            <tr class="notebook-line">
+                                <td>
+                                    <div class="cloze-wrapper">
+                                        <input type="text" class="cloze-input" data-answer="strawberry|avocado|pineapple|mango|grape|papaya|banana|melon|orange|watermelon|dragon fruit|dragonfruit" placeholder="..." autocomplete="off" autocorrect="off" spellcheck="false">
+                                        <span class="cloze-fb-badge"></span>
+                                        <span class="cloze-hint-text" style="display:none;"></span>
+                                    </div>
+                                </td>
+                                <td>
+                                    <div class="cloze-wrapper">
+                                        <input type="text" class="cloze-input" data-answer="spinach|eggplant|broccoli|scallion|cabbage|garlic|tomato|carrot|potato|corn|mushroom|onion" placeholder="..." autocomplete="off" autocorrect="off" spellcheck="false">
+                                        <span class="cloze-fb-badge"></span>
+                                        <span class="cloze-hint-text" style="display:none;"></span>
+                                    </div>
+                                </td>
+                            </tr>
+                            <!-- Row 7 -->
+                            <tr class="notebook-line">
+                                <td>
+                                    <div class="cloze-wrapper">
+                                        <input type="text" class="cloze-input" data-answer="strawberry|avocado|pineapple|mango|grape|papaya|banana|melon|orange|watermelon|dragon fruit|dragonfruit" placeholder="..." autocomplete="off" autocorrect="off" spellcheck="false">
+                                        <span class="cloze-fb-badge"></span>
+                                        <span class="cloze-hint-text" style="display:none;"></span>
+                                    </div>
+                                </td>
+                                <td>
+                                    <div class="cloze-wrapper">
+                                        <input type="text" class="cloze-input" data-answer="spinach|eggplant|broccoli|scallion|cabbage|garlic|tomato|carrot|potato|corn|mushroom|onion" placeholder="..." autocomplete="off" autocorrect="off" spellcheck="false">
+                                        <span class="cloze-fb-badge"></span>
+                                        <span class="cloze-hint-text" style="display:none;"></span>
+                                    </div>
+                                </td>
+                            </tr>
+                            <!-- Row 8 -->
+                            <tr class="notebook-line">
+                                <td>
+                                    <div class="cloze-wrapper">
+                                        <input type="text" class="cloze-input" data-answer="strawberry|avocado|pineapple|mango|grape|papaya|banana|melon|orange|watermelon|dragon fruit|dragonfruit" placeholder="..." autocomplete="off" autocorrect="off" spellcheck="false">
+                                        <span class="cloze-fb-badge"></span>
+                                        <span class="cloze-hint-text" style="display:none;"></span>
+                                    </div>
+                                </td>
+                                <td>
+                                    <div class="cloze-wrapper">
+                                        <input type="text" class="cloze-input" data-answer="spinach|eggplant|broccoli|scallion|cabbage|garlic|tomato|carrot|potato|corn|mushroom|onion" placeholder="..." autocomplete="off" autocorrect="off" spellcheck="false">
+                                        <span class="cloze-fb-badge"></span>
+                                        <span class="cloze-hint-text" style="display:none;"></span>
+                                    </div>
+                                </td>
+                            </tr>
+                            <!-- Row 9 -->
+                            <tr class="notebook-line">
+                                <td>
+                                    <div class="cloze-wrapper">
+                                        <input type="text" class="cloze-input" data-answer="strawberry|avocado|pineapple|mango|grape|papaya|banana|melon|orange|watermelon|dragon fruit|dragonfruit" placeholder="..." autocomplete="off" autocorrect="off" spellcheck="false">
+                                        <span class="cloze-fb-badge"></span>
+                                        <span class="cloze-hint-text" style="display:none;"></span>
+                                    </div>
+                                </td>
+                                <td>
+                                    <div class="cloze-wrapper">
+                                        <input type="text" class="cloze-input" data-answer="spinach|eggplant|broccoli|scallion|cabbage|garlic|tomato|carrot|potato|corn|mushroom|onion" placeholder="..." autocomplete="off" autocorrect="off" spellcheck="false">
+                                        <span class="cloze-fb-badge"></span>
+                                        <span class="cloze-hint-text" style="display:none;"></span>
+                                    </div>
+                                </td>
+                            </tr>
+                            <!-- Row 10 -->
+                            <tr class="notebook-line">
+                                <td>
+                                    <div class="cloze-wrapper">
+                                        <input type="text" class="cloze-input" data-answer="strawberry|avocado|pineapple|mango|grape|papaya|banana|melon|orange|watermelon|dragon fruit|dragonfruit" placeholder="..." autocomplete="off" autocorrect="off" spellcheck="false">
+                                        <span class="cloze-fb-badge"></span>
+                                        <span class="cloze-hint-text" style="display:none;"></span>
+                                    </div>
+                                </td>
+                                <td>
+                                    <div class="cloze-wrapper">
+                                        <input type="text" class="cloze-input" data-answer="spinach|eggplant|broccoli|scallion|cabbage|garlic|tomato|carrot|potato|corn|mushroom|onion" placeholder="..." autocomplete="off" autocorrect="off" spellcheck="false">
+                                        <span class="cloze-fb-badge"></span>
+                                        <span class="cloze-hint-text" style="display:none;"></span>
+                                    </div>
+                                </td>
+                            </tr>
+                            <!-- Row 11 -->
+                            <tr class="notebook-line">
+                                <td>
+                                    <div class="cloze-wrapper">
+                                        <input type="text" class="cloze-input" data-answer="strawberry|avocado|pineapple|mango|grape|papaya|banana|melon|orange|watermelon|dragon fruit|dragonfruit" placeholder="..." autocomplete="off" autocorrect="off" spellcheck="false">
+                                        <span class="cloze-fb-badge"></span>
+                                        <span class="cloze-hint-text" style="display:none;"></span>
+                                    </div>
+                                </td>
+                                <td>
+                                    <div class="cloze-wrapper">
+                                        <input type="text" class="cloze-input" data-answer="spinach|eggplant|broccoli|scallion|cabbage|garlic|tomato|carrot|potato|corn|mushroom|onion" placeholder="..." autocomplete="off" autocorrect="off" spellcheck="false">
+                                        <span class="cloze-fb-badge"></span>
+                                        <span class="cloze-hint-text" style="display:none;"></span>
+                                    </div>
+                                </td>
+                            </tr>
+                            <!-- Row 12 -->
+                            <tr class="notebook-line">
+                                <td>
+                                    <div class="cloze-wrapper">
+                                        <input type="text" class="cloze-input" data-answer="strawberry|avocado|pineapple|mango|grape|papaya|banana|melon|orange|watermelon|dragon fruit|dragonfruit" placeholder="..." autocomplete="off" autocorrect="off" spellcheck="false">
+                                        <span class="cloze-fb-badge"></span>
+                                        <span class="cloze-hint-text" style="display:none;"></span>
+                                    </div>
+                                </td>
+                                <td>
+                                    <div class="cloze-wrapper">
+                                        <input type="text" class="cloze-input" data-answer="spinach|eggplant|broccoli|scallion|cabbage|garlic|tomato|carrot|potato|corn|mushroom|onion" placeholder="..." autocomplete="off" autocorrect="off" spellcheck="false">
+                                        <span class="cloze-fb-badge"></span>
+                                        <span class="cloze-hint-text" style="display:none;"></span>
+                                    </div>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+
+            <!-- SCORE BOX -->
+            <div id="score-box" class="score-box" style="display: none;">
+                <div class="score-label">TOTAL SCORE</div>
+                <div class="score-value" id="score-value">100</div>
+            </div>
+
+            <!-- QUIZ CONTROL ACTIONS -->
+            <div class="quiz-actions" id="quiz-actions">
+                <button id="btn-reset" class="reset-btn">
+                    <img src="https://lh3.googleusercontent.com/d/1KuPBOWr81b39cSSCvc2lzqeiIKnZZ_A0" alt="Try Again">
+                </button>
+                <button id="btn-check" class="check-btn" disabled>
+                    <img src="https://lh3.googleusercontent.com/d/16hWAAvA2gprM0l5Vmw8t8_mrvAo4oic_"
+                        alt="Check Answers">
+                </button>
+            </div>
+
+            <!-- RESULT MESSAGE -->
+            <div id="result-msg" class="result-msg" style="display: none;"></div>
+        </div>
+
+        <!-- SOUND ASSETS -->
+        <audio id="audio-click" src="assets/click.mp3"></audio>
+        <audio id="audio-correct" src="assets/correct_sound.mp3"></audio>
+        <audio id="audio-incorrect" src="assets/incorrect_sound.mp3"></audio>
+        <audio id="audio-typing" src="assets/typing.mp3" preload="auto"></audio>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+
+</html>
