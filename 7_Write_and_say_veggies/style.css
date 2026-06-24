@@ -1,0 +1,259 @@
+/* GENERAL RESET & FONTS */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Outfit', sans-serif;
+    -webkit-tap-highlight-color: transparent;
+}
+
+body {
+    background-color: transparent;
+    display: flex;
+    justify-content: center;
+    min-height: 100vh;
+    overflow-y: auto;
+    overflow-x: hidden;
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+}
+
+body::-webkit-scrollbar {
+    display: none;
+}
+
+.page {
+    width: 100%;
+    max-width: 360px;
+    background: transparent;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+    overflow-x: hidden;
+}
+
+/* BORDERS */
+.top-border {
+    position: absolute !important;
+    top: 0 !important;
+    left: 0 !important;
+    width: 100% !important;
+    height: auto !important;
+    z-index: 9999 !important;
+    pointer-events: none !important;
+}
+
+.bottom-border {
+    position: absolute !important;
+    bottom: 0 !important;
+    left: 0 !important;
+    width: 100% !important;
+    height: auto !important;
+    z-index: 9999 !important;
+    pointer-events: none !important;
+}
+
+/* SCROLLABLE CONTENT AREA */
+.scroll-content {
+    flex: 1;
+    overflow-y: visible !important;
+    overflow-x: hidden;
+    padding: 0px 16px 80px 16px; /* Reduced top padding */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+/* HEADER & INSTRUCTIONS */
+.module-header {
+    text-align: center;
+    padding: 65px 16px 10px 16px;
+    background: transparent !important;
+    position: relative !important;
+    z-index: 10000 !important;
+    box-shadow: none !important;
+    flex-shrink: 0;
+}
+
+.title-badge {
+    width: 250px;
+    height: auto;
+    margin: 0 auto 10px;
+    display: block;
+}
+
+.instructions {
+    text-align: center;
+    color: #000;
+    margin-bottom: 5px; /* Reduced from 15px */
+}
+
+.instructions .en {
+    font-size: 14px;
+    font-weight: 600;
+    color: #1e293b;
+    margin-bottom: 4px;
+}
+
+.instructions .separator {
+    width: 100%;
+    border-top: 2px dotted #93c5fd;
+    margin: 8px auto;
+    background: transparent;
+    height: 0;
+}
+
+.instructions .id {
+    font-size: 14px;
+    font-weight: 400;
+    color: #475569;
+}
+
+/* IMAGE */
+.image-container {
+    width: 100%;
+    max-width: 280px;
+    margin: 0px auto 10px auto; /* Reduced top margin from 10px */
+    display: flex;
+    justify-content: center;
+}
+
+.girl-img {
+    max-width: 100%;
+    width: auto;
+    height: auto;
+    border: 4px solid #a3e635; /* Added border */
+    border-radius: 16px; /* Slightly rounder */
+    max-height: 300px;
+    object-fit: contain;
+}
+
+/* SPEECH BUBBLE */
+.speech-bubble-container {
+    width: 100%;
+    margin-top: 15px;
+    position: relative;
+    padding: 0 10px;
+}
+
+.speech-bubble {
+    position: relative;
+    background: #ffffff;
+    border: 2px solid #a3e635; /* Green border for bubble */
+    border-radius: 12px;
+    padding: 20px;
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+}
+
+/* Speech bubble pointer pointing UP */
+.speech-bubble::before, .speech-bubble::after {
+    content: '';
+    position: absolute;
+    bottom: 100%; /* Pointing up */
+    border-style: solid;
+}
+
+/* Outer border pointer */
+.speech-bubble::before {
+    right: 80px; /* Move closer to the girl's leg */
+    border-width: 0 15px 25px 15px; /* Upward triangle */
+    border-color: transparent transparent #a3e635 transparent;
+}
+
+/* Inner pointer to overlap and hollow out the triangle */
+.speech-bubble::after {
+    right: 82px;
+    bottom: calc(100% - 3px); /* Shift down to cover bubble border */
+    border-width: 0 13px 23px 13px;
+    border-color: transparent transparent #ffffff transparent;
+}
+
+.dialogue-text {
+    font-size: 14px; /* Reduced from 16px */
+    font-weight: 600;
+    color: #1e293b;
+    line-height: 2.2;
+    text-align: center;
+}
+
+/* INPUT FIELDS */
+.fruit-input {
+    width: 90px;
+    border: none;
+    border-bottom: 2px solid #475569;
+    background: transparent;
+    font-size: 14px; /* Reduced from 16px */
+    font-weight: 700;
+    color: #2563eb;
+    text-align: center;
+    padding: 2px 5px;
+    outline: none;
+    font-family: 'Outfit', sans-serif;
+    transition: border-color 0.3s, color 0.3s, background-color 0.3s;
+    border-radius: 4px 4px 0 0;
+}
+
+.fruit-input:focus {
+    border-bottom-color: #2563eb;
+    background-color: #eff6ff;
+}
+
+.fruit-input.correct {
+    border-bottom-color: #16a34a;
+    color: #16a34a;
+    background-color: #f0fdf4;
+}
+
+.fruit-input.wrong {
+    border-bottom-color: #dc2626;
+    color: #dc2626;
+    background-color: #fef2f2;
+}
+
+/* BUTTONS */
+.btn-row {
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+    margin-top: 15px;
+    width: 100%;
+}
+
+button {
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 0;
+    transition: transform 0.2s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+button:active {
+    transform: scale(0.9);
+}
+
+button:disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
+    transform: none;
+}
+
+button img {
+    height: 48px;
+    width: auto;
+    display: block;
+}
+
+.bottom-padding {
+    height: 10px;
+    flex-shrink: 0;
+}
+
+.result-msg {
+    text-align: center;
+    font-size: 18px;
+    font-weight: 800;
+    min-height: 24px;
+    margin-top: 15px;
+    color: #2563eb;
+}
