@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Say and Do</title>
+    <link rel="stylesheet" href="style.css">
+    <!-- Confetti Library for celebration -->
+    <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
+</head>
+
+<body>
+    <div class="page">
+        <img src="https://lh3.googleusercontent.com/d/1Wtb9UWtvVhVA13B0HLBagfyx1bD1LU5x" class="top-border" alt="Top Border">
+        <img src="https://lh3.googleusercontent.com/d/19NE3XzidRxaYa56e4OBOdI38n3nYJhwK" class="bottom-border" alt="Bottom Border">
+
+        <header class="module-header">
+            <!-- PNG Judul -->
+            <img src="https://lh3.googleusercontent.com/d/1tNqCb5yi66i8hdS86UmZNZSK-ucyTqJQ" alt="SAY AND DO" class="title-badge">
+
+            <div class="instructions">
+                <p class="en">Say and do the actions in the pictures!</p>
+                <div class="separator"></div>
+                <p class="id">Ucapkan dan peragakan aksi dalam gambar berikut!</p>
+            </div>
+        </header>
+
+        <!-- Scrollable Content -->
+        <div class="scroll-content">
+
+            <main class="grid-container">
+                <div class="action-card" data-audio="cut_the_broccoli.MP3">
+                    <div class="image-wrapper">
+                        <img src="https://lh3.googleusercontent.com/d/13O8ocVj1JuNOu0wzm3DcsvyRCcsMOt_O" alt="Cut the broccoli" class="action-image" loading="lazy">
+                        <button class="sound-btn" aria-label="Play sound">
+                            <svg viewBox="0 0 24 24"><path d="M14,3.23V5.29C16.89,6.15 19,8.83 19,12C19,15.17 16.89,17.85 14,18.71V20.77C18.03,19.86 21,16.28 21,12C21,7.72 18.03,4.14 14,3.23M16.5,12C16.5,10.23 15.5,8.71 14,7.97V16.04C15.5,15.29 16.5,13.77 16.5,12M3,9V15H7L12,20V4L7,9H3Z" /></svg>
+                        </button>
+                    </div>
+                    <div class="text-wrapper">
+                        <span class="action-text sentence">Cut the broccoli</span>
+                    </div>
+                </div>
+
+                <div class="action-card" data-audio="Wash-the-spinach.MP3">
+                    <div class="image-wrapper">
+                        <img src="https://lh3.googleusercontent.com/d/1vwbtrBpvHUpk64L7DsNmYy_vbet1EliV" alt="Wash the spinach" class="action-image" loading="lazy">
+                        <button class="sound-btn" aria-label="Play sound">
+                            <svg viewBox="0 0 24 24"><path d="M14,3.23V5.29C16.89,6.15 19,8.83 19,12C19,15.17 16.89,17.85 14,18.71V20.77C18.03,19.86 21,16.28 21,12C21,7.72 18.03,4.14 14,3.23M16.5,12C16.5,10.23 15.5,8.71 14,7.97V16.04C15.5,15.29 16.5,13.77 16.5,12M3,9V15H7L12,20V4L7,9H3Z" /></svg>
+                        </button>
+                    </div>
+                    <div class="text-wrapper">
+                        <span class="action-text sentence">Wash the spinach</span>
+                    </div>
+                </div>
+
+                <div class="action-card" data-audio="Peel-the-carrot.MP3">
+                    <div class="image-wrapper">
+                        <img src="https://lh3.googleusercontent.com/d/177cTRvlvCS850ewBcJzgrcMRkIaOiAsf" alt="Peel the carrot" class="action-image" loading="lazy">
+                        <button class="sound-btn" aria-label="Play sound">
+                            <svg viewBox="0 0 24 24"><path d="M14,3.23V5.29C16.89,6.15 19,8.83 19,12C19,15.17 16.89,17.85 14,18.71V20.77C18.03,19.86 21,16.28 21,12C21,7.72 18.03,4.14 14,3.23M16.5,12C16.5,10.23 15.5,8.71 14,7.97V16.04C15.5,15.29 16.5,13.77 16.5,12M3,9V15H7L12,20V4L7,9H3Z" /></svg>
+                        </button>
+                    </div>
+                    <div class="text-wrapper">
+                        <span class="action-text sentence">Peel the carrot</span>
+                    </div>
+                </div>
+
+                <div class="action-card" data-audio="Peel-the-onion.MP3">
+                    <div class="image-wrapper">
+                        <img src="https://lh3.googleusercontent.com/d/1g9D0d6zp28fOOBWpPUdwP9U4x1z1ClV6" alt="Peel the onion" class="action-image" loading="lazy">
+                        <button class="sound-btn" aria-label="Play sound">
+                            <svg viewBox="0 0 24 24"><path d="M14,3.23V5.29C16.89,6.15 19,8.83 19,12C19,15.17 16.89,17.85 14,18.71V20.77C18.03,19.86 21,16.28 21,12C21,7.72 18.03,4.14 14,3.23M16.5,12C16.5,10.23 15.5,8.71 14,7.97V16.04C15.5,15.29 16.5,13.77 16.5,12M3,9V15H7L12,20V4L7,9H3Z" /></svg>
+                        </button>
+                    </div>
+                    <div class="text-wrapper">
+                        <span class="action-text sentence">Peel the onion</span>
+                    </div>
+                </div>
+
+                <div class="action-card" data-audio="Chop-the-garlic.MP3">
+                    <div class="image-wrapper">
+                        <img src="https://lh3.googleusercontent.com/d/1RSUdkQQbFsZkMU-DqPvr-h8Hq7wErozg" alt="Chop the garlic" class="action-image" loading="lazy">
+                        <button class="sound-btn" aria-label="Play sound">
+                            <svg viewBox="0 0 24 24"><path d="M14,3.23V5.29C16.89,6.15 19,8.83 19,12C19,15.17 16.89,17.85 14,18.71V20.77C18.03,19.86 21,16.28 21,12C21,7.72 18.03,4.14 14,3.23M16.5,12C16.5,10.23 15.5,8.71 14,7.97V16.04C15.5,15.29 16.5,13.77 16.5,12M3,9V15H7L12,20V4L7,9H3Z" /></svg>
+                        </button>
+                    </div>
+                    <div class="text-wrapper">
+                        <span class="action-text sentence">Chop the garlic</span>
+                    </div>
+                </div>
+
+                <div class="action-card" data-audio="Cut-the-scallion.MP3">
+                    <div class="image-wrapper">
+                        <img src="https://lh3.googleusercontent.com/d/1PbyQRVbv9GGwXWWrxJd6G2odztreAeR2" alt="Cut the scallion" class="action-image" loading="lazy">
+                        <button class="sound-btn" aria-label="Play sound">
+                            <svg viewBox="0 0 24 24"><path d="M14,3.23V5.29C16.89,6.15 19,8.83 19,12C19,15.17 16.89,17.85 14,18.71V20.77C18.03,19.86 21,16.28 21,12C21,7.72 18.03,4.14 14,3.23M16.5,12C16.5,10.23 15.5,8.71 14,7.97V16.04C15.5,15.29 16.5,13.77 16.5,12M3,9V15H7L12,20V4L7,9H3Z" /></svg>
+                        </button>
+                    </div>
+                    <div class="text-wrapper">
+                        <span class="action-text sentence">Cut the scallion</span>
+                    </div>
+                </div>
+
+                <div class="action-card" data-audio="Dice-the-potatoes.MP3">
+                    <div class="image-wrapper">
+                        <img src="https://lh3.googleusercontent.com/d/1O_sKHw-OX23aTPfH6Ogndhb-JI1tOCFt" alt="Dice the potatoes" class="action-image" loading="lazy">
+                        <button class="sound-btn" aria-label="Play sound">
+                            <svg viewBox="0 0 24 24"><path d="M14,3.23V5.29C16.89,6.15 19,8.83 19,12C19,15.17 16.89,17.85 14,18.71V20.77C18.03,19.86 21,16.28 21,12C21,7.72 18.03,4.14 14,3.23M16.5,12C16.5,10.23 15.5,8.71 14,7.97V16.04C15.5,15.29 16.5,13.77 16.5,12M3,9V15H7L12,20V4L7,9H3Z" /></svg>
+                        </button>
+                    </div>
+                    <div class="text-wrapper">
+                        <span class="action-text sentence">Dice the potatoes</span>
+                    </div>
+                </div>
+
+                <div class="action-card" data-audio="Wash-the-tomatoes.MP3">
+                    <div class="image-wrapper">
+                        <img src="https://lh3.googleusercontent.com/d/1nNVS7q258_M8OrvjZHv3rKV35aimAjWk" alt="Wash the tomatoes" class="action-image" loading="lazy">
+                        <button class="sound-btn" aria-label="Play sound">
+                            <svg viewBox="0 0 24 24"><path d="M14,3.23V5.29C16.89,6.15 19,8.83 19,12C19,15.17 16.89,17.85 14,18.71V20.77C18.03,19.86 21,16.28 21,12C21,7.72 18.03,4.14 14,3.23M16.5,12C16.5,10.23 15.5,8.71 14,7.97V16.04C15.5,15.29 16.5,13.77 16.5,12M3,9V15H7L12,20V4L7,9H3Z" /></svg>
+                        </button>
+                    </div>
+                    <div class="text-wrapper">
+                        <span class="action-text sentence">Wash the tomatoes</span>
+                    </div>
+                </div>
+
+                <div class="action-card" data-audio="Peel-the-corn.MP3">
+                    <div class="image-wrapper">
+                        <img src="https://lh3.googleusercontent.com/d/1Ena9nJ1uIkkBvLgPM7A8fWtem-C2jYd0" alt="Peel the corn" class="action-image" loading="lazy">
+                        <button class="sound-btn" aria-label="Play sound">
+                            <svg viewBox="0 0 24 24"><path d="M14,3.23V5.29C16.89,6.15 19,8.83 19,12C19,15.17 16.89,17.85 14,18.71V20.77C18.03,19.86 21,16.28 21,12C21,7.72 18.03,4.14 14,3.23M16.5,12C16.5,10.23 15.5,8.71 14,7.97V16.04C15.5,15.29 16.5,13.77 16.5,12M3,9V15H7L12,20V4L7,9H3Z" /></svg>
+                        </button>
+                    </div>
+                    <div class="text-wrapper">
+                        <span class="action-text sentence">Peel the corn</span>
+                    </div>
+                </div>
+
+                <div class="action-card" data-audio="Cut-the-cabbage.MP3">
+                    <div class="image-wrapper">
+                        <img src="https://lh3.googleusercontent.com/d/1NdHUWfGi3dNcNzxhlUk_CAYXLB8VjOtn" alt="Cut the cabbage" class="action-image" loading="lazy">
+                        <button class="sound-btn" aria-label="Play sound">
+                            <svg viewBox="0 0 24 24"><path d="M14,3.23V5.29C16.89,6.15 19,8.83 19,12C19,15.17 16.89,17.85 14,18.71V20.77C18.03,19.86 21,16.28 21,12C21,7.72 18.03,4.14 14,3.23M16.5,12C16.5,10.23 15.5,8.71 14,7.97V16.04C15.5,15.29 16.5,13.77 16.5,12M3,9V15H7L12,20V4L7,9H3Z" /></svg>
+                        </button>
+                    </div>
+                    <div class="text-wrapper">
+                        <span class="action-text sentence">Cut the cabbage</span>
+                    </div>
+                </div>
+
+                <div class="action-card" data-audio="Peel-the-eggplant.MP3">
+                    <div class="image-wrapper">
+                        <img src="https://lh3.googleusercontent.com/d/1Q7WnhW07GhcBkJZR84IzY540RsIJhW_H" alt="Peel the eggplant" class="action-image" loading="lazy">
+                        <button class="sound-btn" aria-label="Play sound">
+                            <svg viewBox="0 0 24 24"><path d="M14,3.23V5.29C16.89,6.15 19,8.83 19,12C19,15.17 16.89,17.85 14,18.71V20.77C18.03,19.86 21,16.28 21,12C21,7.72 18.03,4.14 14,3.23M16.5,12C16.5,10.23 15.5,8.71 14,7.97V16.04C15.5,15.29 16.5,13.77 16.5,12M3,9V15H7L12,20V4L7,9H3Z" /></svg>
+                        </button>
+                    </div>
+                    <div class="text-wrapper">
+                        <span class="action-text sentence">Peel the eggplant</span>
+                    </div>
+                </div>
+
+                <div class="action-card" data-audio="Cut-the-mushroom.MP3">
+                    <div class="image-wrapper">
+                        <img src="https://lh3.googleusercontent.com/d/1wRetszr6m4xv_tdzPchV5niTYsUthhBw" alt="Cut the mushroom" class="action-image" loading="lazy">
+                        <button class="sound-btn" aria-label="Play sound">
+                            <svg viewBox="0 0 24 24"><path d="M14,3.23V5.29C16.89,6.15 19,8.83 19,12C19,15.17 16.89,17.85 14,18.71V20.77C18.03,19.86 21,16.28 21,12C21,7.72 18.03,4.14 14,3.23M16.5,12C16.5,10.23 15.5,8.71 14,7.97V16.04C15.5,15.29 16.5,13.77 16.5,12M3,9V15H7L12,20V4L7,9H3Z" /></svg>
+                        </button>
+                    </div>
+                    <div class="text-wrapper">
+                        <span class="action-text sentence">Cut the mushroom</span>
+                    </div>
+                </div>
+            </main>
+        </div>
+
+        <!-- SINGLE AUDIO SOURCE -->
+        <audio id="main-audio"></audio>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+
+</html>
