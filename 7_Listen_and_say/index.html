@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SHOW ME PARTS OF YOUR HOUSE - Read and Say</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <div class="page">
+        <img src="https://lh3.googleusercontent.com/d/1Wtb9UWtvVhVA13B0HLBagfyx1bD1LU5x" class="top-border" alt="Top Border">
+        <img src="https://lh3.googleusercontent.com/d/19NE3XzidRxaYa56e4OBOdI38n3nYJhwK" class="bottom-border" alt="Bottom Border">
+
+        <header class="module-header">
+            <!-- PNG Judul -->
+            <img src="https://lh3.googleusercontent.com/d/11oHmUIrW67i-jfu1nob2Fh_Z2tully-p" alt="Listen and Say" class="title-badge">
+            
+            <div class="instructions">
+                <p class="en">Listen to the sentence. Then, say it aloud!</p>
+                <div class="separator"></div>
+                <p class="id">Dengarkan kalimatnya. Lalu, ucapkan dengan lantang!</p>
+            </div>
+        </header>
+
+        <!-- Scrollable Content -->
+        <div class="scroll-content">
+
+            <div class="image-container">
+                <!-- Main Image -->
+                <img src="https://lh3.googleusercontent.com/d/1KgSZpaG4FkfDFsgNPi3_ilk5_Il0iyLc" alt="Fruits and Vegetables" class="main-gif">
+
+                <button class="sound-btn" id="play-btn" title="Play/Pause Sound">
+                    <!-- Play Icon (Default) -->
+                    <svg id="sound-icon" viewBox="0 0 24 24">
+                        <path
+                            d="M14,3.23V5.29C16.89,6.15 19,8.83 19,12C19,15.17 16.89,17.85 14,18.71V20.77C18.03,19.86 21,16.28 21,12C21,7.72 18.03,4.14 14,3.23M16.5,12C16.5,10.23 15.5,8.71 14,7.97V16.04C15.5,15.29 16.5,13.77 16.5,12M3,9V15H7L12,20V4L7,9H3Z" />
+                    </svg>
+                </button>
+            </div>
+
+            <table class="phrase-table">
+    <tr class="group-1"><td><div class="phrase" data-audio="an_apple.MP3">An apple</div></td></tr>
+    <tr class="group-1"><td><div class="phrase" data-audio="wash_the_apple.MP3">Wash an apple</div></td></tr>
+
+    <tr class="group-2"><td><div class="phrase" data-audio="a_banana.MP3">A banana</div></td></tr>
+    <tr class="group-2"><td><div class="phrase" data-audio="peel_the_banana.MP3">Peel the banana</div></td></tr>
+
+    <tr class="group-3"><td><div class="phrase" data-audio="an_orange.MP3">An orange</div></td></tr>
+    <tr class="group-3"><td><div class="phrase" data-audio="peel_the_orange.MP3">Peel the orange</div></td></tr>
+
+    <tr class="group-4"><td><div class="phrase" data-audio="a_watermelon.MP3">A watermelon</div></td></tr>
+    <tr class="group-4"><td><div class="phrase" data-audio="cut_the_watermelon.MP3">Cut the watermelon</div></td></tr>
+
+    <tr class="group-5"><td><div class="phrase" data-audio="a_dragon_fruit.MP3">A dragon fruit</div></td></tr>
+    <tr class="group-5"><td><div class="phrase" data-audio="divide_the_dragon_fruit.MP3">Divide the dragon fruit</div></td></tr>
+
+    <tr class="group-6"><td><div class="phrase" data-audio="a_melon.MP3">A melon</div></td></tr>
+    <tr class="group-6"><td><div class="phrase" data-audio="slice_the_melon.MP3">Slice the melon</div></td></tr>
+
+    <tr class="group-1"><td><div class="phrase" data-audio="a_mango.MP3">A mango</div></td></tr>
+    <tr class="group-1"><td><div class="phrase" data-audio="peel_the_mango.MP3">Peel the mango</div></td></tr>
+
+    <tr class="group-2"><td><div class="phrase" data-audio="a_pineapple.MP3">A pineapple</div></td></tr>
+    <tr class="group-2"><td><div class="phrase" data-audio="peel_the_pineapple.MP3">Peel the pineapple</div></td></tr>
+
+    <tr class="group-3"><td><div class="phrase" data-audio="an_avocado.MP3">An avocado</div></td></tr>
+    <tr class="group-3"><td><div class="phrase" data-audio="scoop_the_flesh_of_the_avocado.MP3">Scoop the flesh of the avocado</div></td></tr>
+
+    <tr class="group-4"><td><div class="phrase" data-audio="a_papaya.MP3">A papaya</div></td></tr>
+    <tr class="group-4"><td><div class="phrase" data-audio="cut_the_papaya.MP3">Cut the papaya</div></td></tr>
+
+    <tr class="group-5"><td><div class="phrase" data-audio="a_broccoli.MP3">A broccoli</div></td></tr>
+    <tr class="group-5"><td><div class="phrase" data-audio="cut_the_broccoli.MP3">Cut the broccoli</div></td></tr>
+</table>
+        </div>
+
+        <audio id="main-audio"></audio>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+
+</html>
