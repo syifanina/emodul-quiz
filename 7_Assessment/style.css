@@ -720,7 +720,10 @@ body {
 
 .word-bank-container {
     width: 100%;
-    margin-bottom: 24px;
+    margin-bottom: 8px;
+    border: 2px solid #000000;
+    border-radius: 12px;
+    overflow: hidden;
 }
 
 .word-bank-title {
@@ -736,8 +739,7 @@ body {
     width: 100%;
     border-collapse: collapse;
     background: #ffffff;
-    border: 2px solid #000000;
-    border-radius: 8px; /* Slight rounding on outer table if supported, but usually needs wrapper */
+    border: none;
 }
 
 .word-bank-table td {
@@ -750,6 +752,11 @@ body {
     color: #1e293b;
     transition: background-color 0.3s ease;
 }
+
+.word-bank-table tr:first-child td { border-top: none; }
+.word-bank-table tr:last-child td { border-bottom: none; }
+.word-bank-table td:first-child { border-left: none; }
+.word-bank-table td:last-child { border-right: none; }
 
 /* Super Soft 24 Distinct Pastel Colors for Word Bank */
 /* Row 1 */
@@ -807,22 +814,21 @@ body {
 
 .answer-table-container {
     width: 100%;
-    display: flex;
-    justify-content: center;
+    margin-top: 8px;
+    border: 2px solid #000000;
+    border-radius: 12px;
     overflow: hidden;
-    margin-top: 16px;
 }
 
 .answer-table {
-    width: auto;
-    min-width: 400px;
+    width: 100%;
     border-collapse: collapse;
-    border: 2px solid #000000;
+    border: none;
 }
 
 .answer-table th {
     border: 1px solid #000000;
-    padding: 10px 16px;
+    padding: 8px 4px;
     font-family: 'Outfit', sans-serif;
     font-size: 15px;
     font-weight: 800;
@@ -831,19 +837,25 @@ body {
 }
 
 .header-fruits {
-    background-color: #fbbf24; /* Yellow */
+    background-color: #ffd6a5; /* Modern Pastel Peach/Orange */
 }
 
 .header-veggies {
-    background-color: #a3e635; /* Light green */
+    background-color: #caffbf; /* Modern Pastel Mint/Green */
 }
 
 .answer-table td {
     border: 1px solid #000000;
-    padding: 6px 12px;
+    padding: 2px 4px;
     text-align: center;
     vertical-align: middle;
+    width: 50%;
 }
+
+.answer-table tr:first-child th { border-top: none; }
+.answer-table tr:last-child td { border-bottom: none; }
+.answer-table th:first-child, .answer-table td:first-child { border-left: none; }
+.answer-table th:last-child, .answer-table td:last-child { border-right: none; }
 
 .example-cell-answer {
     background-color: #dbeafe; /* Light blue */
@@ -867,7 +879,8 @@ body {
 }
 
 .cloze-input {
-    width: 150px;
+    width: 100%;
+    box-sizing: border-box;
     border: none;
     background: transparent;
     font-family: 'Comic Sans MS', 'Chalkboard SE', 'Comic Neue', sans-serif;
@@ -875,7 +888,7 @@ body {
     font-weight: 700;
     text-align: center;
     color: #1e40af;
-    padding: 6px;
+    padding: 2px;
     outline: none;
     transition: all 0.2s ease;
 }
