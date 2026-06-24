@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Write and Say</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <div class="page">
+        <!-- Borders from other modules -->
+        <img src="https://lh3.googleusercontent.com/d/1Wtb9UWtvVhVA13B0HLBagfyx1bD1LU5x" class="top-border" alt="Top Border">
+        <img src="https://lh3.googleusercontent.com/d/19NE3XzidRxaYa56e4OBOdI38n3nYJhwK" class="bottom-border" alt="Bottom Border">
+
+        <header class="module-header">
+            <img src="https://lh3.googleusercontent.com/d/1Lm7kenBQbfcel-33eLhPM8JEg5u_uEn5" alt="Write and Say" class="title-badge" id="title-badge-img">
+            <div class="instructions">
+                <p class="en">Now, complete the dialogue with the fruits you choose from the picture and say it to your friend!</p>
+                <div class="separator"></div>
+                <p class="id">Sekarang lengkapi dialog di bawah ini dengan nama buah-buahan yang tadi sudah kamu pilih dalam gambar dan ucapkan ke temanmu!</p>
+            </div>
+        </header>
+
+        <div class="scroll-content">
+            <div class="image-container">
+                <img src="https://lh3.googleusercontent.com/d/1r147oDTKuzBr8TFMNe55rv4VmhdP5NFz" id="girl-img" alt="Girl with fruits" class="girl-img">
+            </div>
+
+            <div class="speech-bubble-container">
+                <div class="speech-bubble">
+                    <p class="dialogue-text">
+                        Let's make a fruit salad. You need an apple,
+                        <input type="text" class="fruit-input" data-index="0" maxlength="15">, 
+                        <input type="text" class="fruit-input" data-index="1" maxlength="15">, 
+                        <input type="text" class="fruit-input" data-index="2" maxlength="15">, 
+                        <input type="text" class="fruit-input" data-index="3" maxlength="15">, and 
+                        <input type="text" class="fruit-input" data-index="4" maxlength="15">.
+                    </p>
+                </div>
+            </div>
+
+            <div id="result-msg" class="result-msg"></div>
+            
+            <div class="btn-row">
+                <button id="btn-reset" class="reset-btn">
+                    <img src="https://lh3.googleusercontent.com/d/1dei6o2rEZhsDD_INFO6JwhkXtlAR_0N8" alt="Reset">
+                </button>
+                <button id="btn-check" class="check-btn">
+                    <img src="https://lh3.googleusercontent.com/d/1XsYlo6Lz_DtaXPn7sFOWVzLGwOBexrXY" alt="Check Answer">
+                </button>
+            </div>
+            <div class="bottom-padding"></div>
+        </div>
+
+        <audio id="click-audio" src="assets/click.MP3" preload="auto"></audio>
+        <audio id="typing-audio" src="assets/typing.MP3" preload="auto"></audio>
+        <audio id="correct-audio" src="assets/correct_sound.MP3" preload="auto"></audio>
+        <audio id="wrong-audio" src="assets/incorrect_sound.MP3" preload="auto"></audio>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
