@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Look and Match Veggies</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <div class="page">
+        <!-- Reusing borders from other modules -->
+        <img src="https://lh3.googleusercontent.com/d/1Wtb9UWtvVhVA13B0HLBagfyx1bD1LU5x" class="top-border" alt="Top Border">
+        <img src="https://lh3.googleusercontent.com/d/19NE3XzidRxaYa56e4OBOdI38n3nYJhwK" class="bottom-border" alt="Bottom Border">
+
+        <header class="module-header">
+            <!-- Placeholder for title badge -->
+            <img src="https://lh3.googleusercontent.com/d/1hzSRKEbkLVbBZBwavd5fucUgpglTgrkM" alt="Look and Match" class="title-badge" id="title-badge-img">
+            <div class="instructions">
+                <p class="en">Then, let's make a vegetable soup by drawing lines to connect vegetables and the pot. Look at the example!</p>
+                <div class="separator"></div>
+                <p class="id">Marilah membuat sup sayuran dengan cara menarik garis untuk menghubungkan sayur-sayuran dengan panci. Perhatikan contoh berikut:</p>
+            </div>
+        </header>
+
+        <div class="scroll-content" id="quiz-container">
+            <div class="play-area">
+                <div class="match-grid" id="match-grid">
+                    <!-- SVG Overlay for drawing lines -->
+                    <svg id="lines-svg"></svg>
+                    
+                    <!-- Center Bowl Drop Target -->
+                    <div class="bowl-container" id="target-bowl">
+                        <img src="https://lh3.googleusercontent.com/d/1FdeWBarMqOUWShf3QrLBkCAyvC-A25Cb" id="bowl-img" alt="Pan" class="bowl-img">
+                    </div>
+
+                    <!-- 12 Items surrounding the bowl -->
+                    <!-- Top Row -->
+                    <div class="item-card" data-id="1" data-type="veggie" style="grid-area: 1 / 1 / 2 / 2;">
+                        <img src="https://lh3.googleusercontent.com/d/1x5IdEa164-r_GFqiTq2m6ISByC_DZtL_" alt="Tomato">
+                    </div>
+                    <div class="item-card" data-id="2" data-type="veggie" style="grid-area: 1 / 2 / 2 / 3;">
+                        <img src="https://lh3.googleusercontent.com/d/1DU6UCjU5OyMDZMFQ-VR0craPUp6asT1T" alt="Scallion">
+                    </div>
+                    <div class="item-card" data-id="3" data-type="veggie" style="grid-area: 1 / 3 / 2 / 4;">
+                        <img src="https://lh3.googleusercontent.com/d/1kT8fJuBGV5dKBXxTSH4cRDphna9znThN" alt="Garlic">
+                    </div>
+                    <div class="item-card" data-id="4" data-type="fruit" style="grid-area: 1 / 4 / 2 / 5;">
+                        <img src="https://lh3.googleusercontent.com/d/1irZZ1oF0mUKXbgfTMpZvrQtQDhfj7r_y" alt="Melon">
+                    </div>
+
+                    <!-- Middle Left -->
+                    <div class="item-card" data-id="5" data-type="veggie" style="grid-area: 2 / 1 / 3 / 2;">
+                        <img src="https://lh3.googleusercontent.com/d/1JO9nL0dTu986DnoUhzC28mj1_1nHJaQD" alt="Broccoli">
+                    </div>
+                    <div class="item-card" data-id="6" data-type="fruit" style="grid-area: 3 / 1 / 4 / 2;">
+                        <img src="https://lh3.googleusercontent.com/d/17Z0WjKdRCc6OBsN7t1pY0TLDvwvczKvO" alt="Avocado">
+                    </div>
+
+                    <!-- Middle Right -->
+                    <div class="item-card" data-id="7" data-type="veggie" style="grid-area: 2 / 4 / 3 / 5;">
+                        <img src="https://lh3.googleusercontent.com/d/1oyA1GZQnjWuVwz1HVRekYIpr2_KifUJR" alt="Carrot">
+                    </div>
+                    <div class="item-card" data-id="8" data-type="fruit" style="grid-area: 3 / 4 / 4 / 5;">
+                        <img src="https://lh3.googleusercontent.com/d/1-imuTIi9eO56_QSeMztYYG5g2dnZvo3c" alt="Papaya">
+                    </div>
+
+                    <!-- Bottom Row -->
+                    <div class="item-card" data-id="9" data-type="veggie" style="grid-area: 4 / 1 / 5 / 2;">
+                        <img src="https://lh3.googleusercontent.com/d/1s9DE3bm4cRUvSEj2wO30AVpu-EzZ2mw_" alt="Potato">
+                    </div>
+                    <div class="item-card" data-id="10" data-type="fruit" style="grid-area: 4 / 2 / 5 / 3;">
+                        <img src="https://lh3.googleusercontent.com/d/155yrye4rDOaH76dEmTFAwzgg8cnWeRAJ" alt="Pineapple">
+                    </div>
+                    <div class="item-card" data-id="11" data-type="fruit" style="grid-area: 4 / 3 / 5 / 4;">
+                        <img src="https://lh3.googleusercontent.com/d/13HNXLMQMMwhrjzAYP8lCuKmhjmDiUjE7" alt="Dragon Fruit">
+                    </div>
+                    <div class="item-card" data-id="12" data-type="veggie" style="grid-area: 4 / 4 / 5 / 5;">
+                        <img src="https://lh3.googleusercontent.com/d/1BneuBa0LWBAz0AL0aqjhRhy87SZ3FAJ9" alt="Onion">
+                    </div>
+                </div>
+            </div>
+
+            <div class="bottom-padding"></div>
+            <div id="result-msg" class="result-msg"></div>
+            <div class="btn-row">
+                <button id="btn-reset" class="reset-btn">
+                    <img src="https://lh3.googleusercontent.com/d/1dei6o2rEZhsDD_INFO6JwhkXtlAR_0N8" alt="Reset">
+                </button>
+                <button id="btn-check" class="check-btn">
+                    <img src="https://lh3.googleusercontent.com/d/1XsYlo6Lz_DtaXPn7sFOWVzLGwOBexrXY" alt="Check Answer">
+                </button>
+            </div>
+        </div>
+
+        <audio id="click-audio" src="assets/click.MP3" preload="auto"></audio>
+        <audio id="correct-audio" src="assets/correct_sound.MP3" preload="auto"></audio>
+        <audio id="wrong-audio" src="assets/incorrect_sound.MP3" preload="auto"></audio>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
