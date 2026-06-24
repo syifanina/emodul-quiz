@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Match and Write – Quiz</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <div class="page">
+        <img src="https://lh3.googleusercontent.com/d/1Wtb9UWtvVhVA13B0HLBagfyx1bD1LU5x" class="top-border" alt="Top Border">
+        <img src="https://lh3.googleusercontent.com/d/19NE3XzidRxaYa56e4OBOdI38n3nYJhwK" class="bottom-border" alt="Bottom Border">
+
+        <header class="module-header">
+            <img src="https://lh3.googleusercontent.com/d/1K4Wq20hO10gwK7WcJdalwzg5a06gtUqC" alt="Match and Write" class="title-badge">
+            <div class="instructions">
+                <p class="en">Look at the picture of fruits and vegetables and match them to the right activity! Look at the example</p>
+                <div class="separator"></div>
+                <p class="id">Perhatikan gambar buah-buahan dan sayur-sayuran di bawah ini dan cocokkan dengan aktivitas yang sesuai! Perhatikan contoh berikut!</p>
+            </div>
+        </header>
+
+        <div class="scroll-content" id="quiz-container">
+            <!-- QUIZ QUESTIONS -->
+            <div class="match-layout" style="display: flex; flex-direction: column; gap: 12px; width: 100%;">
+                
+                <!-- Main Block -->
+                <div style="display: flex; justify-content: space-between; gap: 12px; width: 100%; align-items: stretch;">
+                    
+                    <!-- Left Column (Boxes 2, 5, 6, 8) -->
+                    <div style="display: flex; flex-direction: column; gap: 12px; flex: 1;">
+                        <!-- Box 2 -->
+                        <div class="item-box" id="box-2" style="flex: 1; border-color: #ea580c;">
+                            <div class="item-num" style="background: #ea580c;">2</div>
+                            <img src="https://lh3.googleusercontent.com/d/1CrmLdDPAq4DZml3v4zBGr4ZfR6nH6Xi0" alt="Question 2">
+                            <div class="item-name">The broccoli</div>
+                            <div class="answer-badge" id="badge-2" data-id="2">?</div>
+                        </div>
+                        <!-- Box 5 -->
+                        <div class="item-box" id="box-5" style="flex: 1; border-color: #7e22ce;">
+                            <div class="item-num" style="background: #7e22ce;">5</div>
+                            <img src="https://lh3.googleusercontent.com/d/1kDuaK6xd7OQgE2ZNwJGg7nopxb6d8Vka" alt="Question 5">
+                            <div class="item-name">The grapes</div>
+                            <div class="answer-badge" id="badge-5" data-id="5">?</div>
+                        </div>
+                        <!-- Box 6 -->
+                        <div class="item-box" id="box-6" style="flex: 1; border-color: #dc2626;">
+                            <div class="item-num" style="background: #dc2626;">6</div>
+                            <img src="https://lh3.googleusercontent.com/d/1xtAUaLXFS9vFAS9p_JiNydHVzQtW1HU4" alt="Question 6">
+                            <div class="item-name">The eggplant</div>
+                            <div class="answer-badge" id="badge-6" data-id="6">?</div>
+                        </div>
+                        <!-- Box 8 -->
+                        <div class="item-box" id="box-8" style="flex: 1; border-color: #ea580c;">
+                            <div class="item-num" style="background: #ea580c;">8</div>
+                            <img src="https://lh3.googleusercontent.com/d/18l9WXzK1NhVsL0wZGAQvai-iOsUl7_iK" alt="Question 8">
+                            <div class="item-name">The orange</div>
+                            <div class="answer-badge" id="badge-8" data-id="8">?</div>
+                        </div>
+                    </div>
+
+                    <!-- Center Column -->
+                    <div class="center-box" style="flex: 1; margin: 0;">
+                        <div class="room-list">
+                            <div class="room-item target-box" id="target-A" data-opt="A"><span>(A)</span> WASH</div>
+                            <div class="room-item target-box" id="target-B" data-opt="B"><span>(B)</span> PEEL</div>
+                            <div class="room-item target-box" id="target-C" data-opt="C"><span>(C)</span> CHOP</div>
+                            <div class="room-item target-box" id="target-D" data-opt="D"><span>(D)</span> CUT</div>
+                            <div class="room-item target-box" id="target-E" data-opt="E"><span>(E)</span> SLICE</div>
+                            <div class="room-item target-box" id="target-F" data-opt="F"><span>(F)</span> SCOOP THE FLESH OF</div>
+                            <div class="room-item target-box" id="target-G" data-opt="G"><span>(G)</span> REMOVE THE STEM OF</div>
+                            <div class="room-item target-box" id="target-H" data-opt="H"><span>(H)</span> DICE</div>
+                        </div>
+                    </div>
+
+                    <!-- Right Column (Boxes 3, 4, 1, 7) -->
+                    <div style="display: flex; flex-direction: column; gap: 12px; flex: 1;">
+                        <!-- Box 3 -->
+                        <div class="item-box" id="box-3" style="flex: 1; border-color: #16a34a;">
+                            <div class="item-num" style="background: #16a34a;">3</div>
+                            <img src="https://lh3.googleusercontent.com/d/1fKYerKmeIf5C75hE40ijpdk5HJdrqTXP" alt="Question 3">
+                            <div class="item-name">The garlic</div>
+                            <div class="answer-badge" id="badge-3" data-id="3">?</div>
+                        </div>
+                        <!-- Box 4 -->
+                        <div class="item-box" id="box-4" style="flex: 1; border-color: #2563eb;">
+                            <div class="item-num" style="background: #2563eb;">4</div>
+                            <img src="https://lh3.googleusercontent.com/d/1gb_QQa2UWp28UGSsmo23a0BszlCDApdQ" alt="Question 4">
+                            <div class="item-name">The strawberry</div>
+                            <div class="answer-badge" id="badge-4" data-id="4">?</div>
+                        </div>
+                        <!-- Box 1 -->
+                        <div class="item-box filled" id="box-1" style="flex: 1; border-color: #ca8a04; --badge-color: #ca8a04; pointer-events: none;">
+                            <div class="item-num" style="background: #ca8a04;">1</div>
+                            <img src="https://lh3.googleusercontent.com/d/10b1r24Wvqtwdxw01XEWGHFw3zBUvI1TU" alt="Question 1">
+                            <div class="item-name">The spinach</div>
+                            <div class="answer-badge" id="badge-1" data-id="1">A</div>
+                        </div>
+                        <!-- Box 7 -->
+                        <div class="item-box" id="box-7" style="flex: 1; border-color: #16a34a;">
+                            <div class="item-num" style="background: #16a34a;">7</div>
+                            <img src="https://lh3.googleusercontent.com/d/1Zm3Qq55ekWVeAfPD8_hQhTxNYiXQhP0b" alt="Question 7">
+                            <div class="item-name">The melon</div>
+                            <div class="answer-badge" id="badge-7" data-id="7">?</div>
+                        </div>
+                    </div>
+
+                </div>
+
+                <!-- Bottom Row (Boxes 9, 10) -->
+                <div style="display: flex; justify-content: center; gap: 12px; width: 100%; padding: 0 16px;">
+                    <!-- Box 9 -->
+                    <div class="item-box" id="box-9" style="width: calc(33.333% - 8px); border-color: #2563eb;">
+                        <div class="item-num" style="background: #2563eb;">9</div>
+                        <img src="https://lh3.googleusercontent.com/d/1ceRRCsdH3QjC9lEfwjXUjH47_cFx42Du" alt="Question 9">
+                        <div class="item-name">The potato</div>
+                        <div class="answer-badge" id="badge-9" data-id="9">?</div>
+                    </div>
+                    <!-- Box 10 -->
+                    <div class="item-box" id="box-10" style="width: calc(33.333% - 8px); border-color: #16a34a;">
+                        <div class="item-num" style="background: #16a34a;">10</div>
+                        <img src="https://lh3.googleusercontent.com/d/1xuSDpjmzZDfD4pAPWwHnUCk0B51Qji3P" alt="Question 10">
+                        <div class="item-name">The avocado</div>
+                        <div class="answer-badge" id="badge-10" data-id="10">?</div>
+                    </div>
+                </div>
+
+            </div>
+
+            <!-- WRITING SECTION -->
+            <div class="write-section" style="margin-top: 40px; width: 100%;">
+                <div class="instructions" style="margin-bottom: 20px;">
+                    <p class="en">Now complete the sentences with your work from matching exercise. Look at the example!</p>
+                    <div class="separator"></div>
+                    <p class="id">Sekarang lengkapi kalimat di bawah ini dari hasil mencocokkan yang telah kamu kerjakan! Perhatikan contoh!</p>
+                </div>
+
+                <div class="write-container">
+                    <div class="write-row example-row">
+                        <div class="number-badge">1</div>
+                        <div class="write-content">
+                            <span class="example-label" style="font-weight: 800; color: #dc2626;">Example:</span> <strong style="font-size: 14px; text-transform: capitalize;"><u>Wash the spinach</u></strong>
+                        </div>
+                    </div>
+                    <div class="write-row">
+                        <div class="number-badge">2</div>
+                        <div class="write-content"><input type="text" class="write-input" id="write-input-2" data-answer="cut the broccoli" placeholder="....." autocomplete="off" autocorrect="off" spellcheck="false" style="width: 100%;"></div>
+                    </div>
+                    <div class="write-row">
+                        <div class="number-badge">3</div>
+                        <div class="write-content"><input type="text" class="write-input" id="write-input-3" data-answer="chop the garlic" placeholder="....." autocomplete="off" autocorrect="off" spellcheck="false" style="width: 100%;"></div>
+                    </div>
+                    <div class="write-row">
+                        <div class="number-badge">4</div>
+                        <div class="write-content"><input type="text" class="write-input" id="write-input-4" data-answer="remove the stem of the strawberry|pull the leaf of the strawberry" placeholder="....." autocomplete="off" autocorrect="off" spellcheck="false" style="width: 100%;"></div>
+                    </div>
+                    <div class="write-row">
+                        <div class="number-badge">5</div>
+                        <div class="write-content"><input type="text" class="write-input" id="write-input-5" data-answer="remove the stem of the grapes" placeholder="....." autocomplete="off" autocorrect="off" spellcheck="false" style="width: 100%;"></div>
+                    </div>
+                    <div class="write-row">
+                        <div class="number-badge">6</div>
+                        <div class="write-content"><input type="text" class="write-input" id="write-input-6" data-answer="peel the eggplant" placeholder="....." autocomplete="off" autocorrect="off" spellcheck="false" style="width: 100%;"></div>
+                    </div>
+                    <div class="write-row">
+                        <div class="number-badge">7</div>
+                        <div class="write-content"><input type="text" class="write-input" id="write-input-7" data-answer="slice the melon" placeholder="....." autocomplete="off" autocorrect="off" spellcheck="false" style="width: 100%;"></div>
+                    </div>
+                    <div class="write-row">
+                        <div class="number-badge">8</div>
+                        <div class="write-content"><input type="text" class="write-input" id="write-input-8" data-answer="peel the orange" placeholder="....." autocomplete="off" autocorrect="off" spellcheck="false" style="width: 100%;"></div>
+                    </div>
+                    <div class="write-row">
+                        <div class="number-badge">9</div>
+                        <div class="write-content"><input type="text" class="write-input" id="write-input-9" data-answer="dice the potato" placeholder="....." autocomplete="off" autocorrect="off" spellcheck="false" style="width: 100%;"></div>
+                    </div>
+                    <div class="write-row">
+                        <div class="number-badge">10</div>
+                        <div class="write-content"><input type="text" class="write-input" id="write-input-10" data-answer="scoop the flesh of the avocado" placeholder="....." autocomplete="off" autocorrect="off" spellcheck="false" style="width: 100%;"></div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="bottom-padding"></div>
+            <div id="result-msg" class="result-msg"></div>
+            <div class="btn-row">
+                <button id="btn-reset" class="reset-btn">
+                    <img src="https://lh3.googleusercontent.com/d/1dei6o2rEZhsDD_INFO6JwhkXtlAR_0N8" alt="Reset">
+                </button>
+                <button id="btn-check" class="check-btn">
+                    <img src="https://lh3.googleusercontent.com/d/1XsYlo6Lz_DtaXPn7sFOWVzLGwOBexrXY" alt="Check Answer">
+                </button>
+            </div>
+        </div>
+
+        <audio id="click-audio" src="../7_Look_and_write/assets/click.MP3" preload="auto"></audio>
+        <audio id="correct-audio" src="../7_Look_and_write/assets/correct_sound.MP3" preload="auto"></audio>
+        <audio id="wrong-audio" src="../7_Look_and_write/assets/incorrect_sound.MP3" preload="auto"></audio>
+        <audio id="typing-audio" src="../7_Look_and_write/assets/typing.MP3" preload="auto"></audio>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
