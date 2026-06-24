@@ -1,0 +1,325 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Look and Write Quiz</title>
+  <link rel="stylesheet" href="style.css?v=99">
+</head>
+
+<body>
+  <div class="page">
+        <img src="https://lh3.googleusercontent.com/d/1Wtb9UWtvVhVA13B0HLBagfyx1bD1LU5x" class="top-border" alt="Top Border">
+        <img src="https://lh3.googleusercontent.com/d/19NE3XzidRxaYa56e4OBOdI38n3nYJhwK" class="bottom-border" alt="Bottom Border">
+    <header class="module-header">
+      <!-- PNG Judul -->
+      <img src="https://lh3.googleusercontent.com/d/1w_nFvGXCxbZDRtiOcZ5obukpsl2shlMb" alt="Look and Write" class="title-badge">
+
+      <div class="instructions">
+        <p class="en">Read the jumble words then rewrite them into the correct names of fruits and vegetables as shown in the pictures! Look at the example!</p>
+        <div class="separator"></div>
+        <p class="id">Bacalah kata-kata acak berikut dan tuliskan kembali nama-nama buah-buahan dan sayur-sayuran yang benar sesuai gambar! Perhatikan contoh!</p>
+      </div>
+    </header>
+
+    <!-- Scrollable Content -->
+    <div class="scroll-content">
+      <!-- EXAMPLE -->
+      <div class="example-row">
+        <div class="img-card">
+          <div class="number-badge example-badge">EXAMPLE</div>
+          <div class="img-box example-img">
+            <div class="img-placeholder">
+              <img src="https://lh3.googleusercontent.com/d/1S1KTBR_5poYVof-x3DFp_YWGW0QyOp2c" alt="corn">
+            </div>
+          </div>
+        </div>
+        <div class="answer-area">
+          <div class="jumble-word">R N C O</div>
+          <div class="input-container example-container">
+            <div class="input-inner">
+              <div class="example-text">Corn</div>
+            </div>
+            <img src="https://lh3.googleusercontent.com/d/1ejSLJa2RiwGsnOJTxfcjxhrN_SQB1xAW" class="pencil-icon" alt="pencil">
+          </div>
+        </div>
+      </div>
+
+      <!-- QUIZ ITEMS -->
+      <div id="quiz-container">
+
+        <!-- Item 1 -->
+        <div class="quiz-row" id="row-1">
+          <div class="img-card">
+            <div class="number-badge">1</div>
+            <div class="img-box">
+              <div class="img-placeholder">
+                <img src="https://lh3.googleusercontent.com/d/1USDFWrCcqNpDuLNiyQqB8z_Xjpu8JfOD" alt="apple">
+              </div>
+            </div>
+          </div>
+          <div class="answer-area">
+            <div class="jumble-word">L P A E P</div>
+            <div class="input-container">
+              <div class="input-inner">
+                <input type="text" class="answer-input" id="input-1" data-answer="APPLE"
+                  placeholder="Type your answer here..." autocomplete="off" autocorrect="off" spellcheck="false">
+              </div>
+              <img src="https://lh3.googleusercontent.com/d/1ejSLJa2RiwGsnOJTxfcjxhrN_SQB1xAW" class="pencil-icon"
+                alt="pencil">
+            </div>
+            <div class="feedback-icon" id="fb-1"></div>
+            <div id="hint-1" class="correct-hint"></div>
+          </div>
+        </div>
+
+        <!-- Item 2 -->
+        <div class="quiz-row" id="row-2">
+          <div class="img-card">
+            <div class="number-badge">2</div>
+            <div class="img-box">
+              <div class="img-placeholder">
+                <img src="https://lh3.googleusercontent.com/d/1ifDYM0_V60I2BSZRjIyCoZcWk7vwTbZb" alt="scallion">
+              </div>
+            </div>
+          </div>
+          <div class="answer-area">
+            <div class="jumble-word">L I O N S C A L</div>
+            <div class="input-container">
+              <div class="input-inner">
+                <input type="text" class="answer-input" id="input-2" data-answer="SCALLION"
+                  placeholder="Type your answer here..." autocomplete="off" autocorrect="off" spellcheck="false">
+              </div>
+              <img src="https://lh3.googleusercontent.com/d/1ejSLJa2RiwGsnOJTxfcjxhrN_SQB1xAW" class="pencil-icon"
+                alt="pencil">
+            </div>
+            <div class="feedback-icon" id="fb-2"></div>
+            <div id="hint-2" class="correct-hint"></div>
+          </div>
+        </div>
+
+        <!-- Item 3 -->
+        <div class="quiz-row" id="row-3">
+          <div class="img-card">
+            <div class="number-badge">3</div>
+            <div class="img-box">
+              <div class="img-placeholder">
+                <img src="https://lh3.googleusercontent.com/d/1U1Iskg-qGejVFqhxUFbjfzJS6fjoViQh" alt="watermelon">
+              </div>
+            </div>
+          </div>
+          <div class="answer-area">
+            <div class="jumble-word">T E R M L E W O A N</div>
+            <div class="input-container">
+              <div class="input-inner">
+                <input type="text" class="answer-input" id="input-3" data-answer="WATERMELON"
+                  placeholder="Type your answer here..." autocomplete="off" autocorrect="off" spellcheck="false">
+              </div>
+              <img src="https://lh3.googleusercontent.com/d/1ejSLJa2RiwGsnOJTxfcjxhrN_SQB1xAW" class="pencil-icon"
+                alt="pencil">
+            </div>
+            <div class="feedback-icon" id="fb-3"></div>
+            <div id="hint-3" class="correct-hint"></div>
+          </div>
+        </div>
+
+        <!-- Item 4 -->
+        <div class="quiz-row" id="row-4">
+          <div class="img-card">
+            <div class="number-badge">4</div>
+            <div class="img-box">
+              <div class="img-placeholder">
+                <img src="https://lh3.googleusercontent.com/d/1crYcSK7fYFfszaP_ujG2X-mUqZTUu5cU" alt="onion">
+              </div>
+            </div>
+          </div>
+          <div class="answer-area">
+            <div class="jumble-word">N O I O N</div>
+            <div class="input-container">
+              <div class="input-inner">
+                <input type="text" class="answer-input" id="input-4" data-answer="ONION"
+                  placeholder="Type your answer here..." autocomplete="off" autocorrect="off" spellcheck="false">
+              </div>
+              <img src="https://lh3.googleusercontent.com/d/1ejSLJa2RiwGsnOJTxfcjxhrN_SQB1xAW" class="pencil-icon"
+                alt="pencil">
+            </div>
+            <div class="feedback-icon" id="fb-4"></div>
+            <div id="hint-4" class="correct-hint"></div>
+          </div>
+        </div>
+
+        <!-- Item 5 -->
+        <div class="quiz-row" id="row-5">
+          <div class="img-card">
+            <div class="number-badge">5</div>
+            <div class="img-box">
+              <div class="img-placeholder">
+                <img src="https://lh3.googleusercontent.com/d/137yu8C_FtZIZV7ePy3Dkz46bj80RAt9K" alt="pineapple">
+              </div>
+            </div>
+          </div>
+          <div class="answer-area">
+            <div class="jumble-word">N E A P E L P I P</div>
+            <div class="input-container">
+              <div class="input-inner">
+                <input type="text" class="answer-input" id="input-5" data-answer="PINEAPPLE"
+                  placeholder="Type your answer here..." autocomplete="off" autocorrect="off" spellcheck="false">
+              </div>
+              <img src="https://lh3.googleusercontent.com/d/1ejSLJa2RiwGsnOJTxfcjxhrN_SQB1xAW" class="pencil-icon"
+                alt="pencil">
+            </div>
+            <div class="feedback-icon" id="fb-5"></div>
+            <div id="hint-5" class="correct-hint"></div>
+          </div>
+        </div>
+
+        <!-- Item 6 -->
+        <div class="quiz-row" id="row-6">
+          <div class="img-card">
+            <div class="number-badge">6</div>
+            <div class="img-box">
+              <div class="img-placeholder">
+                <img src="https://lh3.googleusercontent.com/d/18inGnntq5su2LMzr4_pEFSHGmit4gM9j" alt="tomato">
+              </div>
+            </div>
+          </div>
+          <div class="answer-area">
+            <div class="jumble-word">O T M O A T</div>
+            <div class="input-container">
+              <div class="input-inner">
+                <input type="text" class="answer-input" id="input-6" data-answer="TOMATO"
+                  placeholder="Type your answer here..." autocomplete="off" autocorrect="off" spellcheck="false">
+              </div>
+              <img src="https://lh3.googleusercontent.com/d/1ejSLJa2RiwGsnOJTxfcjxhrN_SQB1xAW" class="pencil-icon"
+                alt="pencil">
+            </div>
+            <div class="feedback-icon" id="fb-6"></div>
+            <div id="hint-6" class="correct-hint"></div>
+          </div>
+        </div>
+
+        <!-- Item 7 -->
+        <div class="quiz-row" id="row-7">
+          <div class="img-card">
+            <div class="number-badge">7</div>
+            <div class="img-box">
+              <div class="img-placeholder">
+                <img src="https://lh3.googleusercontent.com/d/1g4hIDT7qBw_9DgXPwH9VQlXg8Ia_lnI2" alt="papaya">
+              </div>
+            </div>
+          </div>
+          <div class="answer-area">
+            <div class="jumble-word">A P Y A P A</div>
+            <div class="input-container">
+              <div class="input-inner">
+                <input type="text" class="answer-input" id="input-7" data-answer="PAPAYA"
+                  placeholder="Type your answer here..." autocomplete="off" autocorrect="off" spellcheck="false">
+              </div>
+              <img src="https://lh3.googleusercontent.com/d/1ejSLJa2RiwGsnOJTxfcjxhrN_SQB1xAW" class="pencil-icon"
+                alt="pencil">
+            </div>
+            <div class="feedback-icon" id="fb-7"></div>
+            <div id="hint-7" class="correct-hint"></div>
+          </div>
+        </div>
+
+        <!-- Item 8 -->
+        <div class="quiz-row" id="row-8">
+          <div class="img-card">
+            <div class="number-badge">8</div>
+            <div class="img-box">
+              <div class="img-placeholder">
+                <img src="https://lh3.googleusercontent.com/d/1G5Y3dAk3jrvObIrEb2T_5U6zaoVV6siG" alt="mushroom">
+              </div>
+            </div>
+          </div>
+          <div class="answer-area">
+            <div class="jumble-word">R O M S O M U</div>
+            <div class="input-container">
+              <div class="input-inner">
+                <input type="text" class="answer-input" id="input-8" data-answer="MUSHROOM"
+                  placeholder="Type your answer here..." autocomplete="off" autocorrect="off" spellcheck="false">
+              </div>
+              <img src="https://lh3.googleusercontent.com/d/1ejSLJa2RiwGsnOJTxfcjxhrN_SQB1xAW" class="pencil-icon"
+                alt="pencil">
+            </div>
+            <div class="feedback-icon" id="fb-8"></div>
+            <div id="hint-8" class="correct-hint"></div>
+          </div>
+        </div>
+
+        <!-- Item 9 -->
+        <div class="quiz-row" id="row-9">
+          <div class="img-card">
+            <div class="number-badge">9</div>
+            <div class="img-box">
+              <div class="img-placeholder">
+                <img src="https://lh3.googleusercontent.com/d/1CZK_NPqASgd0CNVHpDslVeZHKcOsScNe" alt="avocado">
+              </div>
+            </div>
+          </div>
+          <div class="answer-area">
+            <div class="jumble-word">D O A O C A V</div>
+            <div class="input-container">
+              <div class="input-inner">
+                <input type="text" class="answer-input" id="input-9" data-answer="AVOCADO"
+                  placeholder="Type your answer here..." autocomplete="off" autocorrect="off" spellcheck="false">
+              </div>
+              <img src="https://lh3.googleusercontent.com/d/1ejSLJa2RiwGsnOJTxfcjxhrN_SQB1xAW" class="pencil-icon"
+                alt="pencil">
+            </div>
+            <div class="feedback-icon" id="fb-9"></div>
+            <div id="hint-9" class="correct-hint"></div>
+          </div>
+        </div>
+
+        <!-- Item 10 -->
+        <div class="quiz-row" id="row-10">
+          <div class="img-card">
+            <div class="number-badge">10</div>
+            <div class="img-box">
+              <div class="img-placeholder">
+                <img src="https://lh3.googleusercontent.com/d/1hHfnMsFpYVb_uP3zQ9Ttx9AMfG3EhNcA" alt="cabbage">
+              </div>
+            </div>
+          </div>
+          <div class="answer-area">
+            <div class="jumble-word">A B G C E A B</div>
+            <div class="input-container">
+              <div class="input-inner">
+                <input type="text" class="answer-input" id="input-10" data-answer="CABBAGE"
+                  placeholder="Type your answer here..." autocomplete="off" autocorrect="off" spellcheck="false">
+              </div>
+              <img src="https://lh3.googleusercontent.com/d/1ejSLJa2RiwGsnOJTxfcjxhrN_SQB1xAW" class="pencil-icon"
+                alt="pencil">
+            </div>
+            <div class="feedback-icon" id="fb-10"></div>
+            <div id="hint-10" class="correct-hint"></div>
+          </div>
+        </div>
+
+      </div><!-- end quiz-container -->
+
+      <div class="btn-row">
+        <button class="reset-btn" onclick="resetAnswers()">
+          <img src="https://lh3.googleusercontent.com/d/18vFFWCTR8DNhzv9NGJK26cylpbpduXsG" alt="Reset">
+        </button>
+        <button class="check-btn" onclick="checkAnswers()">
+          <img src="https://lh3.googleusercontent.com/d/1367wQwMMFdzxUdUQkhLC8bcoiELWGKsm" alt="Check Answer">
+        </button>
+      </div>
+      <div class="result-msg" id="result-msg"></div>
+    </div><!-- end scroll-content -->
+
+
+    <audio id="typing-audio" src="assets/typing.MP3" preload="auto"></audio>
+    <audio id="correct-audio" src="assets/correct_sound.MP3" preload="auto"></audio>
+    <audio id="wrong-audio" src="assets/incorrect_sound.MP3" preload="auto"></audio>
+    <audio id="click-audio" src="assets/click.MP3" preload="auto"></audio>
+  </div><!-- end page -->
+
+  <script src="script.js?v=99"></script>
+</body>
+
+</html>
