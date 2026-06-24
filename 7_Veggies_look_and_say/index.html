@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Look and Say</title>
+    <link rel="stylesheet" href="style.css">
+    <!-- Confetti Library for celebration -->
+    <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
+</head>
+
+<body>
+    <div class="page">
+        <img src="https://lh3.googleusercontent.com/d/1Wtb9UWtvVhVA13B0HLBagfyx1bD1LU5x" class="top-border" alt="Top Border">
+        <img src="https://lh3.googleusercontent.com/d/19NE3XzidRxaYa56e4OBOdI38n3nYJhwK" class="bottom-border" alt="Bottom Border">
+
+        <header class="module-header">
+            <!-- PNG Judul -->
+            <img src="https://lh3.googleusercontent.com/d/1B2KMdHYP8bfdPzoqg2ZcqOZfJzb-uAhp" alt="Look and Say" class="title-badge">
+
+            <div class="instructions">
+                <p class="en">Look at the pictures and say the names of the vegetables!</p>
+                <div class="separator"></div>
+                <p class="id">Perhatikan gambar dan nama-nama sayuran berikut!</p>
+            </div>
+        </header>
+
+        <!-- Scrollable Content -->
+        <div class="scroll-content">
+
+            <main class="grid-container">
+                <div class="action-card" data-audio="an-onion.MP3">
+                    <div class="image-wrapper">
+                        <img src="https://lh3.googleusercontent.com/d/1_huBSmROmvF2PQR_aU-FAbw3_KfSdVYR" alt="An onion" class="action-image">
+                        <button class="sound-btn" aria-label="Play sound">
+                            <svg viewBox="0 0 24 24"><path d="M14,3.23V5.29C16.89,6.15 19,8.83 19,12C19,15.17 16.89,17.85 14,18.71V20.77C18.03,19.86 21,16.28 21,12C21,7.72 18.03,4.14 14,3.23M16.5,12C16.5,10.23 15.5,8.71 14,7.97V16.04C15.5,15.29 16.5,13.77 16.5,12M3,9V15H7L12,20V4L7,9H3Z" /></svg>
+                        </button>
+                    </div>
+                    <div class="text-wrapper">
+                        <span class="action-text sentence">An onion</span>
+                    </div>
+                </div>
+
+                <div class="action-card" data-audio="a-spinach.MP3">
+                    <div class="image-wrapper">
+                        <img src="https://lh3.googleusercontent.com/d/1fb11cJtdBa46Vsnb51UHTryfqjFLC4AE" alt="A spinach" class="action-image">
+                        <button class="sound-btn" aria-label="Play sound">
+                            <svg viewBox="0 0 24 24"><path d="M14,3.23V5.29C16.89,6.15 19,8.83 19,12C19,15.17 16.89,17.85 14,18.71V20.77C18.03,19.86 21,16.28 21,12C21,7.72 18.03,4.14 14,3.23M16.5,12C16.5,10.23 15.5,8.71 14,7.97V16.04C15.5,15.29 16.5,13.77 16.5,12M3,9V15H7L12,20V4L7,9H3Z" /></svg>
+                        </button>
+                    </div>
+                    <div class="text-wrapper">
+                        <span class="action-text sentence">A spinach</span>
+                    </div>
+                </div>
+
+                <div class="action-card" data-audio="a-broccoli.MP3">
+                    <div class="image-wrapper">
+                        <img src="https://lh3.googleusercontent.com/d/1POlBEYS8-bbR1xT46RSygqXi7OhdkZQb" alt="A broccoli" class="action-image">
+                        <button class="sound-btn" aria-label="Play sound">
+                            <svg viewBox="0 0 24 24"><path d="M14,3.23V5.29C16.89,6.15 19,8.83 19,12C19,15.17 16.89,17.85 14,18.71V20.77C18.03,19.86 21,16.28 21,12C21,7.72 18.03,4.14 14,3.23M16.5,12C16.5,10.23 15.5,8.71 14,7.97V16.04C15.5,15.29 16.5,13.77 16.5,12M3,9V15H7L12,20V4L7,9H3Z" /></svg>
+                        </button>
+                    </div>
+                    <div class="text-wrapper">
+                        <span class="action-text sentence">A broccoli</span>
+                    </div>
+                </div>
+
+                <div class="action-card" data-audio="a-cabbage.MP3">
+                    <div class="image-wrapper">
+                        <img src="https://lh3.googleusercontent.com/d/1I8Hq5dJ5UD_It7MiSQ8anndiblh-LiWT" alt="A cabbage" class="action-image">
+                        <button class="sound-btn" aria-label="Play sound">
+                            <svg viewBox="0 0 24 24"><path d="M14,3.23V5.29C16.89,6.15 19,8.83 19,12C19,15.17 16.89,17.85 14,18.71V20.77C18.03,19.86 21,16.28 21,12C21,7.72 18.03,4.14 14,3.23M16.5,12C16.5,10.23 15.5,8.71 14,7.97V16.04C15.5,15.29 16.5,13.77 16.5,12M3,9V15H7L12,20V4L7,9H3Z" /></svg>
+                        </button>
+                    </div>
+                    <div class="text-wrapper">
+                        <span class="action-text sentence">A cabbage</span>
+                    </div>
+                </div>
+
+                <div class="action-card" data-audio="a-carrot.MP3">
+                    <div class="image-wrapper">
+                        <img src="https://lh3.googleusercontent.com/d/1rCVsH6ycARVTLmi8w0T-J6ZaXgqqS_gI" alt="A carrot" class="action-image">
+                        <button class="sound-btn" aria-label="Play sound">
+                            <svg viewBox="0 0 24 24"><path d="M14,3.23V5.29C16.89,6.15 19,8.83 19,12C19,15.17 16.89,17.85 14,18.71V20.77C18.03,19.86 21,16.28 21,12C21,7.72 18.03,4.14 14,3.23M16.5,12C16.5,10.23 15.5,8.71 14,7.97V16.04C15.5,15.29 16.5,13.77 16.5,12M3,9V15H7L12,20V4L7,9H3Z" /></svg>
+                        </button>
+                    </div>
+                    <div class="text-wrapper">
+                        <span class="action-text sentence">A carrot</span>
+                    </div>
+                </div>
+
+                <div class="action-card" data-audio="a-corn.MP3">
+                    <div class="image-wrapper">
+                        <img src="https://lh3.googleusercontent.com/d/1AZH-sQ-HHOe5cnAJ0NvNNAXnfaxtCESv" alt="A corn" class="action-image">
+                        <button class="sound-btn" aria-label="Play sound">
+                            <svg viewBox="0 0 24 24"><path d="M14,3.23V5.29C16.89,6.15 19,8.83 19,12C19,15.17 16.89,17.85 14,18.71V20.77C18.03,19.86 21,16.28 21,12C21,7.72 18.03,4.14 14,3.23M16.5,12C16.5,10.23 15.5,8.71 14,7.97V16.04C15.5,15.29 16.5,13.77 16.5,12M3,9V15H7L12,20V4L7,9H3Z" /></svg>
+                        </button>
+                    </div>
+                    <div class="text-wrapper">
+                        <span class="action-text sentence">A corn</span>
+                    </div>
+                </div>
+
+                <div class="action-card" data-audio="a-garlic.MP3">
+                    <div class="image-wrapper">
+                        <img src="https://lh3.googleusercontent.com/d/1d-XRm3JAXouHxGHeFTFObjfjMZhVUMd9" alt="A garlic" class="action-image">
+                        <button class="sound-btn" aria-label="Play sound">
+                            <svg viewBox="0 0 24 24"><path d="M14,3.23V5.29C16.89,6.15 19,8.83 19,12C19,15.17 16.89,17.85 14,18.71V20.77C18.03,19.86 21,16.28 21,12C21,7.72 18.03,4.14 14,3.23M16.5,12C16.5,10.23 15.5,8.71 14,7.97V16.04C15.5,15.29 16.5,13.77 16.5,12M3,9V15H7L12,20V4L7,9H3Z" /></svg>
+                        </button>
+                    </div>
+                    <div class="text-wrapper">
+                        <span class="action-text sentence">A garlic</span>
+                    </div>
+                </div>
+
+                <div class="action-card" data-audio="a-mushroom.MP3">
+                    <div class="image-wrapper">
+                        <img src="https://lh3.googleusercontent.com/d/17SFJOO9ofFxkEdM4Gw4o93Jv2rF9EU_I" alt="A mushroom" class="action-image">
+                        <button class="sound-btn" aria-label="Play sound">
+                            <svg viewBox="0 0 24 24"><path d="M14,3.23V5.29C16.89,6.15 19,8.83 19,12C19,15.17 16.89,17.85 14,18.71V20.77C18.03,19.86 21,16.28 21,12C21,7.72 18.03,4.14 14,3.23M16.5,12C16.5,10.23 15.5,8.71 14,7.97V16.04C15.5,15.29 16.5,13.77 16.5,12M3,9V15H7L12,20V4L7,9H3Z" /></svg>
+                        </button>
+                    </div>
+                    <div class="text-wrapper">
+                        <span class="action-text sentence">A mushroom</span>
+                    </div>
+                </div>
+
+                <div class="action-card" data-audio="a-potato.MP3">
+                    <div class="image-wrapper">
+                        <img src="https://lh3.googleusercontent.com/d/1StK4cdpI1pIxXiOOjr53F8zY-GPQ-kk5" alt="A potato" class="action-image">
+                        <button class="sound-btn" aria-label="Play sound">
+                            <svg viewBox="0 0 24 24"><path d="M14,3.23V5.29C16.89,6.15 19,8.83 19,12C19,15.17 16.89,17.85 14,18.71V20.77C18.03,19.86 21,16.28 21,12C21,7.72 18.03,4.14 14,3.23M16.5,12C16.5,10.23 15.5,8.71 14,7.97V16.04C15.5,15.29 16.5,13.77 16.5,12M3,9V15H7L12,20V4L7,9H3Z" /></svg>
+                        </button>
+                    </div>
+                    <div class="text-wrapper">
+                        <span class="action-text sentence">A potato</span>
+                    </div>
+                </div>
+
+                <div class="action-card" data-audio="a-scallion.MP3">
+                    <div class="image-wrapper">
+                        <img src="https://lh3.googleusercontent.com/d/1JF6ZoN6xRfVuDrYx4cSW3YK0Rsw7-XZo" alt="A scallion" class="action-image">
+                        <button class="sound-btn" aria-label="Play sound">
+                            <svg viewBox="0 0 24 24"><path d="M14,3.23V5.29C16.89,6.15 19,8.83 19,12C19,15.17 16.89,17.85 14,18.71V20.77C18.03,19.86 21,16.28 21,12C21,7.72 18.03,4.14 14,3.23M16.5,12C16.5,10.23 15.5,8.71 14,7.97V16.04C15.5,15.29 16.5,13.77 16.5,12M3,9V15H7L12,20V4L7,9H3Z" /></svg>
+                        </button>
+                    </div>
+                    <div class="text-wrapper">
+                        <span class="action-text sentence">A scallion</span>
+                    </div>
+                </div>
+
+                <div class="action-card" data-audio="a-tomato.MP3">
+                    <div class="image-wrapper">
+                        <img src="https://lh3.googleusercontent.com/d/1CsieTnwye6vyO7px3_3G_HHUUiP8M3LN" alt="A tomato" class="action-image">
+                        <button class="sound-btn" aria-label="Play sound">
+                            <svg viewBox="0 0 24 24"><path d="M14,3.23V5.29C16.89,6.15 19,8.83 19,12C19,15.17 16.89,17.85 14,18.71V20.77C18.03,19.86 21,16.28 21,12C21,7.72 18.03,4.14 14,3.23M16.5,12C16.5,10.23 15.5,8.71 14,7.97V16.04C15.5,15.29 16.5,13.77 16.5,12M3,9V15H7L12,20V4L7,9H3Z" /></svg>
+                        </button>
+                    </div>
+                    <div class="text-wrapper">
+                        <span class="action-text sentence">A tomato</span>
+                    </div>
+                </div>
+
+                <div class="action-card" data-audio="an-eggplant.MP3">
+                    <div class="image-wrapper">
+                        <img src="https://lh3.googleusercontent.com/d/1_Sy2Trr5AevDG_LUDzKT8TB8DBwB3Nu5" alt="An eggplant" class="action-image">
+                        <button class="sound-btn" aria-label="Play sound">
+                            <svg viewBox="0 0 24 24"><path d="M14,3.23V5.29C16.89,6.15 19,8.83 19,12C19,15.17 16.89,17.85 14,18.71V20.77C18.03,19.86 21,16.28 21,12C21,7.72 18.03,4.14 14,3.23M16.5,12C16.5,10.23 15.5,8.71 14,7.97V16.04C15.5,15.29 16.5,13.77 16.5,12M3,9V15H7L12,20V4L7,9H3Z" /></svg>
+                        </button>
+                    </div>
+                    <div class="text-wrapper">
+                        <span class="action-text sentence">An eggplant</span>
+                    </div>
+                </div>
+            </main>
+        </div>
+
+        <!-- SINGLE AUDIO SOURCE -->
+        <audio id="main-audio"></audio>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+
+</html>
