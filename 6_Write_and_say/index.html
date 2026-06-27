@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Write and Say</title>
+    <link rel="stylesheet" href="style.css">
+    <!-- Confetti Library -->
+    <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@600;700&family=Outfit:wght@400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="page">
+        <!-- Reused Borders from previous modules -->
+        <img src="https://lh3.googleusercontent.com/d/1Wtb9UWtvVhVA13B0HLBagfyx1bD1LU5x" class="top-border" alt="Top Border">
+        <img src="https://lh3.googleusercontent.com/d/19NE3XzidRxaYa56e4OBOdI38n3nYJhwK" class="bottom-border" alt="Bottom Border">
+
+        <header class="module-header">
+            <img src="assets/title_badge.png" alt="Write and Say" class="title-badge">
+            <div class="instructions">
+                <p class="en">Write and say the correct instructions that shown in the pictures! Look at the example!</p>
+                <div class="separator"></div>
+                <p class="id">Tulis dan kemudian ucapkan perintah yang tepat seperti yang ditunjukkan dalam gambar! Perhatikan contoh!</p>
+            </div>
+        </header>
+
+        <div class="scroll-content">
+            
+            <div class="table-container">
+                <!-- Row 1: 1 to 3 -->
+                <div class="content-row">
+                    <div class="image-col">
+                        <img src="assets/1_to_3.png" alt="Table with items">
+                    </div>
+                    <div class="input-col">
+                        <div class="example-box">
+                            <span class="example-label">Example:</span>
+                            <div class="example-text">Put the book<br>on the table</div>
+                        </div>
+                        <div class="input-item">
+                            <span class="number">(1)</span>
+                            <input type="text" id="q1" class="line-input input-zone" autocomplete="off">
+                        </div>
+                        <div class="input-item">
+                            <span class="number">(2)</span>
+                            <input type="text" id="q2" class="line-input input-zone" autocomplete="off">
+                        </div>
+                        <div class="input-item">
+                            <span class="number">(3)</span>
+                            <input type="text" id="q3" class="line-input input-zone" autocomplete="off">
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Row 2: 4 and 5 -->
+                <div class="content-row">
+                    <div class="image-col">
+                        <img src="assets/4_and_5.png" alt="Shoes under table">
+                    </div>
+                    <div class="input-col">
+                        <div class="input-item">
+                            <span class="number">(4)</span>
+                            <input type="text" id="q4" class="line-input input-zone" autocomplete="off">
+                        </div>
+                        <div class="input-item">
+                            <span class="number">(5)</span>
+                            <input type="text" id="q5" class="line-input input-zone" autocomplete="off">
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Row 3: 6 to 8 -->
+                <div class="content-row">
+                    <div class="image-col">
+                        <img src="assets/6_to_8.png" alt="Bag and items">
+                    </div>
+                    <div class="input-col">
+                        <div class="input-item">
+                            <span class="number">(6)</span>
+                            <input type="text" id="q6" class="line-input input-zone" autocomplete="off">
+                        </div>
+                        <div class="input-item">
+                            <span class="number">(7)</span>
+                            <input type="text" id="q7" class="line-input input-zone" autocomplete="off">
+                        </div>
+                        <div class="input-item">
+                            <span class="number">(8)</span>
+                            <input type="text" id="q8" class="line-input input-zone" autocomplete="off">
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Row 4: 9 and 10 -->
+                <div class="content-row">
+                    <div class="image-col">
+                        <img src="assets/9_and_10.png" alt="Hook and jacket">
+                    </div>
+                    <div class="input-col">
+                        <div class="input-item">
+                            <span class="number">(9)</span>
+                            <input type="text" id="q9" class="line-input input-zone" autocomplete="off">
+                        </div>
+                        <div class="input-item">
+                            <span class="number">(10)</span>
+                            <input type="text" id="q10" class="line-input input-zone" autocomplete="off">
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="btn-row">
+                <button class="reset-btn" id="reset-btn">
+                    <img src="https://lh3.googleusercontent.com/d/1D6yVmWJMqr21s0jooydnRd8IrnUTACa8" alt="Reset">
+                </button>
+                <button class="check-btn" id="check-btn">
+                    <img src="https://lh3.googleusercontent.com/d/162GVeYx0GQkdnWIAHJw3IK1O6a08L58X" alt="Check Answer">
+                </button>
+            </div>
+            <div class="result-msg" id="result-msg"></div>
+        </div>
+    </div>
+
+    <!-- Audio Elements -->
+    <audio id="audio-typing" src="../6_Read_and_write/assets/typing.MP3" preload="auto"></audio>
+    <audio id="audio-correct" src="../6_Read_and_write/assets/correct_sound.MP3" preload="auto"></audio>
+    <audio id="audio-incorrect" src="../6_Read_and_write/assets/incorrect_sound.MP3" preload="auto"></audio>
+
+    <script src="script.js"></script>
+</body>
+</html>
