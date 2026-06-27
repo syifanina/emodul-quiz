@@ -18,7 +18,7 @@ document.addEventListener('DOMContentLoaded', () => {
     // Active Interactive items
     const questionCards = document.querySelectorAll('.question-card:not(.example-card)');
     const sec2Inputs = document.querySelectorAll('.sec2-order-input');
-    const sec3Inputs = document.querySelectorAll('.cloze-input');
+    const sec3Inputs = document.querySelectorAll('.sec2-answer-input');
 
     /**
      * Helper function to play sound safely
@@ -98,10 +98,10 @@ document.addEventListener('DOMContentLoaded', () => {
 
         input.addEventListener('input', function () {
             this.classList.remove('correct', 'wrong');
-            const line = this.closest('.notebook-line');
+            const line = this.closest('.sec2-row');
             if (line) {
-                const fb = line.querySelector('.cloze-fb-badge');
-                const hint = line.querySelector('.cloze-hint-text');
+                const fb = line.querySelector('.sec2-feedback-icon');
+                const hint = line.querySelector('.sec2-correct-hint');
                 if (fb) fb.textContent = '';
                 if (hint) {
                     hint.style.display = 'none';
@@ -280,7 +280,7 @@ document.addEventListener('DOMContentLoaded', () => {
         // ── 3. EVALUATE PART III (Cloze notebook story text matching) ──
         for (let i = 0; i < sec3Inputs.length; i++) {
             const input = sec3Inputs[i];
-            const line = input.closest('.notebook-line');
+            const line = input.closest('.sec2-row');
 
             if (line) {
                 line.scrollIntoView({ behavior: 'smooth', block: 'center' });
@@ -300,8 +300,8 @@ document.addEventListener('DOMContentLoaded', () => {
             const correctAnswers = input.dataset.answer.split('|').map(normalizeStr);
             const displayAnswer = input.dataset.answer.split('|')[0];
 
-            const fb = line ? line.querySelector('.cloze-fb-badge') : null;
-            const hint = line ? line.querySelector('.cloze-hint-text') : null;
+            const fb = line ? line.querySelector('.sec2-feedback-icon') : null;
+            const hint = line ? line.querySelector('.sec2-correct-hint') : null;
 
             input.disabled = true;
 
@@ -435,10 +435,10 @@ document.addEventListener('DOMContentLoaded', () => {
             input.classList.remove('correct', 'wrong');
             input.disabled = false;
 
-            const line = input.closest('.notebook-line');
+            const line = input.closest('.sec2-row');
             if (line) {
-                const fb = line.querySelector('.cloze-fb-badge');
-                const hint = line.querySelector('.cloze-hint-text');
+                const fb = line.querySelector('.sec2-feedback-icon');
+                const hint = line.querySelector('.sec2-correct-hint');
                 if (fb) fb.textContent = '';
                 if (hint) {
                     hint.style.display = 'none';
