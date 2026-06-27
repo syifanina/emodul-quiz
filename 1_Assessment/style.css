@@ -10,16 +10,21 @@ html,
 body {
     width: 100%;
     max-width: 100%;
-    overflow: hidden; /* Matikan scroll manual pengguna di root */
+    overflow: hidden;
+    /* Matikan scroll manual pengguna di root */
     background: transparent;
     scroll-behavior: smooth;
-    -ms-overflow-style: none;  /* IE and Edge */
-    scrollbar-width: none;  /* Firefox */
-    touch-action: pan-y; /* Izinkan scroll vertikal */
+    -ms-overflow-style: none;
+    /* IE and Edge */
+    scrollbar-width: none;
+    /* Firefox */
+    touch-action: pan-y;
+    /* Izinkan scroll vertikal */
 }
 
 body::-webkit-scrollbar {
-    display: none; /* Chrome, Safari, Opera */
+    display: none;
+    /* Chrome, Safari, Opera */
 }
 
 body {
@@ -35,7 +40,8 @@ body {
     background: transparent;
     width: 100%;
     max-width: 360px;
-    height: 100vh; /* Kunci tinggi sesuai layar/iframe */
+    height: 100vh;
+    /* Kunci tinggi sesuai layar/iframe */
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -50,14 +56,15 @@ body {
     flex-direction: column;
     align-items: center;
     padding: 16px 16px 10px 16px;
-    background: #fff; /* Pastikan background solid agar konten di bawahnya tidak terlihat saat scroll */
+    background: #fff;
+    /* Pastikan background solid agar konten di bawahnya tidak terlihat saat scroll */
     z-index: 100;
     flex-shrink: 0;
     box-shadow: 0 2px 8px rgba(0, 0, 0, 0.02);
 }
 
 .title-badge {
-    width: 90%;
+    width: 100%;
     max-width: 280px;
     height: auto;
     margin-bottom: 8px;
@@ -102,11 +109,13 @@ body {
     flex-direction: column;
     align-items: center;
     -webkit-overflow-scrolling: touch;
-    scrollbar-width: none; /* Firefox */
+    scrollbar-width: none;
+    /* Firefox */
 }
 
 .scroll-content::-webkit-scrollbar {
-    display: none; /* Chrome, Safari */
+    display: none;
+    /* Chrome, Safari */
 }
 
 /* ── MODULE TITLE ── */
@@ -125,7 +134,8 @@ body {
     margin-bottom: 20px;
     background: #ffffff;
     border-radius: 20px;
-    border: 3px solid #bfdbfe; /* Light blue border */
+    border: 3px solid #bfdbfe;
+    /* Light blue border */
     padding: 16px;
     box-shadow: 0 4px 15px rgba(147, 197, 253, 0.15);
     display: flex;
@@ -151,7 +161,8 @@ body {
 .icon-circle {
     width: 38px;
     height: 38px;
-    background: linear-gradient(135deg, #1e3a8a 0%, #1e40af 100%); /* Dark blue glossy */
+    background: linear-gradient(135deg, #1e3a8a 0%, #1e40af 100%);
+    /* Dark blue glossy */
     border-radius: 50%;
     display: flex;
     align-items: center;
@@ -197,7 +208,8 @@ body {
     color: #0f172a;
     outline: none;
     transition: all 0.2s;
-    border-left: 4px solid #facc15; /* Yellow accent line */
+    border-left: 4px solid #facc15;
+    /* Yellow accent line */
 }
 
 .student-input::placeholder {
@@ -215,8 +227,10 @@ body {
 .scoring-info-card {
     width: 100%;
     margin-bottom: 20px;
-    background: #fffbeb; /* Light yellow background */
-    border: 2px dashed #fcd34d; /* Yellow dashed border */
+    background: #fffbeb;
+    /* Light yellow background */
+    border: 2px dashed #fcd34d;
+    /* Yellow dashed border */
     border-radius: 16px;
     padding: 12px 16px;
     display: flex;
@@ -266,7 +280,8 @@ body {
 
 .scoring-total {
     font-size: 13px;
-    color: #dc2626; /* Red */
+    color: #dc2626;
+    /* Red */
     background: #fef2f2;
     padding: 4px 8px;
     border-radius: 6px;
@@ -337,9 +352,12 @@ body {
     font-family: 'Outfit', sans-serif;
     font-weight: 800;
     font-size: 12px;
-    color: #451a03; /* Matching Dark Brown Text */
-    margin-top: -1px; /* Centered vertically on the yellow face */
-    margin-left: -2px; /* Shifted left to compensate for right shadow */
+    color: #451a03;
+    /* Matching Dark Brown Text */
+    margin-top: -1px;
+    /* Centered vertically on the yellow face */
+    margin-left: -2px;
+    /* Shifted left to compensate for right shadow */
     text-shadow: 0 1px 0px rgba(255, 255, 255, 0.4);
 }
 
@@ -354,13 +372,15 @@ body {
     flex-shrink: 0;
     border-radius: 18px;
     overflow: hidden;
-    border: 4px solid #dbeafe; /* Soft blue border matching mockup */
+    border: 4px solid #dbeafe;
+    /* Soft blue border matching mockup */
     background: #ffffff;
     display: flex;
     align-items: center;
     justify-content: center;
     position: relative;
-    transform: translateZ(0); /* Hardware acceleration for GIF clipping */
+    transform: translateZ(0);
+    /* Hardware acceleration for GIF clipping */
     will-change: transform;
 }
 
@@ -373,7 +393,8 @@ body {
 /* ── DETAILS (FORCED EQUAL HEIGHT TO GIF) ── */
 .question-details {
     flex-grow: 1;
-    min-height: 105px; /* Cocokkan minimal dengan tinggi GIF */
+    min-height: 105px;
+    /* Cocokkan minimal dengan tinggi GIF */
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -384,22 +405,26 @@ body {
 .options-container {
     display: flex;
     flex-direction: column;
-    gap: 4px; /* Didekatkan sedikit sesuai permintaan */
+    gap: 4px;
+    /* Didekatkan sedikit sesuai permintaan */
     width: 100%;
 }
 
 .option-item {
     display: flex;
     align-items: center;
-    padding: 2px 8px; /* Dipertipis atas dan bawahnya */
+    padding: 2px 8px;
+    /* Dipertipis atas dan bawahnya */
     background: #ffffff;
-    border: 1.5px solid #e2e8f0; /* Soft light border */
+    border: 1.5px solid #e2e8f0;
+    /* Soft light border */
     border-radius: 10px;
     cursor: pointer;
     transition: all 0.15s cubic-bezier(0.4, 0, 0.2, 1);
     position: relative;
     user-select: none;
-    min-height: 24px; /* Dikecilkan agar lebih tipis */
+    min-height: 24px;
+    /* Dikecilkan agar lebih tipis */
 }
 
 .option-item:not(.disabled):hover {
@@ -433,11 +458,15 @@ body {
 
 .option-text {
     font-family: 'Outfit', sans-serif;
-    font-weight: 600; /* Bold font weight matching mockup */
-    color: #1e293b; /* Dark charcoal text */
-    font-size: 13px; /* Sedikit dikecilkan agar muat */
+    font-weight: 600;
+    /* Bold font weight matching mockup */
+    color: #1e293b;
+    /* Dark charcoal text */
+    font-size: 13px;
+    /* Sedikit dikecilkan agar muat */
     line-height: 1.1;
-    word-break: break-word; /* Biarkan teks turun ke bawah jika kepanjangan */
+    word-break: break-word;
+    /* Biarkan teks turun ke bawah jika kepanjangan */
 }
 
 /* ── THE CROSS (X) OVERLAY ── */
@@ -449,7 +478,8 @@ body {
     position: absolute;
     width: 2px;
     height: 100%;
-    background-color: #1e293b; /* Dark pencil cross */
+    background-color: #1e293b;
+    /* Dark pencil cross */
     border-radius: 1px;
     top: 0;
     left: calc(50% - 1px);
@@ -488,7 +518,8 @@ body {
 
 .option-item.selected.correct .option-letter::before,
 .option-item.selected.correct .option-letter::after {
-    background-color: #ffffff !important; /* White cross on green */
+    background-color: #ffffff !important;
+    /* White cross on green */
 }
 
 /* 2. Selected and Incorrect */
@@ -505,7 +536,8 @@ body {
 
 .option-item.selected.incorrect .option-letter::before,
 .option-item.selected.incorrect .option-letter::after {
-    background-color: #ffffff !important; /* White cross on red */
+    background-color: #ffffff !important;
+    /* White cross on red */
 }
 
 /* 3. Correct option but not selected by user */
@@ -522,7 +554,8 @@ body {
 
 .option-item.correct:not(.selected) .option-letter::before,
 .option-item.correct:not(.selected) .option-letter::after {
-    display: none; /* Do not show cross if the user did not select it */
+    display: none;
+    /* Do not show cross if the user did not select it */
 }
 
 /* ── ACTION BUTTONS ── */
@@ -549,7 +582,8 @@ body {
 
 .reset-btn img,
 .check-btn img {
-    height: 44px; /* Sedikit dikecilkan agar pas di lebar 360px */
+    height: 44px;
+    /* Sedikit dikecilkan agar pas di lebar 360px */
     width: auto;
     max-width: 100%;
     display: block;
@@ -602,9 +636,11 @@ body {
         transform: scale(0.9);
         opacity: 0;
     }
+
     50% {
         transform: scale(1.05);
     }
+
     100% {
         transform: scale(1);
         opacity: 1;
@@ -756,15 +792,16 @@ body {
     display: flex;
     align-items: center;
     justify-content: center;
-    background: #ffffff;
+    background: transparent;
     overflow: hidden;
-    transform: translateZ(0); /* Hardware acceleration for GIF clipping */
+    transform: translateZ(0);
+    /* Hardware acceleration for GIF clipping */
     will-change: transform;
 }
 
 .sec2-img-placeholder {
-    width: 90%;
-    height: 90%;
+    width: 100%;
+    height: 100%;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -774,7 +811,6 @@ body {
     width: 100%;
     height: 100%;
     object-fit: cover;
-    border-radius: 8px;
 }
 
 /* ── RIGHT SIDE (ANSWER AREA) ── */
@@ -786,7 +822,8 @@ body {
     align-items: flex-start;
     justify-content: center;
     gap: 10px;
-    padding-right: 28px; /* Reserve space for the feedback icon */
+    padding-right: 28px;
+    /* Reserve space for the feedback icon */
 }
 
 /* KOTAK INPUT */
@@ -874,16 +911,19 @@ body {
     transform: translateX(-50%);
     font-size: 14px;
     font-weight: 800;
-    color: #2e7d32; /* Green */
+    color: #2e7d32;
+    /* Green */
     margin-top: 4px;
     white-space: nowrap;
-    display: none; /* Hidden by default */
+    display: none;
+    /* Hidden by default */
     z-index: 5;
     text-transform: uppercase;
 }
 
 /* --- OVERRIDES FOR BORDERS & SCROLL LAYOUT --- */
-html, body {
+html,
+body {
     overflow-y: auto !important;
     overflow-x: hidden !important;
 }
@@ -926,4 +966,9 @@ html, body {
     height: auto !important;
     z-index: 9999 !important;
     pointer-events: none !important;
+}
+.section-title.first-section {
+    margin-top: 8px !important;
+    padding-top: 0 !important;
+    border-top: none !important;
 }
