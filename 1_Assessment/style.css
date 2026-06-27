@@ -131,16 +131,16 @@ body {
 /* ── STUDENT INFO CARD ── */
 .student-info-card {
     width: 100%;
-    margin-bottom: 20px;
+    margin-bottom: 10px;
     background: #ffffff;
     border-radius: 20px;
     border: 3px solid #bfdbfe;
     /* Light blue border */
-    padding: 16px;
+    padding: 12px;
     box-shadow: 0 4px 15px rgba(147, 197, 253, 0.15);
     display: flex;
     flex-direction: column;
-    gap: 12px;
+    gap: 8px;
     position: relative;
     /* Removed overflow: hidden to prevent clipping */
 }
@@ -226,17 +226,17 @@ body {
 /* ── SCORING INFO CARD ── */
 .scoring-info-card {
     width: 100%;
-    margin-bottom: 20px;
+    margin-bottom: 10px;
     background: #fffbeb;
     /* Light yellow background */
     border: 2px dashed #fcd34d;
     /* Yellow dashed border */
     border-radius: 16px;
-    padding: 12px 16px;
+    padding: 10px 12px;
     display: flex;
     flex-direction: row;
     align-items: flex-start;
-    gap: 12px;
+    gap: 10px;
 }
 
 .scoring-icon {
@@ -304,17 +304,17 @@ body {
 /* ── QUESTION CARD ── */
 .question-card {
     width: 100%;
-    margin-bottom: 12px;
+    margin-bottom: 6px;
     background: #ffffff;
-    border-radius: 24px;
+    border-radius: 20px;
     border: 3px solid #cbd5e1;
-    padding: 12px;
+    padding: 8px;
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.02);
     transition: border-color 0.3s ease, box-shadow 0.3s ease;
     display: flex;
     flex-direction: row;
     align-items: center;
-    gap: 12px;
+    gap: 10px;
     position: relative;
 }
 
@@ -367,12 +367,12 @@ body {
 
 /* ── GIF CONTAINER (SOFT BLUE CORNER BORDER) ── */
 .question-gif-container {
-    width: 105px;
-    height: 105px;
+    width: 85px;
+    height: 85px;
     flex-shrink: 0;
-    border-radius: 18px;
+    border-radius: 14px;
     overflow: hidden;
-    border: 4px solid #dbeafe;
+    border: 3px solid #dbeafe;
     /* Soft blue border matching mockup */
     background: #ffffff;
     display: flex;
@@ -393,7 +393,7 @@ body {
 /* ── DETAILS (FORCED EQUAL HEIGHT TO GIF) ── */
 .question-details {
     flex-grow: 1;
-    min-height: 105px;
+    min-height: 85px;
     /* Cocokkan minimal dengan tinggi GIF */
     display: flex;
     flex-direction: column;
@@ -413,17 +413,17 @@ body {
 .option-item {
     display: flex;
     align-items: center;
-    padding: 2px 8px;
+    padding: 0px 6px;
     /* Dipertipis atas dan bawahnya */
     background: #ffffff;
     border: 1.5px solid #e2e8f0;
     /* Soft light border */
-    border-radius: 10px;
+    border-radius: 8px;
     cursor: pointer;
     transition: all 0.15s cubic-bezier(0.4, 0, 0.2, 1);
     position: relative;
     user-select: none;
-    min-height: 24px;
+    min-height: 20px;
     /* Dikecilkan agar lebih tipis */
 }
 
@@ -716,8 +716,8 @@ body {
 .section-title {
     width: 100%;
     text-align: center;
-    margin: 32px 0 20px 0;
-    padding-top: 24px;
+    margin: 16px 0 16px 0;
+    padding-top: 16px;
     border-top: 3px dashed #cbd5e1;
 }
 
@@ -745,9 +745,23 @@ body {
     flex-direction: row;
     align-items: center;
     justify-content: space-between;
-    gap: 15px;
-    margin-bottom: 24px;
+    gap: 10px;
+    margin-bottom: 8px;
     width: 100%;
+}
+
+.sec2-row:nth-child(even) {
+    flex-direction: row-reverse;
+}
+
+.sec2-row:nth-child(even) .sec2-answer-area {
+    padding-right: 0;
+    padding-left: 28px;
+}
+
+.sec2-row:nth-child(even) .sec2-feedback-icon {
+    right: auto;
+    left: 0;
 }
 
 /* ── LEFT SIDE (IMAGE CARD) ── */
@@ -781,14 +795,16 @@ body {
 
 .sec2-example-badge {
     font-size: 11px;
+    padding: 2px 8px 6px 8px; /* Pushes text up slightly within the badge */
+    top: -6px; /* Moves the whole badge higher up so it doesn't cover the head */
 }
 
 /* BINGKAI GAMBAR KOTAK SUDUT BUNDAR */
 .sec2-img-box {
-    width: 110px;
-    height: 110px;
+    width: 85px;
+    height: 85px;
     border: 3px solid #cbd5e1;
-    border-radius: 16px;
+    border-radius: 14px;
     display: flex;
     align-items: center;
     justify-content: center;
