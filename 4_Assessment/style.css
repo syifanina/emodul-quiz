@@ -11,15 +11,19 @@ body {
     width: 100%;
     max-width: 100%;
     overflow-x: hidden;
-    overflow-y: auto; /* Biarkan scroll manual pengguna */
+    overflow-y: auto;
+    /* Biarkan scroll manual pengguna */
     background: transparent;
     scroll-behavior: smooth;
-    -ms-overflow-style: none;  /* IE and Edge */
-    scrollbar-width: none;  /* Firefox */
+    -ms-overflow-style: none;
+    /* IE and Edge */
+    scrollbar-width: none;
+    /* Firefox */
 }
 
 body::-webkit-scrollbar {
-    display: none; /* Chrome, Safari, Opera */
+    display: none;
+    /* Chrome, Safari, Opera */
 }
 
 body {
@@ -35,7 +39,8 @@ body {
     background: transparent;
     width: 100%;
     max-width: 360px;
-    min-height: 100vh; /* Kunci tinggi sesuai layar/iframe */
+    min-height: 100vh;
+    /* Kunci tinggi sesuai layar/iframe */
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -50,14 +55,15 @@ body {
     flex-direction: column;
     align-items: center;
     padding: 16px 16px 10px 16px;
-    background: #fff; /* Pastikan background solid agar konten di bawahnya tidak terlihat saat scroll */
+    background: #fff;
+    /* Pastikan background solid agar konten di bawahnya tidak terlihat saat scroll */
     z-index: 100;
     flex-shrink: 0;
     box-shadow: 0 2px 8px rgba(0, 0, 0, 0.02);
 }
 
 .title-badge {
-    width: 90%;
+    width: 100%;
     max-width: 280px;
     height: auto;
     margin-bottom: 8px;
@@ -96,17 +102,19 @@ body {
 .scroll-content {
     width: 100%;
     flex-grow: 1;
-    
+
     padding: 0 12px 20px 12px;
     display: flex;
     flex-direction: column;
     align-items: center;
-    
-    scrollbar-width: none; /* Firefox */
+
+    scrollbar-width: none;
+    /* Firefox */
 }
 
 .scroll-content::-webkit-scrollbar {
-    display: none; /* Chrome, Safari */
+    display: none;
+    /* Chrome, Safari */
 }
 
 /* ── MODULE TITLE ── */
@@ -125,7 +133,8 @@ body {
     margin-bottom: 20px;
     background: #ffffff;
     border-radius: 20px;
-    border: 3px solid #bfdbfe; /* Light blue border */
+    border: 3px solid #bfdbfe;
+    /* Light blue border */
     padding: 16px;
     box-shadow: 0 4px 15px rgba(147, 197, 253, 0.15);
     display: flex;
@@ -151,7 +160,8 @@ body {
 .icon-circle {
     width: 38px;
     height: 38px;
-    background: linear-gradient(135deg, #1e3a8a 0%, #1e40af 100%); /* Dark blue glossy */
+    background: linear-gradient(135deg, #1e3a8a 0%, #1e40af 100%);
+    /* Dark blue glossy */
     border-radius: 50%;
     display: flex;
     align-items: center;
@@ -197,7 +207,8 @@ body {
     color: #0f172a;
     outline: none;
     transition: all 0.2s;
-    border-left: 4px solid #facc15; /* Yellow accent line */
+    border-left: 4px solid #facc15;
+    /* Yellow accent line */
 }
 
 .student-input::placeholder {
@@ -215,8 +226,10 @@ body {
 .scoring-info-card {
     width: 100%;
     margin-bottom: 20px;
-    background: #fffbeb; /* Light yellow background */
-    border: 2px dashed #fcd34d; /* Yellow dashed border */
+    background: #fffbeb;
+    /* Light yellow background */
+    border: 2px dashed #fcd34d;
+    /* Yellow dashed border */
     border-radius: 16px;
     padding: 12px 16px;
     display: flex;
@@ -266,7 +279,8 @@ body {
 
 .scoring-total {
     font-size: 13px;
-    color: #dc2626; /* Red */
+    color: #dc2626;
+    /* Red */
     background: #fef2f2;
     padding: 4px 8px;
     border-radius: 6px;
@@ -337,9 +351,12 @@ body {
     font-family: 'Outfit', sans-serif;
     font-weight: 800;
     font-size: 12px;
-    color: #451a03; /* Matching Dark Brown Text */
-    margin-top: -1px; /* Centered vertically on the yellow face */
-    margin-left: -2px; /* Shifted left to compensate for right shadow */
+    color: #451a03;
+    /* Matching Dark Brown Text */
+    margin-top: -1px;
+    /* Centered vertically on the yellow face */
+    margin-left: -2px;
+    /* Shifted left to compensate for right shadow */
     text-shadow: 0 1px 0px rgba(255, 255, 255, 0.4);
 }
 
@@ -354,13 +371,15 @@ body {
     flex-shrink: 0;
     border-radius: 18px;
     overflow: hidden;
-    border: 4px solid #dbeafe; /* Soft blue border matching mockup */
+    border: 4px solid #dbeafe;
+    /* Soft blue border matching mockup */
     background: #ffffff;
     display: flex;
     align-items: center;
     justify-content: center;
     position: relative;
-    transform: translateZ(0); /* Hardware acceleration for GIF clipping */
+    transform: translateZ(0);
+    /* Hardware acceleration for GIF clipping */
     will-change: transform;
 }
 
@@ -373,7 +392,8 @@ body {
 /* ── DETAILS (FORCED EQUAL HEIGHT TO GIF) ── */
 .question-details {
     flex-grow: 1;
-    min-height: 105px; /* Cocokkan minimal dengan tinggi GIF */
+    min-height: 105px;
+    /* Cocokkan minimal dengan tinggi GIF */
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -384,22 +404,26 @@ body {
 .options-container {
     display: flex;
     flex-direction: column;
-    gap: 4px; /* Didekatkan sedikit sesuai permintaan */
+    gap: 4px;
+    /* Didekatkan sedikit sesuai permintaan */
     width: 100%;
 }
 
 .option-item {
     display: flex;
     align-items: center;
-    padding: 2px 8px; /* Dipertipis atas dan bawahnya */
+    padding: 2px 8px;
+    /* Dipertipis atas dan bawahnya */
     background: #ffffff;
-    border: 1.5px solid #e2e8f0; /* Soft light border */
+    border: 1.5px solid #e2e8f0;
+    /* Soft light border */
     border-radius: 10px;
     cursor: pointer;
     transition: all 0.15s cubic-bezier(0.4, 0, 0.2, 1);
     position: relative;
     user-select: none;
-    min-height: 24px; /* Dikecilkan agar lebih tipis */
+    min-height: 24px;
+    /* Dikecilkan agar lebih tipis */
 }
 
 .option-item:not(.disabled):hover {
@@ -433,11 +457,15 @@ body {
 
 .option-text {
     font-family: 'Outfit', sans-serif;
-    font-weight: 600; /* Bold font weight matching mockup */
-    color: #1e293b; /* Dark charcoal text */
-    font-size: 13px; /* Sedikit dikecilkan agar muat */
+    font-weight: 600;
+    /* Bold font weight matching mockup */
+    color: #1e293b;
+    /* Dark charcoal text */
+    font-size: 13px;
+    /* Sedikit dikecilkan agar muat */
     line-height: 1.1;
-    word-break: break-word; /* Biarkan teks turun ke bawah jika kepanjangan */
+    word-break: break-word;
+    /* Biarkan teks turun ke bawah jika kepanjangan */
 }
 
 /* ── THE CROSS (X) OVERLAY ── */
@@ -449,7 +477,8 @@ body {
     position: absolute;
     width: 2px;
     height: 100%;
-    background-color: #1e293b; /* Dark pencil cross */
+    background-color: #1e293b;
+    /* Dark pencil cross */
     border-radius: 1px;
     top: 0;
     left: calc(50% - 1px);
@@ -488,7 +517,8 @@ body {
 
 .option-item.selected.correct .option-letter::before,
 .option-item.selected.correct .option-letter::after {
-    background-color: #ffffff !important; /* White cross on green */
+    background-color: #ffffff !important;
+    /* White cross on green */
 }
 
 /* 2. Selected and Incorrect */
@@ -505,7 +535,8 @@ body {
 
 .option-item.selected.incorrect .option-letter::before,
 .option-item.selected.incorrect .option-letter::after {
-    background-color: #ffffff !important; /* White cross on red */
+    background-color: #ffffff !important;
+    /* White cross on red */
 }
 
 /* 3. Correct option but not selected by user */
@@ -522,7 +553,8 @@ body {
 
 .option-item.correct:not(.selected) .option-letter::before,
 .option-item.correct:not(.selected) .option-letter::after {
-    display: none; /* Do not show cross if the user did not select it */
+    display: none;
+    /* Do not show cross if the user did not select it */
 }
 
 /* ── ACTION BUTTONS ── */
@@ -549,7 +581,8 @@ body {
 
 .reset-btn img,
 .check-btn img {
-    height: 44px; /* Sedikit dikecilkan agar pas di lebar 360px */
+    height: 44px;
+    /* Sedikit dikecilkan agar pas di lebar 360px */
     width: auto;
     max-width: 100%;
     display: block;
@@ -602,9 +635,11 @@ body {
         transform: scale(0.9);
         opacity: 0;
     }
+
     50% {
         transform: scale(1.05);
     }
+
     100% {
         transform: scale(1);
         opacity: 1;
@@ -710,7 +745,8 @@ body {
     flex-direction: column;
     width: 100%;
     background: #ffffff;
-    border: 3px solid #cbd5e1; /* Bubbly blue/gray outer card */
+    border: 3px solid #cbd5e1;
+    /* Bubbly blue/gray outer card */
     border-radius: 24px;
     padding: 16px;
     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.02);
@@ -722,7 +758,8 @@ body {
     align-items: center;
     gap: 8px;
     padding: 8px 0;
-    border-bottom: 1.5px dashed #cbd5e1; /* Dotted line like paper quiz sheets! */
+    border-bottom: 1.5px dashed #cbd5e1;
+    /* Dotted line like paper quiz sheets! */
     position: relative;
 }
 
@@ -734,7 +771,7 @@ body {
     background-color: #f8fafc;
     border-bottom-style: solid;
     padding: 6px 8px;
-    border-radius: 8px;
+    
 }
 
 .sec2-bullet {
@@ -758,7 +795,8 @@ body {
     height: 24px;
     border: none;
     border-bottom: 2px solid #93c5fd;
-    background: #eff6ff; /* Soft blue match */
+    background: #eff6ff;
+    /* Soft blue match */
     text-align: center;
     font-size: 13px;
     font-weight: 800;
@@ -777,7 +815,7 @@ body {
 
 .sec2-order-input:disabled {
     color: #475569;
-    background: transparent;
+    background: #ffffff;
     border-bottom: none;
 }
 
@@ -822,14 +860,16 @@ body {
     border-radius: 6px;
     display: none;
     z-index: 20;
-    box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
 }
 
 /* ── PART III : NOTEBOOK DIARY LAYOUT ── */
 .notebook-card {
     background: #fffdf9;
-    border: 3px solid #fbcfe8; /* Bubbly pink border */
-    border-left: 8px solid #f43f5e; /* Pink margin representing paper spiral bind */
+    border: 3px solid #fbcfe8;
+    /* Bubbly pink border */
+    border-left: 8px solid #f43f5e;
+    /* Pink margin representing paper spiral bind */
     border-radius: 20px;
     padding: 12px 16px;
     width: 100%;
@@ -850,7 +890,8 @@ body {
     height: calc(100% - 30px);
     background-image: radial-gradient(circle, #cbd5e1 40%, transparent 45%);
     background-size: 10px 24px;
-    display: none; /* Can enable if needed, border-left already represents it cleanly */
+    display: none;
+    /* Can enable if needed, border-left already represents it cleanly */
 }
 
 .notebook-line {
@@ -859,7 +900,8 @@ body {
     align-items: center;
     gap: 4px;
     padding: 10px 0;
-    border-bottom: 1.5px dashed #bfdbfe; /* Blue notebook paper line decoration */
+    border-bottom: 1.5px dashed #bfdbfe;
+    /* Blue notebook paper line decoration */
     font-size: 13px;
     font-weight: 600;
     color: #334155;
@@ -875,7 +917,7 @@ body {
     background: #f8fafc;
     border-bottom-style: solid;
     padding: 8px;
-    border-radius: 8px;
+    
     font-style: italic;
     color: #64748b;
 }
@@ -889,12 +931,14 @@ body {
     min-width: 150px;
     border: none;
     border-bottom: 2.5px solid #93c5fd;
-    background: #eff6ff; /* Soft blue ink blend */
+    background: #eff6ff;
+    /* Soft blue ink blend */
     font-family: 'Outfit', sans-serif;
     font-size: 13px;
     font-weight: 700;
     text-align: center;
-    color: #1e40af; /* Ink pen blue */
+    color: #1e40af;
+    /* Ink pen blue */
     padding: 2px 8px;
     border-radius: 6px 6px 0 0;
     outline: none;
@@ -936,7 +980,7 @@ body {
     display: none;
     margin-top: 4px;
     text-align: center;
-    box-shadow: 0 1px 3px rgba(0,0,0,0.02);
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.02);
 }
 
 
@@ -997,4 +1041,9 @@ body {
 .scroll-content {
     padding-bottom: 120px !important;
     overflow-y: visible !important;
+}
+.section-title.first-section {
+    margin-top: 8px !important;
+    padding-top: 0 !important;
+    border-top: none !important;
 }
