@@ -863,112 +863,198 @@ body {
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
 }
 
-/* ── PART III : NOTEBOOK DIARY LAYOUT ── */
-.notebook-card {
-    background: #fffdf9;
-    border: 3px solid #fbcfe8;
-    /* Bubbly pink border */
-    border-left: 8px solid #f43f5e;
-    /* Pink margin representing paper spiral bind */
-    border-radius: 20px;
-    padding: 8px 12px;
+/* ── SECTION II : LOOK AND WRITE STYLE ── */
+.sec2-row {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    gap: 10px;
+    margin-bottom: 8px;
     width: 100%;
+}
+
+.sec2-row:nth-child(even) {
+    flex-direction: row-reverse;
+}
+
+.sec2-row:nth-child(even) .sec2-answer-area {
+    padding-right: 0;
+    padding-left: 28px;
+}
+
+.sec2-row:nth-child(even) .sec2-feedback-icon {
+    right: auto;
+    left: 0;
+}
+
+/* ── LEFT SIDE (IMAGE CARD) ── */
+.sec2-img-card {
+    position: relative;
+    flex-shrink: 0;
+}
+
+/* PITA MERAH (BADGE) */
+.sec2-number-badge {
+    position: absolute;
+    top: -8px;
+    left: -8px;
+    background: #e53935;
+    color: white;
+    font-weight: 800;
+    padding: 2px 8px;
+    font-size: 14px;
+    border-radius: 4px 4px 4px 0;
+    z-index: 5;
+}
+
+.sec2-number-badge::after {
+    content: "";
+    position: absolute;
+    bottom: -8px;
+    left: 0;
+    border-top: 8px solid #b71c1c;
+    border-left: 8px solid transparent;
+}
+
+.sec2-example-badge {
+    font-size: 11px;
+    padding: 2px 8px 6px 8px; /* Pushes text up slightly within the badge */
+    top: -6px; /* Moves the whole badge higher up so it doesn't cover the head */
+}
+
+/* BINGKAI GAMBAR KOTAK SUDUT BUNDAR */
+.sec2-img-box {
+    width: 85px;
+    height: 85px;
+    border: 3px solid #cbd5e1;
+    border-radius: 14px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: transparent;
+    overflow: hidden;
+    transform: translateZ(0);
+    /* Hardware acceleration for GIF clipping */
+    will-change: transform;
+}
+
+.sec2-img-placeholder {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.sec2-img-placeholder img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+/* ── RIGHT SIDE (ANSWER AREA) ── */
+.sec2-answer-area {
+    flex: 1;
+    position: relative;
     display: flex;
     flex-direction: column;
-    box-shadow: 0 6px 16px rgba(244, 63, 94, 0.08);
-    position: relative;
-    margin-bottom: 12px;
+    align-items: flex-start;
+    justify-content: center;
+    gap: 8px;
+    padding-right: 28px;
+    /* Reserve space for the feedback icon */
 }
 
-/* Spiral rings mockup */
-.notebook-card::before {
-    content: '';
-    position: absolute;
-    top: 15px;
-    left: -13px;
-    width: 10px;
-    height: calc(100% - 30px);
-    background-image: radial-gradient(circle, #cbd5e1 40%, transparent 45%);
-    background-size: 10px 24px;
-    display: none;
-    /* Can enable if needed, border-left already represents it cleanly */
-}
-
-.notebook-line {
-    display: flex;
-    flex-wrap: wrap;
-    align-items: center;
-    gap: 4px;
-    padding: 4px 0;
-    border-bottom: 1.5px dashed #bfdbfe;
-    /* Blue notebook paper line decoration */
-    font-size: 13px;
+/* TEKS PENGANTAR (PROMPT) DI ATAS INPUT */
+.sec2-prompt-text {
+    font-size: 12px;
     font-weight: 600;
     color: #334155;
-    line-height: 1.4;
+    line-height: 1.3;
+    text-align: left;
+}
+.sec2-row:nth-child(even) .sec2-prompt-text {
+    text-align: right;
+    width: 100%;
+}
+
+.sec2-input-inner {
+    background: transparent;
+    border-bottom: 2px solid #94a3b8;
+    padding: 2px 4px;
     position: relative;
+    width: fit-content;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 4px;
 }
 
-.notebook-line:last-child {
-    border-bottom: none;
-}
 
-.notebook-line.example-line {
-    background: #f8fafc;
-    border-bottom-style: solid;
-    padding: 8px;
-    
-    font-style: italic;
-    color: #64748b;
-}
 
-.line-prefix {
-    white-space: nowrap;
-}
-
-.cloze-input {
-    flex-grow: 1;
-    min-width: 150px;
-    border: none;
-    border-bottom: 2.5px solid #93c5fd;
-    background: #eff6ff;
-    /* Soft blue ink blend */
-    font-family: 'Outfit', sans-serif;
-    font-size: 13px;
-    font-weight: 700;
-    text-align: center;
-    color: #1e40af;
-    /* Ink pen blue */
-    padding: 2px 8px;
-    border-radius: 6px 6px 0 0;
-    outline: none;
-    transition: all 0.2s ease;
-}
-
-.cloze-input:focus {
-    border-bottom-color: #2563eb;
-    background: #dbeafe;
-}
-
-.cloze-input.correct {
-    border-bottom-color: #10b981 !important;
-    color: #10b981 !important;
-    background: #ecfdf5 !important;
-}
-
-.cloze-input.wrong {
-    border-bottom-color: #ef4444 !important;
-    color: #ef4444 !important;
-    background: #fef2f2 !important;
-}
-
-.cloze-fb-badge {
+.sec2-example-text {
     font-size: 14px;
-    font-weight: 700;
-    margin-left: 2px;
+    font-weight: bold;
+    color: #111;
+    z-index: 2;
+    text-align: left;
+}
+.sec2-row:nth-child(even) .sec2-example-text {
+    text-align: right;
 }
 
-.cloze-hint-text {
+.sec2-answer-input {
+    width: 100%;
+    border: none;
+    outline: none;
+    font-size: 14px;
+    font-family: 'Outfit', sans-serif;
+    font-weight: bold;
+    background: transparent;
+    color: #111;
+    text-align: left;
+    z-index: 2;
+}
+.sec2-row:nth-child(even) .sec2-answer-input {
+    text-align: right;
+}
+
+.sec2-answer-input::placeholder {
+    font-size: 11px;
+    font-weight: normal;
+    color: #999;
+    text-transform: none;
+}
+
+.sec2-answer-input.correct {
+    color: #10b981;
+}
+
+.sec2-answer-input.wrong {
+    color: #ef4444;
+}
+
+/* IKON FEEDBACK (Centang / Silang) */
+.sec2-feedback-icon {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    right: 0;
+    /* Pindah ke left:0; pada :nth-child(even) */
+    width: 24px;
+    height: 24px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: bold;
+    font-size: 14px;
+    z-index: 10;
+}
+
+/* JAWABAN BENAR MUNCUL DI BAWAH KOTAK JIKA SALAH */
+.sec2-correct-hint {
     width: 100%;
     font-size: 11px;
     font-weight: 800;
@@ -978,34 +1064,8 @@ body {
     padding: 2px 6px;
     border-radius: 6px;
     display: none;
-    margin-top: 4px;
     text-align: center;
     box-shadow: 0 1px 3px rgba(0, 0, 0, 0.02);
-}
-
-
-/* ── NEW STORY CLOZE STYLING ── */
-.story-item {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    margin-bottom: 24px;
-    width: 100%;
-}
-
-.story-clock-img {
-    width: 140px;
-    height: 140px;
-    object-fit: contain;
-    margin-bottom: 12px;
-    border-radius: 12px;
-    border: 3px solid #cbd5e1;
-    background: #ffffff;
-}
-
-.example-item .story-clock-img {
-    border-color: #94a3b8;
-    border-style: dashed;
 }
 
 /* -- BORDERS -- */
