@@ -130,16 +130,16 @@ body {
 /* ── STUDENT INFO CARD ── */
 .student-info-card {
     width: 100%;
-    margin-bottom: 20px;
+    margin-bottom: 10px;
     background: #ffffff;
     border-radius: 20px;
     border: 3px solid #bfdbfe;
     /* Light blue border */
-    padding: 16px;
+    padding: 12px;
     box-shadow: 0 4px 15px rgba(147, 197, 253, 0.15);
     display: flex;
     flex-direction: column;
-    gap: 12px;
+    gap: 8px;
     position: relative;
     /* Removed overflow: hidden to prevent clipping */
 }
@@ -225,17 +225,17 @@ body {
 /* ── SCORING INFO CARD ── */
 .scoring-info-card {
     width: 100%;
-    margin-bottom: 20px;
+    margin-bottom: 10px;
     background: #fffbeb;
     /* Light yellow background */
     border: 2px dashed #fcd34d;
     /* Yellow dashed border */
     border-radius: 16px;
-    padding: 12px 16px;
+    padding: 10px 12px;
     display: flex;
     flex-direction: row;
     align-items: flex-start;
-    gap: 12px;
+    gap: 10px;
 }
 
 .scoring-icon {
@@ -303,17 +303,17 @@ body {
 /* ── QUESTION CARD ── */
 .question-card {
     width: 100%;
-    margin-bottom: 12px;
+    margin-bottom: 6px;
     background: #ffffff;
-    border-radius: 24px;
+    border-radius: 20px;
     border: 3px solid #cbd5e1;
-    padding: 12px;
+    padding: 8px;
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.02);
     transition: border-color 0.3s ease, box-shadow 0.3s ease;
     display: flex;
     flex-direction: row;
     align-items: center;
-    gap: 12px;
+    gap: 10px;
     position: relative;
 }
 
@@ -366,12 +366,12 @@ body {
 
 /* ── GIF CONTAINER (SOFT BLUE CORNER BORDER) ── */
 .question-gif-container {
-    width: 105px;
-    height: 105px;
+    width: 85px;
+    height: 85px;
     flex-shrink: 0;
-    border-radius: 18px;
+    border-radius: 14px;
     overflow: hidden;
-    border: 4px solid #dbeafe;
+    border: 3px solid #dbeafe;
     /* Soft blue border matching mockup */
     background: #ffffff;
     display: flex;
@@ -392,7 +392,7 @@ body {
 /* ── DETAILS (FORCED EQUAL HEIGHT TO GIF) ── */
 .question-details {
     flex-grow: 1;
-    min-height: 105px;
+    min-height: 85px;
     /* Cocokkan minimal dengan tinggi GIF */
     display: flex;
     flex-direction: column;
@@ -412,17 +412,17 @@ body {
 .option-item {
     display: flex;
     align-items: center;
-    padding: 2px 8px;
+    padding: 0px 6px;
     /* Dipertipis atas dan bawahnya */
     background: #ffffff;
     border: 1.5px solid #e2e8f0;
     /* Soft light border */
-    border-radius: 10px;
+    border-radius: 8px;
     cursor: pointer;
     transition: all 0.15s cubic-bezier(0.4, 0, 0.2, 1);
     position: relative;
     user-select: none;
-    min-height: 24px;
+    min-height: 20px;
     /* Dikecilkan agar lebih tipis */
 }
 
@@ -715,8 +715,8 @@ body {
 .section-title {
     width: 100%;
     text-align: center;
-    margin: 32px 0 20px 0;
-    padding-top: 24px;
+    margin: 16px 0 16px 0;
+    padding-top: 16px;
     border-top: 3px dashed #cbd5e1;
 }
 
@@ -747,17 +747,17 @@ body {
     background: #ffffff;
     border: 3px solid #cbd5e1;
     /* Bubbly blue/gray outer card */
-    border-radius: 24px;
-    padding: 16px;
+    border-radius: 20px;
+    padding: 10px;
     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.02);
-    margin-bottom: 24px;
+    margin-bottom: 12px;
 }
 
 .sec2-order-row {
     display: flex;
     align-items: center;
     gap: 8px;
-    padding: 8px 0;
+    padding: 4px 0;
     border-bottom: 1.5px dashed #cbd5e1;
     /* Dotted line like paper quiz sheets! */
     position: relative;
@@ -871,13 +871,13 @@ body {
     border-left: 8px solid #f43f5e;
     /* Pink margin representing paper spiral bind */
     border-radius: 20px;
-    padding: 12px 16px;
+    padding: 8px 12px;
     width: 100%;
     display: flex;
     flex-direction: column;
     box-shadow: 0 6px 16px rgba(244, 63, 94, 0.08);
     position: relative;
-    margin-bottom: 24px;
+    margin-bottom: 12px;
 }
 
 /* Spiral rings mockup */
@@ -899,7 +899,7 @@ body {
     flex-wrap: wrap;
     align-items: center;
     gap: 4px;
-    padding: 10px 0;
+    padding: 4px 0;
     border-bottom: 1.5px dashed #bfdbfe;
     /* Blue notebook paper line decoration */
     font-size: 13px;
