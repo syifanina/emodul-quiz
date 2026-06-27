@@ -48,3 +48,4 @@ function playGifAudio(audioId, container, gifSrc, pngSrc) {
         };
     }
 }
+
