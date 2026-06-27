@@ -513,135 +513,256 @@
                 <p class="id">Lengkapi kalimat di bawah ini berdasarkan waktu yang ditunjukkan pada jam! Perhatikan contoh.</p>
             </div>
 
-            <!-- SECTION II CONTENT (NOTEBOOK THEME WITH IMAGES) -->
-            <div class="notebook-card">
+            <!-- SECTION II CONTENT (ZIG-ZAG LAYOUT) -->
+            <div class="sec2-container">
                 <!-- Example -->
-                <div class="story-item example-item">
-                    <img src="https://lh3.googleusercontent.com/d/1obPGZJe7UP_CVCHr6wn97bXqktZKuD4N" alt="Clock Example" class="story-clock-img">
-                    <div class="notebook-line example-line">
-                        <span class="line-prefix">First, I wake up at (example)</span>
-                        <span style="font-weight: 800; text-decoration: underline; color: #1e293b; padding: 0 4px;">five o'clock</span>
-                        <span class="line-suffix">in the morning.</span>
+                <div class="sec2-row sec2-quiz-row" id="sec2-row-ex">
+                    <div class="sec2-img-card">
+                        <div class="sec2-number-badge sec2-example-badge">Ex</div>
+                        <div class="sec2-img-box">
+                            <div class="sec2-img-placeholder">
+                                <img src="https://lh3.googleusercontent.com/d/1obPGZJe7UP_CVCHr6wn97bXqktZKuD4N" alt="Clock Example">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="sec2-answer-area">
+                        <p class="sec2-prompt-text">
+                            (Example) First, I wake up at 
+                            <span class="sec2-input-inner">
+                                <span class="sec2-example-text">five o'clock</span>
+                            </span> 
+                            in the morning.
+                        </p>
                     </div>
                 </div>
 
-                <!-- Line 1 -->
-                <div class="story-item">
-                    <img src="https://lh3.googleusercontent.com/d/1kqGOGSVFxExE1o3AMJ5w52P7_byyPXxY" alt="Clock 1" class="story-clock-img">
-                    <div class="notebook-line" id="sec3-line-1">
-                        <span class="line-prefix">Then, I take a bath and brush my teeth at (1)</span>
-                        <input type="text" class="cloze-input" id="sec3-input-1" data-answer="eight past a half|half past eight|eight thirty|thirty minutes past eight" placeholder="..." autocomplete="off" autocorrect="off" autocapitalize="none" spellcheck="false">
-                        <span class="line-suffix">.</span>
-                        <span class="cloze-fb-badge" id="sec3-fb-1"></span>
-                        <span class="cloze-hint-text" id="sec3-hint-1">eight past a half</span>
+                <!-- Item 1 -->
+                <div class="sec2-row sec2-quiz-row" id="sec2-row-1">
+                    <div class="sec2-img-card">
+                        <div class="sec2-number-badge">1</div>
+                        <div class="sec2-img-box">
+                            <div class="sec2-img-placeholder">
+                                <img src="https://lh3.googleusercontent.com/d/1kqGOGSVFxExE1o3AMJ5w52P7_byyPXxY" alt="Clock 1">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="sec2-answer-area">
+                        <p class="sec2-prompt-text">
+                            (1) Then, I take a bath and brush my teeth at 
+                            <span class="sec2-input-inner">
+                                <input type="text" class="sec2-answer-input" id="sec3-input-1" size="12" data-answer="a quarter past five|quarter past five|five fifteen|5:15" placeholder="Type answer here..." autocomplete="off" autocorrect="off" autocapitalize="none" spellcheck="false">
+                            </span>
+                            .
+                        </p>
+                        <div class="sec2-feedback-icon" id="sec3-fb-1"></div>
+                        <div id="sec3-hint-1" class="sec2-correct-hint"></div>
                     </div>
                 </div>
 
-                <!-- Line 2 -->
-                <div class="story-item">
-                    <img src="https://lh3.googleusercontent.com/d/10vkPeRt-y9K7JrG4zirhY1ow45ScgEs4" alt="Clock 2" class="story-clock-img">
-                    <div class="notebook-line" id="sec3-line-2">
-                        <span class="line-prefix">I have breakfast at (2)</span>
-                        <input type="text" class="cloze-input" id="sec3-input-2" data-answer="four past a half|half past four|four thirty|thirty minutes past four" placeholder="..." autocomplete="off" autocorrect="off" autocapitalize="none" spellcheck="false">
-                        <span class="line-suffix">.</span>
-                        <span class="cloze-fb-badge" id="sec3-fb-2"></span>
-                        <span class="cloze-hint-text" id="sec3-hint-2">four past a half</span>
+                <!-- Item 2 -->
+                <div class="sec2-row sec2-quiz-row" id="sec2-row-2">
+                    <div class="sec2-img-card">
+                        <div class="sec2-number-badge">2</div>
+                        <div class="sec2-img-box">
+                            <div class="sec2-img-placeholder">
+                                <img src="https://lh3.googleusercontent.com/d/10vkPeRt-y9K7JrG4zirhY1ow45ScgEs4" alt="Clock 2">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="sec2-answer-area">
+                        <p class="sec2-prompt-text">
+                            (2) I have breakfast at 
+                            <span class="sec2-input-inner">
+                                <input type="text" class="sec2-answer-input" id="sec3-input-2" size="12" data-answer="half past five|five thirty|5:30" placeholder="Type answer here..." autocomplete="off" autocorrect="off" autocapitalize="none" spellcheck="false">
+                            </span>
+                            .
+                        </p>
+                        <div class="sec2-feedback-icon" id="sec3-fb-2"></div>
+                        <div id="sec3-hint-2" class="sec2-correct-hint"></div>
                     </div>
                 </div>
 
-                <!-- Line 3 -->
-                <div class="story-item">
-                    <img src="https://lh3.googleusercontent.com/d/1DcQEVuitLQJRC7LT72iYQEwYi-UQMJAF" alt="Clock 3" class="story-clock-img">
-                    <div class="notebook-line" id="sec3-line-3">
-                        <span class="line-prefix">I go to school at (3)</span>
-                        <input type="text" class="cloze-input" id="sec3-input-3" data-answer="two o'clock|two o’clock|two|2:00" placeholder="..." autocomplete="off" autocorrect="off" autocapitalize="none" spellcheck="false">
-                        <span class="line-suffix">.</span>
-                        <span class="cloze-fb-badge" id="sec3-fb-3"></span>
-                        <span class="cloze-hint-text" id="sec3-hint-3">two o'clock</span>
+                <!-- Item 3 -->
+                <div class="sec2-row sec2-quiz-row" id="sec2-row-3">
+                    <div class="sec2-img-card">
+                        <div class="sec2-number-badge">3</div>
+                        <div class="sec2-img-box">
+                            <div class="sec2-img-placeholder">
+                                <img src="https://lh3.googleusercontent.com/d/1DcQEVuitLQJRC7LT72iYQEwYi-UQMJAF" alt="Clock 3">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="sec2-answer-area">
+                        <p class="sec2-prompt-text">
+                            (3) I go to school at 
+                            <span class="sec2-input-inner">
+                                <input type="text" class="sec2-answer-input" id="sec3-input-3" size="12" data-answer="six o'clock|six o’clock|six|6:00" placeholder="Type answer here..." autocomplete="off" autocorrect="off" autocapitalize="none" spellcheck="false">
+                            </span>
+                            .
+                        </p>
+                        <div class="sec2-feedback-icon" id="sec3-fb-3"></div>
+                        <div id="sec3-hint-3" class="sec2-correct-hint"></div>
                     </div>
                 </div>
 
-                <!-- Line 4 -->
-                <div class="story-item">
-                    <img src="https://lh3.googleusercontent.com/d/1lrbzYTJ73bd9SRsn10d8jZCaHOUwrw1L" alt="Clock 4" class="story-clock-img">
-                    <div class="notebook-line" id="sec3-line-4">
-                        <span class="line-prefix">I study in class at (4)</span>
-                        <input type="text" class="cloze-input" id="sec3-input-4" data-answer="one o'clock|one o’clock|one|1:00" placeholder="..." autocomplete="off" autocorrect="off" autocapitalize="none" spellcheck="false">
-                        <span class="line-suffix">.</span>
-                        <span class="cloze-fb-badge" id="sec3-fb-4"></span>
-                        <span class="cloze-hint-text" id="sec3-hint-4">one o'clock</span>
+                <!-- Item 4 -->
+                <div class="sec2-row sec2-quiz-row" id="sec2-row-4">
+                    <div class="sec2-img-card">
+                        <div class="sec2-number-badge">4</div>
+                        <div class="sec2-img-box">
+                            <div class="sec2-img-placeholder">
+                                <img src="https://lh3.googleusercontent.com/d/1lrbzYTJ73bd9SRsn10d8jZCaHOUwrw1L" alt="Clock 4">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="sec2-answer-area">
+                        <p class="sec2-prompt-text">
+                            (4) I study in class at 
+                            <span class="sec2-input-inner">
+                                <input type="text" class="sec2-answer-input" id="sec3-input-4" size="12" data-answer="half past six|six thirty|6:30" placeholder="Type answer here..." autocomplete="off" autocorrect="off" autocapitalize="none" spellcheck="false">
+                            </span>
+                            .
+                        </p>
+                        <div class="sec2-feedback-icon" id="sec3-fb-4"></div>
+                        <div id="sec3-hint-4" class="sec2-correct-hint"></div>
                     </div>
                 </div>
 
-                <!-- Line 5 -->
-                <div class="story-item">
-                    <img src="https://lh3.googleusercontent.com/d/1WItbyYF_h4dtRNkRiwjhahXKqwAETL85" alt="Clock 5" class="story-clock-img">
-                    <div class="notebook-line" id="sec3-line-5">
-                        <span class="line-prefix">I have lunch at (5)</span>
-                        <input type="text" class="cloze-input" id="sec3-input-5" data-answer="fifteen minutes past three|quarter past three|three fifteen|3:15" placeholder="..." autocomplete="off" autocorrect="off" autocapitalize="none" spellcheck="false">
-                        <span class="line-suffix">in the afternoon.</span>
-                        <span class="cloze-fb-badge" id="sec3-fb-5"></span>
-                        <span class="cloze-hint-text" id="sec3-hint-5">fifteen minutes past three</span>
+                <!-- Item 5 -->
+                <div class="sec2-row sec2-quiz-row" id="sec2-row-5">
+                    <div class="sec2-img-card">
+                        <div class="sec2-number-badge">5</div>
+                        <div class="sec2-img-box">
+                            <div class="sec2-img-placeholder">
+                                <img src="https://lh3.googleusercontent.com/d/1WItbyYF_h4dtRNkRiwjhahXKqwAETL85" alt="Clock 5">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="sec2-answer-area">
+                        <p class="sec2-prompt-text">
+                            (5) I have lunch at 
+                            <span class="sec2-input-inner">
+                                <input type="text" class="sec2-answer-input" id="sec3-input-5" size="12" data-answer="a quarter past twelve|quarter past twelve|twelve fifteen|12:15" placeholder="Type answer here..." autocomplete="off" autocorrect="off" autocapitalize="none" spellcheck="false">
+                            </span>
+                            in the afternoon.
+                        </p>
+                        <div class="sec2-feedback-icon" id="sec3-fb-5"></div>
+                        <div id="sec3-hint-5" class="sec2-correct-hint"></div>
                     </div>
                 </div>
 
-                <!-- Line 6 -->
-                <div class="story-item">
-                    <img src="https://lh3.googleusercontent.com/d/1m0UMF7wH-V6grsrdsislKCNBJx8G8D7H" alt="Clock 6" class="story-clock-img">
-                    <div class="notebook-line" id="sec3-line-6">
-                        <span class="line-prefix">I go home from school at (6)</span>
-                        <input type="text" class="cloze-input" id="sec3-input-6" data-answer="three past a half|half past three|three thirty|thirty minutes past three" placeholder="..." autocomplete="off" autocorrect="off" autocapitalize="none" spellcheck="false">
-                        <span class="line-suffix">in the afternoon.</span>
-                        <span class="cloze-fb-badge" id="sec3-fb-6"></span>
-                        <span class="cloze-hint-text" id="sec3-hint-6">three past a half</span>
+                <!-- Item 6 -->
+                <div class="sec2-row sec2-quiz-row" id="sec2-row-6">
+                    <div class="sec2-img-card">
+                        <div class="sec2-number-badge">6</div>
+                        <div class="sec2-img-box">
+                            <div class="sec2-img-placeholder">
+                                <img src="https://lh3.googleusercontent.com/d/1m0UMF7wH-V6grsrdsislKCNBJx8G8D7H" alt="Clock 6">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="sec2-answer-area">
+                        <p class="sec2-prompt-text">
+                            (6) I go home from school at 
+                            <span class="sec2-input-inner">
+                                <input type="text" class="sec2-answer-input" id="sec3-input-6" size="12" data-answer="two o'clock|two o’clock|two|2:00" placeholder="Type answer here..." autocomplete="off" autocorrect="off" autocapitalize="none" spellcheck="false">
+                            </span>
+                            in the afternoon.
+                        </p>
+                        <div class="sec2-feedback-icon" id="sec3-fb-6"></div>
+                        <div id="sec3-hint-6" class="sec2-correct-hint"></div>
                     </div>
                 </div>
 
-                <!-- Line 7 -->
-                <div class="story-item">
-                    <img src="https://lh3.googleusercontent.com/d/1ycEA3pZKc66bG3UZZTNGMd14FhZOEqUO" alt="Clock 7" class="story-clock-img">
-                    <div class="notebook-line" id="sec3-line-7">
-                        <span class="line-prefix">Then, I play with my friends at (7)</span>
-                        <input type="text" class="cloze-input" id="sec3-input-7" data-answer="nine past a half|half past nine|nine thirty|thirty minutes past nine" placeholder="..." autocomplete="off" autocorrect="off" autocapitalize="none" spellcheck="false">
-                        <span class="line-suffix">in the afternoon.</span>
-                        <span class="cloze-fb-badge" id="sec3-fb-7"></span>
-                        <span class="cloze-hint-text" id="sec3-hint-7">nine past a half</span>
+                <!-- Item 7 -->
+                <div class="sec2-row sec2-quiz-row" id="sec2-row-7">
+                    <div class="sec2-img-card">
+                        <div class="sec2-number-badge">7</div>
+                        <div class="sec2-img-box">
+                            <div class="sec2-img-placeholder">
+                                <img src="https://lh3.googleusercontent.com/d/1ycEA3pZKc66bG3UZZTNGMd14FhZOEqUO" alt="Clock 7">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="sec2-answer-area">
+                        <p class="sec2-prompt-text">
+                            (7) Then, I play with my friends at 
+                            <span class="sec2-input-inner">
+                                <input type="text" class="sec2-answer-input" id="sec3-input-7" size="12" data-answer="four o'clock|four o’clock|four|4:00" placeholder="Type answer here..." autocomplete="off" autocorrect="off" autocapitalize="none" spellcheck="false">
+                            </span>
+                            in the afternoon.
+                        </p>
+                        <div class="sec2-feedback-icon" id="sec3-fb-7"></div>
+                        <div id="sec3-hint-7" class="sec2-correct-hint"></div>
                     </div>
                 </div>
 
-                <!-- Line 8 -->
-                <div class="story-item">
-                    <img src="https://lh3.googleusercontent.com/d/1KZQeVwdzKc-yv_x1pzdbWb22vuS2FDry" alt="Clock 8" class="story-clock-img">
-                    <div class="notebook-line" id="sec3-line-8">
-                        <span class="line-prefix">I have dinner with my family at (8)</span>
-                        <input type="text" class="cloze-input" id="sec3-input-8" data-answer="fifteen minutes to one|quarter to one|twelve forty-five|12:45" placeholder="..." autocomplete="off" autocorrect="off" autocapitalize="none" spellcheck="false">
-                        <span class="line-suffix">in the evening.</span>
-                        <span class="cloze-fb-badge" id="sec3-fb-8"></span>
-                        <span class="cloze-hint-text" id="sec3-hint-8">fifteen minutes to one</span>
+                <!-- Item 8 -->
+                <div class="sec2-row sec2-quiz-row" id="sec2-row-8">
+                    <div class="sec2-img-card">
+                        <div class="sec2-number-badge">8</div>
+                        <div class="sec2-img-box">
+                            <div class="sec2-img-placeholder">
+                                <img src="https://lh3.googleusercontent.com/d/1KZQeVwdzKc-yv_x1pzdbWb22vuS2FDry" alt="Clock 8">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="sec2-answer-area">
+                        <p class="sec2-prompt-text">
+                            (8) I have dinner with my family at 
+                            <span class="sec2-input-inner">
+                                <input type="text" class="sec2-answer-input" id="sec3-input-8" size="12" data-answer="half past six|six thirty|6:30" placeholder="Type answer here..." autocomplete="off" autocorrect="off" autocapitalize="none" spellcheck="false">
+                            </span>
+                            in the evening.
+                        </p>
+                        <div class="sec2-feedback-icon" id="sec3-fb-8"></div>
+                        <div id="sec3-hint-8" class="sec2-correct-hint"></div>
                     </div>
                 </div>
 
-                <!-- Line 9 -->
-                <div class="story-item">
-                    <img src="https://lh3.googleusercontent.com/d/1RZ3SqW8-YqCt3MTtQ8Q8NTsMn7BIDHO5" alt="Clock 9" class="story-clock-img">
-                    <div class="notebook-line" id="sec3-line-9">
-                        <span class="line-prefix">I do my homework at (9)</span>
-                        <input type="text" class="cloze-input" id="sec3-input-9" data-answer="one o'clock|one o’clock|one|1:00" placeholder="..." autocomplete="off" autocorrect="off" autocapitalize="none" spellcheck="false">
-                        <span class="line-suffix">in the evening.</span>
-                        <span class="cloze-fb-badge" id="sec3-fb-9"></span>
-                        <span class="cloze-hint-text" id="sec3-hint-9">one o'clock</span>
+                <!-- Item 9 -->
+                <div class="sec2-row sec2-quiz-row" id="sec2-row-9">
+                    <div class="sec2-img-card">
+                        <div class="sec2-number-badge">9</div>
+                        <div class="sec2-img-box">
+                            <div class="sec2-img-placeholder">
+                                <img src="https://lh3.googleusercontent.com/d/1RZ3SqW8-YqCt3MTtQ8Q8NTsMn7BIDHO5" alt="Clock 9">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="sec2-answer-area">
+                        <p class="sec2-prompt-text">
+                            (9) I do my homework at 
+                            <span class="sec2-input-inner">
+                                <input type="text" class="sec2-answer-input" id="sec3-input-9" size="12" data-answer="eight o'clock|eight o’clock|eight|8:00" placeholder="Type answer here..." autocomplete="off" autocorrect="off" autocapitalize="none" spellcheck="false">
+                            </span>
+                            in the evening.
+                        </p>
+                        <div class="sec2-feedback-icon" id="sec3-fb-9"></div>
+                        <div id="sec3-hint-9" class="sec2-correct-hint"></div>
                     </div>
                 </div>
 
-                <!-- Line 10 -->
-                <div class="story-item">
-                    <img src="https://lh3.googleusercontent.com/d/1nY3wIUlzKe8k8uMk6GqnyAX_i1X3uy-3" alt="Clock 10" class="story-clock-img">
-                    <div class="notebook-line" id="sec3-line-10">
-                        <span class="line-prefix">Finally, I go to bed at (10)</span>
-                        <input type="text" class="cloze-input" id="sec3-input-10" data-answer="two past a half|half past two|two thirty|thirty minutes past two" placeholder="..." autocomplete="off" autocorrect="off" autocapitalize="none" spellcheck="false">
-                        <span class="line-suffix">in the evening.</span>
-                        <span class="cloze-fb-badge" id="sec3-fb-10"></span>
-                        <span class="cloze-hint-text" id="sec3-hint-10">two past a half</span>
+                <!-- Item 10 -->
+                <div class="sec2-row sec2-quiz-row" id="sec2-row-10">
+                    <div class="sec2-img-card">
+                        <div class="sec2-number-badge">10</div>
+                        <div class="sec2-img-box">
+                            <div class="sec2-img-placeholder">
+                                <img src="https://lh3.googleusercontent.com/d/1nY3wIUlzKe8k8uMk6GqnyAX_i1X3uy-3" alt="Clock 10">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="sec2-answer-area">
+                        <p class="sec2-prompt-text">
+                            (10) Finally, I go to bed at 
+                            <span class="sec2-input-inner">
+                                <input type="text" class="sec2-answer-input" id="sec3-input-10" size="12" data-answer="nine o'clock|nine o’clock|nine|9:00" placeholder="Type answer here..." autocomplete="off" autocorrect="off" autocapitalize="none" spellcheck="false">
+                            </span>
+                            in the evening.
+                        </p>
+                        <div class="sec2-feedback-icon" id="sec3-fb-10"></div>
+                        <div id="sec3-hint-10" class="sec2-correct-hint"></div>
                     </div>
                 </div>
             </div>
