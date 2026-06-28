@@ -62,6 +62,42 @@ document.addEventListener('DOMContentLoaded', function () {
         input.addEventListener('keypress', playClickSound);
     });
     updateSubmitButtonState();
+
+    // ── GIF Loading Logic ──
+    const loadingIconPath = "M6,2H18V8H18V8L14,12L18,16V16H18V22H6V16H6V16L10,12L6,8V8H6V2M16,16.5L12,12.5L8,16.5V20H16V16.5M12,11.5L16,7.5V4H8V7.5L12,11.5Z"; // Hourglass icon
+    const gifContainers = document.querySelectorAll('.img-placeholder, .intro-image-container');
+    
+    gifContainers.forEach(container => {
+        const img = container.querySelector('img');
+        if (img) {
+            // Check if it already has an hourglass icon so we don't duplicate
+            if (!container.querySelector('.loading-icon')) {
+                const iconDiv = document.createElement('div');
+                iconDiv.className = 'loading-icon';
+                iconDiv.innerHTML = `<svg viewBox="0 0 24 24"><path d="${loadingIconPath}"></path></svg>`;
+                container.appendChild(iconDiv);
+            }
+            
+            // Add loading text overlay delay (300ms)
+            container.loadingTextTimeout = setTimeout(() => {
+                container.classList.add('loading');
+            }, 300);
+            
+            const onLoadOrComplete = () => {
+                clearTimeout(container.loadingTextTimeout);
+                container.classList.remove('loading');
+                const icon = container.querySelector('.loading-icon');
+                if (icon) icon.remove();
+            };
+            
+            if (img.complete) {
+                // Already loaded
+                onLoadOrComplete();
+            } else {
+                img.addEventListener('load', onLoadOrComplete);
+            }
+        }
+    });
 });
 
 // ── Sound Helpers ──
