@@ -684,6 +684,29 @@ body {
     pointer-events: none;
 }
 
+.gif-container.loading .play-overlay {
+    opacity: 1;
+    pointer-events: none;
+}
+
+/* ── LOADING OVERLAY ── */
+.gif-container.loading::after {
+    content: 'Loading...';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(255, 255, 255, 0.8);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 14px;
+    font-weight: 700;
+    color: #ff0000;
+    z-index: 5;
+}
+
 .gif-container.playing .gif-image {
     opacity: 1;
 }
