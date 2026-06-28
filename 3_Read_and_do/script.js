@@ -1,16 +1,24 @@
-// Preload GIF assets so there's no delay when Play is clicked
+// Preload GIF assets as Blobs so there's no delay when Play is clicked
 const GIF_URLS = [
     'https://lh3.googleusercontent.com/d/1Mje7DsyI1T1mgs_QjrfJm_6283EThmMg',
     'https://lh3.googleusercontent.com/d/1Xk4ome3ui7LP1ziU1Ubu43sD5fT5oYUW'
 ];
 
+const preloadedGifs = {};
+
 window.addEventListener('load', () => {
     GIF_URLS.forEach(url => {
-        const img = new Image();
-        img.src = url;
+        fetch(url)
+            .then(res => res.blob())
+            .then(blob => {
+                preloadedGifs[url] = URL.createObjectURL(blob);
+            })
+            .catch(err => console.error('Error preloading GIF:', err));
     });
 });
 
+const playIconPath = "M8 5v14l11-7z";
+const loadingIconPath = "M6,2H18V8H18V8L14,12L18,16V16H18V22H6V16H6V16L10,12L6,8V8H6V2M16,16.5L12,12.5L8,16.5V20H16V16.5M12,11.5L16,7.5V4H8V7.5L12,11.5Z";
 
 function flipCard(element) {
     // Toggle flipped class for animation
@@ -24,27 +32,43 @@ function flipCard(element) {
     }
 }
 
-function playGifAudio(audioId, container, gifSrc, pngSrc) {
+function playGifAudio(audioId, container, originalGifSrc, pngSrc) {
     const audio = document.getElementById(audioId);
     const imgElement = container.querySelector('.gif-image');
+    const svgPath = container.querySelector('.play-overlay svg path');
     
-    // Prevent triggering multiple times while already playing
-    if (container.classList.contains('playing')) return;
+    // Prevent triggering multiple times while already playing or loading
+    if (container.classList.contains('playing') || container.classList.contains('loading')) return;
     
     if (audio && imgElement) {
-        // Swap to animated GIF
-        imgElement.src = gifSrc;
+        if (svgPath) svgPath.setAttribute('d', loadingIconPath);
         
-        audio.currentTime = 0;
-        audio.play().catch(e => console.log('Audio play blocked:', e));
+        container.loadingTextTimeout = setTimeout(() => {
+            container.classList.add('loading');
+        }, 300);
         
-        // Hide play button
-        container.classList.add('playing');
+        const finalGifSrc = preloadedGifs[originalGifSrc] || originalGifSrc;
+        
+        imgElement.onload = () => {
+            clearTimeout(container.loadingTextTimeout);
+            container.classList.remove('loading');
+            
+            audio.currentTime = 0;
+            audio.play().catch(e => console.log('Audio play blocked:', e));
+            
+            container.classList.add('playing');
+            imgElement.onload = null;
+        };
+        
+        imgElement.src = finalGifSrc;
         
         // Swap back to static PNG and show play button when audio finishes
         audio.onended = () => {
+            if (svgPath) svgPath.setAttribute('d', playIconPath);
+            imgElement.onload = null;
             imgElement.src = pngSrc;
             container.classList.remove('playing');
+            container.classList.remove('loading');
         };
     }
 }
