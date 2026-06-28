@@ -9,6 +9,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     const playIconPath = "M14,3.23V5.29C16.89,6.15 19,8.83 19,12C19,15.17 16.89,17.85 14,18.71V20.77C18.03,19.86 21,16.28 21,12C21,7.72 18.03,4.14 14,3.23M16.5,12C16.5,10.23 15.5,8.71 14,7.97V16.04C15.5,15.29 16.5,13.77 16.5,12M3,9V15H7L12,20V4L7,9H3Z";
     const pauseIconPath = "M14,19H18V5H14M6,19H10V5H6V19Z";
+    const loadingIconPath = "M6,2H18V8H18V8L14,12L18,16V16H18V22H6V16H6V16L10,12L6,8V8H6V2M16,16.5L12,12.5L8,16.5V20H16V16.5M12,11.5L16,7.5V4H8V7.5L12,11.5Z";
 
     const gifLinks = {
         'a-teacher2.MP3': 'https://lh3.googleusercontent.com/d/1F1Vh5oa1mlT0969CEeJJZb_8epYIWHSb',
@@ -129,18 +130,49 @@ document.addEventListener('DOMContentLoaded', () => {
 
         // Putar audio dan ganti gambar menjadi GIF
         if (audioFile) {
-            playNextInQueue(card, audioFile);
-            
+            const startAudioPlayback = () => {
+                clearTimeout(card.loadingTextTimeout);
+                card.classList.remove('loading');
+                if (currentlyPlaying === card) {
+                    soundIcon.setAttribute('d', pauseIconPath);
+                }
+                playNextInQueue(card, audioFile);
+            };
+
             // Start or restart GIF ONLY if it's a new card or GIF isn't playing
             if (!isSameCard || card.dataset.gifPlaying !== "true") {
                 const gifKey = defaultAudioFile;
+                let urlToPlay;
                 if (preloadedGifs[gifKey]) {
-                    imgEl.src = preloadedGifs[gifKey];
+                    urlToPlay = preloadedGifs[gifKey];
                 } else if (gifLinks[gifKey]) {
-                    imgEl.src = gifLinks[gifKey];
+                    urlToPlay = gifLinks[gifKey] + "?t=" + new Date().getTime();
                 }
 
                 card.dataset.gifPlaying = "true";
+                card.classList.add('loading');
+                soundIcon.setAttribute('d', loadingIconPath);
+
+                card.loadingTextTimeout = setTimeout(() => {
+                    card.classList.add('loading');
+                }, 300);
+
+                if (urlToPlay.startsWith('blob:')) {
+                    imgEl.src = urlToPlay + '#t=' + new Date().getTime();
+                } else {
+                    imgEl.src = urlToPlay;
+                }
+
+                if (imgEl.complete) {
+                    startAudioPlayback();
+                } else {
+                    imgEl.onload = () => {
+                        imgEl.onload = null;
+                        startAudioPlayback();
+                    };
+                }
+            } else {
+                startAudioPlayback();
             }
         }
 
@@ -155,6 +187,9 @@ document.addEventListener('DOMContentLoaded', () => {
 
         audio.pause();
         targetCard.dataset.audioPlaying = "false";
+        
+        clearTimeout(targetCard.loadingTextTimeout);
+        targetCard.classList.remove('loading');
         
         // Kembalikan ke PNG statis JIKA forceStopGif (diklik pause manual / pindah kartu)
         if (forceStopGif) {
