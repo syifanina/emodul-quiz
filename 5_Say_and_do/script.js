@@ -9,6 +9,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     const playIconPath = "M14,3.23V5.29C16.89,6.15 19,8.83 19,12C19,15.17 16.89,17.85 14,18.71V20.77C18.03,19.86 21,16.28 21,12C21,7.72 18.03,4.14 14,3.23M16.5,12C16.5,10.23 15.5,8.71 14,7.97V16.04C15.5,15.29 16.5,13.77 16.5,12M3,9V15H7L12,20V4L7,9H3Z";
     const pauseIconPath = "M14,19H18V5H14M6,19H10V5H6V19Z";
+    const loadingIconPath = "M6,2H18V8H18V8L14,12L18,16V16H18V22H6V16H6V16L10,12L6,8V8H6V2M16,16.5L12,12.5L8,16.5V20H16V16.5M12,11.5L16,7.5V4H8V7.5L12,11.5Z";
 
     const gifLinks = {
         'play_game.MP3': 'https://lh3.googleusercontent.com/d/1sUmp3WqqHPWGt8OwSpDH_QoED3mk0uJD',
@@ -90,31 +91,50 @@ document.addEventListener('DOMContentLoaded', () => {
         card.dataset.audioPlaying = "true";
         card.classList.add('playing');
         currentlyPlaying = card;
-        soundIcon.setAttribute('d', pauseIconPath);
+        
+        // Ganti icon jadi jam pasir langsung
+        soundIcon.setAttribute('d', loadingIconPath);
+
+        if (card.loadingTextTimeout) {
+            clearTimeout(card.loadingTextTimeout);
+        }
+        card.loadingTextTimeout = setTimeout(() => {
+            card.classList.add('loading');
+        }, 300);
 
         // Putar audio dan ganti gambar menjadi GIF
         if (audioFile) {
             audio.src = `assets/${audioFile}`;
-            audio.play().catch(err => console.warn(`Audio playback failed for ${audioFile}:`, err));
+            audio.load();
             
-            // Switch to GIF
-            if (preloadedGifs[audioFile]) {
-                imgEl.src = preloadedGifs[audioFile];
-            } else if (gifLinks[audioFile]) {
-                imgEl.src = gifLinks[audioFile];
-            }
+            imgEl.onload = () => {
+                clearTimeout(card.loadingTextTimeout);
+                card.classList.remove('loading');
 
-            // Durasi GIF diatur tetap (independen dari suara), misalnya 5000ms
-            if (gifTimeout) {
-                clearTimeout(gifTimeout);
-            }
-            gifTimeout = setTimeout(() => {
-                if (card.dataset.staticSrc) {
-                    imgEl.src = card.dataset.staticSrc;
+                if (currentlyPlaying === card) {
+                    soundIcon.setAttribute('d', pauseIconPath);
+                    audio.play().catch(err => console.warn(`Audio playback failed for ${audioFile}:`, err));
+                    
+                    // Durasi GIF diatur tetap (independen dari suara), misalnya 5000ms
+                    if (gifTimeout) {
+                        clearTimeout(gifTimeout);
+                    }
+                    gifTimeout = setTimeout(() => {
+                        if (card.dataset.staticSrc) {
+                            imgEl.src = card.dataset.staticSrc;
+                        }
+                        card.dataset.gifPlaying = "false";
+                        checkAndStopCard(card);
+                    }, 5000);
                 }
-                card.dataset.gifPlaying = "false";
-                checkAndStopCard(card);
-            }, 5000);
+
+                imgEl.onload = null;
+            };
+
+            // Switch to preloaded GIF
+            const baseGifUrl = preloadedGifs[audioFile] || gifLinks[audioFile];
+            const separator = baseGifUrl.startsWith('blob:') ? '#t=' : '?t=';
+            imgEl.src = baseGifUrl + separator + new Date().getTime();
         }
 
         card.scrollIntoView({ behavior: 'smooth', block: 'center' });
@@ -128,6 +148,11 @@ document.addEventListener('DOMContentLoaded', () => {
 
         audio.pause();
         targetCard.dataset.audioPlaying = "false";
+        
+        if (targetCard.loadingTextTimeout) {
+            clearTimeout(targetCard.loadingTextTimeout);
+        }
+        targetCard.classList.remove('loading');
         
         // Kembalikan ke PNG statis JIKA forceStopGif (diklik pause manual / pindah kartu)
         if (forceStopGif) {
