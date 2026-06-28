@@ -1,0 +1,630 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Formative Assessment Lesson 3</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <div class="page">
+        <img src="https://lh3.googleusercontent.com/d/1Wtb9UWtvVhVA13B0HLBagfyx1bD1LU5x" class="top-border" alt="Top Border">
+        <img src="https://lh3.googleusercontent.com/d/19NE3XzidRxaYa56e4OBOdI38n3nYJhwK" class="bottom-border" alt="Bottom Border">
+
+        <!-- Sticky Header with Instructions -->
+        <header class="module-header">
+            <!-- PNG Judul -->
+            <img src="https://lh3.googleusercontent.com/d/10HpFINbcB1yKY8-hTiQx9UoAjYeejfoM?v=2"
+                alt="Formative Assessment Lesson 3" class="title-badge">
+
+            <div class="instructions">
+                <p class="en">Please fill in your name and school name!</p>
+                <div class="separator"></div>
+                <p class="id">Silakan isi nama dan nama sekolahmu!</p>
+            </div>
+        </header>
+
+        <!-- Scrollable Content Area -->
+        <div class="scroll-content" id="quiz-container">
+
+            <!-- STUDENT INFO -->
+            <div class="student-info-card">
+
+                <!-- Person Input Row -->
+                <div class="info-row">
+                    <div class="icon-container">
+                        <div class="icon-circle">
+                            <svg viewBox="0 0 24 24" fill="white" width="24" height="24">
+                                <path
+                                    d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z" />
+                            </svg>
+                        </div>
+                    </div>
+                    <div class="input-wrapper">
+                        <label for="student-name" class="student-label">
+                            <span class="en-label">Name</span>
+                            <span class="id-label">/ Nama Siswa</span>
+                        </label>
+                        <input type="text" id="student-name" class="student-input" placeholder="Type your name here..."
+                            autocomplete="off">
+                    </div>
+                </div>
+
+                <!-- School Input Row -->
+                <div class="info-row">
+                    <div class="icon-container">
+                        <div class="icon-circle">
+                            <svg viewBox="0 0 24 24" fill="white" width="24" height="24">
+                                <path
+                                    d="M4 10v7h3v-7H4zm6 0v7h3v-7h-3zM2 22h19v-3H2v3zm14-12v7h3v-7h-3zm-8.5-9L2 6v2h19V6l-9.5-5z" />
+                            </svg>
+                        </div>
+                    </div>
+                    <div class="input-wrapper">
+                        <label for="school-name" class="student-label">
+                            <span class="en-label">School Name</span>
+                            <span class="id-label">/ Nama Sekolah</span>
+                        </label>
+                        <input type="text" id="school-name" class="student-input"
+                            placeholder="Type your school name here..." autocomplete="off">
+                    </div>
+                </div>
+            </div>
+
+            <!-- SCORING INFO -->
+            <div class="scoring-info-card">
+                <div class="scoring-icon">💡</div>
+                <div class="scoring-text">
+                    <div class="scoring-title">
+                        <span class="en-text">Scoring System</span>
+                        <span class="id-text">/ Sistem Penilaian:</span>
+                    </div>
+                    <ul class="scoring-list">
+                        <li>
+                            <span class="en-text">Part I (Multiple Choice)</span>
+                            <span class="id-text">/ Pilihan Ganda:</span><br>
+                            <b class="point-badge">+4 points / Q</b>
+                        </li>
+                        <li>
+                            <span class="en-text">Part II (True/False)</span>
+                            <span class="id-text">/ Benar/Salah:</span><br>
+                            <b class="point-badge">+6 points / Q</b>
+                        </li>
+                    </ul>
+                    <div class="scoring-total">
+                        <span class="en-text">Final Score</span>
+                        <span class="id-text">/ Nilai Akhir</span>
+                        = Sum of all points (Max 100)
+                    </div>
+                </div>
+            </div>
+
+            <!-- SECTION I HEADER -->
+            <div class="section-title first-section">
+                <p class="en">I. Look at the pictures and cross (X) A, B, C or D for the correct actions! Look to the example!</p>
+                <div class="separator"></div>
+                <p class="id">I. Perhatikan gambar dan beri tanda silang (X) A, B, C atau D pada aksi yang benar. Perhatikan contoh berikut!</p>
+            </div>
+
+            <!-- EXAMPLE CARD (Read-Only) -->
+            <div class="question-card example-card">
+                <!-- Star badge for Example -->
+                <div class="q-star-badge">
+                    <img src="https://lh3.googleusercontent.com/d/1tlr-_CyMZShNnbtIol1OyFw8NhS_4MP1" alt="Star badge"
+                        class="star-img">
+                    <span class="star-number star-ex">Ex</span>
+                </div>
+
+                <div class="question-gif-container">
+                    <img src="https://lh3.googleusercontent.com/d/1PSFUHC_fTjFaCMCCd-c-xs9sc4M70kQ-?v=2" alt="Example"
+                        class="question-gif">
+                </div>
+
+                <div class="question-details">
+                    <div class="options-container">
+                        <div class="option-item disabled" data-opt="a">
+                            <span class="option-letter">a</span>
+                            <span class="option-text">Drives a bus</span>
+                        </div>
+                        <div class="option-item disabled crossed-example" data-opt="b">
+                            <span class="option-letter">b</span>
+                            <span class="option-text">Teaches students</span>
+                        </div>
+                        <div class="option-item disabled" data-opt="c">
+                            <span class="option-letter">c</span>
+                            <span class="option-text">Cooks food</span>
+                        </div>
+                        <div class="option-item disabled" data-opt="d">
+                            <span class="option-letter">d</span>
+                            <span class="option-text">Helps the patient</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- QUESTION 1 -->
+            <div class="question-card" data-q="1" data-correct="d">
+                <!-- Star badge for Q1 -->
+                <div class="q-star-badge">
+                    <img src="https://lh3.googleusercontent.com/d/1tlr-_CyMZShNnbtIol1OyFw8NhS_4MP1" alt="Star badge"
+                        class="star-img">
+                    <span class="star-number">1</span>
+                </div>
+
+                <div class="question-gif-container">
+                    <img src="https://lh3.googleusercontent.com/d/1pNMjVPWWK4_FrS2XPutQ003Z_DJhb06e?v=2" alt="Question 1"
+                        class="question-gif">
+                </div>
+
+                <div class="question-details">
+                    <div class="options-container">
+                        <div class="option-item" data-opt="a">
+                            <span class="option-letter">a</span>
+                            <span class="option-text">Controls the traffic</span>
+                        </div>
+                        <div class="option-item" data-opt="b">
+                            <span class="option-letter">b</span>
+                            <span class="option-text">Drives a car</span>
+                        </div>
+                        <div class="option-item" data-opt="c">
+                            <span class="option-letter">c</span>
+                            <span class="option-text">Checks up on the patient</span>
+                        </div>
+                        <div class="option-item" data-opt="d">
+                            <span class="option-letter">d</span>
+                            <span class="option-text">Puts out the fire</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- QUESTION 2 -->
+            <div class="question-card" data-q="2" data-correct="a">
+                <!-- Star badge for Q2 -->
+                <div class="q-star-badge">
+                    <img src="https://lh3.googleusercontent.com/d/1tlr-_CyMZShNnbtIol1OyFw8NhS_4MP1" alt="Star badge"
+                        class="star-img">
+                    <span class="star-number">2</span>
+                </div>
+
+                <div class="question-gif-container">
+                    <img src="https://lh3.googleusercontent.com/d/1AIQ27zLoNSRowqxricvY4Omq_ydEDADV?v=2" alt="Question 2"
+                        class="question-gif">
+                </div>
+
+                <div class="question-details">
+                    <div class="options-container">
+                        <div class="option-item" data-opt="a">
+                            <span class="option-letter">a</span>
+                            <span class="option-text">Sells goods</span>
+                        </div>
+                        <div class="option-item" data-opt="b">
+                            <span class="option-letter">b</span>
+                            <span class="option-text">Drives a bus</span>
+                        </div>
+                        <div class="option-item" data-opt="c">
+                            <span class="option-letter">c</span>
+                            <span class="option-text">Controls the traffic</span>
+                        </div>
+                        <div class="option-item" data-opt="d">
+                            <span class="option-letter">d</span>
+                            <span class="option-text">Helps the patient</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- QUESTION 3 -->
+            <div class="question-card" data-q="3" data-correct="d">
+                <!-- Star badge for Q3 -->
+                <div class="q-star-badge">
+                    <img src="https://lh3.googleusercontent.com/d/1tlr-_CyMZShNnbtIol1OyFw8NhS_4MP1" alt="Star badge"
+                        class="star-img">
+                    <span class="star-number">3</span>
+                </div>
+
+                <div class="question-gif-container">
+                    <img src="https://lh3.googleusercontent.com/d/1jNVQeEr7asaAbIB118DIRPuTBcIoIolO?v=2" alt="Question 3"
+                        class="question-gif">
+                </div>
+
+                <div class="question-details">
+                    <div class="options-container">
+                        <div class="option-item" data-opt="a">
+                            <span class="option-letter">a</span>
+                            <span class="option-text">Helps the patient</span>
+                        </div>
+                        <div class="option-item" data-opt="b">
+                            <span class="option-letter">b</span>
+                            <span class="option-text">Checks the safety</span>
+                        </div>
+                        <div class="option-item" data-opt="c">
+                            <span class="option-letter">c</span>
+                            <span class="option-text">Cooks food</span>
+                        </div>
+                        <div class="option-item" data-opt="d">
+                            <span class="option-letter">d</span>
+                            <span class="option-text">Creates content for the internet</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- QUESTION 4 -->
+            <div class="question-card" data-q="4" data-correct="c">
+                <!-- Star badge for Q4 -->
+                <div class="q-star-badge">
+                    <img src="https://lh3.googleusercontent.com/d/1tlr-_CyMZShNnbtIol1OyFw8NhS_4MP1" alt="Star badge"
+                        class="star-img">
+                    <span class="star-number">4</span>
+                </div>
+
+                <div class="question-gif-container">
+                    <img src="https://lh3.googleusercontent.com/d/19Frvs7if6hVMo7S-Qrsm5zB8_vOIVZDs?v=2" alt="Question 4"
+                        class="question-gif">
+                </div>
+
+                <div class="question-details">
+                    <div class="options-container">
+                        <div class="option-item" data-opt="a">
+                            <span class="option-letter">a</span>
+                            <span class="option-text">Cooks food</span>
+                        </div>
+                        <div class="option-item" data-opt="b">
+                            <span class="option-letter">b</span>
+                            <span class="option-text">Fixes the car</span>
+                        </div>
+                        <div class="option-item" data-opt="c">
+                            <span class="option-letter">c</span>
+                            <span class="option-text">Controls the traffic</span>
+                        </div>
+                        <div class="option-item" data-opt="d">
+                            <span class="option-letter">d</span>
+                            <span class="option-text">Drives a bus</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- QUESTION 5 -->
+            <div class="question-card" data-q="5" data-correct="c">
+                <!-- Star badge for Q5 -->
+                <div class="q-star-badge">
+                    <img src="https://lh3.googleusercontent.com/d/1tlr-_CyMZShNnbtIol1OyFw8NhS_4MP1" alt="Star badge"
+                        class="star-img">
+                    <span class="star-number">5</span>
+                </div>
+
+                <div class="question-gif-container">
+                    <img src="https://lh3.googleusercontent.com/d/1zdhvtVI54B5WDtTMxQbFw-RNbTGweXVp?v=2" alt="Question 5"
+                        class="question-gif">
+                </div>
+
+                <div class="question-details">
+                    <div class="options-container">
+                        <div class="option-item" data-opt="a">
+                            <span class="option-letter">a</span>
+                            <span class="option-text">Protects the country</span>
+                        </div>
+                        <div class="option-item" data-opt="b">
+                            <span class="option-letter">b</span>
+                            <span class="option-text">Grows plants</span>
+                        </div>
+                        <div class="option-item" data-opt="c">
+                            <span class="option-letter">c</span>
+                            <span class="option-text">Cooks food</span>
+                        </div>
+                        <div class="option-item" data-opt="d">
+                            <span class="option-letter">d</span>
+                            <span class="option-text">Helps the patient</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- QUESTION 6 -->
+            <div class="question-card" data-q="6" data-correct="c">
+                <!-- Star badge for Q6 -->
+                <div class="q-star-badge">
+                    <img src="https://lh3.googleusercontent.com/d/1tlr-_CyMZShNnbtIol1OyFw8NhS_4MP1" alt="Star badge"
+                        class="star-img">
+                    <span class="star-number">6</span>
+                </div>
+
+                <div class="question-gif-container">
+                    <img src="https://lh3.googleusercontent.com/d/1q9EVANFrZ7mhUF_lZiBKK1KYBwYCzEAD?v=2" alt="Question 6"
+                        class="question-gif">
+                </div>
+
+                <div class="question-details">
+                    <div class="options-container">
+                        <div class="option-item" data-opt="a">
+                            <span class="option-letter">a</span>
+                            <span class="option-text">Controls the traffic</span>
+                        </div>
+                        <div class="option-item" data-opt="b">
+                            <span class="option-letter">b</span>
+                            <span class="option-text">Protects the country</span>
+                        </div>
+                        <div class="option-item" data-opt="c">
+                            <span class="option-letter">c</span>
+                            <span class="option-text">Checks the safety</span>
+                        </div>
+                        <div class="option-item" data-opt="d">
+                            <span class="option-letter">d</span>
+                            <span class="option-text">Grows plants</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- QUESTION 7 -->
+            <div class="question-card" data-q="7" data-correct="a">
+                <!-- Star badge for Q7 -->
+                <div class="q-star-badge">
+                    <img src="https://lh3.googleusercontent.com/d/1tlr-_CyMZShNnbtIol1OyFw8NhS_4MP1" alt="Star badge"
+                        class="star-img">
+                    <span class="star-number">7</span>
+                </div>
+
+                <div class="question-gif-container">
+                    <img src="https://lh3.googleusercontent.com/d/1IMClGR7IW8YCyz3fbxoDw_D_EQ4vj3E1?v=2" alt="Question 7"
+                        class="question-gif">
+                </div>
+
+                <div class="question-details">
+                    <div class="options-container">
+                        <div class="option-item" data-opt="a">
+                            <span class="option-letter">a</span>
+                            <span class="option-text">Flies an airplane</span>
+                        </div>
+                        <div class="option-item" data-opt="b">
+                            <span class="option-letter">b</span>
+                            <span class="option-text">Drives a bus</span>
+                        </div>
+                        <div class="option-item" data-opt="c">
+                            <span class="option-letter">c</span>
+                            <span class="option-text">Controls the traffic</span>
+                        </div>
+                        <div class="option-item" data-opt="d">
+                            <span class="option-letter">d</span>
+                            <span class="option-text">Catches fish</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- QUESTION 8 -->
+            <div class="question-card" data-q="8" data-correct="a">
+                <!-- Star badge for Q8 -->
+                <div class="q-star-badge">
+                    <img src="https://lh3.googleusercontent.com/d/1tlr-_CyMZShNnbtIol1OyFw8NhS_4MP1" alt="Star badge"
+                        class="star-img">
+                    <span class="star-number">8</span>
+                </div>
+
+                <div class="question-gif-container">
+                    <img src="https://lh3.googleusercontent.com/d/1Q8qP1PkTnqNF5pUuCZsN3jZelc3IlXVf?v=2" alt="Question 8"
+                        class="question-gif">
+                </div>
+
+                <div class="question-details">
+                    <div class="options-container">
+                        <div class="option-item" data-opt="a">
+                            <span class="option-letter">a</span>
+                            <span class="option-text">Grows plants</span>
+                        </div>
+                        <div class="option-item" data-opt="b">
+                            <span class="option-letter">b</span>
+                            <span class="option-text">Catches fish</span>
+                        </div>
+                        <div class="option-item" data-opt="c">
+                            <span class="option-letter">c</span>
+                            <span class="option-text">Sells goods</span>
+                        </div>
+                        <div class="option-item" data-opt="d">
+                            <span class="option-letter">d</span>
+                            <span class="option-text">Drives a bus</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- QUESTION 9 -->
+            <div class="question-card" data-q="9" data-correct="b">
+                <!-- Star badge for Q9 -->
+                <div class="q-star-badge">
+                    <img src="https://lh3.googleusercontent.com/d/1tlr-_CyMZShNnbtIol1OyFw8NhS_4MP1" alt="Star badge"
+                        class="star-img">
+                    <span class="star-number">9</span>
+                </div>
+
+                <div class="question-gif-container">
+                    <img src="https://lh3.googleusercontent.com/d/1sUhM0ohZLhmVn5fAVnrgZCJeP1D394zQ?v=2" alt="Question 9"
+                        class="question-gif">
+                </div>
+
+                <div class="question-details">
+                    <div class="options-container">
+                        <div class="option-item" data-opt="a">
+                            <span class="option-letter">a</span>
+                            <span class="option-text">Cooks food</span>
+                        </div>
+                        <div class="option-item" data-opt="b">
+                            <span class="option-letter">b</span>
+                            <span class="option-text">Checks up on the patient</span>
+                        </div>
+                        <div class="option-item" data-opt="c">
+                            <span class="option-letter">c</span>
+                            <span class="option-text">Protects the country</span>
+                        </div>
+                        <div class="option-item" data-opt="d">
+                            <span class="option-letter">d</span>
+                            <span class="option-text">Checks the safety</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- QUESTION 10 -->
+            <div class="question-card" data-q="10" data-correct="d">
+                <!-- Star badge for Q10 -->
+                <div class="q-star-badge">
+                    <img src="https://lh3.googleusercontent.com/d/1tlr-_CyMZShNnbtIol1OyFw8NhS_4MP1" alt="Star badge"
+                        class="star-img">
+                    <span class="star-number">10</span>
+                </div>
+
+                <div class="question-gif-container">
+                    <img src="https://lh3.googleusercontent.com/d/1jlgkwAyM4Fg7zICDQlEm_s6kiIRcYPrU?v=2" alt="Question 10"
+                        class="question-gif">
+                </div>
+
+                <div class="question-details">
+                    <div class="options-container">
+                        <div class="option-item" data-opt="a">
+                            <span class="option-letter">a</span>
+                            <span class="option-text">Drives a bus</span>
+                        </div>
+                        <div class="option-item" data-opt="b">
+                            <span class="option-letter">b</span>
+                            <span class="option-text">Protects the country</span>
+                        </div>
+                        <div class="option-item" data-opt="c">
+                            <span class="option-letter">c</span>
+                            <span class="option-text">Controls the traffic</span>
+                        </div>
+                        <div class="option-item" data-opt="d">
+                            <span class="option-letter">d</span>
+                            <span class="option-text">Fixes the car</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- SECTION II HEADER -->
+            <div class="section-title">
+                <p class="en">II. Write a check (√) to true or false to match the descriptions of the jobs. Look at the example!</p>
+                <div class="separator"></div>
+                <p class="id">Berilah tanda check (√) pada kolom benar (true) atau salah (false) untuk mencocokkan deskripsi pekerjaan-pekerjaan di bawah ini. Perhatikan contoh!</p>
+            </div>
+
+            <!-- SECTION II CONTENT (TRUE/FALSE TABLE) -->
+            <div class="tf-table-container">
+                <table class="tf-table">
+                    <thead>
+                        <tr>
+                            <th class="col-no">No.</th>
+                            <th class="col-jobs">THE JOBS</th>
+                            <th class="col-tf">TRUE</th>
+                            <th class="col-tf">FALSE</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr class="example-row">
+                            <td class="col-no">E.g.</td>
+                            <td class="text-left">A teacher teaches the students at school.</td>
+                            <td class="text-center tf-example" style="font-weight: 800; color: #3b82f6;">✓</td>
+                            <td class="text-center"></td>
+                        </tr>
+                        <tr class="tf-question-row tf-row" data-correct="false">
+                            <td class="col-no">1.</td>
+                            <td class="text-left">A driver flies an airplane.</td>
+                            <td class="tf-cell tf-true" data-val="true"></td>
+                            <td class="tf-cell tf-false" data-val="false"></td>
+                        </tr>
+                        <tr class="tf-question-row tf-row" data-correct="false">
+                            <td class="col-no">2.</td>
+                            <td class="text-left">A security sends mails.</td>
+                            <td class="tf-cell tf-true" data-val="true"></td>
+                            <td class="tf-cell tf-false" data-val="false"></td>
+                        </tr>
+                        <tr class="tf-question-row tf-row" data-correct="true">
+                            <td class="col-no">3.</td>
+                            <td class="text-left">A fisherman catches fish.</td>
+                            <td class="tf-cell tf-true" data-val="true"></td>
+                            <td class="tf-cell tf-false" data-val="false"></td>
+                        </tr>
+                        <tr class="tf-question-row tf-row" data-correct="false">
+                            <td class="col-no">4.</td>
+                            <td class="text-left">A police officer cooks meals.</td>
+                            <td class="tf-cell tf-true" data-val="true"></td>
+                            <td class="tf-cell tf-false" data-val="false"></td>
+                        </tr>
+                        <tr class="tf-question-row tf-row" data-correct="true">
+                            <td class="col-no">5.</td>
+                            <td class="text-left">A doctor checks-up the patient.</td>
+                            <td class="tf-cell tf-true" data-val="true"></td>
+                            <td class="tf-cell tf-false" data-val="false"></td>
+                        </tr>
+                        <tr class="tf-question-row tf-row" data-correct="false">
+                            <td class="col-no">6.</td>
+                            <td class="text-left">A nurse drives a bus.</td>
+                            <td class="tf-cell tf-true" data-val="true"></td>
+                            <td class="tf-cell tf-false" data-val="false"></td>
+                        </tr>
+                        <tr class="tf-question-row tf-row" data-correct="false">
+                            <td class="col-no">7.</td>
+                            <td class="text-left">A farmer checks the security.</td>
+                            <td class="tf-cell tf-true" data-val="true"></td>
+                            <td class="tf-cell tf-false" data-val="false"></td>
+                        </tr>
+                        <tr class="tf-question-row tf-row" data-correct="true">
+                            <td class="col-no">8.</td>
+                            <td class="text-left">A soldier protects our country.</td>
+                            <td class="tf-cell tf-true" data-val="true"></td>
+                            <td class="tf-cell tf-false" data-val="false"></td>
+                        </tr>
+                        <tr class="tf-question-row tf-row" data-correct="false">
+                            <td class="col-no">9.</td>
+                            <td class="text-left">A pilot controls the traffic.</td>
+                            <td class="tf-cell tf-true" data-val="true"></td>
+                            <td class="tf-cell tf-false" data-val="false"></td>
+                        </tr>
+                        <tr class="tf-question-row tf-row" data-correct="true">
+                            <td class="col-no">10.</td>
+                            <td class="text-left">A firefighter puts-down the fire.</td>
+                            <td class="tf-cell tf-true" data-val="true"></td>
+                            <td class="tf-cell tf-false" data-val="false"></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+
+
+
+            <!-- SCORE BOX -->
+            <div id="score-box" class="score-box" style="display: none;">
+                <div class="score-label">TOTAL SCORE</div>
+                <div class="score-value" id="score-value">100</div>
+            </div>
+
+            <!-- QUIZ CONTROL ACTIONS -->
+            <div class="quiz-actions" id="quiz-actions">
+                <button id="btn-reset" class="reset-btn">
+                    <img src="https://lh3.googleusercontent.com/d/1KuPBOWr81b39cSSCvc2lzqeiIKnZZ_A0" alt="Try Again">
+                </button>
+                <button id="btn-check" class="check-btn" disabled>
+                    <img src="https://lh3.googleusercontent.com/d/16hWAAvA2gprM0l5Vmw8t8_mrvAo4oic_"
+                        alt="Check Answers">
+                </button>
+            </div>
+
+            <!-- RESULT MESSAGE -->
+            <div id="result-msg" class="result-msg" style="display: none;"></div>
+        </div>
+
+        <!-- SOUND ASSETS -->
+        <audio id="audio-click" src="assets/click.mp3"></audio>
+        <audio id="audio-correct" src="assets/correct_sound.mp3"></audio>
+        <audio id="audio-incorrect" src="assets/incorrect_sound.mp3"></audio>
+        <audio id="audio-typing" src="assets/typing.mp3" preload="auto"></audio>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+
+</html>
