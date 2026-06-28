@@ -47,11 +47,13 @@ document.addEventListener('DOMContentLoaded', () => {
         if (!card) return;
         if (card.dataset.gifPlaying === "false" && card.dataset.audioPlaying === "false") {
             const targetIcon = card.querySelector('.sound-btn path');
-            card.classList.remove('playing');
+            card.classList.remove('playing', 'loading', 'show-loading-text');
             targetIcon.setAttribute('d', playIconPath);
             if (currentlyPlaying === card) currentlyPlaying = null;
         }
     };
+
+    const loadingIconPath = "M6,2H18V8H18V8L14,12L18,16V16H18V22H6V16H6V16L10,12L6,8V8H6V2M16,16.5L12,12.5L8,16.5V20H16V16.5M12,11.5L16,7.5V4H8V7.5L12,11.5Z";
 
     const playAction = (card) => {
         const audioFile = card.getAttribute('data-audio');
@@ -80,14 +82,25 @@ document.addEventListener('DOMContentLoaded', () => {
 
         card.dataset.gifPlaying = "true";
         card.dataset.audioPlaying = "true";
-        card.classList.add('playing');
+        card.classList.add('playing', 'loading');
         currentlyPlaying = card;
-        soundIcon.setAttribute('d', pauseIconPath);
+        soundIcon.setAttribute('d', loadingIconPath);
 
         // Putar audio dan ganti gambar menjadi GIF
         if (audioFile) {
             audio.src = `assets/${audioFile}`;
-            audio.play().catch(err => console.warn(`Audio playback failed for ${audioFile}:`, err));
+            
+            card.loadingTextTimeout = setTimeout(() => {
+                card.classList.add('show-loading-text');
+            }, 300);
+
+            const removeLoadingAndPlay = () => {
+                clearTimeout(card.loadingTextTimeout);
+                card.classList.remove('loading', 'show-loading-text');
+                soundIcon.setAttribute('d', pauseIconPath);
+                
+                audio.play().catch(err => console.warn(`Audio playback failed for ${audioFile}:`, err));
+            };
             
             // Switch to GIF
             if (preloadedGifs[audioFile]) {
@@ -96,8 +109,11 @@ document.addEventListener('DOMContentLoaded', () => {
                 imgEl.src = gifLinks[audioFile];
             }
 
-            // Durasi GIF disinkronkan sepenuhnya dengan selesainya audio
-            // Tidak ada lagi timeout 5000ms agar tidak berkesan MP3 berhenti duluan
+            if (imgEl.complete) {
+                removeLoadingAndPlay();
+            } else {
+                imgEl.onload = removeLoadingAndPlay;
+            }
         }
 
         card.scrollIntoView({ behavior: 'smooth', block: 'center' });
@@ -114,6 +130,9 @@ document.addEventListener('DOMContentLoaded', () => {
         
         // Kembalikan ke PNG statis JIKA forceStopGif (diklik pause manual / pindah kartu)
         if (forceStopGif) {
+            clearTimeout(targetCard.loadingTextTimeout);
+            targetCard.classList.remove('loading', 'show-loading-text');
+            imgEl.onload = null;
             audio.currentTime = 0;
             targetCard.dataset.gifPlaying = "false";
             if (targetCard.dataset.staticSrc) {
@@ -173,7 +192,10 @@ document.addEventListener('DOMContentLoaded', () => {
 
     audio.addEventListener('ended', () => {
         if (currentlyPlaying) {
+            clearTimeout(currentlyPlaying.loadingTextTimeout);
+            currentlyPlaying.classList.remove('loading', 'show-loading-text');
             const imgEl = currentlyPlaying.querySelector('.action-image');
+            imgEl.onload = null;
             if (currentlyPlaying.dataset.staticSrc) {
                 imgEl.src = currentlyPlaying.dataset.staticSrc;
             }
@@ -190,6 +212,8 @@ document.addEventListener('DOMContentLoaded', () => {
         
         // Simulasikan seolah-olah suara langsung habis, tetapi animasi tetap jalan
         if (currentlyPlaying) {
+            clearTimeout(currentlyPlaying.loadingTextTimeout);
+            currentlyPlaying.classList.remove('loading', 'show-loading-text');
             currentlyPlaying.dataset.audioPlaying = "false";
             checkAndStopCard(currentlyPlaying);
             checkCompletion();
