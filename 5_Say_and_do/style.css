@@ -302,7 +302,25 @@ body {
 
 /* Pulse effect removed for solid feel */
 .action-card.playing .sound-btn {
-    transform: scale(1.1);
+    opacity: 0.8;
+}
+
+/* ── LOADING TEXT OVERLAY ── */
+.action-card.loading .image-wrapper::after {
+    content: 'Loading...';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(255, 255, 255, 0.8);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 16px;
+    font-weight: 800;
+    color: #ff0000;
+    z-index: 10;
 }
 
 @media (max-width: 360px) {
