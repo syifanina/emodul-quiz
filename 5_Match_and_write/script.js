@@ -26,12 +26,16 @@ document.addEventListener('DOMContentLoaded', () => {
     const clickSound = document.getElementById('click-audio');
     const typingAudio = document.getElementById('typing-audio');
 
-    // Removed Global click sound
+    function playSound(audioEl) {
+        if (!audioEl) return;
+        audioEl.currentTime = 0;
+        audioEl.play().catch(e => console.log("Audio play failed:", e));
+    }
 
     itemBoxes.forEach(box => {
         box.style.cursor = 'pointer';
         box.addEventListener('click', () => {
-            if(clickSound) { clickSound.currentTime = 0; clickSound.play().catch(e=>{}); }
+            playSound(clickSound);
             
             if (selectedSource === box) {
                 box.classList.remove('active-source');
@@ -47,7 +51,7 @@ document.addEventListener('DOMContentLoaded', () => {
     targetBoxes.forEach(target => {
         target.addEventListener('click', () => {
             if (!selectedSource) return;
-            if(clickSound) { clickSound.currentTime = 0; clickSound.play().catch(e=>{}); }
+            playSound(clickSound);
 
             const badge = selectedSource.querySelector('.answer-badge');
             const sourceId = badge.dataset.id;
@@ -74,9 +78,9 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 
     writeInputs.forEach(input => {
-        input.addEventListener('input', updateSubmitButtonState);
-        input.addEventListener('keypress', () => {
-            if (typingAudio) { typingAudio.currentTime = 0; typingAudio.play().catch(e=>{}); }
+        input.addEventListener('input', () => {
+            updateSubmitButtonState();
+            playSound(typingAudio);
         });
     });
 
@@ -104,7 +108,7 @@ document.addEventListener('DOMContentLoaded', () => {
     updateSubmitButtonState();
 
     checkBtn.addEventListener('click', async () => {
-        if(clickSound) { clickSound.currentTime = 0; clickSound.play().catch(e=>{}); }
+        playSound(clickSound);
         
         const totalMatch = Object.keys(correctAnswers).length;
         const totalWrite = writeInputs.length;
@@ -138,10 +142,10 @@ document.addEventListener('DOMContentLoaded', () => {
             if (isCorrect) {
                 correctCount++;
                 imageBox.style.setProperty('--badge-color', '#2e7d32'); // Green
-                if (correctAudio) { correctAudio.currentTime = 0; correctAudio.play().catch(e => {}); }
+                playSound(correctAudio);
             } else {
                 imageBox.style.setProperty('--badge-color', '#c62828'); // Red
-                if (wrongAudio) { wrongAudio.currentTime = 0; wrongAudio.play().catch(e => {}); }
+                playSound(wrongAudio);
             }
             
             // Wait 600ms before next
@@ -185,7 +189,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 input.classList.remove('wrong-input');
                 icon.textContent = '✓';
                 icon.className = 'feedback-icon correct';
-                if (correctAudio) { correctAudio.currentTime = 0; correctAudio.play().catch(e=>{}); }
+                playSound(correctAudio);
             } else {
                 input.classList.add('wrong-input');
                 input.classList.remove('correct-input');
@@ -197,7 +201,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 hint.textContent = 'Answer: ' + possibleAnswers[0];
                 input.parentNode.appendChild(hint);
                 
-                if (wrongAudio) { wrongAudio.currentTime = 0; wrongAudio.play().catch(e=>{}); }
+                playSound(wrongAudio);
             }
             
             await new Promise(resolve => setTimeout(resolve, 600));
@@ -225,7 +229,7 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 
     resetBtn.addEventListener('click', () => {
-        if(clickSound) { clickSound.currentTime = 0; clickSound.play().catch(e=>{}); }
+        playSound(clickSound);
         
         connections = {'1': 'H'};
         itemBoxes.forEach(box => {
