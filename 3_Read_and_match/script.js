@@ -89,6 +89,49 @@ class LineManager {
 }
 
 document.addEventListener('DOMContentLoaded', () => {
+    // --- LOADING EFFECT UNTUK GAMBAR (GIF) ---
+    const loadingIconSVG = `<svg viewBox="0 0 24 24" width="24" height="24" fill="#ff0000"><path d="M6,2H18V8H18V8L14,12L18,16V16H18V22H6V16H6V16L10,12L6,8V8H6V2M16,16.5L12,12.5L8,16.5V20H16V16.5M12,11.5L16,7.5V4H8V7.5L12,11.5Z"/></svg>`;
+    
+    const imageBoxes = document.querySelectorAll('.image-box');
+    
+    imageBoxes.forEach(box => {
+        const img = box.querySelector('img');
+        if (!img) return;
+
+        // Tambahkan state loading
+        box.classList.add('loading');
+        
+        // Buat ikon jam pasir jika belum ada
+        if (!box.querySelector('.loading-icon')) {
+            const iconDiv = document.createElement('div');
+            iconDiv.className = 'loading-icon';
+            iconDiv.innerHTML = loadingIconSVG;
+            box.appendChild(iconDiv);
+        }
+
+        // Tunda 300ms sebelum memunculkan teks "Loading..."
+        const loadingTextTimeout = setTimeout(() => {
+            box.classList.add('show-text');
+        }, 300);
+
+        // Fungsi saat gambar selesai dimuat
+        const onImageLoad = () => {
+            clearTimeout(loadingTextTimeout);
+            box.classList.remove('loading');
+            box.classList.remove('show-text');
+            const icon = box.querySelector('.loading-icon');
+            if (icon) icon.remove();
+        };
+
+        // Cek apakah gambar sudah terlanjur termuat dari cache
+        if (img.complete && img.naturalHeight !== 0) {
+            onImageLoad();
+        } else {
+            img.addEventListener('load', onImageLoad);
+            img.addEventListener('error', onImageLoad); // Jaga-jaga jika gagal load
+        }
+    });
+
     const lineManager = new LineManager('svg-overlay');
     
     // Draw example line
