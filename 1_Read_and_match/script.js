@@ -193,7 +193,14 @@ document.addEventListener('DOMContentLoaded', () => {
         const correctAudio = document.getElementById('correct-audio');
         const wrongAudio = document.getElementById('wrong-audio');
 
-        for (let sId in connections) {
+        // Sort the source IDs so that the correction goes sequentially from 1 to 10
+        const sortedSourceIds = Object.keys(connections).sort((a, b) => {
+            const numA = parseInt(document.getElementById(a).dataset.id, 10);
+            const numB = parseInt(document.getElementById(b).dataset.id, 10);
+            return numA - numB;
+        });
+
+        for (let sId of sortedSourceIds) {
             const qNum = document.getElementById(sId).dataset.id;
             const targetOpt = connections[sId];
             const isCorrect = targetOpt === correctAnswers[qNum];
