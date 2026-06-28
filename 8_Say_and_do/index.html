@@ -1,0 +1,335 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Say and Do</title>
+    <link rel="stylesheet" href="style.css">
+    <!-- Confetti Library for celebration -->
+    <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
+</head>
+
+<body>
+    <div class="page">
+        <img src="https://lh3.googleusercontent.com/d/1Wtb9UWtvVhVA13B0HLBagfyx1bD1LU5x" class="top-border"
+            alt="Top Border">
+        <img src="https://lh3.googleusercontent.com/d/19NE3XzidRxaYa56e4OBOdI38n3nYJhwK" class="bottom-border"
+            alt="Bottom Border">
+
+        <header class="module-header">
+            <!-- PNG Judul -->
+            <img src="https://lh3.googleusercontent.com/d/1LcNDtmPlIUoqXnlef6QjmjtGYVi5tAs6" alt="SAY AND DO"
+                class="title-badge">
+
+            <div class="instructions">
+                <p class="en">Say and act the jobs in the pictures!</p>
+                <div class="separator"></div>
+                <p class="id">Ucapkan dan peragakan pekerjaan-pekerjaan berikut!</p>
+            </div>
+        </header>
+
+        <!-- Scrollable Content -->
+        <div class="scroll-content">
+
+            <main class="grid-container">
+                <div class="action-card" data-audio="a-teacher2.MP3">
+                    <div class="image-wrapper">
+                        <img src="https://lh3.googleusercontent.com/d/1jf__7z0zopF4a48WgzZxgSkqU0lRRlwg"
+                            alt="Teacher teaches students at school" class="action-image">
+                        <button class="sound-btn" aria-label="Play sound">
+                            <svg viewBox="0 0 24 24">
+                                <path
+                                    d="M14,3.23V5.29C16.89,6.15 19,8.83 19,12C19,15.17 16.89,17.85 14,18.71V20.77C18.03,19.86 21,16.28 21,12C21,7.72 18.03,4.14 14,3.23M16.5,12C16.5,10.23 15.5,8.71 14,7.97V16.04C15.5,15.29 16.5,13.77 16.5,12M3,9V15H7L12,20V4L7,9H3Z" />
+                            </svg>
+                        </button>
+                    </div>
+                    <div class="text-wrapper">
+                        <span class="action-text playable-text" data-audio="a-teacher.MP3">A teacher</span>
+                        <span class="action-text playable-text" data-audio="a-teacher2.MP3"
+                            style="font-weight: 500;">teaches students at school</span>
+                    </div>
+                </div>
+
+                <div class="action-card" data-audio="a-driver2.MP3">
+                    <div class="image-wrapper">
+                        <img src="https://lh3.googleusercontent.com/d/1-lQkuq1b7rojChnnIRe12_V65dffxh6m"
+                            alt="Driver drives the car/ bus" class="action-image">
+                        <button class="sound-btn" aria-label="Play sound">
+                            <svg viewBox="0 0 24 24">
+                                <path
+                                    d="M14,3.23V5.29C16.89,6.15 19,8.83 19,12C19,15.17 16.89,17.85 14,18.71V20.77C18.03,19.86 21,16.28 21,12C21,7.72 18.03,4.14 14,3.23M16.5,12C16.5,10.23 15.5,8.71 14,7.97V16.04C15.5,15.29 16.5,13.77 16.5,12M3,9V15H7L12,20V4L7,9H3Z" />
+                            </svg>
+                        </button>
+                    </div>
+                    <div class="text-wrapper">
+                        <span class="action-text playable-text" data-audio="a-driver.MP3">A driver</span>
+                        <span class="action-text playable-text" data-audio="a-driver2.MP3"
+                            style="font-weight: 500;">drives the car, bus, or truck</span>
+                    </div>
+                </div>
+
+                <div class="action-card" data-audio="a-doctor2.MP3">
+                    <div class="image-wrapper">
+                        <img src="https://lh3.googleusercontent.com/d/1Iro5Y7vgFuN8Uor0PGz3IqGVewY-VFI_"
+                            alt="Doctor checks-up the patient" class="action-image">
+                        <button class="sound-btn" aria-label="Play sound">
+                            <svg viewBox="0 0 24 24">
+                                <path
+                                    d="M14,3.23V5.29C16.89,6.15 19,8.83 19,12C19,15.17 16.89,17.85 14,18.71V20.77C18.03,19.86 21,16.28 21,12C21,7.72 18.03,4.14 14,3.23M16.5,12C16.5,10.23 15.5,8.71 14,7.97V16.04C15.5,15.29 16.5,13.77 16.5,12M3,9V15H7L12,20V4L7,9H3Z" />
+                            </svg>
+                        </button>
+                    </div>
+                    <div class="text-wrapper">
+                        <span class="action-text playable-text" data-audio="a-doctor.MP3">A doctor</span>
+                        <span class="action-text playable-text" data-audio="a-doctor2.MP3"
+                            style="font-weight: 500;">checks-up the patient</span>
+                    </div>
+                </div>
+
+                <div class="action-card" data-audio="a-nurse2.MP3">
+                    <div class="image-wrapper">
+                        <img src="https://lh3.googleusercontent.com/d/1K4mpuyT3pE3rTCTkVGzkT0U-uvHQcJ77"
+                            alt="Nurse helps the patient" class="action-image">
+                        <button class="sound-btn" aria-label="Play sound">
+                            <svg viewBox="0 0 24 24">
+                                <path
+                                    d="M14,3.23V5.29C16.89,6.15 19,8.83 19,12C19,15.17 16.89,17.85 14,18.71V20.77C18.03,19.86 21,16.28 21,12C21,7.72 18.03,4.14 14,3.23M16.5,12C16.5,10.23 15.5,8.71 14,7.97V16.04C15.5,15.29 16.5,13.77 16.5,12M3,9V15H7L12,20V4L7,9H3Z" />
+                            </svg>
+                        </button>
+                    </div>
+                    <div class="text-wrapper">
+                        <span class="action-text playable-text" data-audio="a-nurse.MP3">A nurse</span>
+                        <span class="action-text playable-text" data-audio="a-nurse2.MP3"
+                            style="font-weight: 500;">helps the patient</span>
+                    </div>
+                </div>
+
+                <div class="action-card" data-audio="a-police-officer2.MP3">
+                    <div class="image-wrapper">
+                        <img src="https://lh3.googleusercontent.com/d/1M05ahfEwlG-Z_OcVTMNHrZcqEyAYbEPi"
+                            alt="Police officer/ Policeman controls the traffic" class="action-image">
+                        <button class="sound-btn" aria-label="Play sound">
+                            <svg viewBox="0 0 24 24">
+                                <path
+                                    d="M14,3.23V5.29C16.89,6.15 19,8.83 19,12C19,15.17 16.89,17.85 14,18.71V20.77C18.03,19.86 21,16.28 21,12C21,7.72 18.03,4.14 14,3.23M16.5,12C16.5,10.23 15.5,8.71 14,7.97V16.04C15.5,15.29 16.5,13.77 16.5,12M3,9V15H7L12,20V4L7,9H3Z" />
+                            </svg>
+                        </button>
+                    </div>
+                    <div class="text-wrapper">
+                        <span class="action-text playable-text" data-audio="a-police-officer.MP3">A police officer/
+                            policeman</span>
+                        <span class="action-text playable-text" data-audio="a-police-officer2.MP3"
+                            style="font-weight: 500;">controls the traffic</span>
+                    </div>
+                </div>
+
+                <div class="action-card" data-audio="a-firefighter2.MP3">
+                    <div class="image-wrapper">
+                        <img src="https://lh3.googleusercontent.com/d/1h6gV8SZNlIJ7SS-yZ7_WZOTF_nK2_Kb6"
+                            alt="Firefighter puts-down the fire" class="action-image">
+                        <button class="sound-btn" aria-label="Play sound">
+                            <svg viewBox="0 0 24 24">
+                                <path
+                                    d="M14,3.23V5.29C16.89,6.15 19,8.83 19,12C19,15.17 16.89,17.85 14,18.71V20.77C18.03,19.86 21,16.28 21,12C21,7.72 18.03,4.14 14,3.23M16.5,12C16.5,10.23 15.5,8.71 14,7.97V16.04C15.5,15.29 16.5,13.77 16.5,12M3,9V15H7L12,20V4L7,9H3Z" />
+                            </svg>
+                        </button>
+                    </div>
+                    <div class="text-wrapper">
+                        <span class="action-text playable-text" data-audio="a-firefighter.MP3">A firefighter</span>
+                        <span class="action-text playable-text" data-audio="a-firefighter2.MP3"
+                            style="font-weight: 500;">puts-down the fire</span>
+                    </div>
+                </div>
+
+                <div class="action-card" data-audio="a-farmer2.MP3">
+                    <div class="image-wrapper">
+                        <img src="https://lh3.googleusercontent.com/d/1nfectYPRXVb8qU0O9alQJywvv6-hn53K"
+                            alt="Farmer grows plants" class="action-image">
+                        <button class="sound-btn" aria-label="Play sound">
+                            <svg viewBox="0 0 24 24">
+                                <path
+                                    d="M14,3.23V5.29C16.89,6.15 19,8.83 19,12C19,15.17 16.89,17.85 14,18.71V20.77C18.03,19.86 21,16.28 21,12C21,7.72 18.03,4.14 14,3.23M16.5,12C16.5,10.23 15.5,8.71 14,7.97V16.04C15.5,15.29 16.5,13.77 16.5,12M3,9V15H7L12,20V4L7,9H3Z" />
+                            </svg>
+                        </button>
+                    </div>
+                    <div class="text-wrapper">
+                        <span class="action-text playable-text" data-audio="a-farmer.MP3">A farmer</span>
+                        <span class="action-text playable-text" data-audio="a-farmer2.MP3"
+                            style="font-weight: 500;">grows plants</span>
+                    </div>
+                </div>
+
+                <div class="action-card" data-audio="a-fisherman2.MP3">
+                    <div class="image-wrapper">
+                        <img src="https://lh3.googleusercontent.com/d/1MYkn4-ue_XGx2Jctw-gS0Sl7zNcURLQB"
+                            alt="Fisherman catches the fish" class="action-image">
+                        <button class="sound-btn" aria-label="Play sound">
+                            <svg viewBox="0 0 24 24">
+                                <path
+                                    d="M14,3.23V5.29C16.89,6.15 19,8.83 19,12C19,15.17 16.89,17.85 14,18.71V20.77C18.03,19.86 21,16.28 21,12C21,7.72 18.03,4.14 14,3.23M16.5,12C16.5,10.23 15.5,8.71 14,7.97V16.04C15.5,15.29 16.5,13.77 16.5,12M3,9V15H7L12,20V4L7,9H3Z" />
+                            </svg>
+                        </button>
+                    </div>
+                    <div class="text-wrapper">
+                        <span class="action-text playable-text" data-audio="a-fisherman.MP3">A fisherman</span>
+                        <span class="action-text playable-text" data-audio="a-fisherman2.MP3"
+                            style="font-weight: 500;">catches the fish</span>
+                    </div>
+                </div>
+
+                <div class="action-card" data-audio="a-postman2.MP3">
+                    <div class="image-wrapper">
+                        <img src="https://lh3.googleusercontent.com/d/11Cii_4WHZsXwtnb0B7La6-Nsw_a45lfs"
+                            alt="Postman sends mails" class="action-image">
+                        <button class="sound-btn" aria-label="Play sound">
+                            <svg viewBox="0 0 24 24">
+                                <path
+                                    d="M14,3.23V5.29C16.89,6.15 19,8.83 19,12C19,15.17 16.89,17.85 14,18.71V20.77C18.03,19.86 21,16.28 21,12C21,7.72 18.03,4.14 14,3.23M16.5,12C16.5,10.23 15.5,8.71 14,7.97V16.04C15.5,15.29 16.5,13.77 16.5,12M3,9V15H7L12,20V4L7,9H3Z" />
+                            </svg>
+                        </button>
+                    </div>
+                    <div class="text-wrapper">
+                        <span class="action-text playable-text" data-audio="a-postman.MP3">A postman</span>
+                        <span class="action-text playable-text" data-audio="a-postman2.MP3"
+                            style="font-weight: 500;">sends mails</span>
+                    </div>
+                </div>
+
+                <div class="action-card" data-audio="a-merchant2.MP3">
+                    <div class="image-wrapper">
+                        <img src="https://lh3.googleusercontent.com/d/18SQXk3Ix3_vajhIHhrHHZ55sBaTYwYcQ"
+                            alt="Merchant sells goods" class="action-image">
+                        <button class="sound-btn" aria-label="Play sound">
+                            <svg viewBox="0 0 24 24">
+                                <path
+                                    d="M14,3.23V5.29C16.89,6.15 19,8.83 19,12C19,15.17 16.89,17.85 14,18.71V20.77C18.03,19.86 21,16.28 21,12C21,7.72 18.03,4.14 14,3.23M16.5,12C16.5,10.23 15.5,8.71 14,7.97V16.04C15.5,15.29 16.5,13.77 16.5,12M3,9V15H7L12,20V4L7,9H3Z" />
+                            </svg>
+                        </button>
+                    </div>
+                    <div class="text-wrapper">
+                        <span class="action-text playable-text" data-audio="a-merchant.MP3">A merchant</span>
+                        <span class="action-text playable-text" data-audio="a-merchant2.MP3"
+                            style="font-weight: 500;">sells goods</span>
+                    </div>
+                </div>
+
+                <div class="action-card" data-audio="a-mechanic2.MP3">
+                    <div class="image-wrapper">
+                        <img src="https://lh3.googleusercontent.com/d/1giWL0GI3wCJ8qPSJbrAQ0LuNpgQntLOO"
+                            alt="Mechanic fixes the car" class="action-image">
+                        <button class="sound-btn" aria-label="Play sound">
+                            <svg viewBox="0 0 24 24">
+                                <path
+                                    d="M14,3.23V5.29C16.89,6.15 19,8.83 19,12C19,15.17 16.89,17.85 14,18.71V20.77C18.03,19.86 21,16.28 21,12C21,7.72 18.03,4.14 14,3.23M16.5,12C16.5,10.23 15.5,8.71 14,7.97V16.04C15.5,15.29 16.5,13.77 16.5,12M3,9V15H7L12,20V4L7,9H3Z" />
+                            </svg>
+                        </button>
+                    </div>
+                    <div class="text-wrapper">
+                        <span class="action-text playable-text" data-audio="a-mechanic.MP3">A mechanic</span>
+                        <span class="action-text playable-text" data-audio="a-mechanic2.MP3"
+                            style="font-weight: 500;">fixes the car</span>
+                    </div>
+                </div>
+
+                <div class="action-card" data-audio="a-pilot2.MP3">
+                    <div class="image-wrapper">
+                        <img src="https://lh3.googleusercontent.com/d/19yhK7foZ8VKGe9F0lD_yzX-uvafkJEm6"
+                            alt="Pilot flies the plane" class="action-image">
+                        <button class="sound-btn" aria-label="Play sound">
+                            <svg viewBox="0 0 24 24">
+                                <path
+                                    d="M14,3.23V5.29C16.89,6.15 19,8.83 19,12C19,15.17 16.89,17.85 14,18.71V20.77C18.03,19.86 21,16.28 21,12C21,7.72 18.03,4.14 14,3.23M16.5,12C16.5,10.23 15.5,8.71 14,7.97V16.04C15.5,15.29 16.5,13.77 16.5,12M3,9V15H7L12,20V4L7,9H3Z" />
+                            </svg>
+                        </button>
+                    </div>
+                    <div class="text-wrapper">
+                        <span class="action-text playable-text" data-audio="a-pilot.MP3">A pilot</span>
+                        <span class="action-text playable-text" data-audio="a-pilot2.MP3"
+                            style="font-weight: 500;">flies the plane</span>
+                    </div>
+                </div>
+
+                <div class="action-card" data-audio="a-soldier2.MP3">
+                    <div class="image-wrapper">
+                        <img src="https://lh3.googleusercontent.com/d/1aWX26C6WkQOOVKrlEI7EqOlsQqovA4AF"
+                            alt="Soldier protects our country" class="action-image">
+                        <button class="sound-btn" aria-label="Play sound">
+                            <svg viewBox="0 0 24 24">
+                                <path
+                                    d="M14,3.23V5.29C16.89,6.15 19,8.83 19,12C19,15.17 16.89,17.85 14,18.71V20.77C18.03,19.86 21,16.28 21,12C21,7.72 18.03,4.14 14,3.23M16.5,12C16.5,10.23 15.5,8.71 14,7.97V16.04C15.5,15.29 16.5,13.77 16.5,12M3,9V15H7L12,20V4L7,9H3Z" />
+                            </svg>
+                        </button>
+                    </div>
+                    <div class="text-wrapper">
+                        <span class="action-text playable-text" data-audio="a-soldier.MP3">A soldier</span>
+                        <span class="action-text playable-text" data-audio="a-soldier2.MP3"
+                            style="font-weight: 500;">protects our country</span>
+                    </div>
+                </div>
+
+                <div class="action-card" data-audio="a-vlogger2.MP3">
+                    <div class="image-wrapper">
+                        <img src="https://lh3.googleusercontent.com/d/1zg_aGc2bUXTMUDfX-jwy5VLVrFpIe--E"
+                            alt="Vlogger makes contents for internet" class="action-image">
+                        <button class="sound-btn" aria-label="Play sound">
+                            <svg viewBox="0 0 24 24">
+                                <path
+                                    d="M14,3.23V5.29C16.89,6.15 19,8.83 19,12C19,15.17 16.89,17.85 14,18.71V20.77C18.03,19.86 21,16.28 21,12C21,7.72 18.03,4.14 14,3.23M16.5,12C16.5,10.23 15.5,8.71 14,7.97V16.04C15.5,15.29 16.5,13.77 16.5,12M3,9V15H7L12,20V4L7,9H3Z" />
+                            </svg>
+                        </button>
+                    </div>
+                    <div class="text-wrapper">
+                        <span class="action-text playable-text" data-audio="a-vlogger.MP3">A vlogger</span>
+                        <span class="action-text playable-text" data-audio="a-vlogger2.MP3"
+                            style="font-weight: 500;">makes contents for internet</span>
+                    </div>
+                </div>
+
+                <div class="action-card" data-audio="a-chef2.MP3">
+                    <div class="image-wrapper">
+                        <img src="https://lh3.googleusercontent.com/d/1DGAsmMeVWLowiaEuSGCagVb1WC8wXHPA"
+                            alt="Chef cooks the food" class="action-image">
+                        <button class="sound-btn" aria-label="Play sound">
+                            <svg viewBox="0 0 24 24">
+                                <path
+                                    d="M14,3.23V5.29C16.89,6.15 19,8.83 19,12C19,15.17 16.89,17.85 14,18.71V20.77C18.03,19.86 21,16.28 21,12C21,7.72 18.03,4.14 14,3.23M16.5,12C16.5,10.23 15.5,8.71 14,7.97V16.04C15.5,15.29 16.5,13.77 16.5,12M3,9V15H7L12,20V4L7,9H3Z" />
+                            </svg>
+                        </button>
+                    </div>
+                    <div class="text-wrapper">
+                        <span class="action-text playable-text" data-audio="a-chef.MP3">A chef</span>
+                        <span class="action-text playable-text" data-audio="a-chef2.MP3" style="font-weight: 500;">cooks
+                            the food</span>
+                    </div>
+                </div>
+
+                <div class="action-card" data-audio="a-security2.MP3">
+                    <div class="image-wrapper">
+                        <img src="https://lh3.googleusercontent.com/d/1lr25QNdo-6HNqM9Mqer8Sd3piCdza9Fa"
+                            alt="Security checks the safety" class="action-image">
+                        <button class="sound-btn" aria-label="Play sound">
+                            <svg viewBox="0 0 24 24">
+                                <path
+                                    d="M14,3.23V5.29C16.89,6.15 19,8.83 19,12C19,15.17 16.89,17.85 14,18.71V20.77C18.03,19.86 21,16.28 21,12C21,7.72 18.03,4.14 14,3.23M16.5,12C16.5,10.23 15.5,8.71 14,7.97V16.04C15.5,15.29 16.5,13.77 16.5,12M3,9V15H7L12,20V4L7,9H3Z" />
+                            </svg>
+                        </button>
+                    </div>
+                    <div class="text-wrapper">
+                        <span class="action-text playable-text" data-audio="a-security.MP3">A security</span>
+                        <span class="action-text playable-text" data-audio="a-security2.MP3"
+                            style="font-weight: 500;">checks the safety</span>
+                    </div>
+                </div>
+
+            </main>
+        </div>
+
+        <!-- SINGLE AUDIO SOURCE -->
+        <audio id="main-audio"></audio>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+
+</html>
