@@ -89,6 +89,42 @@ class LineManager {
 }
 
 document.addEventListener('DOMContentLoaded', () => {
+    // ── LOADING INDICATOR UNTUK AUTO-PLAY GIF ──
+    const loadingPath = "M6,2H18V8H18V8L14,12L18,16V16H18V22H6V16H6V16L10,12L6,8V8H6V2M16,16.5L12,12.5L8,16.5V20H16V16.5M12,11.5L16,7.5V4H8V7.5L12,11.5Z";
+    
+    document.querySelectorAll('.image-box').forEach(box => {
+        const img = box.querySelector('img');
+        if (!img) return;
+        if (img.complete) return;
+        
+        box.classList.add('loading');
+        
+        if (!box.querySelector('.loading-icon')) {
+            const svgIcon = document.createElementNS('http://www.w3.org/2000/svg', 'svg');
+            svgIcon.setAttribute('viewBox', '0 0 24 24');
+            svgIcon.setAttribute('fill', '#e53935');
+            svgIcon.classList.add('loading-icon');
+            const path = document.createElementNS('http://www.w3.org/2000/svg', 'path');
+            path.setAttribute('d', loadingPath);
+            svgIcon.appendChild(path);
+            box.appendChild(svgIcon);
+        }
+        
+        box.loadingTextTimeout = setTimeout(() => {
+            box.classList.add('show-text');
+        }, 300);
+        
+        const cleanupLoading = () => {
+            clearTimeout(box.loadingTextTimeout);
+            box.classList.remove('loading', 'show-text');
+            const icon = box.querySelector('.loading-icon');
+            if(icon) icon.remove();
+        };
+        
+        img.addEventListener('load', cleanupLoading);
+        img.addEventListener('error', cleanupLoading);
+    });
+
     const lineManager = new LineManager('svg-overlay');
     
     // Draw example line
