@@ -74,7 +74,7 @@ document.addEventListener('DOMContentLoaded', () => {
         'wave_hand': 'https://lh3.googleusercontent.com/d/1uaphozFujSsLyhfkMcwoFAWdDVQu-oqM',
         'comb_hair': 'https://lh3.googleusercontent.com/d/1boQpfcmIH8cqvgRQlz0uvcEpqloh7VBT',
         'open_mouth': 'https://lh3.googleusercontent.com/d/1MahUofPXG6dSFMRIiEN7quSI8-vRjjGj',
-        'bend_fingers': 'https://lh3.googleusercontent.com/d/1gwhNPFmayAie_3gvKvql68DxQ3bimpwf',
+        'bend_fingers': 'https://lh3.googleusercontent.com/d/1kqpVkWz6YWyrUizQTecItC_GBqVR-84Y',
         'touch_elbow': 'https://lh3.googleusercontent.com/d/1qF85KR20mYTxGcmsgZrLAjVVTOJakceC',
         'wiggle_your_waist': 'https://lh3.googleusercontent.com/d/1ynyVGNtj1SDp6Gl-cf0RlvpuEIu7BJ6n',
         'lift_your_eyebrows_up': 'https://lh3.googleusercontent.com/d/1aNu5MqkTFXPavTmHfyZTC0GlcYf2v_u-',
@@ -136,11 +136,15 @@ document.addEventListener('DOMContentLoaded', () => {
         }
 
         card.classList.add('playing');
-        card.classList.add('loading'); // Tampilkan teks Loading...
         currentlyPlaying = card;
         
         // Set icon ke hourglass/loading saat menunggu GIF dimuat
         soundIcon.setAttribute('d', loadingIconPath);
+
+        // Munculkan teks Loading... HANYA JIKA memuat lebih dari 300ms
+        card.loadingTextTimeout = setTimeout(() => {
+            card.classList.add('loading');
+        }, 300);
         
         // Status tracking untuk audio dan gif
         card.audioDone = false;
@@ -152,6 +156,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
         // Tunggu GIF benar-benar siap dirender sebelum memutar audio
         img.onload = () => {
+            clearTimeout(card.loadingTextTimeout); // Batalkan timer jika loading cepat
             card.classList.remove('loading'); // Sembunyikan teks Loading...
             
             // Ubah icon ke pause setelah siap dimainkan
@@ -211,6 +216,7 @@ document.addEventListener('DOMContentLoaded', () => {
         audio.pause();
         
         targetCard.classList.remove('playing');
+        clearTimeout(targetCard.loadingTextTimeout); // Batalkan timer
         targetCard.classList.remove('loading'); // Pastikan loading dihilangkan
         targetIcon.setAttribute('d', playIconPath);
         
