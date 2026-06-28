@@ -179,8 +179,8 @@ body {
 }
 
 .img-placeholder {
-    width: 90%;
-    height: 90%;
+    width: 100%;
+    height: 100%;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -191,7 +191,7 @@ body {
 .img-placeholder img {
     width: 100%;
     height: 100%;
-    object-fit: contain;
+    object-fit: cover;
 }
 
 /* ── RIGHT SIDE (ANSWER AREA) ── */
