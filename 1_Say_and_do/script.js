@@ -11,6 +11,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     const playIconPath = "M14,3.23V5.29C16.89,6.15 19,8.83 19,12C19,15.17 16.89,17.85 14,18.71V20.77C18.03,19.86 21,16.28 21,12C21,7.72 18.03,4.14 14,3.23M16.5,12C16.5,10.23 15.5,8.71 14,7.97V16.04C15.5,15.29 16.5,13.77 16.5,12M3,9V15H7L12,20V4L7,9H3Z";
     const pauseIconPath = "M14,19H18V5H14M6,19H10V5H6V19Z";
+    const loadingIconPath = "M6,2H18V8H18V8L14,12L18,16V16H18V22H6V16H6V16L10,12L6,8V8H6V2M16,16.5L12,12.5L8,16.5V20H16V16.5M12,11.5L16,7.5V4H8V7.5L12,11.5Z"; // Hourglass icon
 
     const preloadedGifs = {};
 
@@ -135,8 +136,11 @@ document.addEventListener('DOMContentLoaded', () => {
         }
 
         card.classList.add('playing');
+        card.classList.add('loading'); // Tampilkan teks Loading...
         currentlyPlaying = card;
-        soundIcon.setAttribute('d', pauseIconPath);
+        
+        // Set icon ke hourglass/loading saat menunggu GIF dimuat
+        soundIcon.setAttribute('d', loadingIconPath);
         
         // Status tracking untuk audio dan gif
         card.audioDone = false;
@@ -145,25 +149,35 @@ document.addEventListener('DOMContentLoaded', () => {
 
         // Mulai GIF (gunakan blob URL jika sudah di-fetch, fallback ke URL asli)
         const gifSrc = preloadedGifs[actionName] || gifLinks[actionName];
-        img.src = gifSrc;
 
-        // Mulai Audio
-        if (time.customAudio) {
-            if (!card.audioElement) {
-                card.audioElement = new Audio(time.customAudio);
-                card.audioElement.addEventListener('ended', () => {
-                    if (currentlyPlaying === card) {
-                        card.audioDone = true;
-                        checkAndStop(card);
-                    }
-                });
+        // Tunggu GIF benar-benar siap dirender sebelum memutar audio
+        img.onload = () => {
+            card.classList.remove('loading'); // Sembunyikan teks Loading...
+            
+            // Ubah icon ke pause setelah siap dimainkan
+            soundIcon.setAttribute('d', pauseIconPath);
+            
+            // Mulai Audio
+            if (time.customAudio) {
+                if (!card.audioElement) {
+                    card.audioElement = new Audio(time.customAudio);
+                    card.audioElement.addEventListener('ended', () => {
+                        if (currentlyPlaying === card) {
+                            card.audioDone = true;
+                            checkAndStop(card);
+                        }
+                    });
+                }
+                card.audioElement.currentTime = 0;
+                card.audioElement.play().catch(err => console.warn("Audio playback failed:", err));
+            } else {
+                audio.currentTime = time.start;
+                audio.play().catch(err => console.warn("Audio playback failed:", err));
             }
-            card.audioElement.currentTime = 0;
-            card.audioElement.play().catch(err => console.warn("Audio playback failed:", err));
-        } else {
-            audio.currentTime = time.start;
-            audio.play().catch(err => console.warn("Audio playback failed:", err));
-        }
+            img.onload = null; // Hapus listener agar tidak bocor
+        };
+
+        img.src = gifSrc;
 
         card.scrollIntoView({ behavior: 'smooth', block: 'center' });
 
@@ -197,6 +211,7 @@ document.addEventListener('DOMContentLoaded', () => {
         audio.pause();
         
         targetCard.classList.remove('playing');
+        targetCard.classList.remove('loading'); // Pastikan loading dihilangkan
         targetIcon.setAttribute('d', playIconPath);
         
         // Hentikan timer gif jika sedang berjalan
