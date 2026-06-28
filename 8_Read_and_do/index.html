@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Read and Do – Do the Instructions Game</title>
+    <link rel="stylesheet" href="style.css?v=1.0">
+</head>
+
+<body>
+    <div class="page">
+        <img src="https://lh3.googleusercontent.com/d/1Wtb9UWtvVhVA13B0HLBagfyx1bD1LU5x" class="top-border" alt="Top Border">
+        <img src="https://lh3.googleusercontent.com/d/19NE3XzidRxaYa56e4OBOdI38n3nYJhwK" class="bottom-border" alt="Bottom Border">
+
+        <!-- Sticky Header -->
+        <header class="module-header">
+            <!-- PNG Judul -->
+            <img src="https://lh3.googleusercontent.com/d/1K7hg5Q5lSvhqURUx37lp9ncXXgBgAWWo" alt="Read and Do" class="title-badge">
+
+            <div class="instructions">
+                <h3 style="font-size: 15px; font-weight: 800; color: #1e293b; margin-bottom: 6px;">"Describe the Jobs" Game</h3>
+                <p class="en">Play the game with your friends! Pick one of the job cards below! Match the picture in the card with the jobs’s task card and say! Look at the example!</p>
+                <div class="separator"></div>
+                <p class="id">Mainkan bersama teman! Pilihlah salah satu kartu tentang pekerjaan berikut! Pasangkan kartu tersebut dengan kartu tugas pekerjaannya dan sebutkan! Perhatikan contoh!</p>
+            </div>
+        </header>
+
+        <!-- Scrollable Content -->
+        <div class="scroll-content">
+            <div id="quiz-container" style="width: 100%;">
+                
+                <!-- GIFs -->
+                <div class="cards-title">EXAMPLE</div>
+                <div class="examples-section" style="background: transparent; border: none; box-shadow: none; padding: 0; margin-bottom: 30px;">
+                    
+                    <div class="gif-container" onclick="playGifAudio('audio-gif-correct', this, 'https://lh3.googleusercontent.com/d/1ICmpf0JuS0LtlfYWDZkIA5b_SJrZOSM3?v=2', 'https://lh3.googleusercontent.com/d/1ICmpf0JuS0LtlfYWDZkIA5b_SJrZOSM3?v=2')">
+                        <img src="data:image/gif;base64,R0lGODlhAQABAAD/ACwAAAAAAQABAAACADs=" data-gif="https://lh3.googleusercontent.com/d/1ICmpf0JuS0LtlfYWDZkIA5b_SJrZOSM3?v=2" alt="Example Correct" class="gif-image">
+                        <div class="play-overlay">
+                            <svg viewBox="0 0 24 24" fill="white" width="64px" height="64px">
+                                <path d="M8 5v14l11-7z" />
+                            </svg>
+                        </div>
+                    </div>
+
+                    <div class="gif-container" style="margin-bottom: 0;" onclick="playGifAudio('audio-gif-wrong', this, 'https://lh3.googleusercontent.com/d/1c6xpi6jme8q47x9znSDF2a-BUCA4X-ub?v=2', 'https://lh3.googleusercontent.com/d/1c6xpi6jme8q47x9znSDF2a-BUCA4X-ub?v=2')">
+                        <img src="data:image/gif;base64,R0lGODlhAQABAAD/ACwAAAAAAQABAAACADs=" data-gif="https://lh3.googleusercontent.com/d/1c6xpi6jme8q47x9znSDF2a-BUCA4X-ub?v=2" alt="Example Wrong" class="gif-image">
+                        <div class="play-overlay">
+                            <svg viewBox="0 0 24 24" fill="white" width="64px" height="64px">
+                                <path d="M8 5v14l11-7z" />
+                            </svg>
+                        </div>
+                    </div>
+
+                </div>
+
+                <div class="cards-title">JOB CARDS</div>
+                <div class="cards-grid">
+                    <!-- JOB CARDS -->
+                    <div class="job-card" data-match="1" onclick="handleCardClick(this, 'job')"><img src="https://lh3.googleusercontent.com/d/1CDZ2t8ZUWA08PVwzbo5h2y-yiLgnI6TW?v=2" alt="Security"></div>
+                    <div class="job-card" data-match="2" onclick="handleCardClick(this, 'job')"><img src="https://lh3.googleusercontent.com/d/1aQvbZO-N5fEMc119nYrKjw-3dilqu_kS?v=2" alt="Soldier"></div>
+                    <div class="job-card" data-match="3" onclick="handleCardClick(this, 'job')"><img src="https://lh3.googleusercontent.com/d/1n-BMHs_OGp8Yt1XDf3ArgDNYJdFBGbA_?v=2" alt="Chef"></div>
+                    <div class="job-card" data-match="4" onclick="handleCardClick(this, 'job')"><img src="https://lh3.googleusercontent.com/d/1zPXDujOPDqXwkLLzTPiztMvbtHrYuusA?v=2" alt="Fisherman"></div>
+                    <div class="job-card" data-match="5" onclick="handleCardClick(this, 'job')"><img src="https://lh3.googleusercontent.com/d/1Iowxh92g98p3oQc8asDyWxkGbI40HBhd?v=2" alt="Firefighter"></div>
+                    <div class="job-card" data-match="6" onclick="handleCardClick(this, 'job')"><img src="https://lh3.googleusercontent.com/d/1fu-Qh2DqfV3yyHSvVLWNbn9YA24ONCnM?v=2" alt="Driver"></div>
+                    <div class="job-card" data-match="7" onclick="handleCardClick(this, 'job')"><img src="https://lh3.googleusercontent.com/d/1WIvsXMcnaO6xZ9DnRglwxAUjTDDWyw9G?v=2" alt="Pilot"></div>
+                    <div class="job-card" data-match="8" onclick="handleCardClick(this, 'job')"><img src="https://lh3.googleusercontent.com/d/1qKs-zOOyatvlTUHjQsUa8VDgoFL9Hffh?v=2" alt="Police"></div>
+                    <div class="job-card" data-match="9" onclick="handleCardClick(this, 'job')"><img src="https://lh3.googleusercontent.com/d/1Ow817vk20qIa_N023miZB-45yI1DuUh5?v=2" alt="Doctor"></div>
+
+                </div>
+
+                <div class="cards-title" style="margin-top: 30px;">TASK CARDS</div>
+                <div class="cards-grid task-cards-container">
+                    <!-- TASK CARDS -->
+                    <div class="task-card" data-match="1" onclick="handleCardClick(this, 'task')"><img src="https://lh3.googleusercontent.com/d/1nA7UcsOjO4D3gjNNzz9FvBAYYJ9QaZvg?v=2" alt="Security Task"></div>
+                    <div class="task-card" data-match="2" onclick="handleCardClick(this, 'task')"><img src="https://lh3.googleusercontent.com/d/1lf6xme6WraJELej0i7cnODBCMWTfwnIq?v=2" alt="Soldier Task"></div>
+                    <div class="task-card" data-match="3" onclick="handleCardClick(this, 'task')"><img src="https://lh3.googleusercontent.com/d/1ASwZemsVLUS4VbpWDAA0TqMEGav4CrdA?v=2" alt="Chef Task"></div>
+                    <div class="task-card" data-match="4" onclick="handleCardClick(this, 'task')"><img src="https://lh3.googleusercontent.com/d/16QOjfsUGfhHanViJrc36TuYOgI9ZvxLx?v=2" alt="Fisherman Task"></div>
+                    <div class="task-card" data-match="5" onclick="handleCardClick(this, 'task')"><img src="https://lh3.googleusercontent.com/d/1Ls_8SdCYFtx5Erhv_5kKkPFHXB7cMNXa?v=2" alt="Firefighter Task"></div>
+                    <div class="task-card" data-match="6" onclick="handleCardClick(this, 'task')"><img src="https://lh3.googleusercontent.com/d/1lF6tvhue3e4uhKs8xxww9zzDGW3KRcPK?v=2" alt="Driver Task"></div>
+                    <div class="task-card" data-match="7" onclick="handleCardClick(this, 'task')"><img src="https://lh3.googleusercontent.com/d/1FkDaYF9HZyLDH43cvqqCV-4Saml4vf4c?v=2" alt="Pilot Task"></div>
+                    <div class="task-card" data-match="8" onclick="handleCardClick(this, 'task')"><img src="https://lh3.googleusercontent.com/d/1KuVz-1OWmZO7FihlEOLxEpf7aRMgYz1Z?v=2" alt="Police Task"></div>
+                    <div class="task-card" data-match="9" onclick="handleCardClick(this, 'task')"><img src="https://lh3.googleusercontent.com/d/1d8kD7iACuNhAhI3MywX1yS9UpX5nLMTj?v=2" alt="Doctor Task"></div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Preloaded Sounds -->
+        <audio id="click-audio" src="click.MP3" preload="auto"></audio>
+        <audio id="correct-audio" src="correct.MP3" preload="auto"></audio>
+        <audio id="wrong-audio" src="wrong.MP3" preload="auto"></audio>
+        <audio id="typing-audio" src="assets/typing.MP3" preload="auto"></audio>
+        <audio id="audio-gif-correct" src="correct-sound-gif.MP3" preload="auto"></audio>
+        <audio id="audio-gif-wrong" src="wrong-sound-gif.MP3" preload="auto"></audio>
+    </div>
+
+    <script src="script.js?v=1.0"></script>
+</body>
+
+</html>
