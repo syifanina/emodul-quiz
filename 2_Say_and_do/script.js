@@ -109,6 +109,7 @@ document.addEventListener('DOMContentLoaded', () => {
         card.classList.add('playing');
         currentlyPlaying = card;
         
+        // Set icon ke hourglass/loading saat menunggu GIF dimuat
         soundIcon.setAttribute('d', loadingIconPath);
 
         // Munculkan teks Loading... HANYA JIKA memuat lebih dari 300ms
@@ -120,21 +121,6 @@ document.addEventListener('DOMContentLoaded', () => {
         card.audioDone = false;
         card.gifDone = false;
         stopAtTime = time.end || null;
-
-        // Restart GIF instantly using preloaded blob if available
-        if (previousGifUrls[actionName]) {
-            URL.revokeObjectURL(previousGifUrls[actionName]);
-        }
-        
-        let targetSrc = '';
-        if (gifBlobs[actionName]) {
-            const newUrl = URL.createObjectURL(gifBlobs[actionName]);
-            previousGifUrls[actionName] = newUrl;
-            targetSrc = newUrl;
-        } else {
-            // Fallback if not loaded yet
-            targetSrc = gifLinks[actionName] + '?t=' + new Date().getTime();
-        }
 
         // Tunggu GIF benar-benar siap dirender sebelum memutar audio
         img.onload = () => {
@@ -155,7 +141,18 @@ document.addEventListener('DOMContentLoaded', () => {
             img.onload = null;
         };
 
-        img.src = targetSrc;
+        // Restart GIF instantly using preloaded blob if available
+        if (previousGifUrls[actionName]) {
+            URL.revokeObjectURL(previousGifUrls[actionName]);
+        }
+        if (gifBlobs[actionName]) {
+            const newUrl = URL.createObjectURL(gifBlobs[actionName]);
+            previousGifUrls[actionName] = newUrl;
+            img.src = newUrl;
+        } else {
+            // Fallback if not loaded yet
+            img.src = gifLinks[actionName] + '?t=' + new Date().getTime();
+        }
 
         card.scrollIntoView({ behavior: 'smooth', block: 'center' });
 
@@ -189,8 +186,8 @@ document.addEventListener('DOMContentLoaded', () => {
         audio.pause();
 
         targetCard.classList.remove('playing');
-        clearTimeout(targetCard.loadingTextTimeout); // Batalkan timer
-        targetCard.classList.remove('loading'); // Pastikan loading dihilangkan
+        clearTimeout(targetCard.loadingTextTimeout);
+        targetCard.classList.remove('loading');
         targetIcon.setAttribute('d', playIconPath);
 
         // Hentikan timer gif jika sedang berjalan
