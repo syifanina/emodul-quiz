@@ -436,6 +436,41 @@ body {
     pointer-events: none !important;
 }
 
+/* --- LOADING STYLES FOR IMAGE BOX --- */
+.image-box.loading {
+    position: relative;
+}
+
+.loading-icon {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 5;
+    pointer-events: none;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.image-box.show-text::after {
+    content: 'Loading...';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(255, 255, 255, 0.8);
+    display: flex;
+    justify-content: center;
+    align-items: flex-end;
+    padding-bottom: 5px;
+    font-size: 14px;
+    font-weight: 800;
+    color: #ff0000;
+    z-index: 4;
+}
+
 
 
 /* -- HEADER OVERRIDE FOR BORDERS -- */
