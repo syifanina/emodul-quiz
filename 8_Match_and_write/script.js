@@ -106,6 +106,28 @@ document.addEventListener('DOMContentLoaded', () => {
             checkBtn.style.pointerEvents = 'none';
             checkBtn.style.cursor = 'not-allowed';
         }
+        
+        updateCrossedWords();
+    }
+    
+    function cleanText(t) {
+        return t.toLowerCase().replace(/[^a-z0-9]/g, '');
+    }
+
+    function updateCrossedWords() {
+        const wordSpans = document.querySelectorAll('.word-box span');
+        const typedAnswers = Array.from(writeInputs).map(input => cleanText(input.value));
+        
+        wordSpans.forEach(span => {
+            const text = cleanText(span.textContent);
+            if (typedAnswers.includes(text) && text !== '') {
+                span.style.textDecoration = 'line-through';
+                span.style.opacity = '0.5';
+            } else {
+                span.style.textDecoration = 'none';
+                span.style.opacity = '1';
+            }
+        });
     }
     
     // Initialize button state
