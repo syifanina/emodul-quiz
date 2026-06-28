@@ -606,10 +606,6 @@ body {
     background: transparent;
 }
 
-.flip-card-front {
-    /* Transparent front */
-}
-
 .flip-card-back {
     transform: rotateY(180deg);
 }
@@ -668,6 +664,24 @@ body {
 }
 .gif-container.playing .gif-image {
     opacity: 1;
+}
+
+/* ── LOADING GIF OVERLAY ── */
+.gif-container.show-loading-text::after {
+    content: 'Loading...';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(255, 255, 255, 0.8);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 14px;
+    font-weight: 800;
+    color: #ff0000;
+    z-index: 5;
 }
 
 /* -- BORDERS -- */
