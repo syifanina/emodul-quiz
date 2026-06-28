@@ -1,350 +1,343 @@
-document.addEventListener('DOMContentLoaded', () => {
-    const actionCards = document.querySelectorAll('.action-card');
-    const audio = document.getElementById('main-audio');
-    let currentlyPlaying = null;
-    let stopAtTime = null;
-    let gifTimeout = null;
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&family=Outfit:wght@400;500;600;700&family=Quicksand:wght@300..700&display=swap');
 
-    // Set untuk melacak kartu mana saja yang sudah diklik
-    const clickedCards = new Set();
-    let isCelebrated = false; // Mencegah kembang api muncul berulang kali
+:root {
+    --primary-color: #ff0000;
+    --bg-color: #e8e8e8;
+    --card-bg: #ffffff;
+    --text-color: #333;
+    --radius: 12px;
+    --transition: all 0.2s ease;
+}
 
-    const playIconPath = "M14,3.23V5.29C16.89,6.15 19,8.83 19,12C19,15.17 16.89,17.85 14,18.71V20.77C18.03,19.86 21,16.28 21,12C21,7.72 18.03,4.14 14,3.23M16.5,12C16.5,10.23 15.5,8.71 14,7.97V16.04C15.5,15.29 16.5,13.77 16.5,12M3,9V15H7L12,20V4L7,9H3Z";
-    const pauseIconPath = "M14,19H18V5H14M6,19H10V5H6V19Z";
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    -webkit-tap-highlight-color: transparent;
+}
 
-    const DEFAULT_GIF_DURATION = 3500;
+html,
+body {
+    width: 100%;
+    max-width: 100%;
+    overflow-x: hidden;
+    overflow-y: auto; /* Biarkan scroll manual pengguna */
+    background: transparent;
+    scroll-behavior: smooth;
+    /* Sembunyikan scrollbar agar tidak double scroll di Genially */
+    -ms-overflow-style: none;  /* IE and Edge */
+    scrollbar-width: none;  /* Firefox */
+}
 
-    const timingMap = {
-        'wake_up': { customAudio: 'assets/wake-up.MP3', gifDuration: 2815 },
-        'take_a_bath': { customAudio: 'assets/take-a-bath.MP3', gifDuration: 1250 },
-        'have_breakfast': { customAudio: 'assets/have-breakfast.MP3', gifDuration: 3000 },
-        'brush_my_teeth': { customAudio: 'assets/brush-my-teeth.MP3', gifDuration: 3030 },
-        'go_to_school': { customAudio: 'assets/go-to-school.MP3', gifDuration: 3080 },
-        'study_in_class': { customAudio: 'assets/study-in-class.MP3', gifDuration: 3000 },
-        'have_lunch': { customAudio: 'assets/have-lunch.MP3', gifDuration: 1280 },
-        'go_home': { customAudio: 'assets/go-home.MP3', gifDuration: 3000 },
-        'play_with_friends': { customAudio: 'assets/play-with-friends.MP3', gifDuration: 1750 },
-        'have_dinner': { customAudio: 'assets/have-dinner.MP3', gifDuration: 2800 },
-        'do_homework': { customAudio: 'assets/do-homework.MP3', gifDuration: 3050 },
-        'go_to_bed': { customAudio: 'assets/go-to-bed.MP3', gifDuration: 3000 }
-    };
+body::-webkit-scrollbar {
+    display: none; /* Chrome, Safari, Opera */
+}
 
-    // List of actions that have a static PNG version
-    const actionsWithStatic = [
-        'wake_up', 'take_a_bath', 'have_breakfast', 'brush_my_teeth',
-        'go_to_school', 'study_in_class', 'have_lunch', 'go_home',
-        'play_with_friends', 'have_dinner', 'do_homework', 'go_to_bed'
-    ];
+/* ── CUTE BACKGROUND DECORATIONS REMOVED ── */
 
-    const gifLinks = {
-        'wake_up': 'https://lh3.googleusercontent.com/d/14i4FYZ7m8RO4P7ZaNV9lPPpBfB-ZtJlQ',
-        'take_a_bath': 'https://lh3.googleusercontent.com/d/1E324f6GReDsz2Ykpy7IyK_rklKke1vPj',
-        'have_breakfast': 'https://lh3.googleusercontent.com/d/13EtZ0RzuPH3B4JurkWxGyo9zB9rFmz3h',
-        'brush_my_teeth': 'https://lh3.googleusercontent.com/d/1UvwAQXck66fm-4TaYnAPKsK7tIefGRXl',
-        'go_to_school': 'https://lh3.googleusercontent.com/d/1FjOGSwhvKbfwpdC1_j7Bp0RFadXVvhrz',
-        'study_in_class': 'https://lh3.googleusercontent.com/d/1r-UZl_ww-3jQuqKqlpAkQbkQALj9varB',
-        'have_lunch': 'https://lh3.googleusercontent.com/d/1VXFiW8hk3dgLchRLWJm-c2oPy2J95npi',
-        'go_home': 'https://lh3.googleusercontent.com/d/1mMcsbbCiFHKSZ_D9WG6b1ntVKZDyVIO5',
-        'play_with_friends': 'https://lh3.googleusercontent.com/d/1A3iu7TdUwKfv_Bh9fnjWci39kgQy6mUq',
-        'have_dinner': 'https://lh3.googleusercontent.com/d/1HvpEbtxEwIsSiMXKMyXrsE1xKR7jzUfN',
-        'do_homework': 'https://lh3.googleusercontent.com/d/1-we_5hGPUeowv5XKHZC8KBA_80AJBbbE',
-        'go_to_bed': 'https://lh3.googleusercontent.com/d/1V62nofMEJGMBBDuVL-rNVpZfF5HVzS1e'
-    };
+body {
+    font-family: 'Outfit', 'Quicksand', 'Inter', sans-serif;
+    display: flex;
+    justify-content: center;
+    min-height: 100vh;
+}
 
-    const staticLinks = {
-        'wake_up': 'https://lh3.googleusercontent.com/d/1yaYMBdFsuvYAd9Jm8SbERb1SSGj_H1WE',
-        'take_a_bath': 'https://lh3.googleusercontent.com/d/1Dz5y4uBis3fkopOS7eu-ATKzV6JRmeXi',
-        'have_breakfast': 'https://lh3.googleusercontent.com/d/1iLS5CenfegrcbKm3BbFin8QMpSYn-vWm',
-        'brush_my_teeth': 'https://lh3.googleusercontent.com/d/1LV-avrYMRpNBJorQfuYF-XKYXTgD216m',
-        'go_to_school': 'https://lh3.googleusercontent.com/d/1ToRThMT2WSSmNv66IEKeIngAy8A1Ysw8',
-        'study_in_class': 'https://lh3.googleusercontent.com/d/1CV3kCriydB3cnw7Y7nistJHFp1sbRtSO',
-        'have_lunch': 'https://lh3.googleusercontent.com/d/1LpgG5frKfqjBgHMYrpMXZ-rIVRxFctBB',
-        'go_home': 'https://lh3.googleusercontent.com/d/1w84IRe0YT8P03LESiZNNpfYn518gPqwF',
-        'play_with_friends': 'https://lh3.googleusercontent.com/d/1yQuaTedjGt3C72dCYDqjR0UYiI3u_FRk',
-        'have_dinner': 'https://lh3.googleusercontent.com/d/1uI4WYwxLA42PEY1T2Y1C75DRs24Mvthg',
-        'do_homework': 'https://lh3.googleusercontent.com/d/1DzowzSCvg64U39ifeD3em4AKkHMf0uPe',
-        'go_to_bed': 'https://lh3.googleusercontent.com/d/1uoUw2IblJjMYXcQ-1sYCdSpjrInlONb2'
-    };
+/* ── MOBILE-STYLE CONTAINER (Max-Width: 360px) ── */
+.page {
+    background: #ffffff;
+    width: 100%;
+    max-width: 360px;
+    min-height: 100vh; /* Kunci tinggi sesuai layar/iframe */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    position: relative;
+    overflow-x: hidden;
+}
 
-    const checkNaturalStop = (targetCard) => {
-        if (!targetCard.isAudioPlaying && !targetCard.isGifPlaying) {
-            const targetIcon = targetCard.querySelector('.sound-btn path');
-            targetCard.classList.remove('playing');
-            targetIcon.setAttribute('d', playIconPath);
-            if (currentlyPlaying === targetCard) {
-                currentlyPlaying = null;
-            }
-            checkCompletion();
-        }
-    };
+/* ── MODULE HEADER (Sticky) ── */
+.module-header {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 24px 16px 10px 16px;
+    background: #fff; /* Pastikan background solid agar konten di bawahnya tidak terlihat saat scroll */
+    z-index: 100;
+    flex-shrink: 0;
+}
 
-    const playAction = (card) => {
-        const actionName = card.dataset.action;
-        const time = timingMap[actionName];
-        if (!time) return;
+.title-badge {
+    width: 90%;
+    max-width: 280px;
+    height: auto;
+    margin-bottom: 8px;
+}
 
-        const img = card.querySelector('.action-image');
-        const soundBtn = card.querySelector('.sound-btn');
-        const soundIcon = soundBtn.querySelector('path');
+.instructions {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+}
 
-        // Track progress
-        clickedCards.add(actionName);
+.instructions .en {
+    font-size: 14px;
+    font-weight: 600;
+    color: #1e293b;
+    margin-bottom: 4px;
+}
 
-        // Jika sedang memutar kartu yang sama, hentikan
-        if (currentlyPlaying === card) {
-            stopAction(card);
-            return;
-        }
+.instructions .separator {
+    width: 100%;
+    border-top: 2px dotted #93c5fd;
+    margin: 8px 0;
+}
 
-        // Hentikan kartu lain yang sedang berjalan
-        if (currentlyPlaying) {
-            stopAction(currentlyPlaying);
-        }
+.instructions .id {
+    font-size: 14px;
+    font-weight: 400;
+    color: #475569;
+}
 
-        // Bersihkan timeout lama jika ada
-        if (gifTimeout) {
-            clearTimeout(gifTimeout);
-            gifTimeout = null;
-        }
+/* ── SCROLLABLE CONTENT ── */
+.scroll-content {
+    width: 100%;
+    flex-grow: 1;
+    
+    padding: 0 16px 24px 16px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    
+    scrollbar-width: none; /* Firefox */
+}
 
-        card.classList.add('playing');
-        currentlyPlaying = card;
-        soundIcon.setAttribute('d', pauseIconPath);
+.scroll-content::-webkit-scrollbar {
+    display: none; /* Chrome, Safari */
+}
 
-        // Status tracking untuk audio dan gif
-        stopAtTime = time.end || null;
+.grid-container {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 12px;
+    width: 100%;
+}
 
-        // Gunakan Blob URL dan tambahkan timestamp agar GIF mengulang dari awal TANPA download ulang
-        const baseGifUrl = gifObjectUrls[actionName] || gifLinks[actionName];
-        const separator = baseGifUrl.startsWith('blob:') ? '#t=' : '?t=';
-        const gifSrc = baseGifUrl + separator + new Date().getTime();
+.action-card {
+    background: var(--card-bg);
+    border-radius: var(--radius);
+    padding: 8px;
+    transition: var(--transition);
+    cursor: pointer;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    position: relative;
+    overflow: hidden;
+    border: 2px solid #f1f2f6;
+    /* Solid border instead of dashed for a cleaner feel */
+}
 
-        const playAudioAndSetTimeout = () => {
-            if (currentlyPlaying !== card) return; // Jika terlanjur klik lain
+.action-card:hover {
+    transform: translateY(-2px);
+    border-color: #cbd5e1;
+}
 
-            card.isAudioPlaying = true;
-            card.isGifPlaying = true;
+.action-card.playing {
+    border: 2px solid #ffb9d6;
+    background: #fff5f8;
+}
 
-            // Mulai Audio
-            if (time.customAudio) {
-                if (!card.audioElement) {
-                    card.audioElement = new Audio(time.customAudio);
-                    card.audioElement.addEventListener('ended', () => {
-                        if (currentlyPlaying === card) {
-                            card.isAudioPlaying = false;
-                            checkNaturalStop(card);
-                        }
-                    });
-                }
-                card.audioElement.currentTime = 0;
-                card.audioElement.play().catch(err => console.warn("Audio playback failed:", err));
-            } else {
-                audio.currentTime = time.start;
-                audio.play().catch(err => console.warn("Audio playback failed:", err));
-            }
+.image-wrapper {
+    width: 100%;
+    aspect-ratio: 1;
+    background: #f1f2f6;
+    border-radius: 8px;
+    margin-bottom: 8px;
+    position: relative;
+    overflow: hidden;
+}
 
-            // Calculate true duration or fallback to hardcoded
-            const duration = gifDurations[actionName] || time.gifDuration || DEFAULT_GIF_DURATION;
-            
-            gifTimeout = setTimeout(() => {
-                if (currentlyPlaying === card) {
-                    card.isGifPlaying = false;
-                    img.src = staticLinks[actionName];
-                    checkNaturalStop(card);
-                }
-            }, duration);
-        };
+.action-image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: var(--transition);
+    border-radius: 8px;
+}
 
-        img.onload = () => {
-            playAudioAndSetTimeout();
-            img.onload = null;
-            img.onerror = null;
-        };
+/* ── SOUND BUTTON (Matching Read_and_say_1) ── */
+.sound-btn {
+    position: absolute;
+    top: 6px;
+    right: 6px;
+    width: 28px;
+    height: 28px;
+    border-radius: 50%;
+    background: #ff0000;
+    border: 2px solid #fff;
+    color: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: var(--transition);
+    z-index: 10;
+}
 
-        img.onerror = () => {
-            playAudioAndSetTimeout(); // tetap putar audio jika gagal muat gambar
-            img.onload = null;
-            img.onerror = null;
-        };
+.sound-btn svg {
+    width: 14px;
+    height: 14px;
+    fill: currentColor;
+}
 
-        img.src = gifSrc;
+.sound-btn:hover {
+    transform: scale(1.1);
+}
 
-        card.scrollIntoView({ behavior: 'smooth', block: 'center' });
+/* ── TEXT STYLE (Matching Read_and_say_1) ── */
+.text-wrapper {
+    width: 100%;
+    text-align: center;
+}
 
-    };
+.action-text {
+    font-size: 13px;
+    font-weight: 650;
+    color: #333;
+    padding: 2px 4px;
+    border-radius: 6px;
+    transition: var(--transition);
+    display: block;
+    line-height: 1.2;
+}
 
-    const stopAction = (targetCard) => {
-        if (!targetCard) return;
+.hobby-text {
+    font-size: 11px;
+    font-weight: 500;
+    color: #64748b;
+    display: block;
+    margin-top: 2px;
+}
 
-        const targetImg = targetCard.querySelector('.action-image');
-        const targetAction = targetCard.dataset.action;
-        const targetIcon = targetCard.querySelector('.sound-btn path');
+/* ── HIGHLIGHT COLORS (Cycling pattern like Read_and_say_1) ── */
+.action-card:nth-child(6n+1).playing {
+    border-color: #ffb9d6;
+    background: #fff5f8;
+}
 
-        if (targetCard.audioElement) {
-            targetCard.audioElement.pause();
-            targetCard.audioElement.currentTime = 0;
-        }
-        audio.pause();
+.action-card:nth-child(6n+1).playing .action-text {
+    background: #ffb9d6;
+}
 
-        targetCard.isAudioPlaying = false;
-        targetCard.isGifPlaying = false;
+.action-card:nth-child(6n+2).playing {
+    border-color: #93eeff;
+    background: #f0f9ff;
+}
 
-        targetCard.classList.remove('playing');
-        targetIcon.setAttribute('d', playIconPath);
+.action-card:nth-child(6n+2).playing .action-text {
+    background: #93eeff;
+}
 
-        // Hentikan timer gif jika sedang berjalan
-        if (gifTimeout && currentlyPlaying === targetCard) {
-            clearTimeout(gifTimeout);
-            gifTimeout = null;
-        }
+.action-card:nth-child(6n+3).playing {
+    border-color: #b2ffe1;
+    background: #f0fff4;
+}
 
-        // Kembalikan ke PNG statis
-        if (actionsWithStatic.includes(targetAction)) {
-            targetImg.src = staticLinks[targetAction];
-        } else {
-            targetImg.src = gifLinks[targetAction];
-        }
+.action-card:nth-child(6n+3).playing .action-text {
+    background: #b2ffe1;
+}
 
-        if (currentlyPlaying === targetCard) {
-            currentlyPlaying = null;
-            stopAtTime = null;
-        }
-    };
+.action-card:nth-child(6n+4).playing {
+    border-color: #dcd1ff;
+    background: #f5f3ff;
+}
 
-    const checkCompletion = () => {
-        // Jika semua kartu (20) sudah diklik dan belum dirayakan
-        if (clickedCards.size === actionCards.length && !isCelebrated) {
-            isCelebrated = true;
-            triggerCelebration();
-        }
-    };
+.action-card:nth-child(6n+4).playing .action-text {
+    background: #dcd1ff;
+}
 
-    const triggerCelebration = () => {
-        // Efek kembang api menggunakan canvas-confetti
-        const duration = 5 * 1000;
-        const animationEnd = Date.now() + duration;
-        const defaults = { startVelocity: 30, spread: 360, ticks: 60, zIndex: 9999 };
+.action-card:nth-child(6n+5).playing {
+    border-color: #ffc58f;
+    background: #fffaf5;
+}
 
-        const randomInRange = (min, max) => Math.random() * (max - min) + min;
+.action-card:nth-child(6n+5).playing .action-text {
+    background: #ffc58f;
+}
 
-        const interval = setInterval(function () {
-            const timeLeft = animationEnd - Date.now();
+.action-card:nth-child(6n+6).playing {
+    border-color: #bdfcba;
+    background: #f7fee7;
+}
 
-            if (timeLeft <= 0) {
-                return clearInterval(interval);
-            }
+.action-card:nth-child(6n+6).playing .action-text {
+    background: #bdfcba;
+}
 
-            const particleCount = 50 * (timeLeft / duration);
-            // Kembang api dari kiri dan kanan
-            confetti(Object.assign({}, defaults, { particleCount, origin: { x: randomInRange(0.1, 0.3), y: Math.random() - 0.2 } }));
-            confetti(Object.assign({}, defaults, { particleCount, origin: { x: randomInRange(0.7, 0.9), y: Math.random() - 0.2 } }));
-        }, 250);
-    };
+/* Pulse effect removed for solid feel */
+.action-card.playing .sound-btn {
+    opacity: 0.8;
+}
 
-    actionCards.forEach(card => {
-        const soundBtn = card.querySelector('.sound-btn');
-        card.addEventListener('click', (e) => {
-            if (e.target.closest('.sound-btn')) return;
-            playAction(card);
-        });
+/* ── LOADING TEXT OVERLAY ── */
+.action-card.loading .image-wrapper::after {
+    content: 'Loading...';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(255, 255, 255, 0.8);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 16px;
+    font-weight: 800;
+    color: #ff0000;
+    z-index: 10;
+}
 
-        soundBtn.addEventListener('click', (e) => {
-            e.stopPropagation();
-            playAction(card);
-        });
-    });
-
-    audio.addEventListener('timeupdate', () => {
-        if (stopAtTime !== null && audio.currentTime >= stopAtTime) {
-            audio.pause();
-            stopAtTime = null;
-            if (currentlyPlaying) {
-                currentlyPlaying.isAudioPlaying = false;
-                checkNaturalStop(currentlyPlaying);
-            }
-        }
-    });
-
-    audio.addEventListener('ended', () => {
-        if (currentlyPlaying) {
-            currentlyPlaying.isAudioPlaying = false;
-            checkNaturalStop(currentlyPlaying);
-        }
-    });
-
-    // Auto-parse GIF and create Blob URL for instant replay
-    const gifDurations = {};
-    const gifObjectUrls = {};
-
-    async function processGif(actionName, url) {
-        try {
-            const response = await fetch(url);
-            const buffer = await response.arrayBuffer();
-            const arr = new Uint8Array(buffer);
-            
-            // Caching as Blob URL to avoid network delay on replay
-            const blob = new Blob([buffer], { type: 'image/gif' });
-            gifObjectUrls[actionName] = URL.createObjectURL(blob);
-
-            let duration = 0;
-            let i = 13;
-            if (arr[10] & 0x80) {
-                const gctSize = 2 << (arr[10] & 0x07);
-                i += 3 * gctSize;
-            }
-            
-            while (i < arr.length) {
-                if (arr[i] === 0x21) { 
-                    const extType = arr[i + 1];
-                    let blockSize = arr[i + 2];
-                    if (extType === 0xF9 && blockSize === 4) {
-                        const delay = arr[i + 4] | (arr[i + 5] << 8);
-                        duration += (delay === 0 ? 10 : delay) * 10;
-                    }
-                    i += 3;
-                    while (blockSize > 0 && i < arr.length) {
-                        i += blockSize;
-                        blockSize = arr[i];
-                        i++;
-                    }
-                } else if (arr[i] === 0x2C) { 
-                    const packed = arr[i + 9];
-                    i += 10;
-                    if (packed & 0x80) { 
-                        const lctSize = 2 << (packed & 0x07);
-                        i += 3 * lctSize;
-                    }
-                    i++; 
-                    let blockSize = arr[i];
-                    i++;
-                    while (blockSize > 0 && i < arr.length) {
-                        i += blockSize;
-                        blockSize = arr[i];
-                        i++;
-                    }
-                } else if (arr[i] === 0x3B) { 
-                    break;
-                } else {
-                    break; 
-                }
-            }
-            return duration > 0 ? duration : 3000;
-        } catch (e) {
-            console.warn("Failed to process GIF", e);
-            gifObjectUrls[actionName] = url;
-            return 3000;
-        }
+@media (max-width: 360px) {
+    .page {
+        box-shadow: none;
     }
+}
+/* -- BORDERS -- */
+.top-border {
+    position: absolute !important;
+    top: 0 !important;
+    left: 0 !important;
+    width: 100% !important;
+    height: auto !important;
+    z-index: 9999 !important;
+    pointer-events: none !important;
+}
 
-    // Preload images and calculate GIF durations
-    const preloadImages = async () => {
-        for (const [actionName, url] of Object.entries(gifLinks)) {
-            gifDurations[actionName] = await processGif(actionName, url);
-        }
-        Object.values(staticLinks).forEach(url => {
-            const img = new Image();
-            img.src = url;
-        });
-    };
-    preloadImages();
-});
+.bottom-border {
+    position: absolute !important;
+    bottom: 0 !important;
+    left: 0 !important;
+    width: 100% !important;
+    height: auto !important;
+    z-index: 9999 !important;
+    pointer-events: none !important;
+}
+
+
+
+/* -- HEADER OVERRIDE FOR BORDERS -- */
+.module-header {
+    background: transparent !important;
+    padding-top: 65px !important;
+    position: relative !important;
+    z-index: 10000 !important;
+    box-shadow: none !important;
+}
+
+.scroll-content {
+    padding-bottom: 120px !important;
+    overflow-y: visible !important;
+}
