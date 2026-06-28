@@ -19,7 +19,8 @@ body {
     width: 100%;
     max-width: 100%;
     overflow-x: hidden;
-    overflow-y: auto; /* Biarkan scroll manual pengguna */
+    overflow-y: auto;
+    /* Biarkan scroll manual pengguna */
     /* Matikan scroll manual pengguna */
     background: transparent;
     scroll-behavior: smooth;
@@ -104,11 +105,11 @@ body {
 .scroll-content {
     width: 100%;
     flex-grow: 1;
-    
+
     padding: 0 16px 24px 16px;
     display: flex;
     flex-direction: column;
-    
+
     scrollbar-width: none;
     /* Firefox */
     position: relative;
@@ -241,7 +242,7 @@ body {
     justify-content: center;
     font-size: 12px;
     font-weight: 800;
-    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
     transition: all 0.2s;
     z-index: 10;
     pointer-events: none;
@@ -341,6 +342,7 @@ body {
 .bottom-padding {
     height: 10px;
 }
+
 /* -- BORDERS -- */
 .top-border {
     position: absolute !important;
@@ -410,6 +412,7 @@ body {
     flex-shrink: 0;
     margin-top: 2px;
 }
+
 .number-badge::after {
     content: "";
     position: absolute;
@@ -427,7 +430,7 @@ body {
     align-items: center;
     gap: 6px;
     flex: 1;
-    white-space: nowrap;
+    flex-wrap: wrap;
 }
 
 .write-input {
@@ -444,6 +447,7 @@ body {
     outline: none;
     transition: all 0.2s ease;
 }
+
 .write-input:focus {
     border-bottom-color: #3b82f6;
 }
@@ -452,6 +456,7 @@ body {
     color: #16a34a;
     border-bottom-color: #16a34a;
 }
+
 .write-input.wrong-input {
     color: #dc2626;
     border-bottom-color: #dc2626;
@@ -462,8 +467,14 @@ body {
     font-weight: bold;
     margin-left: 4px;
 }
-.feedback-icon.correct { color: #16a34a; }
-.feedback-icon.wrong { color: #dc2626; }
+
+.feedback-icon.correct {
+    color: #16a34a;
+}
+
+.feedback-icon.wrong {
+    color: #dc2626;
+}
 
 .hint-box {
     width: 100%;
