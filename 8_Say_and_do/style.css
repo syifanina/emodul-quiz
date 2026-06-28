@@ -23,7 +23,7 @@ body {
     overflow-x: hidden;
     overflow-y: auto; /* Biarkan scroll manual pengguna */
     /* Matikan scroll manual pengguna */
-    background: transparent;
+    background: #ffffff;
     scroll-behavior: smooth;
     /* Sembunyikan scrollbar agar tidak double scroll di Genially */
     -ms-overflow-style: none;
@@ -38,29 +38,6 @@ body::-webkit-scrollbar {
     /* Chrome, Safari, Opera */
 }
 
-/* ── CUTE BACKGROUND DECORATIONS ── */
-body::before,
-body::after {
-    content: '';
-    position: fixed;
-    width: 300px;
-    height: 300px;
-    border-radius: 50%;
-    background: radial-gradient(circle, rgba(255, 185, 214, 0.2) 0%, rgba(255, 255, 255, 0) 70%);
-    z-index: -1;
-    filter: blur(40px);
-}
-
-body::before {
-    top: -100px;
-    left: -100px;
-}
-
-body::after {
-    bottom: -100px;
-    right: -100px;
-    background: radial-gradient(circle, rgba(147, 238, 255, 0.2) 0%, rgba(255, 255, 255, 0) 70%);
-}
 
 body {
     font-family: 'Outfit', 'Quicksand', 'Inter', sans-serif;
