@@ -1,13 +1,19 @@
-// Preload GIF assets so there's no delay when Play is clicked
+// Preload GIF assets as Blobs so there's no delay when Play is clicked
 const GIF_URLS = [
     'https://lh3.googleusercontent.com/d/151f1yq96FqbKRMfFKm0KXB4yPoroSeNy',
     'https://lh3.googleusercontent.com/d/1vt8Iv28Rfo1-T9PR8DzhTkleY5hkTXWS'
 ];
 
+const preloadedGifs = {};
+
 window.addEventListener('load', () => {
     GIF_URLS.forEach(url => {
-        const img = new Image();
-        img.src = url;
+        fetch(url)
+            .then(res => res.blob())
+            .then(blob => {
+                preloadedGifs[url] = URL.createObjectURL(blob);
+            })
+            .catch(err => console.error('Error preloading GIF:', err));
     });
 });
 
@@ -24,7 +30,7 @@ function flipCard(element) {
     }
 }
 
-function playGifAudio(audioId, container, gifSrc, pngSrc) {
+function playGifAudio(audioId, container, originalGifSrc, pngSrc) {
     const audio = document.getElementById(audioId);
     const imgElement = container.querySelector('.gif-image');
     
@@ -32,20 +38,28 @@ function playGifAudio(audioId, container, gifSrc, pngSrc) {
     if (container.classList.contains('playing')) return;
     
     if (audio && imgElement) {
-        // Swap to animated GIF
-        imgElement.src = gifSrc;
-        
-        audio.currentTime = 0;
-        audio.play().catch(e => console.log('Audio play blocked:', e));
-        
-        // Hide play button
+        // Hide play button to indicate it's loading/playing
         container.classList.add('playing');
+        
+        // Use preloaded Blob URL if available, else fallback
+        const finalGifSrc = preloadedGifs[originalGifSrc] || originalGifSrc;
+        
+        // Wait for the GIF to fully load before starting the audio
+        imgElement.onload = () => {
+            audio.currentTime = 0;
+            audio.play().catch(e => console.log('Audio play blocked:', e));
+            // Remove listener so it doesn't trigger on reset
+            imgElement.onload = null;
+        };
+        
+        // Swap to animated GIF
+        imgElement.src = finalGifSrc;
         
         // Swap back to static PNG and show play button when audio finishes
         audio.onended = () => {
+            imgElement.onload = null;
             imgElement.src = pngSrc;
             container.classList.remove('playing');
         };
     }
 }
-
