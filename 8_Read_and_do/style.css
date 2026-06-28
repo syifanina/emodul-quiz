@@ -638,6 +638,7 @@ body {
 .gif-container {
     position: relative;
     width: 100%;
+    aspect-ratio: 16 / 9;
     margin-bottom: 12px;
     border-radius: 8px;
     overflow: hidden;
@@ -647,7 +648,8 @@ body {
 
 .gif-image {
     width: 100%;
-    height: auto;
+    height: 100%;
+    object-fit: cover;
     display: block;
     opacity: 0.9;
 }
