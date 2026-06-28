@@ -155,7 +155,8 @@ document.addEventListener('DOMContentLoaded', () => {
 
     function updateCheckButtonState() {
         const connIds = Object.keys(connections);
-        if (connIds.length > 0) {
+        // Tombol hanya aktif jika jumlah koneksi sudah sama atau lebih dari total buah (termasuk contoh)
+        if (connIds.length >= totalFruits) {
             checkBtn.style.opacity = '1';
             checkBtn.style.pointerEvents = 'auto';
             checkBtn.style.cursor = 'pointer';
