@@ -1,0 +1,256 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Match and Write – Quiz</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <div class="page">
+        <img src="https://lh3.googleusercontent.com/d/1Wtb9UWtvVhVA13B0HLBagfyx1bD1LU5x" class="top-border" alt="Top Border">
+        <img src="https://lh3.googleusercontent.com/d/19NE3XzidRxaYa56e4OBOdI38n3nYJhwK" class="bottom-border" alt="Bottom Border">
+
+        <header class="module-header">
+            <img src="https://lh3.googleusercontent.com/d/1K4Wq20hO10gwK7WcJdalwzg5a06gtUqC" alt="Match and Write" class="title-badge">
+            <div class="instructions">
+                <p class="en">Match the verbs to the correct jobs. Fill in the red box with the alphabets!</p>
+                <div class="separator"></div>
+                <p class="id">Cocokkan kata kerja dengan pekerjaan yang tepat. Isikan kotak merah dengan abjad yang sesuai!</p>
+            </div>
+        </header>
+
+        <div class="scroll-content" id="quiz-container">
+            <!-- QUIZ QUESTIONS -->
+            <div class="match-layout" style="display: flex; flex-direction: column; gap: 12px; width: 100%;">
+                
+                <!-- Main Block -->
+                <div style="display: flex; justify-content: space-between; gap: 12px; width: 100%; align-items: stretch;">
+                    
+                    <!-- Left Column (Boxes 1, 2, 3, 4) -->
+                    <div style="display: flex; flex-direction: column; gap: 12px; flex: 1;">
+                        <!-- Box 1 (Example) -->
+                        <div class="item-box filled" id="box-1" style="flex: 1; border-color: #dc2626; --badge-color: #dc2626; pointer-events: none;">
+                            <div class="item-num" style="background: #dc2626;">1</div>
+                            <img src="https://lh3.googleusercontent.com/d/1wKRLeMu6hjhpvuE7aHLx2kBYoYCQgdsL" alt="Question 1">
+                            <div class="item-name">The teacher</div>
+                            <div class="answer-badge" id="badge-1" data-id="1">F</div>
+                        </div>
+                        <!-- Box 2 -->
+                        <div class="item-box" id="box-2" style="flex: 1; border-color: #ea580c;">
+                            <div class="item-num" style="background: #ea580c;">2</div>
+                            <img src="https://lh3.googleusercontent.com/d/1C7mU_mkpUX9NjBjlXjF4cS9Y0TXUrqQ1" alt="Question 2">
+                            <div class="item-name">The driver</div>
+                            <div class="answer-badge" id="badge-2" data-id="2">?</div>
+                        </div>
+                        <!-- Box 3 -->
+                        <div class="item-box" id="box-3" style="flex: 1; border-color: #16a34a;">
+                            <div class="item-num" style="background: #16a34a;">3</div>
+                            <img src="https://lh3.googleusercontent.com/d/1LLqiVQfkQRBigz_LAb1XsdkPkL3D8O_4" alt="Question 3">
+                            <div class="item-name">The doctor</div>
+                            <div class="answer-badge" id="badge-3" data-id="3">?</div>
+                        </div>
+                        <!-- Box 4 -->
+                        <div class="item-box" id="box-4" style="flex: 1; border-color: #2563eb;">
+                            <div class="item-num" style="background: #2563eb;">4</div>
+                            <img src="https://lh3.googleusercontent.com/d/10Xjw94Egz31c3Jpb6G-k6zyhmPaYUMus" alt="Question 4">
+                            <div class="item-name">The nurse</div>
+                            <div class="answer-badge" id="badge-4" data-id="4">?</div>
+                        </div>
+                    </div>
+
+                    <!-- Center Column -->
+                    <div class="center-box" style="flex: 1; margin: 0;">
+                        <div class="room-list">
+                            <div class="room-item target-box" id="target-A" data-opt="A"><span>(A)</span> DRIVES A BUS</div>
+                            <div class="room-item target-box" id="target-B" data-opt="B"><span>(B)</span> CHECKS-UP PATIENT</div>
+                            <div class="room-item target-box" id="target-C" data-opt="C"><span>(C)</span> HELP PATIENT</div>
+                            <div class="room-item target-box" id="target-D" data-opt="D"><span>(D)</span> CONTROLS TRAFFIC</div>
+                            <div class="room-item target-box" id="target-E" data-opt="E"><span>(E)</span> PUTS-DOWN THE FIRE</div>
+                            <div class="room-item target-box" id="target-F" data-opt="F"><span>(F)</span> TEACHES STUDENTS AT SCHOOL</div>
+                            <div class="room-item target-box" id="target-G" data-opt="G"><span>(G)</span> GROWS PLANTS</div>
+                            <div class="room-item target-box" id="target-H" data-opt="H"><span>(H)</span> CATCHES FISH</div>
+                            <div class="room-item target-box" id="target-I" data-opt="I"><span>(I)</span> SENDS MAILS</div>
+                            <div class="room-item target-box" id="target-J" data-opt="J"><span>(J)</span> FLIES THE AIRPLANE</div>
+                            <div class="room-item target-box" id="target-K" data-opt="K"><span>(K)</span> CHECKS THE SAFETY</div>
+                        </div>
+                    </div>
+
+                    <!-- Right Column (Boxes 5, 6, 7, 8) -->
+                    <div style="display: flex; flex-direction: column; gap: 12px; flex: 1;">
+                        <!-- Box 5 -->
+                        <div class="item-box" id="box-5" style="flex: 1; border-color: #7e22ce;">
+                            <div class="item-num" style="background: #7e22ce;">5</div>
+                            <img src="https://lh3.googleusercontent.com/d/18kp7QWIlwoYWoyNgfc1O_NAVXgus3DKh" alt="Question 5">
+                            <div class="item-name">The police</div>
+                            <div class="answer-badge" id="badge-5" data-id="5">?</div>
+                        </div>
+                        <!-- Box 6 -->
+                        <div class="item-box" id="box-6" style="flex: 1; border-color: #dc2626;">
+                            <div class="item-num" style="background: #dc2626;">6</div>
+                            <img src="https://lh3.googleusercontent.com/d/1xUKi7iOxPRlBaJWznp74xEkfYxNJ8IS0" alt="Question 6">
+                            <div class="item-name">The firefighter</div>
+                            <div class="answer-badge" id="badge-6" data-id="6">?</div>
+                        </div>
+                        <!-- Box 7 -->
+                        <div class="item-box" id="box-7" style="flex: 1; border-color: #16a34a;">
+                            <div class="item-num" style="background: #16a34a;">7</div>
+                            <img src="https://lh3.googleusercontent.com/d/1cBTF_etUh2T00jZQrviBVIPZpKDArjxx" alt="Question 7">
+                            <div class="item-name">The farmer</div>
+                            <div class="answer-badge" id="badge-7" data-id="7">?</div>
+                        </div>
+                        <!-- Box 8 -->
+                        <div class="item-box" id="box-8" style="flex: 1; border-color: #ea580c;">
+                            <div class="item-num" style="background: #ea580c;">8</div>
+                            <img src="https://lh3.googleusercontent.com/d/1bJJyAS5GaefKql5cKmm21Zxjrdbl7aG-" alt="Question 8">
+                            <div class="item-name">The fisherman</div>
+                            <div class="answer-badge" id="badge-8" data-id="8">?</div>
+                        </div>
+                    </div>
+
+                </div>
+
+                <!-- Bottom Row (Boxes 9, 10, 11) -->
+                <div style="display: flex; justify-content: center; gap: 12px; width: 100%; padding: 0 16px;">
+                    <!-- Box 9 -->
+                    <div class="item-box" id="box-9" style="width: calc(33.333% - 8px); border-color: #2563eb;">
+                        <div class="item-num" style="background: #2563eb;">9</div>
+                        <img src="https://lh3.googleusercontent.com/d/1jDc5laBe688EKuXjtq1bMhDVyn8_oQtt?v=2" alt="Question 9">
+                        <div class="item-name">The postman</div>
+                        <div class="answer-badge" id="badge-9" data-id="9">?</div>
+                    </div>
+                    <!-- Box 10 -->
+                    <div class="item-box" id="box-10" style="width: calc(33.333% - 8px); border-color: #16a34a;">
+                        <div class="item-num" style="background: #16a34a;">10</div>
+                        <img src="https://lh3.googleusercontent.com/d/10acB8ultcEX9HCl_q99eySkaoxsctZ8l" alt="Question 10">
+                        <div class="item-name">The pilot</div>
+                        <div class="answer-badge" id="badge-10" data-id="10">?</div>
+                    </div>
+                    <!-- Box 11 -->
+                    <div class="item-box" id="box-11" style="width: calc(33.333% - 8px); border-color: #ca8a04;">
+                        <div class="item-num" style="background: #ca8a04;">11</div>
+                        <img src="https://lh3.googleusercontent.com/d/1a6snvPgct6UDBSi71lYGxjPBkqoAsufJ" alt="Question 11">
+                        <div class="item-name">The security</div>
+                        <div class="answer-badge" id="badge-11" data-id="11">?</div>
+                    </div>
+                </div>
+
+            </div>
+
+            <!-- WRITING SECTION -->
+            <div class="write-section" style="margin-top: 40px; width: 100%;">
+                <div class="instructions" style="margin-bottom: 12px;">
+                    <p class="en">Complete the sentences with the words from the box. Look at the example!</p>
+                    <div class="separator"></div>
+                    <p class="id">Lengkapi kalimat dengan kata-kata di dalam kotak. Perhatikan contoh!</p>
+                </div>
+                
+                <div class="word-box" style="display: flex; flex-wrap: wrap; gap: 8px; justify-content: center; background: #fdf2f8; padding: 12px; border: 2px dashed #db2777; border-radius: 8px; margin-bottom: 20px;">
+                    <span style="background: #fff; padding: 4px 8px; border-radius: 4px; border: 1px solid #fbcfe8; font-size: 12px; font-weight: 600; color: #be185d;">controls traffic</span>
+                    <span style="background: #fff; padding: 4px 8px; border-radius: 4px; border: 1px solid #fbcfe8; font-size: 12px; font-weight: 600; color: #be185d;">fixes cars or bikes</span>
+                    <span style="background: #fff; padding: 4px 8px; border-radius: 4px; border: 1px solid #fbcfe8; font-size: 12px; font-weight: 600; color: #be185d;">puts-down the fire</span>
+                    <span style="background: #fff; padding: 4px 8px; border-radius: 4px; border: 1px solid #fbcfe8; font-size: 12px; font-weight: 600; color: #be185d;">sells goods</span>
+                    <span style="background: #fff; padding: 4px 8px; border-radius: 4px; border: 1px solid #fbcfe8; font-size: 12px; font-weight: 600; color: #be185d;">checks-up patient</span>
+                    <span style="background: #fff; padding: 4px 8px; border-radius: 4px; border: 1px solid #fbcfe8; font-size: 12px; font-weight: 600; color: #be185d;">sends mails</span>
+                    <span style="background: #fff; padding: 4px 8px; border-radius: 4px; border: 1px solid #fbcfe8; font-size: 12px; font-weight: 600; color: #be185d;">catches fish</span>
+                    <span style="background: #fff; padding: 4px 8px; border-radius: 4px; border: 1px solid #fbcfe8; font-size: 12px; font-weight: 600; color: #be185d;">makes contents for internet</span>
+                    <span style="background: #fff; padding: 4px 8px; border-radius: 4px; border: 1px solid #fbcfe8; font-size: 12px; font-weight: 600; color: #be185d;">flies the airplane</span>
+                    <span style="background: #fff; padding: 4px 8px; border-radius: 4px; border: 1px solid #fbcfe8; font-size: 12px; font-weight: 600; color: #be185d;">cooks food</span>
+                </div>
+
+                <div class="write-container">
+                    <div class="write-row example-row">
+                        <div class="number-badge">1</div>
+                        <div class="write-content">
+                            <span class="example-label" style="font-weight: 800; color: #dc2626;">Example:</span> <strong style="font-size: 14px;">A teacher <u>teaches students at school</u></strong>
+                        </div>
+                    </div>
+                    <div class="write-row">
+                        <div class="number-badge">1</div>
+                        <div class="write-content">
+                            A police officer <input type="text" class="write-input" id="write-input-2" data-answer="controls traffic" placeholder="....." autocomplete="off" autocorrect="off" spellcheck="false">
+                        </div>
+                    </div>
+                    <div class="write-row">
+                        <div class="number-badge">2</div>
+                        <div class="write-content">
+                            A mechanic <input type="text" class="write-input" id="write-input-3" data-answer="fixes cars or bikes|fixes cars|fixes bikes" placeholder="....." autocomplete="off" autocorrect="off" spellcheck="false">
+                        </div>
+                    </div>
+                    <div class="write-row">
+                        <div class="number-badge">3</div>
+                        <div class="write-content">
+                            A firefighter <input type="text" class="write-input" id="write-input-4" data-answer="puts-down the fire|puts down the fire" placeholder="....." autocomplete="off" autocorrect="off" spellcheck="false">
+                        </div>
+                    </div>
+                    <div class="write-row">
+                        <div class="number-badge">4</div>
+                        <div class="write-content">
+                            A merchant <input type="text" class="write-input" id="write-input-5" data-answer="sells goods" placeholder="....." autocomplete="off" autocorrect="off" spellcheck="false">
+                        </div>
+                    </div>
+                    <div class="write-row">
+                        <div class="number-badge">5</div>
+                        <div class="write-content">
+                            A doctor <input type="text" class="write-input" id="write-input-6" data-answer="checks-up patient|checks up patient" placeholder="....." autocomplete="off" autocorrect="off" spellcheck="false">
+                        </div>
+                    </div>
+                    <div class="write-row">
+                        <div class="number-badge">6</div>
+                        <div class="write-content">
+                            A postman <input type="text" class="write-input" id="write-input-7" data-answer="sends mails" placeholder="....." autocomplete="off" autocorrect="off" spellcheck="false">
+                        </div>
+                    </div>
+                    <div class="write-row">
+                        <div class="number-badge">7</div>
+                        <div class="write-content">
+                            A fisherman <input type="text" class="write-input" id="write-input-8" data-answer="catches fish" placeholder="....." autocomplete="off" autocorrect="off" spellcheck="false">
+                        </div>
+                    </div>
+                    <div class="write-row">
+                        <div class="number-badge">8</div>
+                        <div class="write-content">
+                            A vlogger <input type="text" class="write-input" id="write-input-9" data-answer="makes contents for internet" placeholder="....." autocomplete="off" autocorrect="off" spellcheck="false">
+                        </div>
+                    </div>
+                    <div class="write-row">
+                        <div class="number-badge">9</div>
+                        <div class="write-content">
+                            A pilot <input type="text" class="write-input" id="write-input-10" data-answer="flies the airplane|flies an airplane|flies the plane" placeholder="....." autocomplete="off" autocorrect="off" spellcheck="false">
+                        </div>
+                    </div>
+                    <div class="write-row">
+                        <div class="number-badge">10</div>
+                        <div class="write-content">
+                            A chef <input type="text" class="write-input" id="write-input-11" data-answer="cooks food|cooks the food" placeholder="....." autocomplete="off" autocorrect="off" spellcheck="false">
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="bottom-padding"></div>
+            <div id="result-msg" class="result-msg"></div>
+            <div class="btn-row">
+                <button id="btn-reset" class="reset-btn">
+                    <img src="https://lh3.googleusercontent.com/d/1dei6o2rEZhsDD_INFO6JwhkXtlAR_0N8" alt="Reset">
+                </button>
+                <button id="btn-check" class="check-btn">
+                    <img src="https://lh3.googleusercontent.com/d/1XsYlo6Lz_DtaXPn7sFOWVzLGwOBexrXY" alt="Check Answer">
+                </button>
+            </div>
+        </div>
+
+        <audio id="click-audio" src="../7_Look_and_write/assets/click.MP3" preload="auto"></audio>
+        <audio id="correct-audio" src="../7_Look_and_write/assets/correct_sound.MP3" preload="auto"></audio>
+        <audio id="wrong-audio" src="../7_Look_and_write/assets/incorrect_sound.MP3" preload="auto"></audio>
+        <audio id="typing-audio" src="../7_Look_and_write/assets/typing.MP3" preload="auto"></audio>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
