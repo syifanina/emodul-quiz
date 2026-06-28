@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Move Your Body! - Say and Do</title>
+    <link rel="stylesheet" href="style.css">
+    <!-- Confetti Library for celebration -->
+    <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
+</head>
+
+<body>
+    <div class="page">
+        <img src="https://lh3.googleusercontent.com/d/1Wtb9UWtvVhVA13B0HLBagfyx1bD1LU5x" class="top-border" alt="Top Border">
+        <img src="https://lh3.googleusercontent.com/d/19NE3XzidRxaYa56e4OBOdI38n3nYJhwK" class="bottom-border" alt="Bottom Border">
+
+        <header class="module-header">
+            <!-- PNG Judul -->
+            <img src="https://lh3.googleusercontent.com/d/1BC8VrBBczLh4GgFFRu3eJ9x8Wtn19V9-" alt="Say and Do" class="title-badge">
+            
+            <div class="instructions">
+                <p class="en">Act and say the activities in the pictures!</p>
+                <div class="separator"></div>
+                <p class="id">Peragakan dan ucapkan aktivitas sesuai gambar!</p>
+            </div>
+        </header>
+
+        <!-- Scrollable Content -->
+        <div class="scroll-content">
+
+        <main class="grid-container">
+            <!-- 1. Wake up -->
+            <div class="action-card" data-action="wake_up">
+                <div class="image-wrapper">
+                    <img src="https://lh3.googleusercontent.com/d/1yaYMBdFsuvYAd9Jm8SbERb1SSGj_H1WE" alt="Wake up" class="action-image">
+                    <button class="sound-btn" aria-label="Play sound">
+                        <svg viewBox="0 0 24 24">
+                            <path d="M14,3.23V5.29C16.89,6.15 19,8.83 19,12C19,15.17 16.89,17.85 14,18.71V20.77C18.03,19.86 21,16.28 21,12C21,7.72 18.03,4.14 14,3.23M16.5,12C16.5,10.23 15.5,8.71 14,7.97V16.04C15.5,15.29 16.5,13.77 16.5,12M3,9V15H7L12,20V4L7,9H3Z" />
+                        </svg>
+                    </button>
+                </div>
+                <div class="text-wrapper">
+                    <span class="action-text">Wake up</span>
+                </div>
+            </div>
+
+            <!-- 2. Take a bath -->
+            <div class="action-card" data-action="take_a_bath">
+                <div class="image-wrapper">
+                    <img src="https://lh3.googleusercontent.com/d/1Dz5y4uBis3fkopOS7eu-ATKzV6JRmeXi" alt="Take a bath" class="action-image">
+                    <button class="sound-btn" aria-label="Play sound">
+                        <svg viewBox="0 0 24 24">
+                            <path d="M14,3.23V5.29C16.89,6.15 19,8.83 19,12C19,15.17 16.89,17.85 14,18.71V20.77C18.03,19.86 21,16.28 21,12C21,7.72 18.03,4.14 14,3.23M16.5,12C16.5,10.23 15.5,8.71 14,7.97V16.04C15.5,15.29 16.5,13.77 16.5,12M3,9V15H7L12,20V4L7,9H3Z" />
+                        </svg>
+                    </button>
+                </div>
+                <div class="text-wrapper">
+                    <span class="action-text">Take a bath</span>
+                </div>
+            </div>
+
+            <!-- 3. Have breakfast -->
+            <div class="action-card" data-action="have_breakfast">
+                <div class="image-wrapper">
+                    <img src="https://lh3.googleusercontent.com/d/1iLS5CenfegrcbKm3BbFin8QMpSYn-vWm" alt="Have breakfast" class="action-image">
+                    <button class="sound-btn" aria-label="Play sound">
+                        <svg viewBox="0 0 24 24">
+                            <path d="M14,3.23V5.29C16.89,6.15 19,8.83 19,12C19,15.17 16.89,17.85 14,18.71V20.77C18.03,19.86 21,16.28 21,12C21,7.72 18.03,4.14 14,3.23M16.5,12C16.5,10.23 15.5,8.71 14,7.97V16.04C15.5,15.29 16.5,13.77 16.5,12M3,9V15H7L12,20V4L7,9H3Z" />
+                        </svg>
+                    </button>
+                </div>
+                <div class="text-wrapper">
+                    <span class="action-text">Have breakfast</span>
+                </div>
+            </div>
+
+            <!-- 4. Brush my teeth -->
+            <div class="action-card" data-action="brush_my_teeth">
+                <div class="image-wrapper">
+                    <img src="https://lh3.googleusercontent.com/d/1LV-avrYMRpNBJorQfuYF-XKYXTgD216m" alt="Brush my teeth" class="action-image">
+                    <button class="sound-btn" aria-label="Play sound">
+                        <svg viewBox="0 0 24 24">
+                            <path d="M14,3.23V5.29C16.89,6.15 19,8.83 19,12C19,15.17 16.89,17.85 14,18.71V20.77C18.03,19.86 21,16.28 21,12C21,7.72 18.03,4.14 14,3.23M16.5,12C16.5,10.23 15.5,8.71 14,7.97V16.04C15.5,15.29 16.5,13.77 16.5,12M3,9V15H7L12,20V4L7,9H3Z" />
+                        </svg>
+                    </button>
+                </div>
+                <div class="text-wrapper">
+                    <span class="action-text">Brush my teeth</span>
+                </div>
+            </div>
+
+            <!-- 5. Go to school -->
+            <div class="action-card" data-action="go_to_school">
+                <div class="image-wrapper">
+                    <img src="https://lh3.googleusercontent.com/d/1ToRThMT2WSSmNv66IEKeIngAy8A1Ysw8" alt="Go to school" class="action-image">
+                    <button class="sound-btn" aria-label="Play sound">
+                        <svg viewBox="0 0 24 24">
+                            <path d="M14,3.23V5.29C16.89,6.15 19,8.83 19,12C19,15.17 16.89,17.85 14,18.71V20.77C18.03,19.86 21,16.28 21,12C21,7.72 18.03,4.14 14,3.23M16.5,12C16.5,10.23 15.5,8.71 14,7.97V16.04C15.5,15.29 16.5,13.77 16.5,12M3,9V15H7L12,20V4L7,9H3Z" />
+                        </svg>
+                    </button>
+                </div>
+                <div class="text-wrapper">
+                    <span class="action-text">Go to school</span>
+                </div>
+            </div>
+
+            <!-- 6. Study in class -->
+            <div class="action-card" data-action="study_in_class">
+                <div class="image-wrapper">
+                    <img src="https://lh3.googleusercontent.com/d/1CV3kCriydB3cnw7Y7nistJHFp1sbRtSO" alt="Study in class" class="action-image">
+                    <button class="sound-btn" aria-label="Play sound">
+                        <svg viewBox="0 0 24 24">
+                            <path d="M14,3.23V5.29C16.89,6.15 19,8.83 19,12C19,15.17 16.89,17.85 14,18.71V20.77C18.03,19.86 21,16.28 21,12C21,7.72 18.03,4.14 14,3.23M16.5,12C16.5,10.23 15.5,8.71 14,7.97V16.04C15.5,15.29 16.5,13.77 16.5,12M3,9V15H7L12,20V4L7,9H3Z" />
+                        </svg>
+                    </button>
+                </div>
+                <div class="text-wrapper">
+                    <span class="action-text">Study in class</span>
+                </div>
+            </div>
+
+            <!-- 7. Have lunch -->
+            <div class="action-card" data-action="have_lunch">
+                <div class="image-wrapper">
+                    <img src="https://lh3.googleusercontent.com/d/1LpgG5frKfqjBgHMYrpMXZ-rIVRxFctBB" alt="Have lunch" class="action-image">
+                    <button class="sound-btn" aria-label="Play sound">
+                        <svg viewBox="0 0 24 24">
+                            <path d="M14,3.23V5.29C16.89,6.15 19,8.83 19,12C19,15.17 16.89,17.85 14,18.71V20.77C18.03,19.86 21,16.28 21,12C21,7.72 18.03,4.14 14,3.23M16.5,12C16.5,10.23 15.5,8.71 14,7.97V16.04C15.5,15.29 16.5,13.77 16.5,12M3,9V15H7L12,20V4L7,9H3Z" />
+                        </svg>
+                    </button>
+                </div>
+                <div class="text-wrapper">
+                    <span class="action-text">Have lunch</span>
+                </div>
+            </div>
+
+            <!-- 8. Go home from school -->
+            <div class="action-card" data-action="go_home">
+                <div class="image-wrapper">
+                    <img src="https://lh3.googleusercontent.com/d/1w84IRe0YT8P03LESiZNNpfYn518gPqwF" alt="Go home from school" class="action-image">
+                    <button class="sound-btn" aria-label="Play sound">
+                        <svg viewBox="0 0 24 24">
+                            <path d="M14,3.23V5.29C16.89,6.15 19,8.83 19,12C19,15.17 16.89,17.85 14,18.71V20.77C18.03,19.86 21,16.28 21,12C21,7.72 18.03,4.14 14,3.23M16.5,12C16.5,10.23 15.5,8.71 14,7.97V16.04C15.5,15.29 16.5,13.77 16.5,12M3,9V15H7L12,20V4L7,9H3Z" />
+                        </svg>
+                    </button>
+                </div>
+                <div class="text-wrapper">
+                    <span class="action-text">Go home from school</span>
+                </div>
+            </div>
+
+            <!-- 9. Play with friends -->
+            <div class="action-card" data-action="play_with_friends">
+                <div class="image-wrapper">
+                    <img src="https://lh3.googleusercontent.com/d/1yQuaTedjGt3C72dCYDqjR0UYiI3u_FRk" alt="Play with friends" class="action-image">
+                    <button class="sound-btn" aria-label="Play sound">
+                        <svg viewBox="0 0 24 24">
+                            <path d="M14,3.23V5.29C16.89,6.15 19,8.83 19,12C19,15.17 16.89,17.85 14,18.71V20.77C18.03,19.86 21,16.28 21,12C21,7.72 18.03,4.14 14,3.23M16.5,12C16.5,10.23 15.5,8.71 14,7.97V16.04C15.5,15.29 16.5,13.77 16.5,12M3,9V15H7L12,20V4L7,9H3Z" />
+                        </svg>
+                    </button>
+                </div>
+                <div class="text-wrapper">
+                    <span class="action-text">Play with friends</span>
+                </div>
+            </div>
+
+            <!-- 10. Have dinner -->
+            <div class="action-card" data-action="have_dinner">
+                <div class="image-wrapper">
+                    <img src="https://lh3.googleusercontent.com/d/1uI4WYwxLA42PEY1T2Y1C75DRs24Mvthg" alt="Have dinner" class="action-image">
+                    <button class="sound-btn" aria-label="Play sound">
+                        <svg viewBox="0 0 24 24">
+                            <path d="M14,3.23V5.29C16.89,6.15 19,8.83 19,12C19,15.17 16.89,17.85 14,18.71V20.77C18.03,19.86 21,16.28 21,12C21,7.72 18.03,4.14 14,3.23M16.5,12C16.5,10.23 15.5,8.71 14,7.97V16.04C15.5,15.29 16.5,13.77 16.5,12M3,9V15H7L12,20V4L7,9H3Z" />
+                        </svg>
+                    </button>
+                </div>
+                <div class="text-wrapper">
+                    <span class="action-text">Have dinner</span>
+                </div>
+            </div>
+
+            <!-- 11. Do homework -->
+            <div class="action-card" data-action="do_homework">
+                <div class="image-wrapper">
+                    <img src="https://lh3.googleusercontent.com/d/1DzowzSCvg64U39ifeD3em4AKkHMf0uPe" alt="Do homework" class="action-image">
+                    <button class="sound-btn" aria-label="Play sound">
+                        <svg viewBox="0 0 24 24">
+                            <path d="M14,3.23V5.29C16.89,6.15 19,8.83 19,12C19,15.17 16.89,17.85 14,18.71V20.77C18.03,19.86 21,16.28 21,12C21,7.72 18.03,4.14 14,3.23M16.5,12C16.5,10.23 15.5,8.71 14,7.97V16.04C15.5,15.29 16.5,13.77 16.5,12M3,9V15H7L12,20V4L7,9H3Z" />
+                        </svg>
+                    </button>
+                </div>
+                <div class="text-wrapper">
+                    <span class="action-text">Do homework</span>
+                </div>
+            </div>
+
+            <!-- 12. Go to bed/ sleep -->
+            <div class="action-card" data-action="go_to_bed">
+                <div class="image-wrapper">
+                    <img src="https://lh3.googleusercontent.com/d/1uoUw2IblJjMYXcQ-1sYCdSpjrInlONb2" alt="Go to bed/ sleep" class="action-image">
+                    <button class="sound-btn" aria-label="Play sound">
+                        <svg viewBox="0 0 24 24">
+                            <path d="M14,3.23V5.29C16.89,6.15 19,8.83 19,12C19,15.17 16.89,17.85 14,18.71V20.77C18.03,19.86 21,16.28 21,12C21,7.72 18.03,4.14 14,3.23M16.5,12C16.5,10.23 15.5,8.71 14,7.97V16.04C15.5,15.29 16.5,13.77 16.5,12M3,9V15H7L12,20V4L7,9H3Z" />
+                        </svg>
+                    </button>
+                </div>
+                <div class="text-wrapper">
+                    <span class="action-text">Go to bed/ sleep</span>
+                </div>
+            </div>
+        </main>
+
+        <!-- SINGLE AUDIO SOURCE -->
+        <audio id="main-audio" src="assets/move_your_body.mp3"></audio>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+
+</html>
